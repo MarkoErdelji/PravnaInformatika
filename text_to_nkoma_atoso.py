@@ -9,7 +9,7 @@ os.environ["OPENAI_API_KEY"] = "PLACEHOLDER"
 
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
-example_path = pathlib.Path("./presude/primer/gpt_generated_example.xml")
+example_path = pathlib.Path("./presude/primer/example.xml")
 presuda_example = example_path.read_text(encoding="utf-8") if example_path.exists() else "<judgement></judgement>"
 
 conclusion_example = """
