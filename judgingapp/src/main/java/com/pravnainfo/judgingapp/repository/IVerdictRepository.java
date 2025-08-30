@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IVerdictRepository extends JpaRepository<Verdict, String> {
+public interface IVerdictRepository extends JpaRepository<Verdict, Long> {
 }

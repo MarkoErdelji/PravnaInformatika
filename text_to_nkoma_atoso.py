@@ -36,7 +36,7 @@ prompt = ChatPromptTemplate.from_messages([
 def convert_presuda(text: str, file_path: pathlib.Path):
     chain = prompt | llm
     result = chain.invoke({"input": text})
-    output_dir = pathlib.Path("./presude/xml")
+    output_dir = pathlib.Path("./judgingapp/src/resources/xml")
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / f"{file_path.stem}.xml"
     output_path.write_text(result.content, encoding="utf-8")

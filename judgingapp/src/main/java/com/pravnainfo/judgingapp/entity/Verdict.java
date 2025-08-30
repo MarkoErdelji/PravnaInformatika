@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "VERDICT")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,8 +12,11 @@ import java.time.LocalDate;
 public class Verdict {
 
     @Id
-    @Column(name = "id")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, nullable = false)
+    private String caseId;
 
     @Column(name = "court")
     private String court;

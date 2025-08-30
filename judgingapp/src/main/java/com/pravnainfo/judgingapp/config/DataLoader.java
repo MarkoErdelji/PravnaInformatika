@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 
 @Component
 public class DataLoader implements CommandLineRunner {
+
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     @Autowired
@@ -38,7 +39,7 @@ public class DataLoader implements CommandLineRunner {
 
             for (CSVRecord record : csvParser) {
                 Verdict verdict = Verdict.builder()
-                        .id(getSafeString(record, "id"))
+                        .caseId(getSafeString(record, "id"))  // <-- Use caseId here
                         .court(getSafeString(record, "Court"))
                         .verdictNumber(getSafeString(record, "Case Number"))
                         .date(parseDate(getSafeString(record, "Verdict Date")))
@@ -70,6 +71,7 @@ public class DataLoader implements CommandLineRunner {
                         .useOfWeapon(Boolean.parseBoolean(getSafeString(record, "Use of Weapon")))
                         .numberOfVictims(parseInteger(getSafeString(record, "Number of Victims"), 0))
                         .build();
+
                 verdictRepository.save(verdict);
             }
         }

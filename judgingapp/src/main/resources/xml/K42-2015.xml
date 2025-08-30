@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd"
+            xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
+    <judgment>
+        <meta>
+            <identification source="#court">
+                <FRBRWork>
+                    <FRBRauthor>OSNOVNI SUD U PLJEVLJIMA</FRBRauthor>
+                    <FRBRdate date="2015-10-08">2015-10-08</FRBRdate>
+                    <FRBRtitle>K.br. 42/15</FRBRtitle>
+                    <FRBRcountry>ME</FRBRcountry>
+                </FRBRWork>
+            </identification>
+            <references>
+                <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.Pljevlja" showAs="Osnovni sud u Pljevljima"/>
+                <TLCOrganization eId="odt" href="/ontology/organization/OsnovnoDrzavnoTuzilastvo.Pljevlja" showAs="Osnovno državno tužilaštvo u Pljevljima"/>
+                <TLCPerson eId="bPejovic" href="/ontology/person/bPejovic" showAs="Branko Pejović"/>
+                <TLCPerson eId="mDondovic" href="/ontology/person/mDondovic" showAs="Milenka Đondović"/>
+                <TLCPerson eId="nB" href="/ontology/person/nB" showAs="N. B."/>
+                <TLCPerson eId="nC" href="/ontology/person/nC" showAs="N. Ć."/>
+                <TLCPerson eId="nR" href="/ontology/person/nR" showAs="N. R."/>
+                <TLCPerson eId="mTomcic" href="/ontology/person/mTomcic" showAs="Milivoje Tomčić"/>
+                <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
+                <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
+                <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
+                <TLCRole eId="victim" href="/ontology/role/victim" showAs="Oštećeni"/>
+            </references>
+        </meta>
+
+        <judgmentBody>
+            <p>
+                <organization id="os" refersTo="#os">OSNOVNI SUD U PLJEVLJIMA</organization>, sudija
+                <party id="bPejovic" refersTo="#bPejovic" as="#judge">Branko Pejović</party>, uz učešće
+                <party id="mDondovic" refersTo="#mDondovic" as="#clerk">Milenke Đondović</party> kao zapisničara, u krivičnom postupku protiv okrivljenog
+                <party id="nB" refersTo="#nB" as="#defendant">N. B.</party>, zbog krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
+                <ref href="/krivicni#art_220">čl. 220 st. 3 u vezi st. 1 Krivičnog zakonika Crne Gore</ref> i krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
+                <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>, odlučujući po optužnom predlogu
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Pljevljima Kt.br.65/15 od 12.06.2015. godine</organization>, nakon održanog glavnog i javnog pretresa u prisustvu Rukovodioca
+                <organization id="odt" refersTo="#odt">ODT Pljevlja</organization> 
+                <party id="mTomcic" refersTo="#mTomcic">Milivoja Tomčića</party>, okrivljenog, svjedoka - oštećenog
+                <party id="nC" refersTo="#nC" as="#victim">N. Ć.</party>, a u odsutnosti uredno pozvane oštećene
+                <party id="nR" refersTo="#nR" as="#victim">N. R.</party>, dana
+                <date date="2015-10-08">08.10.2015.</date> godine, donio je i javno objavio
+            </p>
+
+            <p><b>P R E S U D U</b></p>
+
+            <p>
+                Okrivljeni:
+                <party id="nB" refersTo="#nB">N. B.</party>, JMBG .... od oca M. i majke E. rođena G., rođen .... godine u P. gdje i živi ul. ., pismen završio osnovnu školu, nezaposlen, državljanin CG, lošeg imovnog stanja, neoženjen bez djece, ranije osuđivan presudom Osnovnog suda Pljevlja K.br.165/09 od 20.11.2009. godine, zbog krivičnog djela nasilje u porodici ili porodičnoj zajednici iz
+                <ref href="/krivicni#art_220">čl. 220 st. 1 Kz</ref> kažnjen 2 mjeseca uslovno jednu godinu, presudom Osnovnog suda Pljevlja K.br.44/10 od 28.10.2010. godine zbog krivičnog djela nasilje u porodici i u porodičnoj zajednici iz
+                <ref href="/krivicni#art_220">čl. 220 st. 1 Kz</ref> kažnjen 3 mjeseca zatvora uslovno na jednu godinu, presudom Višeg suda Bijelo Polje K.br.11/10 od 19.04.2010.godine zbog krivičnog djela neovlašćenja proizvodnja, držanje i stavljanje u promet opojnih droga iz
+                <ref href="/krivicni#art_300">čl. 300 st. 1 Kz</ref> kažnjen 10 mjeseci zatvora, presudom Osnovnog suda Pljevlja K.br.239/10 od 23.11.2010.godine zbog krivičnog djela nedozvoljena trgovina iz
+                <ref href="/krivicni#art_284">čl. 284 st. 1 Kz</ref> kažnjen 30 dana zatvora, presudom Osnovnog suda Pljevlja K.lbr.240/10 od 23.11.2010.godine zbog krivičnog djela ugrožavanje sigurnosti iz
+                <ref href="/krivicni#art_168">čl. 168 st. 1 Kz</ref> kažnjen 30 dana zatvora, presudom Osnovnog suda Pljevlja K.br.12/11 od 24.02.2011.godine zbog krivičnog djela oduzimanje vozila iz
+                <ref href="/krivicni#art_248">čl. 248 st. 2 Kz</ref> kažnjen 30 dana zatvora i presudom Osnovnog suda Pljevlja K.br.42/11 od 23.09.2011.godine zbog krivičnog djela oduzimanje vozila iz
+                <ref href="/krivicni#art_248">čl. 248 st. 2 Kz</ref> kažnjen 3 mjeseca zatvora, presudom ovog suda K.br.62/13 zbog krivičnog djela iz
+                <ref href="/krivicni#art_248">čl. 248 st. 1</ref> i
+                <ref href="/krivicni#art_240">240 st. 1 Krivičnog zakonika CG</ref>, izrečena mu kazna zatvora u trajanju od 11 mjeseci, presudom ovog suda K.br.66/13 od 27.05.2013. godine, zbog krivičnog djela laka tjelesna povreda iz
+                <ref href="/krivicni#art_152">čl. 152 st. 2 Krivičnog zakonika CG</ref>, izrečena mu kazna zatvora u trajanju od 30 dana, presudom ovog suda K.br.12/13 od 30.04.2013. godine, zbog krivičnog djela oduzimanje vozila iz
+                <ref href="/krivicni#art_248">čl. 248 st. 1 Krivičnog zakonika CG</ref>, izrečena mu kazna zatvora u trajanju od 7 mjeseci i 15 dana i presude K.br.42/13 od 30.04.2013. godine zbog krivičnog djela ugrožavanje sigurnosti iz
+                <ref href="/krivicni#art_168">čl. 168 st. 1 Krivičnog zakonika CG</ref>, izrečena mu kazna zatvora u trajanju od 2 mjeseca,
+            </p>
+
+            <p><b>Kriv je</b></p>
+
+            <p>
+                Što je:
+                a) dana <date date="2015-04-07">07.04.2015.</date> godine oko 22,00 časa u porodičnoj kući u ul. . u P., svjestan svog djela čije izvršenje je htio iako je znao da je isto zabranjeno, primjenom grubog nasilja narušio tjelesni i duševni integritet svojoj babi - oštećenoj
+                <party id="nR" refersTo="#nR" as="#victim">N. R.</party>, članu svoje porodice, na način što je nakon što ga je upozorila da nedira svog strica
+                <party id="nC" refersTo="#nC" as="#victim">N. Ć.</party>, prišao joj dok je ležala na krevetu i dva puta je pesnicom udario po lijevoj ruci kojom prilikom joj je nanio tešku tjelesnu povredu u vidu preloma tijela lijeve laktice,
+                čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz
+                <ref href="/krivicni#art_220">čl. 220 st. 3 u vezi st. 1 Krivičnog zakonika CG</ref>,
+            </p>
+            <p>
+                b) istog dana na istom mjestu u isto vrijeme kao pod a) primjenom grubog nasilja narušio tjelesni i duševni integritet oštećenom- svom stricu
+                <party id="nC" refersTo="#nC" as="#victim">N. Ć.</party> članu porodične zajednice, na način što mu je prišao i udario ga 2-3 puta pesnicom u predjelu glave, pri čemu je bio svjestan svog djela i htio njegovo izvršenje iako je znao da je isto zabranjeno,
+                čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz
+                <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika CG</ref>,
+                pa mu sud na osnovu člana <ref href="/krivicni#art_48">48 Krivičnog zakonika CG</ref> utvrđuje.
+            </p>
+
+            <list>
+                <item id="odluka1">
+                    <p>
+                        - Za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 3 u vezi st. 1 Krivičnog zakonika CG</ref> kaznu zatvora u trajanju od 1 godine.
+                    </p>
+                </item>
+                <item id="odluka2">
+                    <p>
+                        - Za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika CG</ref> kaznu zatvora u trajanju od 4 mjeseca.
+                    </p>
+                </item>
+                <item id="odluka3">
+                    <p>
+                        Pa sud okrivljenog na osnovu već citiranih zakonskih, a primjenom članova <ref href="/krivicni#art_4">4</ref>, <ref href="/krivicni#art_5">5</ref>, <ref href="/krivicni#art_13">13</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_33">33</ref>, <ref href="/krivicni#art_36">36</ref>, <ref href="/krivicni#art_42">42</ref> i <ref href="/krivicni#art_48">48</ref> Krivičnog zakonika CG te članova <ref href="/zkp#art_226">226</ref> i <ref href="/zkp#art_229">229</ref> ZKP CG
+                    </p>
+                </item>
+            </list>
+
+            <p><b>OSUĐUJE</b></p>
+
+            <p>
+                Na jedinstvenu kaznu zatvora u trajanju od 1 godine i 2 mjeseca (jedne godine i dva mjeseca).
+                Okrivljeni se obavezuje da na ime troškova vođenja krivičnog postupka plati budžetu RCG iznos od <amount value="60.50">60,50 eura</amount>, a na ime paušala iznos od <amount value="27.50">27,50 eura</amount>.
+            </p>
+
+            <p>
+                Troškove krivičnog postupka i paušal okrivljeni će platiti budžetu RCG u roku od <time duration="P15D">15 dana</time> po pravnosnažnosti presude pod prijetnjom prinudnog izvršenja.
+            </p>
+        </judgmentBody>
+    </judgment>
+</akomaNtoso>

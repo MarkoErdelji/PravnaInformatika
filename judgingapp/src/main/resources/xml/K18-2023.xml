@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd"
+            xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
+    <judgment>
+        <meta>
+            <identification source="#court">
+                <FRBRWork>
+                    <FRBRauthor>OSNOVNI SUD U HERCEG NOVOM</FRBRauthor>
+                    <FRBRdate date="2023-07-04">2023-07-04</FRBRdate>
+                    <FRBRtitle>K.18/2023</FRBRtitle>
+                    <FRBRcountry>ME</FRBRcountry>
+                </FRBRWork>
+            </identification>
+            <references>
+                <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.HercegNovi" showAs="Osnovni sud u Herceg Novom"/>
+                <TLCOrganization eId="odt" href="/ontology/organization/OsnovnoDrzavnoTuzilastvo.HercegNovi" showAs="Osnovno državno tužilaštvo u Herceg Novom"/>
+                <TLCPerson eId="vGazdic" href="/ontology/person/vGazdic" showAs="Vesna Gazdić"/>
+                <TLCPerson eId="kRistic" href="/ontology/person/kRistic" showAs="Katarina Ristić"/>
+                <TLCPerson eId="aR" href="/ontology/person/aR" showAs="A. R."/>
+                <TLCPerson eId="aM" href="/ontology/person/aM" showAs="A. M."/>
+                <TLCPerson eId="aE" href="/ontology/person/aE" showAs="A. E."/>
+                <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
+                <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
+                <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
+                <TLCRole eId="victim" href="/ontology/role/victim" showAs="Oštećena"/>
+            </references>
+        </meta>
+
+        <judgmentBody>
+            <p>
+                <organization id="os" refersTo="#os">OSNOVNI SUD U HERCEG NOVOM</organization>, sudija
+                <party id="vGazdic" refersTo="#vGazdic" as="#judge">Vesna Gazdić</party>, uz učešće
+                <party id="kRistic" refersTo="#kRistic" as="#clerk">Katarine Ristić</party> kao zapisničara, po optužnom predlogu
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Herceg Novom Kt.br.13/23 od 08.02.2023. godine i Kt.br.40/23 od 17.03.2023.g.</organization>, protiv okrivljenog
+                <party id="aR" refersTo="#aR" as="#defendant">A. R.</party>, zbog krivičnog djela nasilje u porodici ili porodičnoj zajednici iz
+                <ref href="/krivicni#art_220">čl. 220 st. 5 i st. 2 u vezi st. 1 Krivičnog zakonika Crne Gore</ref> i krivičnog djela nasilje u porodici ili porodičnoj zajednici iz
+                <ref href="/krivicni#art_220">čl. 220 st. 5 Krivičnog zakonika Crne Gore</ref>, nakon održanog glavnog i javnog pretresa dana
+                <date date="2023-07-04">04.07.2023.</date> godine, u prisustvu ODT HN R. S., okrivljenog i oštećenih, donio je i javno objavio sljedeću
+            </p>
+
+            <p><b>PRESUDU</b></p>
+
+            <p>
+                Okrivljeni:
+                <party id="aR" refersTo="#aR">A. R.</party>, JMBG: ..., od oca N. i majke M. rođ. M., rođen .... godine, u P. sa trenutnim prebivalištem u B. (bez bliže adrese), po zanimanju pomoćni kuvar, zaposlen u „Č.“ DOO B. sa mjesečnom platom od oko ...,00€, oženjen, otac jednog maloljetnog djeteta, ne posjeduje nepokretnosti na svoje ime, državljanin C. G., ranije neosuđivan
+            </p>
+
+            <p><b>Kriv je</b></p>
+
+            <p>
+                Što je:
+            </p>
+
+            <p>
+                1. dana <date date="2023-01-24">24.01.2023.</date> oko 17,00 časova u selu M., opština H. N., u svojoj porodičnoj kući, prekršio mjeru zaštite od nasilja u porodici – mjeru zabrane uznemiravanja i uhođenja svoje majke oštećene
+                <party id="aM" refersTo="#aM" as="#victim">A. M.</party> i supruge oštećene
+                <party id="aE" refersTo="#aE" as="#victim">A. E.</party>, koja mu je izrečena od strane Suda za prekršaje u B. – Odjeljenje u H. N. na osnovu Zakona o zaštiti od nasilja u porodici pravosnažnim rješenjem PP br.2279/22-A od <date date="2022-11-08">08.11.2022.</date> u trajanju od 1 (jedne) godine, te primjenom grubog nasilja narušio tjelesni integritet članova svoje porodice – navedenih oštećenih, na način što je oštećenoj
+                <party id="aE" refersTo="#aE">A. E.</party> uputio riječi "kurvetino" i stisnutom pesnicom je udario u predjelu nosa, a onda je drvenom stolicom – sredstvom podobnim da tijelo teško povrijedi i zdravlje teško naruši, udario u predjelu leđa, da bi nakon toga drvenu stolicu bacio u pravcu oštećene
+                <party id="aM" refersTo="#aM">A. M.</party> i pogodio je istom u predjelu lijeve šake i tom prilikom joj nanio lake tjelesne povrede u vidu dva krvna podliva kože u predjelu naddlanene strane lijeve šake, pri čemu je bio svjestan svoga djela i htio njegovo izvršenje,
+            </p>
+
+            <p>
+                -čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 5 i st. 2 u vezi st. 1 Krivičnog zakonika Crne Gore</ref>,
+            </p>
+
+            <p>
+                2. dana <date date="2023-02-20">20.02.2023.</date> oko 11,00 časova u selu M., opština H. N., prekršio mjeru zaštite od nasilja u porodici – mjeru zabrane uznemiravanja i uhođenja svoje supruge oštećene
+                <party id="aE" refersTo="#aE">A. E.</party>, koja mu je izrečena od strane Suda za prekršaje u B. – Odjeljenje u H. N. na osnovu Zakona o zaštiti od nasilja u porodici pravosnažnim rješenjem PP br.2279/22-A od <date date="2022-11-08">08.11.2022.</date> u trajanju od 1 (jedne) godine na način što je došao ispred ulaznih vrata od kuće i počeo da lupa na vrata kako bi mu oštećena otvorila, pa kako mu ista nije otvorila vrata uzeo je sjekiru iz dvorišta i istom više puta udario u vrata kojom prilikom ih je oštetio, a što je kod oštećene izazvalo osjećaj uznemirenosti, pri čemu je bio svjestan svoga djela i htio njegovo izvršenje,
+            </p>
+
+            <p>
+                -čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 5 Krivičnog zakonika Crne Gore</ref>,
+            </p>
+
+            <list>
+                <item id="odluka1">
+                    <p>
+                        Pa sud okrivljenom <party id="aR" refersTo="#aR">A. R.</party> na osnovu citiranih zakonskih propisa i primjenom <ref href="/krivicni#art_4">čl. 4</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_36">36</ref>, <ref href="/krivicni#art_42">42</ref> Krivičnog zakonika Crne Gore, te <ref href="/zkp#art_374">čl. 374</ref>, <ref href="/zkp#art_226">čl. 226 st. 3</ref>, <ref href="/zkp#art_229">čl. 229 st. 1</ref> i <ref href="/zkp#art_239">čl. 239 st. 2</ref> Zakonika o krivičnom postupku, prethodno utvrđuje:
+                        <br/>
+                        - za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 5 i st. 2 u vezi st. 1 Krivičnog zakonika Crne Gore</ref>, kaznu zatvora u trajanju od 4 (četiri) mjeseca;
+                        <br/>
+                        - za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 5 Krivičnog zakonika Crne Gore</ref>, kaznu zatvora u trajanju od 3 (tri) mjeseca;
+                    </p>
+                </item>
+                <item id="odluka2">
+                    <p>
+                        te mu za navedena krivična djela primjenom <ref href="/krivicni#art_48">čl. 48</ref>, <ref href="/krivicni#art_52">52</ref>, <ref href="/krivicni#art_53">53</ref> i <ref href="/krivicni#art_54">54</ref> Krivičnog zakonika Crne Gore, izriče
+                        <b>USLOVNU OSUDU</b>
+                        <br/>
+                        Kojom mu utvrđuje jedinstvenu kaznu zatvora u trajanju od 6 (šest) mjeseci, i istovremeno određuje da se ova kazna neće izvršiti ukoliko okrivljeni u roku od 2 (dvije) godine, od pravosnažnosti presude ne izvrši novo krivično djelo.
+                    </p>
+                </item>
+                <item id="odluka3">
+                    <p>
+                        Okrivljeni se obavezuje da plati troškove krivičnog postupka u iznosu od <amount value="71.50">71,50€</amount> i troškove sudskog paušala u iznosu od <amount value="30.00">30,00€</amount> u korist budžeta Crne Gore na žiro račun 832-158-14 u roku od <time duration="P15D">15 dana</time> od pravosnažnosti presude.
+                    </p>
+                </item>
+                <item id="odluka4">
+                    <p>
+                        Oštećene <party id="aM" refersTo="#aM" as="#victim">A. M.</party> i <party id="aE" refersTo="#aE" as="#victim">A. E.</party> se radi imovinsko-pravnog zahtjeva upućuju na parnični postupak.
+                    </p>
+                </item>
+            </list>
+        </judgmentBody>
+    </judgment>
+</akomaNtoso>
