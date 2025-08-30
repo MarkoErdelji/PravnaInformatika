@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd"
+            xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
+    <judgment>
+        <meta>
+            <identification source="#court">
+                <FRBRWork>
+                    <FRBRauthor>OSNOVNI SUD U PODGORICI</FRBRauthor>
+                    <FRBRdate date="2023-01-20">2023-01-20</FRBRdate>
+                    <FRBRtitle>K.br. 730/22</FRBRtitle>
+                    <FRBRcountry>ME</FRBRcountry>
+                </FRBRWork>
+            </identification>
+            <references>
+                <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.Podgorica" showAs="Osnovni sud u Podgorici"/>
+                <TLCOrganization eId="odt" href="/ontology/organization/OsnovnoDrzavnoTuzilastvo.Podgorica" showAs="Osnovno državno tužilaštvo u Podgorici"/>
+                <TLCPerson eId="lMijuskovicStamatovic" href="/ontology/person/lMijuskovicStamatovic" showAs="Larisa Mijušković-Stamatović"/>
+                <TLCPerson eId="mSekulic" href="/ontology/person/mSekulic" showAs="Marina Sekulić"/>
+                <TLCPerson eId="kR" href="/ontology/person/kR" showAs="K. R."/>
+                <TLCPerson eId="bL" href="/ontology/person/bL" showAs="B. L."/>
+                <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
+                <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
+                <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
+                <TLCRole eId="victim" href="/ontology/role/victim" showAs="Oštećena"/>
+            </references>
+        </meta>
+
+        <judgmentBody>
+            <p>
+                <organization id="os" refersTo="#os">OSNOVNI SUD U PODGORICI</organization>, sudija
+                <party id="lMijuskovicStamatovic" refersTo="#lMijuskovicStamatovic" as="#judge">Larisa Mijušković-Stamatović</party>, uz učešće
+                <party id="mSekulic" refersTo="#mSekulic" as="#clerk">Marine Sekulić</party> kao zapisničara, u krivičnom postupku protiv okrivljenog
+                <party id="kR" refersTo="#kR" as="#defendant">K. R.</party>, zbog krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
+                <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>, odlučujući po optužnom predlogu
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Podgorici Kt.br.1535/22 od 23.11.2022. godine</organization>, nakon pravnosnažnosti Rješenja o usvajanju Sporazuma o priznanju krivice, dana
+                <date date="2023-01-20">20.01.2023.</date> godine, donio je 
+            </p>
+
+            <p><b>P R E S U D U</b></p>
+
+            <p>
+                Okrivljeni:
+                <party id="kR" refersTo="#kR">K. R.</party>, JMB xxxxxxxxxxxxx, od oca A. i majke Š., rođene B., rođen xx.xx.xxxx. godine u Podgorici, nastanjen u mjestu rođenja u Ul. K. br., državljanin Crne Gore, koji razumije crnogorski jezik dok je njegov jezik romski i srpski, radnik "Č.", oženjen, otac troje djece, nepismen, ali zna da se potpiše, bez završene škole, lošeg imovnog stanja, ranije osuđivan i to: presudom Osnovnog suda u Podgorici K.br. 206/22 koja je pravnosnažna dana 08.07.2022. godine, zbog krivičnog djela iz
+                <ref href="/krivicni#art_220">čl. 220 st. 2 u vezi stava 1 KZ CG</ref>, na kaznu zatvora u trajanju od 3 mjeseca, presudom Osnovnog suda u Podgorici K.br. 389/19 koja je postala pravnosnažna dana 12.10.2019. godine, zbog krivičnog djela iz
+                <ref href="/krivicni#art_220">čl. 220 st 1 KZ CG</ref>, izrečena uslovna osuda u trajanju od 4 mjeseca uslovno na 2 godine, u pritvoru po rješenju sudije za istragu Osnovnog suda u Podgorici Kri.br. 748/22 od 15.11.2022. godine koji pritvor se ima računati od
+                <date date="2022-11-12">12.11.2022.</date> godine u 13,00 časova kao dana i časa lišenja slobode,
+            </p>
+
+            <p><b>Kriv je</b></p>
+
+            <p>
+                Zato što je: Dana xx.xx.xxxx. godine, oko 19,00 časova, u porodičnoj kući, u ul. K. br., u Podgorici, svjestan svoga djela, čije je izvršenje htio, znajući da je isto zaranjeno, primjenom grubog nasilja narušio tjelesni integritet člana svoje porodice - vanbračne supruge oštećene
+                <party id="bL" refersTo="#bL" as="#victim">B. L.</party>, na način što je istoj zadao više udaraca pesnicom u predjelu glave, kojom prilikom joj je nanio laku tjelesnu povredu u vidu krvnog podliva sa otokom donjeg kapka lijevog oka i gornje ivice lijevog jagodičnog predjela, kao i otok sa oguljotinom unutrašnje strane donje usne,
+            </p>
+            <p>
+                - čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">člana 220 stav 1 Krivičnog zakonika Crne Gore</ref>.
+            </p>
+            
+            <list>
+                <item id="odluka1">
+                    <p>
+                        Pa ga Sud, primjenom citiranih zakonskih odredbi, te <ref href="/krivicni#art_4">čl. 4 st.2</ref>, <ref href="/krivicni#art_5">5</ref>, <ref href="/krivicni#art_13">13</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_33">33</ref>, <ref href="/krivicni#art_36">36</ref>, <ref href="/krivicni#art_42">42 st.1</ref> i <ref href="/krivicni#art_51">51</ref> Krivičnog zakonika Crne Gore, te <ref href="/zkp#art_226">čl. 226</ref>, <ref href="/zkp#art_227">227</ref>, <ref href="/zkp#art_229">229</ref> i <ref href="/zkp#art_374">374</ref> Zakonika o krivičnom postupku,
+                        <b>OSUĐUJE</b><br/>
+                        Na kaznu zatvora u trajanju od 9 (devet) mjeseci, u koju kaznu mu se uračunava i vrijeme provedeno u pritvoru počev od <date date="2022-11-12">12.11.2022.</date> godine, od 13,00 časova, kao dana i časa lišenja slobode, pa nadalje.
+                    </p>
+                </item>
+                <item id="odluka2">
+                    <p>
+                        Obavezuje se okrivljeni da na račun budžetskih sredstava Suda na ime troškova krivičnog postupka uplati iznos od <amount value="99.00">99,00 eura</amount>, kao i sudskog paušala iznos od <amount value="30.00">30,00 €</amount>, u roku od <time duration="P15D">15 dana</time> po pravnosnažnosti presude, pod prijetnjom prinudnog izvršenja; kao i troškove angažovanja branioca po službenoj dužnosti adv. R. V. o kojima će sud nakon pravnosnažnosti presude, odlučiti posebnim rješenjem.
+                    </p>
+                </item>
+                <item id="odluka3">
+                    <p>
+                        Na osnovu <ref href="/zkp#art_376">čl. 376 st.8 Zakonika o krivičnom postupku</ref>, sud okrivljenog <party id="kR" refersTo="#kR">K. R.</party> upućuje na izdržavanje kazne zatvora, budući da je vrijeme koje je proveo u pritvoru, kraće od dužine kazne zatvora na koju je osuđen.
+                    </p>
+                </item>
+            </list>
+        </judgmentBody>
+    </judgment>
+</akomaNtoso>

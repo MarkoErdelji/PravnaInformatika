@@ -5,7 +5,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 
 # Direktno postavljanje API ključa (za test, bolje koristi .env)
-os.environ["OPENAI_API_KEY"] = "API_KEY"
+os.environ["OPENAI_API_KEY"] = "PLACEHOLDER"
 
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
 

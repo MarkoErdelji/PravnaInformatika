@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd"
+            xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
+    <judgment>
+        <meta>
+            <identification source="#court">
+                <FRBRWork>
+                    <FRBRauthor>OSNOVNI SUD U KOLAŠINU</FRBRauthor>
+                    <FRBRdate date="2017-04-13">2017-04-13</FRBRdate>
+                    <FRBRtitle>K.br. 10/17</FRBRtitle>
+                    <FRBRcountry>ME</FRBRcountry>
+                </FRBRWork>
+            </identification>
+            <references>
+                <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.Kolašin" showAs="Osnovni sud u Kolašinu"/>
+                <TLCOrganization eId="odt" href="/ontology/organization/OsnovnoDrzavnoTuzilastvo.Kolašin" showAs="Osnovno državno tužilaštvo u Kolašinu"/>
+                <TLCPerson eId="aPopovic" href="/ontology/person/aPopovic" showAs="Arsen Popović"/>
+                <TLCPerson eId="lMrdak" href="/ontology/person/lMrdak" showAs="Ljiljana Mrdak"/>
+                <TLCPerson eId="aA" href="/ontology/person/aA" showAs="A. A."/>
+                <TLCPerson eId="vGrujic" href="/ontology/person/vGrujic" showAs="Vojislav Grujić"/>
+                <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
+                <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
+                <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
+                <TLCRole eId="victim" href="/ontology/role/victim" showAs="Oštećeni"/>
+            </references>
+        </meta>
+
+        <judgmentBody>
+            <p>
+                <organization id="os" refersTo="#os">OSNOVNI SUD U KOLAŠINU</organization>, sudija
+                <party id="aPopovic" refersTo="#aPopovic" as="#judge">Arsen Popović</party>, uz učešće
+                <party id="lMrdak" refersTo="#lMrdak" as="#clerk">Ljiljane Mrdak</party> kao zapisničara, u krivičnom postupku protiv okrivljenog
+                <party id="aA" refersTo="#aA" as="#defendant">A. A.</party>, zbog krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
+                <ref href="/krivicni#art_220">čl. 220 st. 2 u vezi st. 1 Krivičnog zakonika Crne Gore</ref>, odlučujući po optužnom predlogu
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Kolašinu Kt.br.155/16 od 23.01.2017. godine</organization>, nakon održanog glavnog javnog pretresa dana
+                <date date="2017-04-13">13.04.2017.</date> godine, donio je i javno objavio
+            </p>
+
+            <p><b>P R E S U D U</b></p>
+
+            <p>
+                Prema okrivljenom:
+                <party id="aA" refersTo="#aA">A. A.</party>, JMBG ..., od oca D. i majke V. rođene P., rođen ... godine u K., gdje je i nastanjen T. B., Srbin,
+                državljanin CG, nezaposlen, neoženjen, pismen, završio srednju školu, lošeg imovnog stanja, govori srpskim jezikom, osuđivan.
+            </p>
+
+            <p>- na osnovu <ref href="/zkp#art_372">čl. 372 st. 1 t. 1 ZKP-a</ref>,</p>
+
+            <p><b>ODBIJA SE OPTUŽBA</b></p>
+
+            <p>
+                D a j e: Dana <date date="2016-12-10">10.12.2016.</date> godine, oko 15,00 časova, u porodičnom stanu na T. B. u Kolašinu, svjestan svog djela, čije
+                izvršenje je htio, znajući da je isto zabranjeno, primjenom grubog nasilja narušio tjelesni i duševni integritet
+                člana svoje porodice - brata <party id="aA" refersTo="#aA" as="#victim">A. A.</party>, na način što je nakon verbalnog konflikta udario šest puta oštećenog
+                kliještima, sredstvom podobnim da tijelo teško povrijedi ili zdravlje teško naruši, u predjelu glave nanijevši
+                mu tom prilikom laku tjelesnu povredu manifestovanu u vidu šest rana razderotina kože kosmatog dijela
+                glave i krvnog podliva kože u predjelu iza ušne školjke spoljašnjeg otvora desnog uha,
+                - čime bi izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 2 u vezi st. 1 Krivičnog zakonika</ref>.
+            </p>
+
+            <p>
+                Troškovi krivičnog postupka padaju na teret budžetskih sredstava suda.
+            </p>
+
+            <p>
+                Oštećeni <party id="aA" refersTo="#aA" as="#victim">A. A.</party> radi ostvarenja svog imovinsko-pravnog zahtjeva upućuje se na parnični postupak.
+            </p>
+        </judgmentBody>
+    </judgment>
+</akomaNtoso>
