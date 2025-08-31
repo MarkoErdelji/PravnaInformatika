@@ -18,8 +18,8 @@
                 <TLCPerson eId="vVukovic" href="/ontology/person/vVukovic" showAs="Valentina Vuković"/>
                 <TLCPerson eId="nLalovic" href="/ontology/person/nLalovic" showAs="Nataša Lalović"/>
                 <TLCPerson eId="sN" href="/ontology/person/sN" showAs="S. N."/>
-                <TLCPerson eId="sM" href="/ontology/person/sM" showAs="S. M."/>
                 <TLCPerson eId="pDjikanovic" href="/ontology/person/pDjikanovic" showAs="Predrag Djikanović"/>
+                <TLCPerson eId="sM" href="/ontology/person/sM" showAs="S. M."/>
                 <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
                 <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
                 <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
@@ -29,26 +29,28 @@
 
         <judgmentBody>
             <p>
-                <organization id="os" refersTo="#os">OSNOVNI SUD U BARU</organization>, sudija
-                <party id="vVukovic" refersTo="#vVukovic" as="#judge">Valentina Vuković</party>, uz učešće
-                <party id="nLalovic" refersTo="#nLalovic" as="#clerk">Nataše Lalović</party> kao zapisničara, u krivičnom postupku protiv okrivljenog
+                <organization id="os" refersTo="#os">OSNOVNI SUD U BARU</organization>, prvostepeni krivični sud, po sudiji
+                <party id="vVukovic" refersTo="#vVukovic" as="#judge">Valentini Vuković</party>, uz učešće namještenika suda
+                <party id="nLalovic" refersTo="#nLalovic" as="#clerk">Nataše Lalović</party>, zapisničara, u krivičnom predmetu protiv okrivljenog
                 <party id="sN" refersTo="#sN" as="#defendant">S. N.</party>, postupajući po optužnom predlogu
-                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Baru Kt.br.166/14 od 10.04.2014. godine</organization>, nakon održanog usmenog, glavnog i javnog pretresa dana
-                <date date="2015-03-20">20.03.2015.</date> godine, donio je i dana <date date="2015-03-23">23.03.2015.</date> godine javno objavio:
+                <organization id="odt" refersTo="#odt">ODT-a iz Bara</organization>, Kt. br. 166/14 od 10.04.2014. godine, zbog krivičnog djela - nasilje u porodici ili u
+                porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st.1. KZ CG</ref>, nakon održanog usmenog, glavnog i javnog pretresa dana
+                <date date="2015-03-20">20.03.2015.</date> godine, u prisustvu savjetnika ODT-a iz Bara
+                <party id="pDjikanovic" refersTo="#pDjikanovic">Predraga Djikanovića</party> i okrivljenog
+                <party id="sN" refersTo="#sN">S. N.</party>, donio je i dana <date date="2015-03-23">23.03.2015.</date> godine javno objavio:
             </p>
 
             <p><b>P R E S U D U</b></p>
 
             <p>
-                Okrivljeni:
-                <party id="sN" refersTo="#sN">S. N.</party>, od oca A. i majke Z. rođene N., rođen ... godine u R. S. – S., sa prebivalištem u B., oženjen,
+                Okrivljeni <party id="sN" refersTo="#sN">S. N.</party>, od oca A. i majke Z. rođene N., rođen ... godine u R. S. – S., sa prebivalištem u B., oženjen,
                 otac dvoje maloljetne djece, završio srednju školu, lošeg imovnog stanja, osuđivan
             </p>
 
             <p><b>Kriv je</b></p>
 
             <p>
-                Zato što je: Dana <date date="2014-03-12">12. marta 2014.</date> godine, oko 16,00 časova, u stanu u kojem žive, svjestan svog djela čije izvršenje je htio,
+                Što je: Dana <date date="2014-03-12">12. marta 2014.</date> godine, oko 16,00 časova, u stanu u kojem žive, svjestan svog djela čije izvršenje je htio,
                 primjenom grubog nasilja narušio tjelesni i duševni integritet člana svoje porodice - svoje supruge oštećene
                 <party id="sM" refersTo="#sM" as="#victim">S. M.</party>, na način što je oštećenoj uputio riječi prijetnje sadržine: "Šta ti mene sve lažeš, majku ti jebem, što
                 nijesi poslala para, djubre jedno, sad ću da te zadavim", isti je zatim uhvatio rukama u predjelu vrata i glave, i
@@ -57,35 +59,40 @@
                 na glavi u potiljačnom dijelu eritem kože sa hematomom,
             </p>
             <p>
-                - čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st.1. Krivičnog zakonika Crne Gore</ref>,
+                - čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st.1. KZ CG</ref>,
             </p>
-            
+
             <list>
                 <item id="odluka1">
                     <p>
-                        Pa mu Sud primjenom <ref href="/krivicni#art_4">čl. 4</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_36">36</ref>, <ref href="/krivicni#art_42">42</ref>, <ref href="/krivicni#art_48">48</ref>, <ref href="/krivicni#art_52">52</ref>, <ref href="/krivicni#art_53">53</ref>, <ref href="/krivicni#art_54">54</ref>, <ref href="/krivicni#art_55">55 st. 4 i 5</ref>, <ref href="/krivicni#art_56">56 st. 2</ref>, Krivičnog zakonika i <ref href="/zkp#art_226">čl. 226</ref> - <ref href="/zkp#art_229">229</ref>, <ref href="/zkp#art_369">369</ref>, <ref href="/zkp#art_370">370</ref>, i <ref href="/zkp#art_374">374</ref> Zakonika o krivičnom postupku,
+                        Pa mu Sud primjenom <ref href="/krivicni#art_4">čl. 4</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_36">36</ref>, <ref href="/krivicni#art_42">42</ref>, <ref href="/krivicni#art_48">48</ref>, <ref href="/krivicni#art_52">52</ref>, <ref href="/krivicni#art_53">53</ref>, <ref href="/krivicni#art_54">54</ref>, <ref href="/krivicni#art_55">55 st. 4 i 5</ref>, <ref href="/krivicni#art_56">56 st. 2</ref>, Krivičnog zakonika i <ref href="/zkp#art_226">čl. 226</ref> - <ref href="/zkp#art_229">229</ref>, <ref href="/zkp#art_369">čl. 369</ref>,
+                        <ref href="/zkp#art_370">čl. 370</ref>, i <ref href="/zkp#art_374">čl. 374</ref> Zakonika o krivičnom postupku,
                     </p>
                 </item>
                 <item id="odluka2">
                     <p>
                         <b>UTVRĐUJE</b><br/>
-                        - za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st.1. Krivičnog zakonika Crne Gore</ref>, - kaznu zatvora u trajanju
+                        - za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st.1. KZ CG</ref>, - kaznu zatvora u trajanju
                         od 3 (tri) mjeseca, dok se<br/>
                         - uzima kao utvrđena kazna u trajanju od 3 (tri) mjeseca za krivično djelo nasilje u porodici ili u porodičnoj
-                        zajednici iz <ref href="/krivicni#art_220">čl. 220 st.1. Krivičnog zakonika Crne Gore</ref>, za koje je osuđen pravosnažnom presudom Osnovnog suda u Baru K. br.
-                        458/10 od 22.12.2010 godine,
+                        zajednici iz <ref href="/krivicni#art_220">čl. 220 st.1. KZ CG</ref>, za koje je osuđen pravosnažnom presudom Osnovnog suda u Baru K. br.
+                        458/10 od 22.12.2010. godine,
                     </p>
                 </item>
                 <item id="odluka3">
                     <p>
-                        Pa mu sud primjenom citiranih članova, izriče<br/>
+                        Pa mu sud primjenom citiranih članova, izriče
+                    </p>
+                </item>
+                <item id="odluka4">
+                    <p>
                         <b>USLOVNU OSUDU</b><br/>
                         Kojom mu utvrđuje jedinstvenu kaznu zatvora u trajanju od 4 (četiri) mjeseca i istovremeno određuje da se
                         kazna neće izvršiti ukoliko okrivljeni u roku od 1 (jedne) godine po pravosnažnosti presude ne izvrši novo
                         krivično djelo.
                     </p>
                 </item>
-                <item id="odluka4">
+                <item id="odluka5">
                     <p>
                         Okrivljeni je dužan da naknadi troškove krivičnog postupka u iznosu od <amount value="118.00">118,00 €</amount>, i to iznos od <amount value="88.00">88,00 eura</amount>, na
                         ime vještačenja po vještaku medicinske struke, i na ime sudskog paušala iznos od <amount value="30.00">30,00 eura</amount>, a sve u roku od

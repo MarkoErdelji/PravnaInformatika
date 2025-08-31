@@ -8,7 +8,7 @@
                 <FRBRWork>
                     <FRBRauthor>OSNOVNI SUD U BIJELOM POLjU</FRBRauthor>
                     <FRBRdate date="2024-07-30">2024-07-30</FRBRdate>
-                    <FRBRtitle>K.br. 107/24</FRBRtitle>
+                    <FRBRtitle>K. br. 107/24</FRBRtitle>
                     <FRBRcountry>ME</FRBRcountry>
                 </FRBRWork>
             </identification>
@@ -37,11 +37,12 @@
                 <party id="kLjesnjak" refersTo="#kLjesnjak" as="#clerk">Koviljke Lješnjak</party>, postupajući po optužnom predlogu
                 <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Bijelom Polju</organization>,
                 protiv okrivljenog
-                <party id="mZ" refersTo="#mZ" as="#defendant">M. Ž.</party>, zbog krivičnog djela nasilje u porodici ili u porodičnoj
+                <party id="mZ" refersTo="#mZ" as="#defendant">M. Ž.</party> iz M., zbog krivičnog djela nasilje u porodici ili u porodičnoj
                 zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 1 i 3 Krivičnog zakonika Crne Gore</ref> u odnosu na oštećenu
                 <party id="aZ" refersTo="#aZ" as="#victim">A. Ž.</party> i krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
                 <ref href="/krivicni#art_220">čl. 220 st. 3 Krivičnog zakonika Crne Gore</ref> u odnosu na oštećenog
-                <party id="dV" refersTo="#dV" as="#victim">D. V.</party>, nakon održanog glavnog i javnog pretresa, u prisustvu savjetnika u
+                <party id="dV" refersTo="#dV" as="#victim">D. V.</party>, nakon održanog glavnog i
+                javnog pretresa, u prisustvu savjetnika u
                 <organization id="odt" refersTo="#odt">Osnovnom državnom tužilaštvu u Bijelom Polju</organization>,
                 <party id="ljJ" refersTo="#ljJ">Lj. J.</party>, okrivljenog
                 <party id="mZ" refersTo="#mZ">M. Ž.</party> i branioca okrivljenog advokata
@@ -61,22 +62,23 @@
             <p><b>K R I V J E</b></p>
 
             <p>
-                Zato što je: Dana <date date="2024-07-08">08.07.2024.</date> godine oko 20,00 h u mjestu P., opština M., u porodičnoj kući, svjestan svog djela čije je
+                Zato što je:
+                Dana <date date="2024-07-08">08.07.2024.</date> godine oko 20,00 h u mjestu P., opština M., u porodičnoj kući, svjestan svog djela čije je
                 izvršenje htio, znajući da je isto zabranjeno, lako tjelesno povrijedio člana svoje porodice – suprugu
                 <party id="aZ" refersTo="#aZ">Ž. A.</party>, te prema istoj više puta primijenio nasilje i istoj drskim i bezobzirnim ponašanjem ugrozio duševni integritet i
                 drskim i bezobzirnim ponašanjem ugrozio tjelesni integritet člana svoje porodice - tasta oštećenog
                 <party id="dV" refersTo="#dV">V. D.</party> na način što je, kada je opštećena
-                <party id="aZ" refersTo="#aZ">Ž. A.</party> ušla u porodičnu kuću, utrčao za njom u dnevnu sobu govoreći joj: ''ko si
-                ti da meni baciš ključeve'' i sa obje ruke je uhvatio za vrat, da bi zatim, kada se oštećena otrgla od njega, u
+                <party id="aZ" refersTo="#aZ">Ž. A.</party> ušla u porodičnu kuću, utrčao za njom u dnevnu sobu govoreći joj: "ko si
+                ti da meni baciš ključeve" i sa obje ruke je uhvatio za vrat, da bi zatim, kada se oštećena otrgla od njega, u
                 trenutku dok je pokušavala da otvori prozor prišao do oštećene, počupao je za vrat i ruke, a zatim svojim
                 rukama stegao oštećenu u predjelu nadlaktica obje ruke, te odgurnuo o zid, da bi potom dok se nalazila u
                 spavaćoj sobi istu ponovo uhvatio za vrat i stezao, a zatim čupao za kosu, nakon čega je pustio i izašao
                 napolje, da bi nakon što je došao oštećeni
                 <party id="dV" refersTo="#dV">D. V.</party>, okrivljeni ušao u spavaću sobu i na pitanje oštećenog drsko
-                odgovorio: ''šta, šta je bilo'', a zatim prišao oštećenoj koja je sjedjela na ležaju, ponovo istu sa obje ruke
+                odgovorio: "šta, šta je bilo", a zatim prišao oštećenoj koja je sjedjela na ležaju, ponovo istu sa obje ruke
                 uhvatio za vrat, a zatim je otvorenim šakama udarao u predjelu glave, nakon čega je oštećeni
                 <party id="dV" refersTo="#dV">D. V.</party> povukao za
-                ruku okrivljenog, kada mu se isti obratio riječima: ''šta je, šta hoćeš'', a zatim oštećenog
+                ruku okrivljenog, kada mu se isti obratio riječima: "šta je, šta hoćeš", a zatim oštećenog
                 <party id="dV" refersTo="#dV">D. V.</party> rukom uhvatio
                 za vrat, kojom prilikom je oštećena
                 <party id="aZ" refersTo="#aZ">Ž. A.</party> zadobila laku tjelesnu povredu u vidu oguljotine i crvenila u predjelu
@@ -99,7 +101,7 @@
                 </item>
                 <item id="odluka2">
                     <p>
-                        Pa istom, na osnovu <ref href="/krivicni#art_48">člana 48 Krivičnog zakonika</ref>, i z r i č e<br/>
+                        Pa istom, na osnovu člana <ref href="/krivicni#art_48">48</ref> Krivičnog zakonika, i <b>z r i č e</b><br/>
                         <b>USLOVNU OSUDU</b><br/>
                         Kojom mu utvrđuje jedinstvenu kaznu zatvora od sedam mjeseci i istovremeno određuje da se ista neće
                         izvršiti, ukoliko okrivljeni u roku od dvije godine, po pravosnažnosti presude, ne izvrši novo krivično djelo, s

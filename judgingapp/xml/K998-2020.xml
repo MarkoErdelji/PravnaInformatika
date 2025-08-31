@@ -17,7 +17,7 @@
                 <TLCPerson eId="rCetkovic" href="/ontology/person/rCetkovic" showAs="Rade Ćetković"/>
                 <TLCPerson eId="eKraje" href="/ontology/person/eKraje" showAs="Edina Kraje"/>
                 <TLCPerson eId="sP" href="/ontology/person/sP" showAs="S. P."/>
-                <TLCPerson eId="nSP" href="/ontology/person/nSP" showAs="N. S. P."/>
+                <TLCPerson eId="nSP" href="/ontology/person/nSP" showAs="N. S. - P."/>
                 <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
                 <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
                 <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
@@ -45,7 +45,7 @@
             <p><b>Kriv je</b></p>
 
             <p>
-                Što je: Dana <date date="2020-11-29">29. novembra 2020.</date> godine, oko 18.30 časova, u stanu, u B. P. Ć. xx, u Podgorici, svjestan svog djela čije je izvršenje htio i svjestan da je njegovo djelo zabranjeno, primjenom grubog nasilja narušio tjelesni integritet člana svoje porodice, na način što je suprugu - oštećenu <party id="nSP" refersTo="#nSP" as="#victim">N. S. P.</party> - nogom udario u predjelu zadnjice, a nakon toga je, u prisustvu maloljetnog djeteta, u toaletu, snažno gurnuo a ona udarila glavom u tuš kabinu, da bi joj, držeći je lijevom rukom za lijevo rame i povlačeći ka sebi, zadao dva udarca zatvorenom šakom desne ruke u predjelu usana i tako joj nanio lake tjelesne povrede u vidu: krvnih podliva sa otokom u tjemeno - potiljačnom predjelu i u predjelu gornje i donje usne, sa manjom ranom prskotinom u predjelu unutrašnje strane donje usne,
+                Što je: Dana <date date="2020-11-29">29. novembra 2020.</date> godine, oko 18.30 časova, u stanu, u B. P. Ć. xx, u Podgorici, svjestan svog djela čije je izvršenje htio i svjestan da je njegovo djelo zabranjeno, primjenom grubog nasilja narušio tjelesni integritet člana svoje porodice, na način što je suprugu - oštećenu <party id="nSP" refersTo="#nSP" as="#victim">N. S. - P.</party>, nogom udario u predjelu zadnjice, a nakon toga je, u prisustvu maloljetnog djeteta, u toaletu, snažno gurnuo a ona udarila glavom u tuš kabinu, da bi joj, držeći je lijevom rukom za lijevo rame i povlačeći ka sebi, zadao dva udarca zatvorenom šakom desne ruke u predjelu usana i tako joj nanio lake tjelesne povrede u vidu: krvnih podliva sa otokom u tjemeno - potiljačnom predjelu i u predjelu gornje i donje usne, sa manjom ranom prskotinom u predjelu unutrašnje strane donje usne,
             </p>
             <p>
                 - čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>.

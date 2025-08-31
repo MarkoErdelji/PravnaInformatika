@@ -2,7 +2,6 @@ package com.pravnainfo.judgingapp.cbr;
 
 import com.pravnainfo.judgingapp.dto.CaseDescription;
 import com.pravnainfo.judgingapp.dto.SimilarVerdict;
-import com.pravnainfo.judgingapp.entity.VerdictType;
 import es.ucm.fdi.gaia.jcolibri.cbraplications.StandardCBRApplication;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.*;
 import es.ucm.fdi.gaia.jcolibri.exception.ExecutionException;
@@ -18,12 +17,12 @@ import java.util.*;
 @Component
 public class CbrApplication implements StandardCBRApplication {
 
-    private final CsvConnector connector;
+    private final DatabaseConnector connector;
     private CBRCaseBase caseBase;
     private NNConfig predictConfig;
     private NNConfig retrievalConfig;
 
-    public CbrApplication(CsvConnector connector) {
+    public CbrApplication(DatabaseConnector connector) {
         this.connector = connector;
     }
 
@@ -67,6 +66,16 @@ public class CbrApplication implements StandardCBRApplication {
         return config;
     }
 
+    public void addAndPersistCase(CaseDescription newCase) throws ExecutionException {
+        if (caseBase == null) throw new ExecutionException("CBR not initialized");
+
+        CBRCase cbrCase = new CBRCase();
+        cbrCase.setDescription(newCase);
+
+        caseBase.getCases().add(cbrCase);
+
+        connector.storeCases(List.of(cbrCase));
+    }
     @Override
     public CBRCaseBase preCycle() throws ExecutionException {
         caseBase.init(connector);

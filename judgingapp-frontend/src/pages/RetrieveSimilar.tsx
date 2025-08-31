@@ -30,7 +30,7 @@ function RetrieveSimilar() {
             <TableBody>
               {similarCases.map((sc, index) => (
                 <TableRow key={index}>
-                  <TableCell>{sc.caseDescription.caseName}</TableCell>
+                  <TableCell>{sc.caseDescription.caseId}</TableCell>
                   <TableCell>{sc.similarity}</TableCell>
                 </TableRow>
               ))}

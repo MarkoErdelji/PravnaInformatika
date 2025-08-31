@@ -20,61 +20,8 @@ import {
 } from '@mui/material'
 import axios from 'axios'
 import type { Verdict, SimilarVerdict } from './types'
+import JudgmentViewer from '../components/JudgmentViewer'
 
-function JudgmentViewer({ xmlString }: { xmlString: string }) {
-  const navigate = useNavigate()
-  const parser = new DOMParser()
-  const xmlDoc = parser.parseFromString(xmlString, 'application/xml')
-  const paragraphs = Array.from(xmlDoc.getElementsByTagName('p'))
-  const listItems = Array.from(xmlDoc.getElementsByTagName('item'))
-
-  const renderText = (html: string) => {
-    html = html.replace(/<ref href="([^"]+)">([^<]+)<\/ref>/g, (_m, href, text) => {
-      return `<a href="#" data-href="${href}">${text}</a>`
-    })
-    html = html.replace(/<party[^>]*>([^<]+)<\/party>/g, (_m, text) => `<strong>${text}</strong>`)
-    html = html.replace(/<organization[^>]*>([^<]+)<\/organization>/g, (_m, text) => `<strong>${text}</strong>`)
-    return html
-  }
-
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const target = e.target as HTMLElement
-    if (target.tagName === 'A' && target.dataset.href) {
-      const href = target.dataset.href
-      navigate(`/laws/${href.replace('/', '')}`)
-    }
-  }
-
-  return (
-    <Box onClick={handleClick}>
-      <Stack spacing={1.5}>
-        {paragraphs.map((p, i) => (
-          <Typography
-            key={i}
-            paragraph
-            dangerouslySetInnerHTML={{ __html: renderText(p.innerHTML) }}
-          />
-        ))}
-
-        {listItems.length > 0 && (
-          <Box component="ul" sx={{ pl: 3 }}>
-            {listItems.map((item, i) => {
-              const p = item.querySelector('p')
-              if (!p) return null
-              return (
-                <Typography
-                  component="li"
-                  key={i}
-                  dangerouslySetInnerHTML={{ __html: renderText(p.innerHTML) }}
-                />
-              )
-            })}
-          </Box>
-        )}
-      </Stack>
-    </Box>
-  )
-}
 
 export default function ViewCase() {
   const { id } = useParams<{ id: string }>()
@@ -173,7 +120,7 @@ export default function ViewCase() {
                 <TableBody>
                   {similarCases.map((sc, index) => (
                     <TableRow key={index}>
-                      <TableCell>{sc.caseDescription.caseName}</TableCell>
+                      <TableCell>{sc.caseDescription.caseId}</TableCell>
                       <TableCell>{(sc.similarity * 100).toFixed(2)}%</TableCell>
                       <TableCell align="right">
                         <Button

@@ -1,8 +1,7 @@
 package com.pravnainfo.judgingapp.cbr;
 
 import com.pravnainfo.judgingapp.dto.CaseDescription;
-import com.pravnainfo.judgingapp.entity.Verdict;
-import com.pravnainfo.judgingapp.entity.VerdictType;
+import com.pravnainfo.judgingapp.entity.*;
 import com.pravnainfo.judgingapp.repository.IVerdictRepository;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CBRCase;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseBaseFilter;
@@ -19,7 +18,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Component
-public class CsvConnector implements Connector {
+public class DatabaseConnector implements Connector {
 
     @Autowired
     private IVerdictRepository verdictRepository;
@@ -30,6 +29,7 @@ public class CsvConnector implements Connector {
     @Override
     public Collection<CBRCase> retrieveAllCases() {
         List<Verdict> verdicts = verdictRepository.findAll();
+        verdicts.forEach(verdict -> {        System.out.print(verdict.getCaseId());});
         LinkedList<CBRCase> cases = new LinkedList<>();
         for (Verdict v : verdicts) {
             CBRCase cbrCase = new CBRCase();
@@ -58,10 +58,10 @@ public class CsvConnector implements Connector {
                     .numDefendants(cd.getNumDefendants())
                     .previouslyConvicted(cd.getPreviouslyConvicted())
                     .awareOfIllegality(cd.getAwareOfIllegality())
-                    .victimRelationship(cd.getVictimRelationship())
-                    .violenceNature(cd.getViolenceNature())
-                    .injuryTypes(cd.getInjuryTypes())
-                    .executionMeans(cd.getExecutionMeans())
+                    .victimRelationship(VictimRelationship.valueOf(cd.getVictimRelationship()))
+                    .violenceNature(ViolenceNature.valueOf(cd.getViolenceNature()))
+                    .injuryTypes(InjuryTypes.valueOf(cd.getInjuryTypes()))
+                    .executionMeans(ExecutionMeans.valueOf(cd.getExecutionMeans()))
                     .protectionMeasureViolation(cd.getProtectionMeasureViolation())
                     .defendantAge(cd.getDefendantAge())
                     .victimAge(cd.getVictimAge())

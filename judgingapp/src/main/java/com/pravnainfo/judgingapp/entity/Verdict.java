@@ -55,17 +55,21 @@ public class Verdict {
     @Column(name = "aware_of_illegality")
     private Boolean awareOfIllegality;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "victim_relationship")
-    private String victimRelationship;
+    private VictimRelationship victimRelationship;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "violence_nature")
-    private String violenceNature;
+    private ViolenceNature violenceNature;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "injury_types")
-    private String injuryTypes;
+    private InjuryTypes injuryTypes;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "execution_means")
-    private String executionMeans;
+    private ExecutionMeans executionMeans;
 
     @Column(name = "protection_measure_violation")
     private Boolean protectionMeasureViolation;
@@ -108,4 +112,7 @@ public class Verdict {
 
     @Column(name = "number_of_victims")
     private Integer numberOfVictims;
+
+    @Column(name = "xml_file_name")
+    private String xmlFileName;
 }

@@ -4,14 +4,25 @@ import com.pravnainfo.judgingapp.cbr.CbrApplication;
 import com.pravnainfo.judgingapp.dto.CaseDescription;
 import com.pravnainfo.judgingapp.dto.SimilarVerdict;
 import com.pravnainfo.judgingapp.entity.Verdict;
-import com.pravnainfo.judgingapp.entity.VerdictType;
 import com.pravnainfo.judgingapp.repository.IVerdictRepository;
+import com.pravnainfo.judgingapp.service.XmlGenerationService;
 import es.ucm.fdi.gaia.jcolibri.exception.ExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -24,6 +35,29 @@ public class CaseController {
     @Autowired
     private CbrApplication cbrApplication;
 
+    @Autowired
+    private XmlGenerationService xmlGenerationService;
+
+    private static final String DEFAULT_XML_FOLDER = "./xml/";
+
+    private List<String> loadXmlExamples() throws IOException {
+        File folder = new File("./xml/");
+        if (!folder.exists() || !folder.isDirectory()) {
+            return new ArrayList<>();
+        }
+
+        File[] files = folder.listFiles((dir, name) -> name.endsWith(".xml"));
+        if (files == null) return new ArrayList<>();
+
+        List<String> examples = new ArrayList<>();
+        for (File file : files) {
+            String content = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
+            examples.add(content);
+            if (examples.size() >= 5) break; // limit to 5
+        }
+
+        return examples;
+    }
     // List all cases
     @GetMapping
     public List<Verdict> getAllCases() {
@@ -38,35 +72,46 @@ public class CaseController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Add a new user-submitted case
+    private String sanitizeCaseId(String caseId) {
+        return caseId.replaceAll("[^a-zA-Z0-9\\-_\\.]", "_");
+    }
+
     @PostMapping("/add")
-    public ResponseEntity<Verdict> addCase(@RequestBody Verdict newCase) {
+    public ResponseEntity<Verdict> addCase(@RequestBody Verdict newCase,
+                                           @RequestParam(value = "folder", required = false) String folder) throws IOException, ExecutionException {
+        if (newCase.getCaseId() == null || newCase.getCaseId().isEmpty()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
         Verdict saved = verdictRepository.save(newCase);
+
+        String xmlContent = xmlGenerationService.generateAkomaNtosoXml(saved, loadXmlExamples());
+
+        String targetFolder = (folder != null && !folder.isEmpty()) ? folder : DEFAULT_XML_FOLDER;
+        String xmlFileName = saveXmlToFile(xmlContent, targetFolder, saved.getCaseId());
+
+        saved.setXmlFileName(xmlFileName);
+        verdictRepository.save(saved);
+
         return ResponseEntity.ok(saved);
     }
 
-    // Predict verdict for a new case (reasoning)
+    private String saveXmlToFile(String xmlContent, String folder, String caseId) throws IOException {
+        File dir = new File(folder);
+        if (!dir.exists()) dir.mkdirs();
+
+        String fileName = sanitizeCaseId(caseId) + ".xml";
+        File file = new File(dir, fileName);
+
+        try (FileWriter writer = new FileWriter(file)) {
+            writer.write(xmlContent);
+        }
+
+        return fileName;
+    }
+
     @PostMapping("/reason")
     public ResponseEntity<Map<String, Object>> reasonCase(@RequestBody CaseDescription queryCase) throws ExecutionException {
-
-        // Convert DTO -> Verdict for DB ID
-        Verdict tempVerdict = new Verdict();
-        tempVerdict.setCriminalOffense(queryCase.getCriminalOffense());
-        tempVerdict.setNumDefendants(queryCase.getNumDefendants());
-        tempVerdict.setPreviouslyConvicted(queryCase.getPreviouslyConvicted());
-        tempVerdict.setAwareOfIllegality(queryCase.getAwareOfIllegality());
-        tempVerdict.setVictimRelationship(queryCase.getVictimRelationship());
-        tempVerdict.setViolenceNature(queryCase.getViolenceNature());
-        tempVerdict.setInjuryTypes(queryCase.getInjuryTypes());
-        tempVerdict.setExecutionMeans(queryCase.getExecutionMeans());
-        tempVerdict.setProtectionMeasureViolation(queryCase.getProtectionMeasureViolation());
-        tempVerdict.setDefendantAge(queryCase.getDefendantAge());
-        tempVerdict.setVictimAge(queryCase.getVictimAge());
-        tempVerdict.setAlcoholOrDrugs(queryCase.getAlcoholOrDrugs());
-        tempVerdict.setChildrenPresent(queryCase.getChildrenPresent());
-        tempVerdict.setUseOfWeapon(queryCase.getUseOfWeapon());
-        tempVerdict.setNumberOfVictims(queryCase.getNumberOfVictims());
-
         // Initialize CBR
         cbrApplication.configure();
         cbrApplication.preCycle();
@@ -109,9 +154,8 @@ public class CaseController {
                     } catch (ExecutionException e) {
                         throw new RuntimeException(e);
                     }
-                    // Filter out the same case
                     List<SimilarVerdict> filtered = similarCases.stream()
-                            .filter(sv -> !sv.getCaseDescription().getDbId().equals(id))
+                            .filter(sv -> !sv.getCaseDescription().getCaseId().equals(verdict.getCaseId()))
                             .collect(Collectors.toList());
                     return ResponseEntity.ok(filtered);
                 })

@@ -20,7 +20,7 @@
                 <TLCPerson eId="lL" href="/ontology/person/lL" showAs="L. L."/>
                 <TLCPerson eId="iV" href="/ontology/person/iV" showAs="I. V."/>
                 <TLCPerson eId="iD" href="/ontology/person/iD" showAs="I. D."/>
-                <TLCPerson eId="oE" href="/ontology/person/oE" showAs="O. E."/>
+                <TLCPerson eId="eO" href="/ontology/person/eO" showAs="E. O."/>
                 <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
                 <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
                 <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
@@ -35,7 +35,8 @@
                 <party id="rCetkovic" refersTo="#rCetkovic" as="#judge">Rade Ćetković</party>, uz učešće
                 <party id="eKraje" refersTo="#eKraje" as="#clerk">Edine Kraje</party> kao zapisničara, u krivičnom postupku protiv okrivljenog
                 <party id="lL" refersTo="#lL" as="#defendant">L. L.</party>, zbog krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
-                <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>, nakon pravosnažnosti rješenja o usvajanju sporazuma o priznanju krivice Kt. br. 2004/18 od 11.02.2019. godine, zaključenog između državne tužiteljke
+                <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>, nakon pravosnažnosti rješenja o usvajanju sporazuma o priznanju krivice
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Podgorici Kt.br.2004/18 od 11.02.2019. godine</organization>, zaključenog između državne tužiteljke
                 <party id="iV" refersTo="#iV">I. V.</party>, okrivljenog
                 <party id="lL" refersTo="#lL">L. L.</party> i njegovog branioca advokata
                 <party id="iD" refersTo="#iD" as="#lawyer">I. D.</party>, dana
@@ -46,14 +47,13 @@
 
             <p>
                 Okrivljeni:
-                <party id="lL" refersTo="#lL">L. L.</party>, JMB xxxxxxxxxxxxx, sa nadimkom E., od oca B. i majke F., rođene P., rođen xx.xx.19xx. godine u Pg, sa prebivalištem u Pg- ul. T. br. xx, državljanin Crne Gore, razumije crnogorski jezik, koji je i njegov jezik, automehaničar, oženjen, otac dvoje djece, pismen, završio srednju školu, lošeg imovnog stanja, ranije neosuđivan, protiv kojeg se ne vodi postupak za drugo krivično djelo, u pritvoru po rješenju sudije za istragu Kri. br. 324/18 od 18.06.2018. godine, koji se računa od <date date="2018-12-30">30.12.2018.</date> godine sa početkom u 22:30 časova.
+                <party id="lL" refersTo="#lL">L. L.</party>, JMB xxxxxxxxxxxxx, sa nadimkom E., od oca B. i majke F., rođene P., rođen xx.xx.19xx. godine u Pg, sa prebivalištem u Pg- ul. T. br. xx, državljanin Crne Gore, razumije crnogorski jezik, koji je i njegov jezik, automehaničar, oženjen, otac dvoje djece, pismen, završio srednju školu, lošeg imovnog stanja, ranije neosuđivan, protiv kojeg se ne vodi postupak za drugo krivično djelo, u pritvoru po rješenju sudije za istragu Kri. br. 324/18 od <date date="2018-06-18">18.06.2018.</date> godine, koji se računa od <date date="2018-12-30">30.12.2018.</date> godine sa početkom u 22:30 časova.
             </p>
 
             <p><b>Kriv je</b></p>
 
             <p>
-                Što je: Dana <date date="2018-12-30">30. decembra 2018.</date> godine, oko 21,45 časova, u svojoj porodičnoj kući, koja se nalazi u ulici T. br. xx, u Pg, svjestan svog djela čije izvršenje je htio, znajući da je njegovo djelo zabranjeno, primjenom grubog nasilja narušio tjelesni integritet člana svoje porodice – supruge
-                <party id="oE" refersTo="#oE" as="#victim">O. E.</party>, na način što je nakon prepirke sa oštećenom, istu uhvatio rukom za vrat, stiskajući je, dok ju je drugom rukom više puta udario pesnicom u predjelu lijeve bočne strane glave, tačnije sljepoočnice i potiljka, nakon čega je sa obije ruke uhvatio za vrat, stiskajući je, kojom prilikom je oštećenoj nanio laku tjelesnu povredu u vidu dva potkožna krvna podliva u lijevom sljepoočnom predjelu i u potiljačnom predjelu i oguljotine u predjelu oba donjovilična ugla,
+                Što je: Dana <date date="2018-12-30">30. decembra 2018.</date> godine, oko 21,45 časova, u svojoj porodičnoj kući, koja se nalazi u ulici T. br. xx, u Pg, svjestan svog djela čije izvršenje je htio, znajući da je njegovo djelo zabranjeno, primjenom grubog nasilja narušio tjelesni integritet člana svoje porodice – supruge <party id="eO" refersTo="#eO" as="#victim">O. E.</party>, na način što je nakon prepirke sa oštećenom, istu uhvatio rukom za vrat, stiskajući je, dok ju je drugom rukom više puta udario pesnicom u predjelu lijeve bočne strane glave, tačnije sljepoočnice i potiljka, nakon čega je sa obije ruke uhvatio za vrat, stiskajući je, kojom prilikom je oštećenoj nanio laku tjelesnu povredu u vidu dva potkožna krvna podliva u lijevom sljepoočnom predjelu i u potiljačnom predjelu i oguljotine u predjelu oba donjovilična ugla,
             </p>
             <p>
                 - čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>.
@@ -72,7 +72,8 @@
                         Na osnovu <ref href="/krivicni#art_77a">čl. 77a Krivičnog zakonika Crne Gore</ref> sud okrivljenom izriče
                         <b>MJERU BEZBJEDNOSTI</b><br/>
                         ZABRANA PRIBLIŽAVANJA<br/>
-                        Okrivljenom <party id="lL" refersTo="#lL">L. L.</party> zabranjuje se približavanje oštećenoj <party id="oE" refersTo="#oE" as="#victim">E. O.</party> Ova mjera će trajati 1 (jednu) godinu po pravosnažnosti presude, s tim da se vrijeme provedeno u zatvoru ne uračunava u vrijeme trajanja ove mjere.
+                        Okrivljenom <party id="lL" refersTo="#lL">L. L.</party> zabranjuje se približavanje oštećenoj <party id="eO" refersTo="#eO" as="#victim">E. O.</party>
+                        Ova mjera će trajati 1 (jednu) godinu po pravosnažnosti presude, s tim da se vrijeme provedeno u zatvoru ne uračunava u vrijeme trajanja ove mjere.
                     </p>
                 </item>
                 <item id="odluka3">
@@ -80,7 +81,8 @@
                         Na osnovu <ref href="/krivicni#art_77b">čl. 77b Krivičnog zakonika Crne Gore</ref> sud okrivljenom izriče
                         <b>MJERU BEZBJEDNOSTI</b><br/>
                         UDALJENJE IZ STANA ILI DRUGOG PROSTORA ZA STANOVANJE<br/>
-                        Okrivljeni <party id="lL" refersTo="#lL">L. L.</party> udaljava se iz stana, odnosno prostora za stanovnje koji se nalazi u porodičnoj kući, u ulici Tuška br. 14, u Podgorici, a u kom prostoru je živio sa oštećenom <party id="oE" refersTo="#oE" as="#victim">E. O.</party> Ova mjera će trajati 1 (jednu) godinu po pravosnažnosti presude, s tim da se vrijeme provedeno u zatvoru ne uračunava u vrijeme trajanja ove mjere.
+                        Okrivljeni <party id="lL" refersTo="#lL">L. L.</party> udaljava se iz stana, odnosno prostora za stanovnje koji se nalazi u porodičnoj kući, u ulici Tuška br. 14, u Podgorici, a u kom prostoru je živio sa oštećenom <party id="eO" refersTo="#eO" as="#victim">E. O.</party>
+                        Ova mjera će trajati 1 (jednu) godinu po pravosnažnosti presude, s tim da se vrijeme provedeno u zatvoru ne uračunava u vrijeme trajanja ove mjere.
                     </p>
                 </item>
                 <item id="odluka4">

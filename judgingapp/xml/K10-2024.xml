@@ -20,6 +20,7 @@
                 <TLCPerson eId="rStijovic" href="/ontology/person/rStijovic" showAs="Risto Stijović"/>
                 <TLCPerson eId="cS" href="/ontology/person/cS" showAs="Ć. S."/>
                 <TLCPerson eId="cDj" href="/ontology/person/cDj" showAs="Ć. Đ."/>
+                <TLCPerson eId="zC" href="/ontology/person/zC" showAs="Z. Ć."/>
                 <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
                 <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
                 <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
@@ -35,7 +36,7 @@
                 <party id="kRistic" refersTo="#kRistic" as="#clerk">Katarine Ristić</party> kao zapisničara, po optužnom predlogu
                 <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Herceg Novom Kt.br.21/24 od 22.01.2024. godine</organization>, protiv okrivljenog
                 <party id="cS" refersTo="#cS" as="#defendant">Ć. S.</party> zbog krivičnog djela nasilje u porodici ili porodičnoj zajednici iz
-                <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>, nakon održanog glavnog i javnog pretresa dana
+                <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika CG</ref>, nakon održanog glavnog i javnog pretresa dana
                 <date date="2024-09-16">16.09.2024.</date> godine, u prisustvu državnog tužioca
                 <party id="rStijovic" refersTo="#rStijovic" as="#prosecutor">Rista Stijovića</party>, okrivljenog i oštećenog, donio je istog dana
             </p>
@@ -44,14 +45,15 @@
 
             <p>
                 Okrivljeni:
-                <party id="cS" refersTo="#cS">Ć. S.</party>, JMBG: ..., od oca T. i majke M., rođene O., rođen ... godine, u D., sa prebivalištem u Đ., ul...., opština HN, po zanimanju magistar poslovnog menadžmenta, zaposlen u H.B.AD P. Filijala P.N. na radnom mjestu direktora filijale sa mjesečnom platom od 1.618,00€, oženjen, otac dvoje punoljetno djece, ne posjeduje nepokretnosti na svoje ime, neosuđivan, protiv koga se ne vodi drugi krivični postupak, državljanin Crne Gore,
+                <party id="cS" refersTo="#cS">Ć. S.</party> (JMBG: ...), od oca T. i majke M. rođene O., rođen ... godine, u D., sa prebivalištem u Đ., ul...., opština HN, po zanimanju magistar poslovnog menadžmenta, zaposlen u H.B.AD P. Filijala P.N. na radnom mjestu direktora filijale sa mjesečnom platom od <amount value="1618.00">1.618,00€</amount>, oženjen, otac dvoje punoljetno djece, ne posjeduje nepokretnosti na svoje ime, neosuđivan, protiv koga se ne vodi drugi krivični postupak, državljanin Crne Gore,
             </p>
 
             <p><b>Kriv je</b></p>
 
             <p>
                 Što je: Dana <date date="2024-01-20">20.01.2024.</date> godine u 13,51 čas u Herceg Novom ugrozio člana svoje porodice – svog sina oštećenog
-                <party id="cDj" refersTo="#cDj" as="#victim">Ć. Đ.</party> prijetnjom da će napasti na život i tijelo tog lica i njemu bliskog lica – njegove majke Z.Ć., na način što je putem aplikacija »Whats app« sa svog telefona broj 067/.... na broj oštećenog 067/.... poslao poruku u kojoj je sadržana prijetnja sa sadržinom »Tebe ću ispucat zajedno sa droljom o istom trošku ....uživajte«, što je kod oštećenog izazvalo osjećaj ugroženosti, pri čemu je bio svjestan svoga djela i htio njegovo izvršenje,
+                <party id="cDj" refersTo="#cDj" as="#victim">Ć. Đ.</party> prijetnjom da će napasti na život i tijelo tog lica i njemu bliskog lica – njegove majke
+                <party id="zC" refersTo="#zC">Z. Ć.</party>, na način što je putem aplikacija »Whats app« sa svog telefona broj 067/.... na broj oštećenog 067/.... poslao poruku u kojoj je sadržana prijetnja sa sadržinom »Tebe ću ispucat zajedno sa droljom o istom trošku ....uživajte«, što je kod oštećenog izazvalo osjećaj ugroženosti, pri čemu je bio svjestan svoga djela i htio njegovo izvršenje,
             </p>
             <p>
                 -čime je učinio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>,
@@ -60,9 +62,9 @@
             <list>
                 <item id="odluka1">
                     <p>
-                        Pa mu sud primjenom <ref href="/krivicni#art_3">čl. 3</ref>, <ref href="/krivicni#art_4">4</ref>, <ref href="/krivicni#art_5">5</ref>, <ref href="/krivicni#art_13">13</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_42">42</ref>, <ref href="/krivicni#art_52">52</ref>, <ref href="/krivicni#art_53">53</ref> i <ref href="/krivicni#art_54">54</ref> Krivičnog zakonika Crne Gore, te odredbi <ref href="/zkp#art_226">čl. 226 st. 3</ref> i <ref href="/zkp#art_374">čl. 374</ref> Zakonika o krivičnom postupku, izriče
+                        Pa mu sud primjenom <ref href="/krivicni#art_3">čl. 3</ref>, <ref href="/krivicni#art_4">4</ref>, <ref href="/krivicni#art_5">5</ref>, <ref href="/krivicni#art_13">13</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_42">42</ref>, <ref href="/krivicni#art_52">52</ref>, <ref href="/krivicni#art_53">53</ref> i <ref href="/krivicni#art_54">54</ref> KZ CG, te odredbi <ref href="/zkp#art_226">čl. 226 st. 3</ref> i <ref href="/zkp#art_374">čl. 374</ref> ZKP-a, izriče
                         <b>USLOVNU OSUDU</b><br/>
-                        Kojom mu utvrđuje kaznu zatvora u trajanju od 6 (šest) mjeseci i istovremeno određuje da se ova kazna neće izvršiti ukoliko okrivljeni u roku od 1 (jedne) godine po pravosnažnosti presude ne izvrši novo krivično djelo.
+                        Kojom mu utvrđuje kaznu zatvora u trajanju od 6 (šest) mjeseci i istovremeno određuje da se ova kazna neće izvršiti ukoliko okrivljeni u roku od <time duration="P1Y">1 (jedne) godine</time> po pravosnažnosti presude ne izvrši novo krivično djelo.
                     </p>
                 </item>
                 <item id="odluka2">
@@ -76,7 +78,6 @@
                     </p>
                 </item>
             </list>
-            
         </judgmentBody>
     </judgment>
 </akomaNtoso>

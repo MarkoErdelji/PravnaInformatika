@@ -14,6 +14,7 @@
             </identification>
             <references>
                 <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.Podgorica" showAs="Osnovni sud u Podgorici"/>
+                <TLCOrganization eId="vs" href="/ontology/organization/VisiSud.Podgorica" showAs="Viši sud u Podgorici"/>
                 <TLCPerson eId="dLubarda" href="/ontology/person/dLubarda" showAs="Dragana Lubarda"/>
                 <TLCPerson eId="gDjukovic" href="/ontology/person/gDjukovic" showAs="Goran Đuković"/>
                 <TLCPerson eId="zJovovic" href="/ontology/person/zJovovic" showAs="Željka Jovović"/>
@@ -45,12 +46,11 @@
             </p>
 
             <p>
-                Protiv ovog rješenja dozvoljena je žalba u roku od <time duration="P3D">3 dana</time> od dana prijema prepisa istog, Višem sudu u Podgorici, a preko ovog suda.
+                Protiv ovog rješenja dozvoljena je žalba u roku od <time duration="P3D">3 dana</time> od dana prijema prepisa istog, 
+                <organization id="vs" refersTo="#vs">Višem sudu u Podgorici</organization>, a preko ovog suda.
             </p>
 
-            <p>
-                Žalba ne odlaže izvršenje rješenja.
-            </p>
+            <p>Žalba ne odlaže izvršenje rješenja.</p>
         </judgmentBody>
     </judgment>
 </akomaNtoso>

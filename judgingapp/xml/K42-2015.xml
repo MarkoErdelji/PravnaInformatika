@@ -34,10 +34,9 @@
                 <party id="bPejovic" refersTo="#bPejovic" as="#judge">Branko Pejović</party>, uz učešće
                 <party id="mDondovic" refersTo="#mDondovic" as="#clerk">Milenke Đondović</party> kao zapisničara, u krivičnom postupku protiv okrivljenog
                 <party id="nB" refersTo="#nB" as="#defendant">N. B.</party>, zbog krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
-                <ref href="/krivicni#art_220">čl. 220 st. 3 u vezi st. 1 Krivičnog zakonika Crne Gore</ref> i krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
-                <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>, odlučujući po optužnom predlogu
-                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Pljevljima Kt.br.65/15 od 12.06.2015. godine</organization>, nakon održanog glavnog i javnog pretresa u prisustvu Rukovodioca
-                <organization id="odt" refersTo="#odt">ODT Pljevlja</organization> 
+                <ref href="/krivicni#art_220">čl. 220 st. 3 u vezi st. 1 Krivičnog zakonika CG</ref> i krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
+                <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika CG</ref>, odlučujući po optužnom predlogu
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Pljevljima Kt.br.65/15 od 12.06.2015. godine</organization>, nakon održanog glavnog i javnog pretresa u prisustvu Rukovodioca ODT Pljevlja
                 <party id="mTomcic" refersTo="#mTomcic">Milivoja Tomčića</party>, okrivljenog, svjedoka - oštećenog
                 <party id="nC" refersTo="#nC" as="#victim">N. Ć.</party>, a u odsutnosti uredno pozvane oštećene
                 <party id="nR" refersTo="#nR" as="#victim">N. R.</party>, dana
@@ -48,7 +47,7 @@
 
             <p>
                 Okrivljeni:
-                <party id="nB" refersTo="#nB">N. B.</party>, JMBG .... od oca M. i majke E. rođena G., rođen .... godine u P. gdje i živi ul. ., pismen završio osnovnu školu, nezaposlen, državljanin CG, lošeg imovnog stanja, neoženjen bez djece, ranije osuđivan presudom Osnovnog suda Pljevlja K.br.165/09 od 20.11.2009. godine, zbog krivičnog djela nasilje u porodici ili porodičnoj zajednici iz
+                <party id="nB" refersTo="#nB">N. B.</party>, JMBG .... od oca M. i majke E. rođena G., rođen .... godine u P. gdje i živi ul. ., pismen završio osnovnu školu, ne zaposlen, državljanin CG, lošeg imovnog stanja, ne oženjen bez djece, ranije osuđivan presudom Osnovnog suda Pljevlja K.br.165/09 od 20.11.2009. godine, zbog krivičnog djela nasilje u porodici ili porodičnoj zajednici iz
                 <ref href="/krivicni#art_220">čl. 220 st. 1 Kz</ref> kažnjen 2 mjeseca uslovno jednu godinu, presudom Osnovnog suda Pljevlja K.br.44/10 od 28.10.2010. godine zbog krivičnog djela nasilje u porodici i u porodičnoj zajednici iz
                 <ref href="/krivicni#art_220">čl. 220 st. 1 Kz</ref> kažnjen 3 mjeseca zatvora uslovno na jednu godinu, presudom Višeg suda Bijelo Polje K.br.11/10 od 19.04.2010.godine zbog krivičnog djela neovlašćenja proizvodnja, držanje i stavljanje u promet opojnih droga iz
                 <ref href="/krivicni#art_300">čl. 300 st. 1 Kz</ref> kažnjen 10 mjeseci zatvora, presudom Osnovnog suda Pljevlja K.br.239/10 od 23.11.2010.godine zbog krivičnog djela nedozvoljena trgovina iz
@@ -78,7 +77,7 @@
                 <party id="nC" refersTo="#nC" as="#victim">N. Ć.</party> članu porodične zajednice, na način što mu je prišao i udario ga 2-3 puta pesnicom u predjelu glave, pri čemu je bio svjestan svog djela i htio njegovo izvršenje iako je znao da je isto zabranjeno,
                 čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz
                 <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika CG</ref>,
-                pa mu sud na osnovu člana <ref href="/krivicni#art_48">48 Krivičnog zakonika CG</ref> utvrđuje.
+                pa mu sud na osnovu člana 48 Krivičnog zakonika CG utvrđuje.
             </p>
 
             <list>
@@ -97,18 +96,15 @@
                         Pa sud okrivljenog na osnovu već citiranih zakonskih, a primjenom članova <ref href="/krivicni#art_4">4</ref>, <ref href="/krivicni#art_5">5</ref>, <ref href="/krivicni#art_13">13</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_33">33</ref>, <ref href="/krivicni#art_36">36</ref>, <ref href="/krivicni#art_42">42</ref> i <ref href="/krivicni#art_48">48</ref> Krivičnog zakonika CG te članova <ref href="/zkp#art_226">226</ref> i <ref href="/zkp#art_229">229</ref> ZKP CG
                     </p>
                 </item>
+                <item id="odluka4">
+                    <p>
+                        <b>OSUĐUJE</b><br/>
+                        Na jedinstvenu kaznu zatvora u trajanju od 1 godine i 2 mjeseca (jedne godine i dva mjeseca).
+                        Okrivljeni se obavezuje da na ime troškova vođenja krivičnog postupka plati budžetu RCG iznos od <amount value="60.50">60,50 eura</amount>, a na ime paušala iznos od <amount value="27.50">27,50 eura</amount>.
+                        Troškove krivičnog postupka i paušal okrivljeni će platiti budžetu RCG u roku od <time duration="P15D">15 dana</time> po pravnosnažnosti presude pod prijetnjom prinudnog izvršenja.
+                    </p>
+                </item>
             </list>
-
-            <p><b>OSUĐUJE</b></p>
-
-            <p>
-                Na jedinstvenu kaznu zatvora u trajanju od 1 godine i 2 mjeseca (jedne godine i dva mjeseca).
-                Okrivljeni se obavezuje da na ime troškova vođenja krivičnog postupka plati budžetu RCG iznos od <amount value="60.50">60,50 eura</amount>, a na ime paušala iznos od <amount value="27.50">27,50 eura</amount>.
-            </p>
-
-            <p>
-                Troškove krivičnog postupka i paušal okrivljeni će platiti budžetu RCG u roku od <time duration="P15D">15 dana</time> po pravnosnažnosti presude pod prijetnjom prinudnog izvršenja.
-            </p>
         </judgmentBody>
     </judgment>
 </akomaNtoso>

@@ -14,7 +14,7 @@ logging.basicConfig(filename='parsing_log.txt', level=logging.ERROR, format='%(a
 os.environ["OPENAI_API_KEY"] = "PLACEHOLDER"
 
 # Define folders and output file
-xml_folder = Path("./presude/xml")
+xml_folder = Path("./judgingapp/xml")
 output_csv = Path("./judgingapp/src/main/resources/verdicts.csv")
 
 # Define headers for verdicts.csv (English standardized)
@@ -25,7 +25,7 @@ verdict_headers = [
     "Protection Measure Violation", "Execution Means", "Procedure Costs",
     "Violence Nature", "Victim Relationship", "Defendant Status", "Defendant Age",
     "Victim Age", "Previous Incidents", "Alcohol or Drugs", "Children Present",
-    "Use of Weapon", "Number of Victims", "Number of Defendants"
+    "Use of Weapon", "Number of Victims", "Number of Defendants", "Aware of Illegality"
 ]
 
 # Define namespace
@@ -62,17 +62,20 @@ def extract_metadata_and_text(xml_path):
         # Extract judges
         judges = []
         for person in root.findall(".//akn:TLCPerson", namespaces=ns):
-            show_as = safe_get(person, "showAs").lower()
-            if "sudija" in show_as or "sudi" in show_as:
+            if safe_get(person, "eId") in [safe_get(p, "refersTo").lstrip("#") for p in root.findall(".//akn:party[@as='#judge']", namespaces=ns)]:
                 judges.append(safe_get(person, "showAs"))
-        for role in root.findall(".//akn:TLCRole", namespaces=ns):
-            if "sudija" in safe_get(role, "showAs").lower():
-                judges.append(safe_get(role, "showAs"))
         meta['Judge'] = ", ".join(set(judges)) if judges else ""
 
         # Extract prosecutor
-        prosecutor_org = root.find(".//akn:organization[@refersTo='#odt']", namespaces=ns)
-        meta['Prosecutor'] = safe_get(prosecutor_org, "showAs") or "Osnovno državno tužilaštvo"
+        prosecutors = []
+        for person in root.findall(".//akn:TLCPerson", namespaces=ns):
+            if safe_get(person, "eId") in [safe_get(p, "refersTo").lstrip("#") for p in root.findall(".//akn:party[@as='#prosecutor']", namespaces=ns)]:
+                prosecutors.append(safe_get(person, "showAs"))
+        if prosecutors:
+            meta['Prosecutor'] = ", ".join(set(prosecutors))
+        else:
+            prosecutor_org = root.find(".//akn:organization[@refersTo='#odt']", namespaces=ns)
+            meta['Prosecutor'] = safe_get(prosecutor_org, "showAs") or "Osnovno državno tužilaštvo"
 
         # Extract defendant
         defendants = []
@@ -114,9 +117,9 @@ def build_prompt():
           "Event Location": "string", // Original, e.g., 'Podgorica, ulica Mitra Bakića br. 154'
           "Event Date": "string", // e.g., '2023-01-24'
           "Protection Measure Violation": "boolean", // true or false
-          "Execution Means": "string", // Standardized: 'hands', 'feet', 'weapon', 'tool', 'verbal', 'other'; e.g., 'tool:pliers'
+          "Execution Means": "string", // Standardized categories: 'hands', 'feet', 'weapon', 'tool', 'verbal', 'other'
           "Procedure Costs": "string", // In English, e.g., '90.50 € borne by the court' or original if specific
-          "Violence Nature": "string", // Standardized: 'rough violence', 'threat', 'arrogant and reckless behavior', or ''
+          "Violence Nature": "string", // Standardized: 'violence', 'threat', 'reckless behaviour', or ''
           "Victim Relationship": "string", // Standardized: 'spouse', 'parent', 'sibling', 'child', 'other', or ''
           "Defendant Status": "string", // In English, e.g., 'unemployed, unmarried, previously convicted'
           "Defendant Age": "string", // e.g., '45 years' or ''
@@ -126,7 +129,8 @@ def build_prompt():
           "Children Present": "boolean", // true or false
           "Use of Weapon": "boolean", // true if Execution Means involves 'weapon' or 'tool', false otherwise
           "Number of Victims": "integer", // Number of victims mentioned
-          "Number of Defendants": "integer" // Number of defendants mentioned
+          "Number of Defendants": "integer", // Number of defendants mentioned
+          "Aware of Illegality": "boolean" // true if defendant was aware of illegality, false otherwise
         ```"""),
         ("user", """From the following court verdict text, extract the requested information in JSON format according to the given schema:
 
@@ -135,7 +139,6 @@ def build_prompt():
         """)
     ])
 
-# Function to clean response
 def clean_response(text):
     text = text.strip()
     if text.startswith("```json"):
@@ -144,7 +147,6 @@ def clean_response(text):
         text = text[:-len("```")].strip()
     return text
 
-# Function to process one case
 def process_case(xml_path, llm, prompt):
     meta, text = extract_metadata_and_text(xml_path)
     if not text or not meta:
@@ -160,71 +162,99 @@ def process_case(xml_path, llm, prompt):
         print(f"ERROR: Invalid JSON for {xml_path.name}")
         parsed = {}
 
-    # Standardize formats
+    # General post-processing for abbreviations
     if parsed.get("Criminal Offense"):
-        parsed["Criminal Offense"] = parsed["Criminal Offense"].replace("čl.", "cl.").replace("stav", "st.")
+        parsed["Criminal Offense"] = parsed["Criminal Offense"].replace("stav", "st.").replace("čl.", "cl.")
     if parsed.get("Applied Provisions"):
-        parsed["Applied Provisions"] = parsed["Applied Provisions"].replace("čl.", "cl.").replace("stav", "st.")
+        parsed["Applied Provisions"] = parsed["Applied Provisions"].replace("stav", "st.").replace("čl.", "cl.")
+
+    # Standardize Injury Types based on keywords
     if parsed.get("Injury Types"):
         injuries = parsed["Injury Types"].lower()
-        if "light" in injuries and "severe" in injuries:
-            parsed["Injury Types"] = "light,severe"
-        elif "light" in injuries or "lake" in injuries:
-            parsed["Injury Types"] = "light"
-        elif "severe" in injuries or "teške" in injuries:
-            parsed["Injury Types"] = "severe"
-        else:
-            parsed["Injury Types"] = ""
+        injury_set = set()
+        if any(word in injuries for word in ["light", "laka", "lake"]):
+            injury_set.add("light")
+        if any(word in injuries for word in ["severe", "teška", "teške"]):
+            injury_set.add("severe")
+        parsed["Injury Types"] = ",".join(sorted(injury_set)) if injury_set else ""
+
+    # Standardize Victim Relationship based on keywords
     if parsed.get("Victim Relationship"):
         rel = parsed["Victim Relationship"].lower()
-        if "spouse" in rel or "supruga" in rel or "suprug" in rel:
+        if any(word in rel for word in ["spouse", "supruga", "suprug", "wife", "husband"]):
             parsed["Victim Relationship"] = "spouse"
-        elif "parent" in rel or "majka" in rel or "otac" in rel:
+        elif any(word in rel for word in ["parent", "majka", "otac", "mother", "father"]):
             parsed["Victim Relationship"] = "parent"
-        elif "sibling" in rel or "sestra" in rel or "brat" in rel:
+        elif any(word in rel for word in ["sibling", "sestra", "brat", "sister", "brother"]):
             parsed["Victim Relationship"] = "sibling"
-        elif "child" in rel or "dete" in rel or "sin" in rel or "kći" in rel:
+        elif any(word in rel for word in ["child", "dete", "sin", "kći", "son", "daughter"]):
             parsed["Victim Relationship"] = "child"
         else:
             parsed["Victim Relationship"] = "other"
+
+    # Standardize Violence Nature based on keywords
     if parsed.get("Violence Nature"):
         vio = parsed["Violence Nature"].lower()
-        if "rough violence" in vio or "grubo nasilje" in vio:
-            parsed["Violence Nature"] = "rough violence"
-        elif "threat" in vio or "prijetnja" in vio:
+        if any(word in vio for word in ["rough violence", "grubo nasilje"]):
+            parsed["Violence Nature"] = "violence"
+        elif any(word in vio for word in ["threat", "prijetnja"]):
             parsed["Violence Nature"] = "threat"
-        elif "arrogant and reckless behavior" in vio or "drsko i bezobzirno ponašanje" in vio:
-            parsed["Violence Nature"] = "arrogant and reckless behavior"
+        elif any(word in vio for word in ["arrogant and reckless behavior", "drsko i bezobzirno ponašanje"]):
+            parsed["Violence Nature"] = "reckless behaviour"
         else:
             parsed["Violence Nature"] = ""
+
+    # Standardize Execution Means based on keywords
     if parsed.get("Execution Means"):
         means = parsed["Execution Means"].lower()
-        if "pesnica" in means or "hand" in means or "fist" in means:
+        if any(word in means for word in ["pesnica", "hand", "fist", "šaka"]):
             parsed["Execution Means"] = "hands"
-        elif "noga" in means or "foot" in means or "feet" in means:
+        elif any(word in means for word in ["noga", "foot", "feet", "kick"]):
             parsed["Execution Means"] = "feet"
-        elif "oružje" in means or "weapon" in means or "gun" in means or "knife" in means:
+        elif any(word in means for word in ["oružje", "weapon", "gun", "knife", "pištolj", "nož", "axe", "sjekira"]):
             parsed["Execution Means"] = "weapon"
-        elif "alat" in means or "tool" in means or "kliješta" in means or "pliers" in means:
-            parsed["Execution Means"] = "tool:pliers"
-        elif "verbal" in means or "prijetnja" in means or "threat" in means:
+        elif any(word in means for word in ["alat", "tool", "kliješta", "pliers", "chair", "stolice", "hammer"]):
+            parsed["Execution Means"] = "tool"
+        elif any(word in means for word in ["verbal", "prijetnja", "threat", "poruka"]):
             parsed["Execution Means"] = "verbal"
         else:
             parsed["Execution Means"] = "other"
-    if parsed.get("Use of Weapon"):
-        parsed["Use of Weapon"] = parsed["Execution Means"] in ["weapon", "tool:pliers"]
+
+    # Set Use of Weapon based on Execution Means
+    if parsed.get("Execution Means"):
+        means = parsed["Execution Means"].lower()
+        parsed["Use of Weapon"] = any(word in means for word in ["weapon", "tool"])
+
+    # Standardize Defendant Status based on keywords
     if parsed.get("Defendant Status"):
         status = parsed["Defendant Status"].lower()
         status_parts = []
-        if "nezaposlen" in status or "unemployed" in status:
+        if any(word in status for word in ["nezaposlen", "unemployed"]):
             status_parts.append("unemployed")
-        if "neoženjen" in status or "unmarried" in status:
+        if any(word in status for word in ["neoženjen", "unmarried", "neoženjena"]):
             status_parts.append("unmarried")
-        if "osuđivan" in status or "previously convicted" in status:
+        if any(word in status for word in ["osuđivan", "previously convicted", "ranije osuđivan"]):
             status_parts.append("previously convicted")
         parsed["Defendant Status"] = ", ".join(status_parts) if status_parts else ""
+
+    # Default Verdict Type if not in enum
     if parsed.get("Verdict Type") not in ["PRISON", "SUSPENDED", "ACQUITTED", "DETENTION"]:
-        parsed["Verdict Type"] = "SUSPENDED"
+        if "odbija se optužba" in text.lower():
+            parsed["Verdict Type"] = "ACQUITTED"
+        elif "uslovnu osudu" in text.lower():
+            parsed["Verdict Type"] = "SUSPENDED"
+        elif "kazna zatvora" in text.lower() and "neće izvršiti" not in text.lower():
+            parsed["Verdict Type"] = "PRISON"
+        else:
+            parsed["Verdict Type"] = ""
+
+    # Set Aware of Illegality (default to true unless text indicates otherwise)
+    if parsed.get("Aware of Illegality") is None:
+        parsed["Aware of Illegality"] = True
+    else:
+        # Check for explicit indications of unawareness in the text
+        if any(phrase in text.lower() for phrase in ["nesvjestan", "nisu znali", "not aware", "unaware"]):
+            parsed["Aware of Illegality"] = False
 
     # Combine metadata and facts
     verdict = {
@@ -256,7 +286,8 @@ def process_case(xml_path, llm, prompt):
         "Children Present": str(parsed.get("Children Present", False)).lower(),
         "Use of Weapon": str(parsed.get("Use of Weapon", False)).lower(),
         "Number of Victims": str(meta.get("Number of Victims", 0)),
-        "Number of Defendants": str(meta.get("Number of Defendants", 1))
+        "Number of Defendants": str(meta.get("Number of Defendants", 1)),
+        "Aware of Illegality": str(parsed.get("Aware of Illegality", True)).lower()
     }
 
     return verdict

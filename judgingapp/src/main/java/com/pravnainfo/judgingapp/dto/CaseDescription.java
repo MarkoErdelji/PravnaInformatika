@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class CaseDescription implements CaseComponent {
 
     private Long dbId;
-    private String caseName;
+    private String caseId;
     private String court;
     private String date;
     private String judge;
@@ -39,10 +39,9 @@ public class CaseDescription implements CaseComponent {
         return new Attribute("dbId", this.getClass());
     }
 
-    // Convenience constructor to map Verdict → CaseDescription
     public CaseDescription(Verdict v) {
         this.dbId = v.getId();
-        this.caseName = v.getCaseId();
+        this.caseId = v.getCaseId();
         this.court = v.getCourt();
         this.date = v.getDate().toString();
         this.judge = v.getJudgeName();
@@ -50,10 +49,10 @@ public class CaseDescription implements CaseComponent {
         this.numDefendants = v.getNumDefendants();
         this.previouslyConvicted = v.getPreviouslyConvicted();
         this.awareOfIllegality = v.getAwareOfIllegality();
-        this.victimRelationship = v.getVictimRelationship();
-        this.violenceNature = v.getViolenceNature();
-        this.injuryTypes = v.getInjuryTypes();
-        this.executionMeans = v.getExecutionMeans();
+        this.victimRelationship = String.valueOf(v.getVictimRelationship());
+        this.violenceNature = String.valueOf(v.getViolenceNature());
+        this.injuryTypes = String.valueOf(v.getInjuryTypes());
+        this.executionMeans = String.valueOf(v.getExecutionMeans());
         this.protectionMeasureViolation = v.getProtectionMeasureViolation();
         this.defendantAge = v.getDefendantAge();
         this.victimAge = v.getVictimAge();

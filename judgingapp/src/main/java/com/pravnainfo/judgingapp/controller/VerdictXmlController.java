@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 @RestController
 @RequestMapping("/api/verdicts")
@@ -26,19 +28,22 @@ public class VerdictXmlController {
     public ResponseEntity<String> getVerdictXml(@PathVariable Long id) {
         Verdict verdict = verdictRepository.getReferenceById(id);
 
+        if (verdict.getXmlFileName() == null || verdict.getXmlFileName().isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        // Use filesystem path instead of ClassPathResource
+        File xmlFile = new File("./xml/", verdict.getXmlFileName());
+        if (!xmlFile.exists()) {
+            return ResponseEntity.notFound().build();
+        }
+
         try {
-            // Load XML from resources
-            ClassPathResource resource = new ClassPathResource("xml/" + verdict.getCaseId() + ".xml");
-            if (!resource.exists()) {
-                return ResponseEntity.notFound().build();
-            }
-            String xmlContent = new String(resource.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-
-            // Optional: pretty print with a library like DOM or JAXB
+            String xmlContent = new String(Files.readAllBytes(xmlFile.toPath()), StandardCharsets.UTF_8);
             return ResponseEntity.ok(xmlContent);
-
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error reading XML file");
         }
     }
+
 }

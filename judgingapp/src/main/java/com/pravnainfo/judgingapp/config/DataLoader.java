@@ -1,7 +1,6 @@
 package com.pravnainfo.judgingapp.config;
 
-import com.pravnainfo.judgingapp.entity.Verdict;
-import com.pravnainfo.judgingapp.entity.VerdictType;
+import com.pravnainfo.judgingapp.entity.*;
 import com.pravnainfo.judgingapp.repository.IVerdictRepository;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -24,6 +23,10 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     private IVerdictRepository verdictRepository;
 
+    private String sanitizeCaseId(String caseId) {
+        return caseId.replaceAll("[^a-zA-Z0-9\\-_\\.]", "_");
+    }
+
     @Override
     public void run(String... args) throws Exception {
         // Clear existing data
@@ -39,7 +42,7 @@ public class DataLoader implements CommandLineRunner {
 
             for (CSVRecord record : csvParser) {
                 Verdict verdict = Verdict.builder()
-                        .caseId(getSafeString(record, "id"))  // <-- Use caseId here
+                        .caseId(getSafeString(record, "id"))
                         .court(getSafeString(record, "Court"))
                         .verdictNumber(getSafeString(record, "Case Number"))
                         .date(parseDate(getSafeString(record, "Verdict Date")))
@@ -51,11 +54,11 @@ public class DataLoader implements CommandLineRunner {
                         .verdict(parseVerdictType(getSafeString(record, "Verdict Type")))
                         .numDefendants(parseInteger(getSafeString(record, "Number of Defendants"), 1))
                         .previouslyConvicted(!getSafeString(record, "Previous Incidents").isEmpty())
-                        .awareOfIllegality(true) // Default as per CSV logic
-                        .victimRelationship(getSafeString(record, "Victim Relationship"))
-                        .violenceNature(getSafeString(record, "Violence Nature"))
-                        .injuryTypes(getSafeString(record, "Injury Types"))
-                        .executionMeans(getSafeString(record, "Execution Means"))
+                        .awareOfIllegality(Boolean.parseBoolean(getSafeString(record, "Aware of Illegality")))
+                        .victimRelationship(parseVictimRelationship(getSafeString(record, "Victim Relationship")))
+                        .violenceNature(parseViolenceNature(getSafeString(record, "Violence Nature")))
+                        .injuryTypes(parseInjuryTypes(getSafeString(record, "Injury Types")))
+                        .executionMeans(parseExecutionMeans(getSafeString(record, "Execution Means")))
                         .protectionMeasureViolation(Boolean.parseBoolean(getSafeString(record, "Protection Measure Violation")))
                         .eventLocation(getSafeString(record, "Event Location"))
                         .eventDate(parseDate(getSafeString(record, "Event Date")))
@@ -70,6 +73,7 @@ public class DataLoader implements CommandLineRunner {
                         .procedureCosts(getSafeString(record, "Procedure Costs"))
                         .useOfWeapon(Boolean.parseBoolean(getSafeString(record, "Use of Weapon")))
                         .numberOfVictims(parseInteger(getSafeString(record, "Number of Victims"), 0))
+                        .xmlFileName(sanitizeCaseId(getSafeString(record, "id")) + ".xml")
                         .build();
 
                 verdictRepository.save(verdict);
@@ -100,6 +104,61 @@ public class DataLoader implements CommandLineRunner {
             return VerdictType.valueOf(verdict.toUpperCase());
         } catch (IllegalArgumentException e) {
             return VerdictType.SUSPENDED;
+        }
+    }
+
+    private VictimRelationship parseVictimRelationship(String relationship) {
+        if (relationship == null || relationship.isEmpty()) return VictimRelationship.OTHER;
+        try {
+            return VictimRelationship.valueOf(relationship.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return VictimRelationship.OTHER;
+        }
+    }
+
+    private ViolenceNature parseViolenceNature(String violence) {
+        if (violence == null || violence.isEmpty()) return ViolenceNature.NONE;
+        String normalized = violence.toLowerCase();
+        if (normalized.contains("rough violence")) {
+            return ViolenceNature.VIOLENCE;
+        } else if (normalized.contains("threat")) {
+            return ViolenceNature.THREAT;
+        } else if (normalized.contains("arrogant and reckless behavior")) {
+            return ViolenceNature.RECKLESS_BEHAVIOUR;
+        } else {
+            return ViolenceNature.NONE;
+        }
+    }
+
+    private InjuryTypes parseInjuryTypes(String injuries) {
+        if (injuries == null || injuries.isEmpty()) return InjuryTypes.NONE;
+        String normalized = injuries.toLowerCase();
+        if (normalized.contains("light") && normalized.contains("severe")) {
+            return InjuryTypes.LIGHT_SEVERE;
+        } else if (normalized.contains("light")) {
+            return InjuryTypes.LIGHT;
+        } else if (normalized.contains("severe")) {
+            return InjuryTypes.SEVERE;
+        } else {
+            return InjuryTypes.NONE;
+        }
+    }
+
+    private ExecutionMeans parseExecutionMeans(String means) {
+        if (means == null || means.isEmpty()) return ExecutionMeans.OTHER;
+        String normalized = means.toLowerCase();
+        if (normalized.contains("hands")) {
+            return ExecutionMeans.HANDS;
+        } else if (normalized.contains("feet")) {
+            return ExecutionMeans.FEET;
+        } else if (normalized.contains("weapon")) {
+            return ExecutionMeans.WEAPON;
+        } else if (normalized.contains("tool")) {
+            return ExecutionMeans.TOOL;
+        } else if (normalized.contains("verbal")) {
+            return ExecutionMeans.VERBAL;
+        } else {
+            return ExecutionMeans.OTHER;
         }
     }
 

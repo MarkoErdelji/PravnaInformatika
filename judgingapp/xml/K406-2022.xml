@@ -63,15 +63,11 @@
                 <item id="odluka1">
                     <p>
                         Pa sud okrivljenom zbog navedenog krivičnog djela primjenom <ref href="/krivicni#art_4">čl. 4 st. 2</ref>, <ref href="/krivicni#art_42">čl. 42 st. 1</ref>, <ref href="/krivicni#art_52">čl. 52 st. 2</ref>, <ref href="/krivicni#art_53">čl. 53</ref> i <ref href="/krivicni#art_54">čl. 54</ref> Krivičnog zakonika Crne Gore i <ref href="/zkp#art_226">čl. 226</ref>, <ref href="/zkp#art_229">čl. 229</ref>, <ref href="/zkp#art_303">čl. 303</ref> i <ref href="/zkp#art_374">čl. 374</ref> Zakonika o krivičnom postupku izriče,
+                        <b>USLOVNU OSUDU</b><br/>
+                        Kojom mu utvrđuje kaznu zatvora u trajanju od 3 (tri) mjeseca, i istovremeno određuje da se ona neće izvršiti, ako okrivljeni u roku od <time duration="P1Y">1 (jedne) godine</time> po pravosnažnosti presude ne učini novo krivično djelo.
                     </p>
                 </item>
                 <item id="odluka2">
-                    <p>
-                        <b>USLOVNU OSUDU</b><br/>
-                        Kojom mu utvrđuje kaznu zatvora u trajanju od 3 (tri) mjeseca, i istovremeno određuje da se ona neće izvršiti, ako okrivljeni u roku od 1 (jedne) godine po pravosnažnosti presude ne učini novo krivično djelo.
-                    </p>
-                </item>
-                <item id="odluka3">
                     <p>
                         Obavezuje se okrivljeni da plati na ime troškova krivičnog postupka iznos od <amount value="90.50">90,50 €</amount>, u roku od <time duration="P15D">15 dana</time> po pravosnažnosti presude, pod prijetnjom izvršenja.
                     </p>
