@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
+  <act contains="originalVersion">
+    <meta>
+      <identification source="#government">
+        <FRBRWork>
+          <FRBRthis value="/zkp/main"/>
+          <FRBRuri value="/zkp"/>
+          <FRBRdate date="2025-08-31" name="publication"/>
+          <FRBRauthor href="#parliament"/>
+          <FRBRcountry value="ME"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/zkp/main/2025-08-31"/>
+          <FRBRuri value="/zkp/2025-08-31"/>
+          <FRBRdate date="2025-08-31" name="publication"/>
+          <FRBRauthor href="#parliament"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/zkp/main/2025-08-31/xml"/>
+          <FRBRuri value="/zkp/2025-08-31/xml"/>
+          <FRBRdate date="2025-08-31" name="publication"/>
+          <FRBRauthor href="#government"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#government">
+        <TLCOrganization eId="parliament" href="/ontology/organization/me/parliament" showAs="Skupština Crne Gore"/>
+        <TLCConcept eId="zkp" href="/zkp" showAs="Zakonik o krivičnom postupku"/>
+      </references>
+    </meta>
+    <body>
+      <chapter eId="chap_1">
+        <num>GLAVA PRVA</num>
+        <heading>OSNOVNE ODREDBE</heading>
+        <section eId="art_8">
+          <num>Član 8</num>
+          <heading>Jezik na kojem se upućuju podnesci sudu, odnosno na kojem sud upućuje podneske</heading>
+          <paragraph eId="art_8_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Krivični postupak vodi se na crnogorskom jeziku.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_8_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Stranke, svjedoci i druga lica koja učestvuju u postupku imaju pravo da u postupku upotrebljavaju svoj jezik ili jezik koji razumiju. Ako se postupak ne vodi na jeziku nekog od tih lica, obezbijediće se prevođenje iskaza, isprava i drugog pisanog dokaznog materijala.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_8_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>O pravu na prevođenje poučiće se lice iz <ref href="/zkp#art_8_st_2">stava 2 ovog člana</ref>, koje se može odreći tog prava ako zna jezik na kojem se vodi postupak. U zapisniku će se zabilježiti da je data pouka i izjava učesnika u postupku.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_8_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>Prevođenje se povjerava tumaču.</p>
+            </content>
+          </paragraph>
+        </section>
+        <section eId="art_12">
+          <num>Član 12</num>
+          <heading>Pravo na rehabilitaciju i naknadu štete</heading>
+          <paragraph eId="art_12_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Okrivljeni ima pravo da se brani sam ili uz stručnu pomoć branioca koga sam izabere iz reda advokata.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_12_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Okrivljeni ima pravo da njegovom saslušanju prisustvuje branilac.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_12_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Prije prvog saslušanja, okrivljeni će se poučiti o pravu da uzme branioca, da se sa braniocem dogovori o načinu odbrane i da branilac može da prisustvuje njegovom saslušanju. On će biti upozoren da sve što izjavi može biti upotrijebljeno protiv njega kao dokaz.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_12_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>Ako okrivljeni sam ne uzme branioca, postaviće mu se branilac po službenoj dužnosti, kad je to određeno ovim zakonikom.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_12_st_5">
+            <num>st. 5</num>
+            <content>
+              <p>Okrivljenom se mora obezbijediti dovoljno vremena i mogućnosti za pripremanje odbrane.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_12_st_6">
+            <num>st. 6</num>
+            <content>
+              <p>Osumnjičeni ima pravo na branioca u skladu sa ovim zakonikom.</p>
+            </content>
+          </paragraph>
+        </section>
+        <section eId="art_24">
+          <num>Član 24</num>
+          <heading>Sastav suda</heading>
+          <paragraph eId="art_24_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>U prvom stepenu sud sudi u vijeću sastavljenom od troje sudija, osim u slučaju iz <ref href="/zkp#art_24_st_2">stava 2 ovog člana</ref>.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_24_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Za krivična djela za koja je kao glavna kazna propisana novčana kazna ili kazna zatvora do deset godina u prvom stepenu sudi sudija pojedinac, osim za djela organizovanog kriminala ili ako zakonom nije drukčije određeno.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_24_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>U drugom stepenu sud sudi u vijeću sastavljenom od troje sudija.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_24_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>U trećem stepenu sud sudi u vijeću sastavljenom od pet sudija.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_24_st_5">
+            <num>st. 5</num>
+            <content>
+              <p>U izviđaju i istrazi učestvuje sudija za istragu prvostepenog suda u skladu sa ovim zakonikom.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_24_st_6">
+            <num>st. 6</num>
+            <content>
+              <p>Predsjednik suda i predsjednik vijeća odlučuju u slučajevima propisanim ovim zakonikom.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_24_st_7">
+            <num>st. 7</num>
+            <content>
+              <p>Prvostepeni sudovi, u vijeću sastavljenom od troje sudija, odlučuju o žalbama protiv rješenja sudije za istragu i drugih rješenja kad je to određeno ovim zakonikom, donose odluke u prvom stepenu van glavnog pretresa, sprovode postupak i donose presudu po zahtjevu kojim se traži izvršenje krivične presude stranog suda i stavljaju predloge u slučajevima propisanim ovim zakonikom ili drugim zakonom.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_24_st_8">
+            <num>st. 8</num>
+            <content>
+              <p>Ako se kod suda koji sudi samo u prvom stepenu, zbog nedovoljnog broja sudija, ne može obrazovati vijeće iz <ref href="/zkp#art_24_st_7">stava 7 ovog člana</ref>, poslove iz nadležnosti tog vijeća vršiće vijeće neposredno višeg suda.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_24_st_9">
+            <num>st. 9</num>
+            <content>
+              <p>Odredbe ovog zakonika koje se odnose na prava i dužnosti predsjednika vijeća i vijeća shodno se primjenjuju i na sudiju pojedinca kad sudi u skladu sa odredbama ovog zakonika.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_24_st_10">
+            <num>st. 10</num>
+            <content>
+              <p>Sud odlučuje o zahtjevu za zaštitu zakonitosti u vijeću sastavljenom od pet sudija.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_24_st_11">
+            <num>st. 11</num>
+            <content>
+              <p>U slučajevima koji nijesu propisani u <ref href="/zkp#art_24_st_3">stavovima 3</ref>, <ref href="/zkp#art_24_st_4">4</ref> i <ref href="/zkp#art_24_st_10">10 ovog člana</ref>, sudovi višeg stepena odlučuju u vijeću sastavljenom od troje sudija, ako ovim zakonikom nije drukčije određeno.</p>
+            </content>
+          </paragraph>
+        </section>
+        <section eId="art_31">
+          <num>Član 31</num>
+          <heading>Razdvajanje postupka</heading>
+          <paragraph eId="art_31_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Ako je isto lice okrivljeno za više krivičnih djela, od kojih je za neka nadležan niži, a za neka viši sud, nadležan je viši sud, a u slučaju kad su nadležni sudovi iste vrste, nadležan je sud koji je po optužbi ovlašćenog tužioca prvi započeo postupak, a u izviđaju i istrazi nadležan je sud koji je prvi preduzeo radnju po predlogu tužioca.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_31_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Po odredbi <ref href="/zkp#art_31_st_1">stava 1 ovog člana</ref> određuje se nadležnost i u slučaju kad je oštećeni istovremeno učinio krivično djelo prema okrivljenom.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_31_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Za saizvršioce je nadležan, po pravilu, sud koji je kao nadležan za jednog od njih prvi započeo postupak.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_31_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>Sud koji je nadležan za izvršioca krivičnog djela nadležan je, po pravilu, i za saučesnike, prikrivače, lica koja su pomogla učiniocu poslije izvršenog krivičnog djela, kao i za lica koja nijesu prijavila pripremanje ili izvršenje krivičnog djela ili učinioca.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_31_st_5">
+            <num>st. 5</num>
+            <content>
+              <p>U slučajevima iz <ref href="/zkp#art_31_st_1">stavova 1</ref> do <ref href="/zkp#art_31_st_4">4 ovog člana</ref> sprovešće se, po pravilu, jedinstveni postupak i donijeti jedna presuda.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_31_st_6">
+            <num>st. 6</num>
+            <content>
+              <p>Sud može odlučiti da se sprovede jedinstveni postupak i donese jedna presuda i u slučaju kad je više lica okrivljeno za više krivičnih djela, ali samo ako između izvršenih krivičnih djela postoji međusobna veza i isti dokazi. Ako je za neka od ovih krivičnih djela nadležan viši sud, a za neka niži sud, jedinstveni postupak može se sprovesti samo pred višim sudom.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_31_st_7">
+            <num>st. 7</num>
+            <content>
+              <p>Sud može odlučiti da se sprovede jedinstveni postupak i donese jedna presuda ako se pred istim sudom vode odvojeni postupci protiv istog lica za više krivičnih djela ili protiv više lica za isto krivično djelo.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_31_st_8">
+            <num>st. 8</num>
+            <content>
+              <p>O spajanju postupka odlučuje sud koji je nadležan za sprovođenje jedinstvenog postupka. Protiv rješenja kojim je određeno spajanje postupka ili kojim je odbijen predlog za spajanje postupka nije dozvoljena žalba.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_31_st_9">
+            <num>st. 9</num>
+            <content>
+              <p>Odredbe o spajanju postupka shodno se primjenjuju i kad u izviđaju i istrazi postupak vodi državni tužilac koji odlučuje o sprovođenju jedinstvenog postupka.</p>
+            </content>
+          </paragraph>
+        </section>
+      </chapter>
+      <chapter eId="chap_2">
+        <num>GLAVA DRUGA</num>
+        <heading>PRAVA OŠTEĆENOG</heading>
+        <section eId="art_57">
+          <num>Član 57</num>
+          <heading>Pravo upoznavanja sa dokaznim materijalom i pravo predlaganja dokaza</heading>
+          <paragraph eId="art_57_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Ako privatni tužilac ne dođe na glavni pretres iako je uredno pozvan ili mu se poziv nije mogao uručiti zbog neprijavljivanja sudu promjene adrese ili boravišta smatraće se da je odustao od tužbe, osim u slučaju iz <ref href="/zkp#art_457">člana 457 ovog zakonika</ref>.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_57_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Predsjednik vijeća dozvoliće povraćaj u pređašnje stanje privatnom tužiocu koji, iz opravdanog razloga, nije mogao da dođe na glavni pretres ili da blagovremeno obavijesti sud o promjeni adrese ili boravišta, ako u roku od osam dana po prestanku smetnje podnese molbu za povraćaj u pređašnje stanje.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_57_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Poslije proteka tri mjeseca od dana propuštanja podnošenja molbe iz <ref href="/zkp#art_57_st_2">stava 2 ovog člana</ref> ne može se tražiti povraćaj u pređašnje stanje.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_57_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>Protiv rješenja kojim se dozvoljava povraćaj u pređašnje stanje nije dozvoljena žalba.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_57_st_5">
+            <num>st. 5</num>
+            <content>
+              <p>Rješenje o obustavi postupka doneseno u slučaju iz <ref href="/zkp#art_57_st_1">stava 1 ovog člana</ref> stupa na pravnu snagu kad isteknu rokovi iz <ref href="/zkp#art_57_st_2">stava 2</ref> i <ref href="/zkp#art_57_st_3">3 ovog člana</ref>, ako privatni tužilac u tim rokovima ne podnese molbu za povraćaj u pređašnje stanje ili kad rješenje kojim se molba odbija postane pravosnažno.</p>
+            </content>
+          </paragraph>
+        </section>
+        <section eId="art_58">
+          <num>Član 58</num>
+          <heading>Oštećeni kao tužilac (supsidijarni tužilac)</heading>
+          <paragraph eId="art_58_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Oštećeni ima pravo da u toku istrage ukaže na sve činjenice i da predlaže dokaze koji su od važnosti za krivičnu stvar i njegov imovinskopravni zahtjev.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_58_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Na glavnom pretresu oštećeni i privatni tužilac imaju pravo da predlažu dokaze, postavljaju pitanja optuženom, svjedocima i vještacima, da iznose primjedbe i objašnjenja u pogledu njihovih iskaza i da daju druge izjave i predloge.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_58_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Oštećeni, oštećeni kao tužilac i privatni tužilac imaju pravo da razmatraju spise i razgledaju predmete koji služe kao dokaz. Oštećenom se može uskratiti razmatranje spisa do donošenja naredbe o sprovođenju istrage ili dok ne bude saslušan kao svjedok.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_58_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>Oštećeni koji je žrtva krivičnog djela protiv polne slobode ima pravo da ga sasluša i postupak vodi sudija istog pola, ako to omogućava kadrovski sastav suda.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_58_st_5">
+            <num>st. 5</num>
+            <content>
+              <p>Državni tužilac i predsjednik vijeća upoznaće oštećenog i privatnog tužioca sa pravima iz <ref href="/zkp#art_58_st_1">stavova 1</ref> do <ref href="/zkp#art_58_st_4">4 ovog člana</ref>.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_58_st_6">
+            <num>st. 6</num>
+            <content>
+              <p>Kad se krivični postupak vodi za krivično djelo za koje je propisana kazna zatvora preko tri godine, a oštećeni prema svom imovnom stanju ne može snositi troškove zastupanja, na njegov zahtjev može mu se postaviti punomoćnik ako je zastupanje oštećenog od strane punomoćnika u interesu pravičnosti. Ako je oštećeni maloljetno lice, sud će u toku cijelog krivičnog postupka po službenoj dužnosti cijeniti da li je potrebno da mu se postavi punomoćnik.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_58_st_7">
+            <num>st. 7</num>
+            <content>
+              <p>Pravo na pravnu pomoć oštećeni ostvaruje u skladu sa posebnim zakonom.</p>
+            </content>
+          </paragraph>
+        </section>
+        <section eId="art_59">
+          <num>Član 59</num>
+          <heading>Nastavljanje gonjenja na glavnom pretresu i povraćaj u pređašnje stanje</heading>
+          <paragraph eId="art_59_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Kad državni tužilac nađe da nema osnova da preduzme gonjenje za krivično djelo za koje se goni po službenoj dužnosti ili da nema osnova da preduzme gonjenje protiv nekog od prijavljenih saučesnika dužan je da, u roku od osam dana, o tome obavijesti oštećenog, uputi ga da može sam preduzeti gonjenje i dostavi mu rješenje o odbacivanju krivične prijave, osim u slučajevima iz <ref href="/zkp#art_272_st_6">člana 272 stav 6</ref> i <ref href="/zkp#art_273">člana 273 ovog zakonika</ref>.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_59_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Na način iz <ref href="/zkp#art_59_st_1">stava 1 ovog člana</ref> postupiće državni tužilac kad donese naredbu o obustavi istrage i sud kad donese rješenje o obustavi postupka zbog odustanka državnog tužioca od optužbe.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_59_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Oštećeni ima pravo da preduzme, odnosno nastavi gonjenje, u roku od 30 dana od dana kad je primio obavještenje iz <ref href="/zkp#art_59_st_1">stava 1 ovog člana</ref>, a u slučaju da je podnio pritužbu u skladu sa <ref href="/zkp#art_271a">članom 271a ovog zakonika</ref>, u roku od 30 dana od dana prijema obavještenja neposredno višeg državnog tužilaštva o postupanju po pritužbi.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_59_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>Ako je državni tužilac odustao od optužnice, oštećeni može, preuzimajući gonjenje, ostati pri podignutoj optužnici ili podići novu.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_59_st_5">
+            <num>st. 5</num>
+            <content>
+              <p>Oštećeni koji nije obaviješten da državni tužilac nije preduzeo gonjenje ili da je odustao od gonjenja može svoju izjavu da preduzima ili nastavlja postupak dati pred nadležnim sudom, u roku od šest mjeseci od dana kad je državni tužilac odbacio prijavu ili obustavio istragu, odnosno od dana kad je doneseno rješenje o obustavi postupka.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_59_st_6">
+            <num>st. 6</num>
+            <content>
+              <p>Obavještenje državnog tužioca, odnosno suda da oštećeni može preduzeti gonjenje sadrži i pouku koje radnje može preduzeti radi ostvarivanja ovog prava.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_59_st_7">
+            <num>st. 7</num>
+            <content>
+              <p>Ako oštećeni kao tužilac umre u toku roka za preduzimanje gonjenja ili u toku postupka, njegov bračni drug, lice sa kojim živi u vanbračnoj zajednici, djeca, roditelji, usvojenici, usvojitelji, braća i sestre mogu, u roku od tri mjeseca od dana njegove smrti, preduzeti gonjenje, odnosno dati izjavu da postupak nastavljaju.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_59_st_8">
+            <num>st. 8</num>
+            <content>
+              <p>Rješenje o obustavi postupka zbog odustanka državnog tužioca od gonjenja stupa na pravnu snagu po isteku rokova iz <ref href="/zkp#art_59_st_3">stava 3</ref>, <ref href="/zkp#art_59_st_5">5</ref> i <ref href="/zkp#art_59_st_7">7 ovog člana</ref>, ako oštećeni, odnosno lica iz <ref href="/zkp#art_59_st_7">stava 7 ovog člana</ref> u propisanim rokovima nijesu preuzela gonjenje.</p>
+            </content>
+          </paragraph>
+        </section>
+        <section eId="art_60">
+          <num>Član 60</num>
+          <heading>Gubitak prava na supsidijarnu optužbu</heading>
+          <paragraph eId="art_60_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Kad državni tužilac odustane od optužnice na glavnom pretresu, oštećeni je dužan da se odmah izjasni da li hoće da nastavi gonjenje.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_60_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Ako oštećeni nije prisutan na glavnom pretresu, a uredno je pozvan ili mu se poziv nije mogao uručiti zbog neprijavljivanja sudu promjene adrese ili boravišta smatraće se da neće da nastavi gonjenje.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_60_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Predsjednik vijeća prvostepenog suda dozvoliće povraćaj u pređašnje stanje oštećenom koji nije uredno pozvan ili je uredno pozvan, a iz opravdanih razloga nije mogao doći na glavni pretres na kojem je donesena presuda kojom se optužba odbija zbog odustanka državnog tužioca od optužnice, ako oštećeni u roku od osam dana od prijema presude podnese molbu za povraćaj u pređašnje stanje i ako u toj molbi izjavi da nastavlja gonjenje. U ovom slučaju zakazaće se ponovo glavni pretres i presudom donesenom na osnovu novog glavnog pretresa ukinuće se ranija presuda. Ako uredno pozvani oštećeni kao tužilac ne dođe na novi glavni pretres ili prije početka pretresa izjavi da odustaje od gonjenja, ranija presuda ostaje na snazi.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_60_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>Na povraćaj u pređašnje stanje iz <ref href="/zkp#art_60_st_3">stava 3 ovog člana</ref> primijeniće se odredbe <ref href="/zkp#art_57_st_3">člana 57 stav 3</ref> i <ref href="/zkp#art_57_st_4">stav 4 ovog zakonika</ref>.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_60_st_5">
+            <num>st. 5</num>
+            <content>
+              <p>Presuda kojom se optužba odbija, izrečena u slučaju iz <ref href="/zkp#art_60_st_2">stava 2 ovog člana</ref>, postaje pravosnažna kad isteknu rokovi za podnošenje molbe za povraćaj u pređašnje stanje.</p>
+            </content>
+          </paragraph>
+        </section>
+        <section eId="art_64">
+          <num>Član 64</num>
+          <heading>Dužnost obavještavanja suda o promjeni adrese ili boravišta</heading>
+          <paragraph eId="art_64_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Privatni tužilac, oštećeni i oštećeni kao tužilac, kao i njihovi zakonski zastupnici mogu svoja prava u postupku vršiti i preko punomoćnika.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_64_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Sud je dužan da lica iz <ref href="/zkp#art_64_st_1">stava 1 ovog člana</ref> pouči o pravu na punomoćnika.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_64_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Oštećenom kao tužiocu, kad se postupak vodi po njegovoj optužbi za krivično djelo za koje se po zakonu može izreći kazna zatvora u trajanju preko pet godina, može se, na njegovo traženje, postaviti punomoćnik, ako je to u interesu postupka i ako oštećeni kao tužilac, prema svom imovnom stanju, ne može snositi troškove zastupanja. O zahtjevu odlučuje predsjednik vijeća, a punomoćnika postavlja predsjednik suda iz reda advokata.</p>
+            </content>
+          </paragraph>
+        </section>
+      </chapter>
+      <chapter eId="chap_3">
+        <num>GLAVA TREĆA</num>
+        <heading>BRANILAC</heading>
+        <section eId="art_69">
+          <num>Član 69</num>
+          <heading>Postavljanje branioca zbog slabog imovnog stanja</heading>
+          <paragraph eId="art_69_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Ako je okrivljeni lice sa invaliditetom uslijed čega je pravo lica sa invaliditetom da se uspješno brani otežano ili ako se postupak vodi zbog krivičnog djela za koje se može izreći najduža kazna zatvora, okrivljeni mora imati branioca tokom cijelog postupka, počev od prvog saslušanja.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_69_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Poslije podignute optužnice zbog krivičnog djela za koje se po zakonu može izreći kazna zatvora u trajanju od deset godina, okrivljeni mora imati branioca u vrijeme dostavljanja optužnice.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_69_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Okrivljeni kome je određen pritvor mora imati branioca dok je u pritvoru.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_69_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>Okrivljeni kome se sudi u odsustvu, u smislu <ref href="/zkp#art_324_st_2">člana 324 stav 2 ovog zakonika</ref>, mora imati branioca čim sud donese rješenje o suđenju u odsustvu.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_69_st_5">
+            <num>st. 5</num>
+            <content>
+              <p>Osumnjičeni koga policija, odnosno službenici organa državne uprave nadležnog za poslove carina u izviđaju saslušavaju, u skladu sa <ref href="/zkp#art_261_st_5">članom 261 stav 5 ovog zakonika</ref>, mora imati branioca.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_69_st_6">
+            <num>st. 6</num>
+            <content>
+              <p>Osumnjičeni mora imati branioca kad državni tužilac donese rješenje o zadržavanju iz <ref href="/zkp#art_267">člana 267 ovog zakonika</ref>.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_69_st_7">
+            <num>st. 7</num>
+            <content>
+              <p>Okrivljeni mora imati branioca od početka pregovaranja o uslovima priznanja krivice iz <ref href="/zkp#art_300_st_2">člana 300 stav 2 ovog zakonika</ref>, do donošenja odluke suda o žalbi na presudu.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_69_st_8">
+            <num>st. 8</num>
+            <content>
+              <p>Ako okrivljeni u slučajevima obavezne odbrane ne uzme branioca, o postavljenju branioca po službenoj dužnosti do podizanja optužnice odlučuje rukovodilac nadležnog državnog tužilaštva, a nakon podignute optužnice do pravosnažnosti presude i u slučaju kad je izrečena najduža kazna zatvora u postupku po vanrednim pravnim lijekovima predsjednik suda. Kad se okrivljenom po službenoj dužnosti postavi branilac poslije podignute optužnice, o tome će se okrivljeni obavijestiti istovremeno sa dostavljanjem optužnice. Ako okrivljeni u slučaju obavezne odbrane u toku postupka ostane bez branioca, a sam ne uzme drugog branioca, predsjednik suda pred kojim se vodi postupak postaviće mu branioca po službenoj dužnosti. Branilac postavljen po službenoj dužnosti ostaje u postupku dok postoje uslovi za obaveznu odbranu, odnosno dok okrivljeni sam ne izabere branioca.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_69_st_9">
+            <num>st. 9</num>
+            <content>
+              <p>Okrivljenom će se postaviti branilac po redosljedu sa spiska Advokatske komore Crne Gore.</p>
+            </content>
+          </paragraph>
+        </section>
+        <section eId="art_70">
+          <num>Član 70</num>
+          <heading>Razrješenje postavljenog branioca</heading>
+          <paragraph eId="art_70_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Kad ne postoje uslovi za obaveznu odbranu, a to zahtijevaju interesi pravičnosti, okrivljenom se, na njegov zahtjev, može postaviti branilac ako prema svom imovnom stanju ne može snositi troškove odbrane.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_70_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>O zahtjevu odlučuje u izviđaju i istrazi nadležni državni tužilac, a nakon podignute optužbe predsjednik suda, po redosljedu sa spiska Advokatske komore.</p>
+            </content>
+          </paragraph>
+        </section>
+      </chapter>
+      <chapter eId="chap_4">
+        <num>GLAVA ČETVRTA</num>
+        <heading>ISPITIVANJE OKRIVLJENOG I SVJEDOKA</heading>
+        <section eId="art_100">
+          <num>Član 100</num>
+          <heading>Način saslušanja</heading>
+          <paragraph eId="art_100_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Kad se okrivljeni prvi put saslušava, pitaće se za lične podatke, državljanstvo, jezik, zanimanje, porodične prilike, pismenost, školu, imovno stanje, da li je i kada osuđivan, da li je kaznu izdržao, da li se protiv njega vodi postupak za drugo krivično djelo, a ako je maloljetan, ko mu je zakonski zastupnik.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_100_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Okrivljeni će se upozoriti da je dužan da se odazove pozivu i da odmah saopšti svaku promjenu adrese ili namjeru da promijeni boravište, kao i na posljedice ako po tome ne postupi. Nakon toga okrivljenom će se saopštiti prava iz <ref href="/zkp#art_8_st_2">člana 8 stav 2</ref> i <ref href="/zkp#art_12_st_3">člana 12 stav 3 ovog zakonika</ref>, zašto se okrivljuje, osnovi sumnje koji stoje protiv njega, da nije dužan da iznese odbranu, niti da odgovara na postavljena pitanja i da njegov iskaz može biti korišćen kao dokaz u postupku i bez njegove saglasnosti i pozvaće se da, ako želi, iznese odbranu.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_100_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Izjašnjenje okrivljenog o pravima iz <ref href="/zkp#art_100_st_2">stava 2 ovog člana</ref> zapisnički će se konstatovati, a okrivljeni će izjašnjenje potvrditi potpisom.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_100_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>Okrivljeni se saslušava usmeno. Okrivljeni ima pravo da se prilikom saslušanja koristi svojim zabilješkama.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_100_st_5">
+            <num>st. 5</num>
+            <content>
+              <p>Prilikom saslušanja treba okrivljenom omogućiti da se u neometanom izlaganju izjasni o svim okolnostima koje ga terete i da iznese činjenice koje mu služe za odbranu.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_100_st_6">
+            <num>st. 6</num>
+            <content>
+              <p>Kad okrivljeni završi svoj iskaz, postaviće mu se pitanja ukoliko je potrebno da se popune praznine ili otklone protivrječnosti i nejasnoće u njegovom izlaganju.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_100_st_7">
+            <num>st. 7</num>
+            <content>
+              <p>Okrivljeni se saslušava uz puno uvažavanje njegove ličnosti.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_100_st_8">
+            <num>st. 8</num>
+            <content>
+              <p>Prema okrivljenom ne smiju se upotrijebiti sila, prijetnja, obmana, iznuda, iznurivanje ili druga sredstva iz <ref href="/zkp#art_154_st_5">člana 154 stav 5 ovog zakonika</ref>, da bi se došlo do njegove izjave, priznanja ili činjenja koje bi se protiv njega moglo upotrijebiti kao dokaz.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_100_st_9">
+            <num>st. 9</num>
+            <content>
+              <p>Okrivljeni može biti saslušan u odsustvu branioca, ako se izričito odrekao tog prava, a odbrana nije obavezna, ako branilac nije prisutan iako je obaviješten o saslušanju saglasno <ref href="/zkp#art_282">članu 282 ovog zakonika</ref>, a ne postoji mogućnost da okrivljeni uzme drugog branioca ili ako za prvo saslušanje okrivljeni nije obezbijedio prisustvo branioca ni u roku od 24 časa od časa kad je poučen o ovom pravu u skladu sa <ref href="/zkp#art_12_st_3">članom 12 stav 3 ovog zakonika</ref>, osim u slučaju obavezne odbrane.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_100_st_10">
+            <num>st. 10</num>
+            <content>
+              <p>Ako je postupljeno suprotno odredbama <ref href="/zkp#art_100_st_8">stavova 8</ref> i <ref href="/zkp#art_100_st_9">9 ovog člana</ref> ili okrivljeni nije poučen o pravima iz <ref href="/zkp#art_100_st_2">stava 2 ovog člana</ref> ili ako izjave okrivljenog iz <ref href="/zkp#art_100_st_9">stava 9 ovog člana</ref> o potrebi prisustvovanja branioca nijesu unesene u zapisnik, takav iskaz se ne može koristiti kao dokaz u krivičnom postupku.</p>
+            </content>
+          </paragraph>
+        </section>
+        <section eId="art_109">
+          <num>Član 109</num>
+          <heading>Svjedočenja na kojima ne može biti zasnovana sudska odluka</heading>
+          <paragraph eId="art_109_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Ako ovim zakonikom nije drukčije određeno, oslobođeni su od dužnosti svjedočenja: 1) bračni drug okrivljenog i lice sa kojim okrivljeni živi u vanbračnoj zajednici; 2) srodnici okrivljenog po krvi u pravoj liniji, srodnici u pobočnoj liniji zaključno do trećeg stepena, kao i srodnici po tazbini zaključno do drugog stepena; 3) usvojenik i usvojilac okrivljenog, odnosno hranilac i hranjenik okrivljenog.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_109_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Oslobađanje od dužnosti svjedočenja iz <ref href="/zkp#art_109_st_1">stava 1 ovog člana</ref> ne odnosi se na lica koja su pozvana da svjedoče u postupku za krivično djelo zapuštanje i zlostavljanje maloljetnog lica, nasilje u porodici ili u porodičnoj zajednici i rodoskrvnjenje, kad je oštećeno maloljetno lice.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_109_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Organ koji vodi postupak dužan je da lica iz <ref href="/zkp#art_109_st_1">stava 1 ovog člana</ref>, prije njihovog saslušanja ili čim sazna za njihov odnos sa okrivljenim, upozori da ne moraju svjedočiti. Lica iz <ref href="/zkp#art_109_st_1">stava 1 ovog člana</ref> će se upozoriti da će se njihov iskaz, ako odluče da svjedoče, bez obzira na njihovu kasniju odluku, moći koristiti kao dokaz. Upozorenje i odgovor se unose u zapisnik.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_109_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>Ako ima osnova da lice uskrati svjedočenje u odnosu na jednog od okrivljenih, to lice je oslobođeno dužnosti svjedočenja i u odnosu na druge okrivljene, ako se njegov iskaz, prema prirodi stvari, ne može ograničiti samo na druge okrivljene.</p>
+            </content>
+          </paragraph>
+        </section>
+        <section eId="art_111">
+          <num>Član 111</num>
+          <heading>Pozivanje svjedoka</heading>
+          <paragraph eId="art_111_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Ako ovim zakonikom nije drukčije određeno, svjedok ima pravo da ne odgovara na pojedina pitanja kad je vjerovatno da bi time izložio sebe ili lica iz <ref href="/zkp#art_109_st_1">člana 109 stav 1 ovog zakonika</ref> teškoj sramoti ili krivičnom gonjenju, o čemu je sud dužan da ga upozna.</p>
+            </content>
+          </paragraph>
+        </section>
+        <section eId="art_113">
+          <num>Član 113</num>
+          <heading>Saslušanje i suočenje svjedoka</heading>
+          <paragraph eId="art_113_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Svjedoci se saslušavaju odvojeno i bez prisustva ostalih svjedoka. Svjedok je dužan da odgovore daje usmeno.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_113_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Svjedok će se prethodno opomenuti da je dužan da govori istinu i da ne smije ništa prećutati i upozoriti da davanje lažnog iskaza predstavlja krivično djelo. Svjedok će se upoznati sa pravom iz <ref href="/zkp#art_111_st_1">člana 111 ovog zakonika</ref>, što će se unijeti u zapisnik.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_113_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Nakon opomene i upozorenja iz <ref href="/zkp#art_113_st_2">stava 2 ovog člana</ref>, svjedok će se pitati za identifikacione podatke i njegov odnos sa okrivljenim i oštećenim. Svjedok će se upozoriti da je dužan da o promjeni adrese ili boravišta obavijesti sud.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_113_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>Prilikom saslušanja maloljetnog lica, naročito ako je ono oštećeno krivičnim djelom, postupiće se obazrivo da saslušanje ne bi štetno uticalo na psihičko stanje maloljetnog lica. Ako je to potrebno, saslušanje maloljetnog lica obaviće se uz pomoć psihologa ili drugog stručnog lica.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_113_st_5">
+            <num>st. 5</num>
+            <content>
+              <p>Oštećeni koji je žrtva krivičnog djela protiv polne slobode, kao i dijete koje se saslušava kao svjedok ima pravo da svjedoči u odvojenoj prostoriji pred sudijom i zapisničarem, a tužilac, okrivljeni i branilac da gledaju prenos iz druge prostorije, uz mogućnost da postavljaju pitanja svjedoku, o čemu ih je sud dužan poučiti, što se zapisnički konstatuje.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_113_st_6">
+            <num>st. 6</num>
+            <content>
+              <p>Sud može odlučiti da se odredba <ref href="/zkp#art_113_st_5">stava 5 ovog člana</ref> primijeni i na svjedočenje oštećenog koji je žrtva diskriminacije.</p>
+            </content>
+          </paragraph>
+        </section>
+        <section eId="art_115">
+          <num>Član 115</num>
+          <heading>Saslušanje svjedoka preko tumača</heading>
+          <paragraph eId="art_115_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Ako je potrebno da se utvrdi da li svjedok prepoznaje određeno lice ili predmet koje je opisao, pokazaće mu se to lice, zajedno sa drugim njemu nepoznatim licima čije su osnovne osobine slične onima kakve je opisao, odnosno taj predmet, zajedno sa predmetima iste ili slične vrste, nakon čega će se zatražiti da izjavi da li lice ili predmet prepoznaje sa sigurnošću i da, u slučaju potvrdnog odgovora, na prepoznato lice ili predmet ukaže.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_115_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>U izviđaju i istrazi prepoznavanje sprovodi državni tužilac koji će prethodno opomenuti i upozoriti svjedoka u skladu sa <ref href="/zkp#art_113_st_2">članom 113 stav 2 ovog zakonika</ref>.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_115_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Radnja prepoznavanja će se obaviti tako da lice koje je predmet prepoznavanja ne može da vidi svjedoka, niti svjedok može da vidi to lice prije nego što se pristupi prepoznavanju.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_115_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>O toku prepoznavanja i izjavama svjedoka sastavlja se zapisnik i sačinjava zajednički foto snimak lica ili predmeta koji se prepoznaju, a po potrebi se može izvršiti i audio ili audiovizuelno snimanje.</p>
+            </content>
+          </paragraph>
+        </section>
+      </chapter>
+      <chapter eId="chap_5">
+        <num>GLAVA PETA</num>
+        <heading>DOKAZNE RADNJE</heading>
+        <section eId="art_154">
+          <num>Član 154</num>
+          <heading>Vještačenje poslovnih knjiga</heading>
+          <paragraph eId="art_154_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Tjelesni pregled osumnjičenog ili okrivljenog preduzeće se i bez njegovog pristanka, ako je potrebno da se utvrde činjenice važne za krivični postupak. Tjelesni pregled drugih lica može se, bez njihovog pristanka, preduzeti samo onda ako se mora utvrditi da li se na njihovom tijelu nalazi određen trag ili posljedica krivičnog djela.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_154_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Uzimanju uzorka krvi i preduzimanju drugih medicinskih radnji koje su po pravilu medicinske nauke neophodne radi analize i utvrđivanja drugih činjenica važnih za krivični postupak može se pristupiti i bez pristanka lica koje se pregleda, izuzev ako bi zbog toga nastupila šteta po njegovo zdravlje.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_154_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Uzorci pljuvačke radi sprovođenja DNK analize mogu se uzimati kad je to potrebno u cilju identifikacije lica ili u cilju poređenja sa drugim biološkim tragovima i drugim DNK profilima, i za to nije potreban pristanak lica niti se ta radnja može smatrati opasnom po zdravlje.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_154_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>Ako se lica iz <ref href="/zkp#art_154_st_1">stava 1 ovog člana</ref> protive sprovođenju radnji iz <ref href="/zkp#art_154_st_1">stavova 1</ref>, <ref href="/zkp#art_154_st_2">2</ref> i <ref href="/zkp#art_154_st_3">3 ovog člana</ref>, one se mogu preduzeti samo po naredbi nadležnog suda.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_154_st_5">
+            <num>st. 5</num>
+            <content>
+              <p>Zabranjeno je prema osumnjičenom, okrivljenom ili svjedoku primjenjivati medicinske intervencije ili im davati sredstva kojima bi se uticalo na njihovu svijest i volju prilikom davanja iskaza.</p>
+            </content>
+          </paragraph>
+        </section>
+      </chapter>
+      <chapter eId="chap_6">
+        <num>GLAVA ŠESTA</num>
+        <heading>POSEBNE MJERE ZA PRIKUPLJANJE DOKAZA</heading>
+        <section eId="art_157">
+          <num>Član 157</num>
+          <heading>Krivična djela za koja mogu biti naređene mjere tajnog nadzora</heading>
+          <paragraph eId="art_157_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Ako postoje osnovi sumnje da je neko lice samo ili u saučesništvu sa drugim izvršilo, vrši ili se priprema za vršenje krivičnih djela iz <ref href="/zkp#art_158">člana 158 ovog zakonika</ref>, a na drugi način se ne mogu prikupiti dokazi ili bi njihovo prikupljanje zahtijevalo nesrazmjerni rizik ili ugrožavanje života ljudi, prema tim licima mogu se odrediti mjere tajnog nadzora: 1) tajni nadzor i snimanje telefonskih razgovora i drugih komunikacija na daljinu; 2) presrijetanje, prikupljanje i snimanje računarskih podataka; 3) ulazak u prostorije radi tajnog fotografisanja i video i audio snimanja u prostorijama; 4) tajno praćenje i video i audio snimanje lica i predmeta.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_157_st_2">
+            <num>st. 2</num>
+            <content>
+              <p>Ako postoje osnovi sumnje da je neko lice samo ili u saučesništvu sa drugim izvršilo, vrši ili se priprema za vršenje krivičnih djela iz <ref href="/zkp#art_158">člana 158 ovog zakonika</ref>, a okolnosti slučaja ukazuju da će se sa najmanje povreda prava na privatnost prikupiti dokazi, prema tim licima mogu se odrediti mjere tajnog nadzora: 1) simulirana kupovina predmeta ili lica i simulirano davanje i primanje mita; 2) pružanje simuliranih poslovnih usluga ili sklapanje simuliranih pravnih poslova; 3) osnivanje fiktivnog privrednog društva; 4) praćenje prevoza i isporuke predmeta krivičnog djela; 5) snimanje razgovora uz prethodno informisanje i saglasnost jednog od učesnika razgovora; 6) angažovanje prikrivenog isljednika i saradnika.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_157_st_3">
+            <num>st. 3</num>
+            <content>
+              <p>Mjere iz <ref href="/zkp#art_157_st_1">stava 1 tačka 1</ref> ovog člana, mogu se narediti i prema licu za koje postoje osnovi sumnje da izvršiocu ili od izvršioca krivičnih djela iz <ref href="/zkp#art_158">člana 158 ovog zakonika</ref> prenosi poruke u vezi sa krivičnim djelom, odnosno da se izvršilac služi njihovim priključcima na telefon ili drugim sredstvima za elektronsku komunikaciju.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_157_st_4">
+            <num>st. 4</num>
+            <content>
+              <p>U slučaju kad se ne raspolaže saznanjima o identitetu učinioca krivičnog djela, mjera iz <ref href="/zkp#art_157_st_1">stava 1 tačka 4 ovog člana</ref>, može se odrediti prema predmetu krivičnog djela.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_157_st_5">
+            <num>st. 5</num>
+            <content>
+              <p>Protiv lica koja izvršavaju mjere iz <ref href="/zkp#art_157_st_2">stava 2 tač. 1, 2, 5 i 6 ovog člana</ref>, neće se preduzeti krivično gonjenje za radnje koje predstavljaju pomaganje u vršenju krivičnog djela, ako se to čini radi obezbjeđivanja podataka i dokaza za uspješno vođenje krivičnog postupka.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_157_st_6">
+            <num>st. 6</num>
+            <content>
+              <p>Izvršenje mjera iz <ref href="/zkp#art_157_st_2">stava 2 tač. 1, 2, 5 i 6 ovog člana</ref>, ne smije da predstavlja podstrekavanje na izvršenje krivičnog djela.</p>
+            </content>
+          </paragraph>
+          <paragraph eId="art_157_st_7">
+            <num>st. 7</num>
+            <content>
+              <p>Mjere iz <ref href="/zkp#art_157_st_1">stava 1 tač. 1 do 4</ref> ovog člana i mjere iz <ref href="/zkp#art_157_st_2">stava 2 tač. 5 i 6 ovog člana</ref> mogu se narediti i prema licu za kojim je raspisana međunarodna potjernica ili prema trećem licu za koje postoji osnov sumnje daje u direktnom kontaktu sa licem za kojim je raspisana međunarodna potjernica.</p>
+            </content>
+          </paragraph>
+        </section>
+        <section eId="art_158">
+          <num>Član 158</num>
+          <heading>Nadležnost za određivanje i trajanje mjera tajnog nadzora</heading>
+          <paragraph eId="art_158_st_1">
+            <num>st. 1</num>
+            <content>
+              <p>Mjere iz <ref href="/zkp#art_157">člana 157 ovog zakonika</ref> mogu se narediti za krivična djela: 1) za koja se može izreći kazna zatvora u trajanju od deset godina ili teža kazna; 2) sa elementima organizovanog kriminala; 3) prouzrokovanje lažnog stečaja, zloupotreba procjene, primanje mita, davanje mita, protivzakoniti uticaj, zloupotreba službenog položaja, kao i zloupotreba ovlašćenja u privredi i prevara u službi za koja je propisana kazna zatvora od osam godina ili teža kazna; 4) otmica, iznuda, ucjena, posredovanje u vršenju prostitucije, prikazivanje pornografskog materijala, zelenaštvo, utaja poreza i doprinosa, krijumčarenje, nedozvoljeno prerađivanje, odlaganje i skladištenje opasnih materija, napad na službeno lice u vršenju službene dužnosti, sprječavanje dokazivanja, kriminalno udruživanje, odavanje tajnih podataka, povreda tajnosti postupka, pranje novca, falsifikovanje novca, falsifikovanje isprave, falsifikovanje službene isprave, pravljenje, nabavljanje i davanje drugom sredstava i materijala za falsifikovanje, učestvovanje u stranim oružanim formacijama, dogovaranje ishoda takmičenja, nedozvoljeno držanje oružja i eksplozivnih materija, nedozvoljen prelaz državne granice i krijumčarenje ljudi; 5) protiv bezbjednosti računarskih podataka.</p>
+            </content>
+          </paragraph>
+        </section>
+      </chapter>
+      </body>
+  </act>
+</akomaNtoso>

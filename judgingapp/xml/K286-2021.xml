@@ -33,20 +33,18 @@
                 <party id="mTesic" refersTo="#mTesic" as="#judge">Momirki Tešić</party>, uz učešće
                 <party id="jMarkovic" refersTo="#jMarkovic" as="#clerk">Jelene Marković</party> u krivičnom postupku protiv okrivljene
                 <party id="rS" refersTo="#rS" as="#defendant">R. S.</party> zbog krivičnog djela nasilje u porodici ili porodičnoj zajednici iz
-                <ref href="/krivicni#art_220">čl. 220 st. 2 u vezi st. 1 Krivičnog zakonika Crne Gore</ref>, koji se vodi po optužnom predlogu
-                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Kotoru Kt. br. 582/21 od 17.09.2021</organization> godine nakon održanog glavnog i javnog
-                pretresa dana <date date="2021-12-02">02.12.2021</date> godine u prisustvu savjetnice iz ODT Kotor
-                <party id="kB" refersTo="#kB">K. B.</party>, okrivljene
-                <party id="rS" refersTo="#rS">R. S.</party> i svjedoka–oštećenog
+                <ref href="/krivicni#art_220_st_2">čl. 220 st. 2</ref> u vezi stava 1 Krivičnog zakonika Crne Gore, koji se vodi po
+                optužnom predlogu <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Kotoru Kt. br. 582/21 od 17.09.2021. godine</organization> nakon održanog glavnog i javnog
+                pretresa dana <date date="2021-12-02">02.12.2021.</date> godine u prisustvu savjetnice iz ODT Kotor
+                <party id="kB" refersTo="#kB">K. B.</party>, okrivljene <party id="rS" refersTo="#rS">R. S.</party> i svjedoka–oštećenog
                 <party id="rM" refersTo="#rM" as="#victim">R. M.</party>, istog dana donio je i javno objavio sledeću
             </p>
 
-            <p><b>P R E S U D U</b></p>
+            <p><b>PRESUDU</b></p>
 
             <p>
-                Okrivljena
-                <party id="rS" refersTo="#rS">R. S.</party>, od oca P. i majke S., rođene S., rođena <date date="1981-11-07">07.11.1981.</date> godine u K., sa prebivalištem u P.i, u
-                naselju K., državljanka C.G., udata, majka desetoro djece, nepismena, nije završila školu, nezaposlena, lošeg
+                Okrivljena <party id="rS" refersTo="#rS">R. S.</party>, od oca P. i majke S., rođene S., rođena <date date="1981-11-07">07.11.1981.</date> godine u K., sa prebivalištem u P.i, u
+                naselju K., državljanka Crne Gore, udata, majka desetoro djece, nepismena, nije završila školu, nezaposlena, lošeg
                 imovnog stanja, ranije neosuđivana, protiv koje se ne vodi krivični postupak za neko drugo krivično djelo
             </p>
 
@@ -55,8 +53,7 @@
             <p>
                 Što je dana <date date="2021-09-09">09. septembra 2021.</date> godine, oko 15,00 časova, u Budvi, u naselju Dubovica, svjesna svoga
                 djela, čije je izvršenje htjela, znajući da je isto zabranjeno, primjenom grubog nasilja narušila tjelesni
-                integritet člana svoje porodice – oštećenog
-                <party id="rM" refersTo="#rM">R. M.</party>, sa kojim živi u istom porodičnom domaćinstvu, koristeći pri
+                integritet člana svoje porodice – oštećenog <party id="rM" refersTo="#rM" as="#victim">R. M.</party>, sa kojim živi u istom porodičnom domaćinstvu, koristeći pri
                 tom sredstvo podobno da tijelo teško povrijedi ili zdravlje teško naruši, na način što ga je metalnom drškom
                 od molerskog valjka, udarila više puta po rukama i nogama, kojom prilikom mu je nanijela lake tjelesne
                 povrede u vidu više krvnih podliva u predjelu desne butine, nagnječenja u predjelu unutrašnje strane desne
@@ -66,7 +63,7 @@
 
             <p>
                 čime je izvršila krivično djelo nasilje u porodici ili u porodičnoj zajednici iz
-                <ref href="/krivicni#art_220">čl. 220 st. 2 u vezi st. 1 Krivičnog zakonika Crne Gore</ref>.
+                <ref href="/krivicni#art_220_st_2">čl. 220 st. 2</ref> u vezi st. 1 Krivičnog zakonika Crne Gore.
             </p>
 
             <list>
@@ -74,12 +71,16 @@
                     <p>
                         Pa joj sud na osnovu naprijed navedene krivično pravne odredbe te odredbi
                         <ref href="/krivicni#art_3">čl. 3</ref>, <ref href="/krivicni#art_5">5</ref>, <ref href="/krivicni#art_8">8</ref>, <ref href="/krivicni#art_13">13</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_36">36</ref>, <ref href="/krivicni#art_42">42</ref>, <ref href="/krivicni#art_45">45</ref>, <ref href="/krivicni#art_46">46</ref>, <ref href="/krivicni#art_52">52</ref>, <ref href="/krivicni#art_53">53</ref> i <ref href="/krivicni#art_54">54</ref> KZ-a CG i <ref href="/zkp#art_368">čl. 368</ref> i <ref href="/zkp#art_374">374</ref> ZKP-a izriče
+                    </p>
+                </item>
+                <item id="odluka2">
+                    <p>
                         <b>USLOVNU OSUDU</b><br/>
                         Kojom utvrđuje kaznu zatvora u trajanju od 30 dana i istovremeno određuje da se kazna neće izvršiti
                         ukoliko okrivljena za vrijeme od jedne godine od dana pravosnažnosti presude ne učini novo krivično djelo.
                     </p>
                 </item>
-                <item id="odluka2">
+                <item id="odluka3">
                     <p>
                         Dužna je okrivljena na ime sudskog paušala uplatiti iznos od <amount value="20.00">20 eura</amount>, i na ime troškova krivičnog
                         postupka iznos od <amount value="49.50">49,50 eura</amount>, u korist budžeta Crne Gore, na žiro račun broj 832-16-52 u roku od mjesec dana

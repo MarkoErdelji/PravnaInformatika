@@ -8,23 +8,18 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 
-# Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# Load environment variables
 os.environ["OPENAI_API_KEY"] = "PLACEHOLDER"
 
-# Initialize OpenAI model
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
-# Load example XMLs
 example_dir = pathlib.Path("./presude/primer")
 example_files = list(example_dir.glob("*.xml")) if example_dir.exists() else []
 examples = [file.read_text(encoding="utf-8") for file in example_files]
 example_text = "\n\n".join(examples) if examples else "<akomaNtoso><judgment><judgmentBody/></judgment></akomaNtoso>"
 
-# Conclusion example for references
 conclusion_example = """
 Na osnovu
     <ref href="/krivicni#art_220">čl. 220 st. 2 Krivičnog zakonika Crne Gore</ref>
@@ -33,31 +28,39 @@ Na osnovu
 sud izriče...
 """
 
-# Enhanced prompt for strict Akoma Ntoso compliance
 prompt = ChatPromptTemplate.from_messages([
     ("system",
-     """Ti si ekspert za Akoma Ntoso 3.0 XML standard za pravne dokumente. Tvoj zadatak je da konvertuješ sudsku presudu u validan Akoma Ntoso 3.0 XML dokument sa strukturom <akomaNtoso><judgment>. XML mora biti sintaksno ispravan i u skladu sa standardom (http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17). Obavezno:
+     """Ti si ekspert za Akoma Ntoso 3.0 XML standard za pravne dokumente. Tvoj zadatak je da konvertuješ sudsku presudu u validan Akoma Ntoso 3.0 XML dokument sa strukturom <akomaNtoso><judgment>. XML mora biti sintaksno ispravan i u skladu sa standardom[](http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17). Obavezno:
 
 - Ispuni SAMO XML, bez dodatnih komentara, objašnjenja ili code blockova (npr. ```xml).
 - Počni sa XML deklaracijom i namespace atributima:
-  ```xml
   <?xml version="1.0" encoding="UTF-8"?>
   <akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd"
               xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
-  ```
-- Koristi <meta> sekciju za metapodatke (FRBRWork, references sa TLCOrganization, TLCPerson, TLCRole).
-- U <judgmentBody> uključi <p> za tekst, <list> za odluke, i <item> za pojedinačne odluke.
+- Koristi <meta> sekciju za metapodatke (FRBRWork sa FRBRauthor za sud, FRBRdate za datum presude, FRBRtitle za broj slučaja, FRBRcountry za 'ME'). U references uključi TLCOrganization za sud i tužilaštvo, TLCPerson za sudiju, zapisničara, okrivljenog, oštećenog itd., TLCRole za uloge.
+- U <judgmentBody> strukturiši sadržaj detaljno:
+  - Prvi <p> za uvodni deo (sud, sudija, zapisničar, optužni predlog, datum pretresa, prisutni).
+  - <p><b>PRESUDU</b></p> za glavni naslov presude.
+  - <p> za opis okrivljenog (Okrivljeni: ..).
+  - <p><b>Kriv je</b></p> za izjavu o krivici.
+  - <p> za opis djela (Što je: ...).
+  - <p> za referencu na krivično djelo (-čime je učinio...).
+  - !IMPORTANT: Odvoj pasuse da imaju smisla kasnije za prikazivanje, treba da budu celine i popravi reci koje nise pravopisne naprimer P R E S U D U u PRESUDU i sve ostale gde nadjes pravopisne
+  greske moras obavezno da popravis, takodje pazi da nemas duplikata referenci osoba.
 - Koristi <ref> tagove za članke zakona (npr. <ref href="/krivicni#art_220">čl. 220 st. 1</ref>).
-- Održavaj hijerarhiju i semantiku tagova (<party>, <organization>, <date>, <amount>, <time>).
-- Svi tekstualni sadržaji moraju biti XML-escaped (npr. & -> &amp;).
-- Ako je u tekstu prisutan naslov poput "PRESUDU" ili "Kriv je", označi ga sa <b> unutar <p> taga.
+- Održavaj hijerarhiju i semantiku tagova (<party> za osobe, <organization> za institucije, <date> za datume, <amount> za iznose, <time> za trajanje).
+- Svi tekstualni sadržaji moraju biti XML-escaped (npr. & -> &amp;, < -> &lt;).
+- Ako je tekst u formatu koji sugeriše podnaslov (npr. velika slova, bold), označi ga sa <b> unutar <p>.
 
 Primeri Akoma Ntoso XML dokumenata:
 {examples}
 
 Primer zaključka sa referencama:
 {conclusion_example}
+
+- Ako se u tekstu pojavljuje "st. X" nakon člana, obavezno uključi u <ref> tag (npr. <ref href="/krivicni#art_220_st_2">čl. 220 st. 2</ref>).
+- Ako nema "st.", referenciraj samo član.
 
 Na osnovu sledećeg teksta, generiši Akoma Ntoso XML. Ponavljam: vrati SAMO validan XML bez code blockova ili dodatnog teksta:
 """.format(examples=example_text, conclusion_example=conclusion_example)
@@ -67,11 +70,9 @@ Na osnovu sledećeg teksta, generiši Akoma Ntoso XML. Ponavljam: vrati SAMO val
 
 def clean_xml_response(xml_string: str) -> str:
     """Remove code block markers and extra whitespace from LLM response."""
-    # Remove ```xml or ``` markers
     xml_string = re.sub(r'^```xml\s*\n|```$', '', xml_string, flags=re.MULTILINE)
-    # Remove leading/trailing whitespace
+    xml_string = re.sub(r'^```|```$', '', xml_string, flags=re.MULTILINE)
     xml_string = xml_string.strip()
-    # Ensure XML declaration
     if not xml_string.startswith('<?xml'):
         xml_string = (
             '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -87,13 +88,14 @@ def validate_xml(xml_string: str) -> bool:
     """Validate if the generated XML is well-formed and Akoma Ntoso compliant."""
     try:
         tree = ET.fromstring(xml_string)
-        # Check for Akoma Ntoso structure
         if tree.tag != '{http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17}akomaNtoso':
             logger.error("XML does not have <akomaNtoso> as root")
             return False
         if not tree.find('.//{http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17}judgment'):
             logger.error("XML does not contain <judgment> element")
             return False
+        if not tree.find('.//{http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17}list'):
+            logger.warning("No <list> element found, but proceeding")
         return True
     except ET.ParseError as e:
         logger.error(f"Invalid XML generated: {e}")
@@ -106,12 +108,12 @@ def convert_presuda(text: str, file_path: pathlib.Path):
         result = chain.invoke({"input": text})
         xml_content = clean_xml_response(result.content)
 
-        # Validate XML
+        logger.debug(f"Raw LLM response: {result.content}")
+
         if not validate_xml(xml_content):
             logger.error(f"Skipping {file_path}: Generated XML is not well-formed or not Akoma Ntoso compliant")
             return
 
-        # Save to file
         output_dir = pathlib.Path("./judgingapp/xml")
         output_dir.mkdir(parents=True, exist_ok=True)
         output_path = output_dir / f"{file_path.stem}.xml"

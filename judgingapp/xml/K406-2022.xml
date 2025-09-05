@@ -35,14 +35,14 @@
                 <party id="rCetkovic" refersTo="#rCetkovic" as="#judge">Rade Ćetković</party>, uz učešće
                 <party id="eKraje" refersTo="#eKraje" as="#clerk">Edine Kraje</party> kao zapisničara, u krivičnom postupku protiv okrivljenog
                 <party id="jDj" refersTo="#jDj" as="#defendant">J. Đ.</party>, zbog krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
-                <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>, nakon pravosnažnosti rješenja o usvajanju sporazuma o priznanju krivice, zaključenog između državne tužiteljke
+                <ref href="/krivicni/art_220_st_1">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>, nakon pravosnažnosti rješenja o usvajanju sporazuma o priznanju krivice, zaključenog između državne tužiteljke
                 <party id="rV" refersTo="#rV">R. V.</party>, okrivljenog
                 <party id="jDj" refersTo="#jDj">J. Đ.</party> i njegovog branioca advokata
                 <party id="dK" refersTo="#dK" as="#lawyer">D. K.</party>, dana
                 <date date="2022-10-13">13.10.2022.</date> godine, donio je 
             </p>
 
-            <p><b>P R E S U D U</b></p>
+            <p><b>PRESUDU</b></p>
 
             <p>
                 Okrivljeni:
@@ -56,20 +56,19 @@
                 <party id="dDj" refersTo="#dDj" as="#victim">Đ. D.</party>, na način što je rukama uhvatio za kosu, a zatim je snažno povukao za istu, te je oborio na tlo, nanoseći joj tako laku tjelesnu povredu u vidu oguljotine u predjelu desnog skočnog zgloba,
             </p>
             <p>
-                -čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>.
+                -čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni/art_220_st_1">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>.
             </p>
             
             <list>
                 <item id="odluka1">
                     <p>
-                        Pa sud okrivljenom zbog navedenog krivičnog djela primjenom <ref href="/krivicni#art_4">čl. 4 st. 2</ref>, <ref href="/krivicni#art_42">čl. 42 st. 1</ref>, <ref href="/krivicni#art_52">čl. 52 st. 2</ref>, <ref href="/krivicni#art_53">čl. 53</ref> i <ref href="/krivicni#art_54">čl. 54</ref> Krivičnog zakonika Crne Gore i <ref href="/zkp#art_226">čl. 226</ref>, <ref href="/zkp#art_229">čl. 229</ref>, <ref href="/zkp#art_303">čl. 303</ref> i <ref href="/zkp#art_374">čl. 374</ref> Zakonika o krivičnom postupku izriče,
-                        <b>USLOVNU OSUDU</b><br/>
-                        Kojom mu utvrđuje kaznu zatvora u trajanju od 3 (tri) mjeseca, i istovremeno određuje da se ona neće izvršiti, ako okrivljeni u roku od <time duration="P1Y">1 (jedne) godine</time> po pravosnažnosti presude ne učini novo krivično djelo.
+                        Pa sud okrivljenom zbog navedenog krivičnog djela primjenom <ref href="/krivicni/art_4_st_2">čl. 4 st. 2</ref>, <ref href="/krivicni/art_42_st_1">čl. 42 st. 1</ref>, <ref href="/krivicni/art_52_st_2">čl. 52 st. 2</ref>, <ref href="/krivicni/art_53">čl. 53</ref> i <ref href="/krivicni/art_54">čl. 54</ref> Krivičnog zakonika Crne Gore i <ref href="/zkp/art_226">čl. 226</ref>, <ref href="/zkp/art_229">čl. 229</ref>, <ref href="/zkp/art_303">čl. 303</ref> i <ref href="/zkp/art_374">čl. 374</ref> Zakonika o krivičnom postupku izriče,
                     </p>
                 </item>
                 <item id="odluka2">
                     <p>
-                        Obavezuje se okrivljeni da plati na ime troškova krivičnog postupka iznos od <amount value="90.50">90,50 €</amount>, u roku od <time duration="P15D">15 dana</time> po pravosnažnosti presude, pod prijetnjom izvršenja.
+                        <b>USLOVNU OSUDU</b><br/>
+                        Kojom mu utvrđuje kaznu zatvora u trajanju od 3 (tri) mjeseca, i istovremeno određuje da se ona neće izvršiti, ako okrivljeni u roku od 1 (jedne) godine po pravosnažnosti presude ne učini novo krivično djelo. Obavezuje se okrivljeni da plati na ime troškova krivičnog postupka iznos od <amount value="90.50">90,50 €</amount>, u roku od <time duration="P15D">15 dana</time> po pravosnažnosti presude, pod prijetnjom izvršenja.
                     </p>
                 </item>
             </list>

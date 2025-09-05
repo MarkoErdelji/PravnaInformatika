@@ -8,7 +8,7 @@
                 <FRBRWork>
                     <FRBRauthor>OSNOVNI SUD U PODGORICI</FRBRauthor>
                     <FRBRdate date="2021-03-01">2021-03-01</FRBRdate>
-                    <FRBRtitle>K. br. 93/21</FRBRtitle>
+                    <FRBRtitle>K.br. 93/21</FRBRtitle>
                     <FRBRcountry>ME</FRBRcountry>
                 </FRBRWork>
             </identification>
@@ -35,63 +35,90 @@
                 <party id="zJovovic" refersTo="#zJovovic" as="#judge">Željki Jovović</party>, uz učešće samostalne referentinje
                 <party id="dRajkovic" refersTo="#dRajkovic" as="#clerk">Danijele Rajković</party> kao zapisničarke, u krivičnom predmetu protiv okrivljenog
                 <party id="vV" refersTo="#vV" as="#defendant">V. V.</party>, zbog krivičnog djela nasilje u porodici ili porodičnoj zajednici iz
-                <ref href="/krivicni#art_220">čl. 220 st. 2 u vezi st. 1 i st. 5 Krivičnog zakonika Crne Gore</ref>, rješavajući po optužnom predlogu
-                <organization id="odt" refersTo="#odt">ODT-a u Podgorici Kt. br. 93/21 od 03. 02. 2021. godine</organization>, nakon završenog glavnog, javnog pretresa održanog dana
-                <date date="2021-03-01">01. 03. 2021.</date> godine, u prisustvu državne tužiteljke
+                <ref href="/krivicni#art_220_st_2">čl. 220 st. 2</ref> u vezi st. 1 i st. 5 Krivičnog zakonika Crne Gore, rješavajući po optužnom predlogu
+                <organization id="odt" refersTo="#odt">ODT-a u Podgorici Kt. br. 93/21 od 03.02.2021. godine</organization>, nakon završenog glavnog, javnog pretresa
+                održanog dana <date date="2021-03-01">01.03.2021.</date> godine, u prisustvu državne tužiteljke
                 <party id="mJankovic" refersTo="#mJankovic">Maje Janković</party>, okrivljenog
-                <party id="vV" refersTo="#vV">V. V.</party> i njegovog branioca adv.
+                <party id="vV" refersTo="#vV">V. V.</party> i njegovog branioca advokata
                 <party id="bS" refersTo="#bS" as="#lawyer">B. S.</party>, donio je i istog dana javno objavio,
             </p>
 
-            <p><b>P R E S U D U</b></p>
+            <p><b>PRESUDU</b></p>
 
             <p>
                 Okrivljeni:
-                <party id="vV" refersTo="#vV">V. V.</party>, JMB xxxxxxxxxxxxx, od oca Đ. i majke L., rođene Č., rođen xx. xx. 19xx. godine u Podgorici, sa prebivalištem u Podgorici - D. C. bb, crnogorski državljanin, razumije crnogorski jezik, koji je i njegov jezik, automehaničar, nezaposlen, oženjen, otac troje djece, pismen, završio srednju školu, lošeg imovnog stanja, osuđivan presudom Višeg suda u Podgorici K. br. 165/07 od 18.05.2009. godine zbog krivičnog djela neovlašćena proizvodnja, držanje i stavljanje u promet opojnih droga iz
-                <ref href="/krivicni#art_300">čl. 300 st. 1 Krivičnog zakonika Crne Gore</ref> (2 godine zatvora), protiv kojeg se ne vodi postupak za drugo krivično djelo, u pritvoru po rješenju sudije za istragu Osnovnog suda u Podgorici Kri. br. 33/21 od 19. januara 2021. godine, koji se računa od
-                <date date="2021-01-16">16. januara 2021.</date> godine od 17:15 časova kao dana i časa lišenja slobode.
+                <party id="vV" refersTo="#vV">V. V.</party>, JMB xxxxxxxxxxxxx, od oca Đ. i majke L., rođene Č., rođen xx. xx. 19xx. godine u Podgorici, sa
+                prebivalištem u Podgorici - D. C. bb, crnogorski državljanin, razumije crnogorski jezik, koji je i njegov jezik,
+                automehaničar, nezaposlen, oženjen, otac troje djece, pismen, završio srednju školu, lošeg imovnog stanja,
+                osuđivan presudom Višeg suda u Podgorici K. br. 165/07 od 18.05.2009. godine zbog krivičnog djela
+                neovlašćena proizvodnja, držanje i stavljanje u promet opojnih droga iz <ref href="/krivicni#art_300_st_1">čl. 300 st. 1</ref> Krivičnog zakonika Crne
+                Gore (2 godine zatvora), protiv kojeg se ne vodi postupak za drugo krivično djelo, u pritvoru po rješenju sudije
+                za istragu Osnovnog suda u Podgorici Kri. br. 33/21 od 19. januara 2021. godine, koji se računa od <date date="2021-01-16">16.01.2021.</date> godine od 17:15 časova kao dana i časa lišenja slobode.
             </p>
 
             <p><b>Kriv je</b></p>
 
             <p>
                 Što je: Dana <date date="2021-01-16">16. januara 2021.</date> godine, oko 12:30 časova u porodičnoj kući vlasništvo oštećenog
-                <party id="dV" refersTo="#dV" as="#victim">Đ. V.</party>, koja se nalazi u mjestu D. C., Glavni grad Podgorica, svjestan svog djela čije je izvršenje htio znajući da je isto zabranjeno, prekršio mjere zaštite od nasilja u porodici koje mu je odredio na osnovu zakona Sud za prekršaje u Podgorici rješenjem PP br. 7844/20-9 od 22. jula 2020. godine, kojim su mu izrečene dvije zaštitne mjere i to zabrana približavanja svom ocu i zabrana uznemiravanja i uhođenja svog oca
-                <party id="dV" refersTo="#dV">Đ. V.</party> u trajanju od 6 mjeseci i primjenom grubog nasilja narušio tjelesni i duševni integritet člana svoje porodice-oca
-                <party id="dV" refersTo="#dV">Đ. V.</party>, na način što je došao u stan oštećenog i dok su se nalazili u dnevnom boravku prišao mu i čupajući ga za garderobu sabio u ćošak, za koje vrijeme ga je desnom rukom jako stezao za vrat, nakon čega je iščupao sat od struje i dok je sat bio pod naponom oštećenog snažno gurao rukama u predjelu tijela ka tom satu, nakon čega je uzeo kuhinjski nož, koji se nalazio u sudoperi i sa istim najprije probušio dušek na krevetu, a potom držeći nož ispred glave oštećenog pokušao da ga povrijedi, pa kako je oštećeni uspio da mu istrgne nož iz ruku, okrivljeni mu je zaprijetio da će ga ubiti ukoliko pozove policiju, nakon čega je uzeo mobilni telefon oštećenog i polomio ga, a zatim izašao iz stana, a kada je oštećeni krenuo ka izlaznim vratima kako bi potražio pomoć, ponovo se pojavio okrivljeni i oštećenog uhvatio za kosu i gurnuo ga, usljed čega je oštećeni pao na pločice, kojom prilikom je zadobio laku tjelesnu povredu u vidu oguljotine u predjelu lijeve potkoljenice dužine oko 2 cm i usljed čega je kod oštećenog došlo do narušenosti njegovog duševnog integriteta jakog inteziteta,
+                <party id="dV" refersTo="#dV" as="#victim">Đ. V.</party>, koja se nalazi u mjestu D. C., Glavni grad Podgorica, svjestan svog djela čije je izvršenje htio znajući da je isto zabranjeno,
+                prekršio mjere zaštite od nasilja u porodici koje mu je odredio na osnovu zakona Sud za prekršaje u Podgorici
+                rješenjem PP br. 7844/20-9 od 22. jula 2020. godine, kojim su mu izrečene dvije zaštitne mjere i to zabrana
+                približavanja svom ocu i zabrana uznemiravanja i uhođenja svog oca
+                <party id="dV" refersTo="#dV">Đ. V.</party> u trajanju od 6 mjeseci i primjenom
+                grubog nasilja narušio tjelesni i duševni integritet člana svoje porodice-oca
+                <party id="dV" refersTo="#dV">Đ. V.</party>, na način što je došao u stan
+                oštećenog i dok su se nalazili u dnevnom boravku prišao mu i čupajući ga za garderobu sabio u ćošak, za koje
+                vrijeme ga je desnom rukom jako stezao za vrat, nakon čega je iščupao sat od struje i dok je sat bio pod
+                naponom oštećenog snažno gurao rukama u predjelu tijela ka tom satu, nakon čega je uzeo kuhinjski nož,
+                koji se nalazio u sudoperi i sa istim najprije probušio dušek na krevetu, a potom držeći nož ispred glave
+                oštećenog pokušao da ga povrijedi, pa kako je oštećeni uspio da mu istrgne nož iz ruku, okrivljeni mu je
+                zaprijetio da će ga ubiti ukoliko pozove policiju, nakon čega je uzeo mobilni telefon oštećenog i polomio ga, a
+                zatim izašao iz stana, a kada je oštećeni krenuo ka izlaznim vratima kako bi potražio pomoć, ponovo se
+                pojavio okrivljeni i oštećenog uhvatio za kosu i gurnuo ga, usljed čega je oštećeni pao na pločice, kojom
+                prilikom je zadobio laku tjelesnu povredu u vidu oguljotine u predjelu lijeve potkoljenice dužine oko 2 cm i
+                usljed čega je kod oštećenog došlo do narušenosti njegovog duševnog integriteta jakog inteziteta,
             </p>
             <p>
-                - čime je izvršio produženo krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 2 u vezi sa st. 1 i st. 5 Krivičnog zakonika Crne Gore</ref>.
+                - čime je izvršio produženo krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220_st_2">čl. 220 st. 2</ref> u vezi sa st.
+                1 i st. 5 Krivičnog zakonika Crne Gore.
             </p>
             
             <list>
                 <item id="odluka1">
                     <p>
-                        Pa ga sud na osnovu <ref href="/krivicni#art_4">čl. 4. st. 2</ref>, <ref href="/krivicni#art_32">čl. 32</ref>, <ref href="/krivicni#art_36">čl. 36</ref>, <ref href="/krivicni#art_42">čl. 42 st. 1</ref> i <ref href="/krivicni#art_51">čl. 51 Krivičnog zakonika Crne Gore</ref>, te <ref href="/zkp#art_226">čl. 226</ref>, <ref href="/zkp#art_229">229</ref> i <ref href="/zkp#art_374">374 Zakonika o krivičnom postupku</ref>,
+                        Pa ga sud na osnovu <ref href="/krivicni#art_4_st_2">čl. 4. st. 2</ref>, <ref href="/krivicni#art_32">čl. 32</ref>, <ref href="/krivicni#art_36">čl. 36</ref>, <ref href="/krivicni#art_42_st_1">čl. 42 st. 1</ref> i <ref href="/krivicni#art_51">čl. 51</ref> Krivičnog zakonika Crne Gore, te <ref href="/zkp#art_226">čl. 226</ref>, <ref href="/zkp#art_229">229</ref> i
+                        <ref href="/zkp#art_374">374</ref> Zakonika o krivičnom postupku,
                     </p>
                 </item>
                 <item id="odluka2">
                     <p>
-                        <b>O S U Đ U J E</b><br/>
-                        Na kaznu zatvora u trajanju od 5 (pet) mjeseci, u koju kaznu mu se uračunava vrijeme provedeno u pritvoru počev od <date date="2021-01-16">16. 01. 2021.</date> godine od 17:15 časova, pa nadalje.
+                        <b>OSUĐUJE</b><br/>
+                        Na kaznu zatvora u trajanju od 5 (pet) mjeseci, u koju kaznu mu se uračunava vrijeme provedeno u pritvoru
+                        počev od <date date="2021-01-16">16.01.2021.</date> godine od 17:15 časova, pa nadalje.
                     </p>
                 </item>
                 <item id="odluka3">
                     <p>
-                        Na osnovu <ref href="/krivicni#art_77a">čl. 77a Krivičnog zakonika Crne Gore</ref> sud okrivljenom izriče
+                        Na osnovu <ref href="/krivicni#art_77a">čl. 77a</ref> Krivičnog zakonika Crne Gore sud okrivljenom izriče
                     </p>
                 </item>
                 <item id="odluka4">
                     <p>
                         <b>MJERU BEZBJEDNOSTI</b><br/>
-                        ZABRANA PRIBLIŽAVANjA<br/>
-                        Okrivljenom <party id="vV" refersTo="#vV">V. V.</party> zabranjuje se približavanje oštećenom <party id="dV" refersTo="#dV">Đ. V.</party>.<br/>
-                        Ova mjera će trajati 1 (jednu) godinu po pravosnažnosti presude, s tim da se vrijeme provedeno u zatvoru ne uračunava u vrijeme trajanja ove mjere.
+                        ZABRANA PRIBLIŽAVANJA<br/>
+                        Okrivljenom <party id="vV" refersTo="#vV">V. V.</party> zabranjuje se približavanje oštećenom <party id="dV" refersTo="#dV" as="#victim">Đ. V.</party>.
+                        Ova mjera će trajati 1 (jednu) godinu po pravosnažnosti presude, s tim da se vrijeme provedeno u zatvoru ne
+                        uračunava u vrijeme trajanja ove mjere.
                     </p>
                 </item>
                 <item id="odluka5">
                     <p>
-                        Sud okrivljenog oslobađa plaćanja troškova postupka iz <ref href="/zkp#art_226">čl. 226 st. 2 tač. 6 i 9 Zakonika o krivičnom postupku</ref> u ukupnom iznosu od <amount value="244.50">244,50 eura</amount>, imajući u vidu da je okrivljeni lice lošeg imovnog stanja, bez zaposlenja, pa bi plaćanjem troškova bilo dovedeno pitanje izdržavanja okrivljenog i lica koja je on dužan da izdržava. Obavezuje se okrivljeni da na ime troškova krivičnog postupka plati ovom sudu troškove koji se odnose na nagradu za rad branioca postavljenog po službenoj dužnosti, o čemu će sud odlučiti posebnim rješenjem shodno <ref href="/zkp#art_227">čl. 227 st. 2 Zakonika o krivičnom postupku</ref>.
+                        Sud okrivljenog oslobađa plaćanja troškova postupka iz <ref href="/zkp#art_226_st_2_tac_6">čl. 226 st. 2 tač. 6</ref> i <ref href="/zkp#art_226_st_2_tac_9">9</ref> Zakonika o krivičnom postupku
+                        u ukupnom iznosu od <amount value="244.50">244,50 eura</amount>, imajući u vidu da je okrivljeni lice lošeg imovnog stanja, bez zaposlenja, pa
+                        bi plaćanjem troškova bilo dovedeno pitanje izdržavanja okrivljenog i lica koja je on dužan da izdržava.
+                        Obavezuje se okrivljeni da na ime troškova krivičnog postupka plati ovom sudu troškove koji se odnose na
+                        nagradu za rad branioca postavljenog po službenoj dužnosti, o čemu će sud odlučiti posebnim rješenjem
+                        shodno <ref href="/zkp#art_227_st_2">čl. 227 st. 2</ref> Zakonika o krivičnom postupku.
                     </p>
                 </item>
             </list>

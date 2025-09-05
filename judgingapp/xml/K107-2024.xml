@@ -6,9 +6,9 @@
         <meta>
             <identification source="#court">
                 <FRBRWork>
-                    <FRBRauthor>OSNOVNI SUD U BIJELOM POLjU</FRBRauthor>
+                    <FRBRauthor>OSNOVNI SUD U BIJELOM POLJU</FRBRauthor>
                     <FRBRdate date="2024-07-30">2024-07-30</FRBRdate>
-                    <FRBRtitle>K. br. 107/24</FRBRtitle>
+                    <FRBRtitle>K.br. 107/24</FRBRtitle>
                     <FRBRcountry>ME</FRBRcountry>
                 </FRBRWork>
             </identification>
@@ -26,23 +26,21 @@
                 <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
                 <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
                 <TLCRole eId="lawyer" href="/ontology/role/lawyer" showAs="Branilac"/>
-                <TLCRole eId="victim" href="/ontology/role/victim" showAs="Oštećena"/>
+                <TLCRole eId="victim" href="/ontology/role/victim" showAs="Oštećeni"/>
             </references>
         </meta>
 
         <judgmentBody>
             <p>
-                <organization id="os" refersTo="#os">OSNOVNI SUD U BIJELOM POLjU</organization>, sudija
+                <organization id="os" refersTo="#os">OSNOVNI SUD U BIJELOM POLJU</organization>, sudija
                 <party id="bRadovic" refersTo="#bRadovic" as="#judge">Bojana Radović</party>, uz učešće samostalnog referenta - zapisničara
                 <party id="kLjesnjak" refersTo="#kLjesnjak" as="#clerk">Koviljke Lješnjak</party>, postupajući po optužnom predlogu
-                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Bijelom Polju</organization>,
-                protiv okrivljenog
-                <party id="mZ" refersTo="#mZ" as="#defendant">M. Ž.</party> iz M., zbog krivičnog djela nasilje u porodici ili u porodičnoj
-                zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 1 i 3 Krivičnog zakonika Crne Gore</ref> u odnosu na oštećenu
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Bijelom Polju</organization>, protiv okrivljenog
+                <party id="mZ" refersTo="#mZ" as="#defendant">M. Ž.</party>, zbog krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
+                <ref href="/krivicni#art_220_st_1">čl. 220 st. 1</ref> i <ref href="/krivicni#art_220_st_3">3</ref> Krivičnog zakonika Crne Gore u odnosu na oštećenu
                 <party id="aZ" refersTo="#aZ" as="#victim">A. Ž.</party> i krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
-                <ref href="/krivicni#art_220">čl. 220 st. 3 Krivičnog zakonika Crne Gore</ref> u odnosu na oštećenog
-                <party id="dV" refersTo="#dV" as="#victim">D. V.</party>, nakon održanog glavnog i
-                javnog pretresa, u prisustvu savjetnika u
+                <ref href="/krivicni#art_220_st_3">čl. 220 st. 3</ref> u odnosu na oštećenog
+                <party id="dV" refersTo="#dV" as="#victim">D. V.</party>, nakon održanog glavnog i javnog pretresa, u prisustvu savjetnika u
                 <organization id="odt" refersTo="#odt">Osnovnom državnom tužilaštvu u Bijelom Polju</organization>,
                 <party id="ljJ" refersTo="#ljJ">Lj. J.</party>, okrivljenog
                 <party id="mZ" refersTo="#mZ">M. Ž.</party> i branioca okrivljenog advokata
@@ -50,72 +48,54 @@
                 <date date="2024-07-30">30.07.2024.</date> godine, donio je i objavio,
             </p>
 
-            <p><b>P R E S U D U</b></p>
+            <p><b>PRESUDU</b></p>
 
             <p>
-                Okrivljeni
-                <party id="mZ" refersTo="#mZ">Ž. M.</party> JMB ..., od oca M. i majke R., rođene K., rođen .... godine u B. P., sa prebivalištem u mjestu P.,
+                Okrivljeni:
+                <party id="mZ" refersTo="#mZ">Ž. M.</party>, JMB ..., od oca M. i majke R., rođene K., rođen .... godine u B. P., sa prebivalištem u mjestu P.,
                 opština M., državljanin Crne Gore, po zanimanju električar, pismen, sa završenom srednjom školom, oženjen,
                 otac jednog maloljetnog djeteta, dobrog imovnog stanja, neosuđivan
             </p>
 
-            <p><b>K R I V J E</b></p>
+            <p><b>Kriv je</b></p>
 
             <p>
-                Zato što je:
-                Dana <date date="2024-07-08">08.07.2024.</date> godine oko 20,00 h u mjestu P., opština M., u porodičnoj kući, svjestan svog djela čije je
+                Zato što je: Dana <date date="2024-07-08">08.07.2024.</date> godine oko 20,00 h u mjestu P., opština M., u porodičnoj kući, svjestan svog djela čije je
                 izvršenje htio, znajući da je isto zabranjeno, lako tjelesno povrijedio člana svoje porodice – suprugu
                 <party id="aZ" refersTo="#aZ">Ž. A.</party>, te prema istoj više puta primijenio nasilje i istoj drskim i bezobzirnim ponašanjem ugrozio duševni integritet i
                 drskim i bezobzirnim ponašanjem ugrozio tjelesni integritet člana svoje porodice - tasta oštećenog
-                <party id="dV" refersTo="#dV">V. D.</party> na način što je, kada je opštećena
-                <party id="aZ" refersTo="#aZ">Ž. A.</party> ušla u porodičnu kuću, utrčao za njom u dnevnu sobu govoreći joj: "ko si
-                ti da meni baciš ključeve" i sa obje ruke je uhvatio za vrat, da bi zatim, kada se oštećena otrgla od njega, u
-                trenutku dok je pokušavala da otvori prozor prišao do oštećene, počupao je za vrat i ruke, a zatim svojim
-                rukama stegao oštećenu u predjelu nadlaktica obje ruke, te odgurnuo o zid, da bi potom dok se nalazila u
-                spavaćoj sobi istu ponovo uhvatio za vrat i stezao, a zatim čupao za kosu, nakon čega je pustio i izašao
-                napolje, da bi nakon što je došao oštećeni
-                <party id="dV" refersTo="#dV">D. V.</party>, okrivljeni ušao u spavaću sobu i na pitanje oštećenog drsko
-                odgovorio: "šta, šta je bilo", a zatim prišao oštećenoj koja je sjedjela na ležaju, ponovo istu sa obje ruke
-                uhvatio za vrat, a zatim je otvorenim šakama udarao u predjelu glave, nakon čega je oštećeni
-                <party id="dV" refersTo="#dV">D. V.</party> povukao za
-                ruku okrivljenog, kada mu se isti obratio riječima: "šta je, šta hoćeš", a zatim oštećenog
-                <party id="dV" refersTo="#dV">D. V.</party> rukom uhvatio
-                za vrat, kojom prilikom je oštećena
-                <party id="aZ" refersTo="#aZ">Ž. A.</party> zadobila laku tjelesnu povredu u vidu oguljotine i crvenila u predjelu
-                vrata, ogrebotina i crvenila u zaušnim predjelima, te oguljotine u lijevom jagodičnom predjelu, a kojom
-                prilikom je kod iste konstatovano i crvenilo u predjelu obje nadlaktice,
+                <party id="dV" refersTo="#dV">V. D.</party> na način što je, kada je oštećena
+                <party id="aZ" refersTo="#aZ">Ž. A.</party> ušla u porodičnu kuću, utrčao za njom u dnevnu sobu govoreći joj: "ko si ti da meni baciš ključeve" i sa obje ruke je uhvatio za vrat, da bi zatim, kada se oštećena otrgla od njega, u trenutku dok je pokušavala da otvori prozor prišao do oštećene, počupao je za vrat i ruke, a zatim svojim rukama stegao oštećenu u predjelu nadlaktica obje ruke, te odgurnuo o zid, da bi potom dok se nalazila u spavaćoj sobi istu ponovo uhvatio za vrat i stezao, a zatim čupao za kosu, nakon čega je pustio i izašao napolje, da bi nakon što je došao oštećeni
+                <party id="dV" refersTo="#dV">D. V.</party>, okrivljeni ušao u spavaću sobu i na pitanje oštećenog drsko odgovorio: "šta, šta je bilo", a zatim prišao oštećenoj koja je sjedjela na ležaju, ponovo istu sa obje ruke uhvatio za vrat, a zatim je otvorenim šakama udarao u predjelu glave, nakon čega je oštećeni
+                <party id="dV" refersTo="#dV">D. V.</party> povukao za ruku okrivljenog, kada mu se isti obratio riječima: "šta je, šta hoćeš", a zatim oštećenog
+                <party id="dV" refersTo="#dV">D. V.</party> rukom uhvatio za vrat, kojom prilikom je oštećena
+                <party id="aZ" refersTo="#aZ">Ž. A.</party> zadobila laku tjelesnu povredu u vidu oguljotine i crvenila u predjelu vrata, ogrebotina i crvenila u zaušnim predjelima, te oguljotine u lijevom jagodičnom predjelu, a kojom prilikom je kod iste konstatovano i crvenilo u predjelu obje nadlaktice,
             </p>
             <p>
-                -čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 1 i 3 Krivičnog zakonika Crne Gore</ref> u odnosu na
-                oštećenu <party id="aZ" refersTo="#aZ">Ž. A.</party> i krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 3 Krivičnog zakonika Crne Gore</ref> u odnosu na
-                oštećenog <party id="dV" refersTo="#dV">V. D.</party>,
+                -čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220_st_1">čl. 220 st. 1</ref> i <ref href="/krivicni#art_220_st_3">3</ref> Kz u odnosu na oštećenu
+                <party id="aZ" refersTo="#aZ">Ž. A.</party> i krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220_st_3">čl. 220 st. 3</ref> Kz u odnosu na oštećenog
+                <party id="dV" refersTo="#dV">V. D.</party>,
             </p>
-            
             <list>
                 <item id="odluka1">
                     <p>
-                        Pa mu sud, primjenom navedenih zakonskih propisa, te <ref href="/krivicni#art_2">čl. 2</ref>, <ref href="/krivicni#art_4">4</ref>, <ref href="/krivicni#art_5">5</ref>, <ref href="/krivicni#art_13">13</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_36">36</ref>, <ref href="/krivicni#art_42">42</ref>, <ref href="/krivicni#art_51">51</ref>, <ref href="/krivicni#art_52">52</ref>, <ref href="/krivicni#art_53">53</ref> i <ref href="/krivicni#art_54">54</ref> Krivičnog zakonika Crne Gore, te <ref href="/zkp#art_226">čl. 226</ref>, <ref href="/zkp#art_229">229</ref> i <ref href="/zkp#art_374">374</ref> Zakonika o krivičnom postupku Crne Gore, utvrđuje i to:<br/>
-                        -za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 1 i 3 Krivičnog zakonika Crne Gore</ref>, u odnosu na oštećenu <party id="aZ" refersTo="#aZ">Ž. A.</party>, kaznu zatvora od pet mjeseci;<br/>
-                        -za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 3 Krivičnog zakonika Crne Gore</ref>, u odnosu na oštećenog <party id="dV" refersTo="#dV">V. D.</party>, kaznu zatvora od tri mjeseca;
+                        Pa mu sud, primjenom navedenih zakonskih propisa, te <ref href="/krivicni#art_2">čl. 2</ref>, <ref href="/krivicni#art_4">4</ref>, <ref href="/krivicni#art_5">5</ref>, <ref href="/krivicni#art_13">13</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_36">36</ref>, <ref href="/krivicni#art_42">42</ref>, <ref href="/krivicni#art_51">51</ref>, <ref href="/krivicni#art_52">52</ref>, <ref href="/krivicni#art_53">53</ref> i <ref href="/krivicni#art_54">54</ref> Kz, te <ref href="/zkp#art_226">čl. 226</ref>, <ref href="/zkp#art_229">229</ref> i <ref href="/zkp#art_374">374</ref> Zakonika o krivičnom postupku Crne Gore, utvrđuje i to:<br/>
+                        -za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220_st_1">čl. 220 st. 1</ref> i <ref href="/krivicni#art_220_st_3">3</ref> Kz, u odnosu na oštećenu
+                        <party id="aZ" refersTo="#aZ">Ž. A.</party>, kaznu zatvora od pet mjeseci;<br/>
+                        -za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220_st_3">čl. 220 st. 3</ref> Kz, u odnosu na oštećenog
+                        <party id="dV" refersTo="#dV">V. D.</party>, kaznu zatvora od tri mjeseca;
                     </p>
                 </item>
                 <item id="odluka2">
                     <p>
-                        Pa istom, na osnovu člana <ref href="/krivicni#art_48">48</ref> Krivičnog zakonika, i <b>z r i č e</b><br/>
+                        Pa istom, na osnovu <ref href="/krivicni#art_48">člana 48</ref> Krivičnog zakonika, izriče
                         <b>USLOVNU OSUDU</b><br/>
-                        Kojom mu utvrđuje jedinstvenu kaznu zatvora od sedam mjeseci i istovremeno određuje da se ista neće
-                        izvršiti, ukoliko okrivljeni u roku od dvije godine, po pravosnažnosti presude, ne izvrši novo krivično djelo, s
-                        tim što će mu se u izrečenu kaznu zatvora u slučaju opoziva uslovne osude, kao izdržano uračunati vrijeme
-                        provedeno u pritvoru od <date date="2024-07-09">09.07.2024.</date> godine do <date date="2024-07-30">30.07.2024.</date> godine.
+                        Kojom mu utvrđuje jedinstvenu kaznu zatvora od sedam mjeseci i istovremeno određuje da se ista neće izvršiti, ukoliko okrivljeni u roku od dvije godine, po pravosnažnosti presude, ne izvrši novo krivično djelo, s tim što će mu se u izrečenu kaznu zatvora u slučaju opoziva uslovne osude, kao izdržano uračunati vrijeme provedeno u pritvoru od <date date="2024-07-09">09.07.2024.</date> godine do <date date="2024-07-30">30.07.2024.</date> godine.
                     </p>
                 </item>
                 <item id="odluka3">
                     <p>
-                        Okrivljeni se obavezuje da plati ovom sudu na ime paušala iznos od <amount value="30.00">30,00€</amount>, kao i da plati na ime troškova
-                        vještačenja iznos od <amount value="60.50">60,50 €</amount> i troškove krivičnog postupka nastale angažovanjem branioca po službenoj
-                        dužnosti, o čemu će se odlučiti posebnim rješenjem, a koje iznose će uplatiti na račun Budžeta CG broj: 832-
-                        151-35, u roku od <time duration="P15D">15 dana</time>, po pravosnažnosti presude, pod prijetnjom prinudnog izvršenja, s tim što je
-                        dokaze o uplati, dužan dostaviti krivičnoj pisarnici ovog suda.
+                        Okrivljeni se obavezuje da plati ovom sudu na ime paušala iznos od <amount value="30.00">30,00€</amount>, kao i da plati na ime troškova vještačenja iznos od <amount value="60.50">60,50 €</amount> i troškove krivičnog postupka nastale angažovanjem branioca po službenoj dužnosti, o čemu će se odlučiti posebnim rješenjem, a koje iznose će uplatiti na račun Budžeta CG broj: 832-151-35, u roku od <time duration="P15D">15 dana</time>, po pravosnažnosti presude, pod prijetnjom prinudnog izvršenja, s tim što je dokaze o uplati, dužan dostaviti krivičnoj pisarnici ovog suda.
                     </p>
                 </item>
             </list>

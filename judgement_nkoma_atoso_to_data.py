@@ -7,17 +7,12 @@ from langchain_core.prompts import ChatPromptTemplate
 import json
 import logging
 
-# Set up logging
 logging.basicConfig(filename='parsing_log.txt', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Set OpenAI API key
-os.environ["OPENAI_API_KEY"] = "PLACEHOLDER"
 
-# Define folders and output file
 xml_folder = Path("./judgingapp/xml")
 output_csv = Path("./judgingapp/src/main/resources/verdicts.csv")
 
-# Define headers for verdicts.csv (English standardized)
 verdict_headers = [
     "id", "Court", "Case Number", "Judge", "Prosecutor", "Defendant",
     "Criminal Offense", "Injury Types", "Verdict Type", "Applied Provisions",
@@ -28,10 +23,8 @@ verdict_headers = [
     "Use of Weapon", "Number of Victims", "Number of Defendants", "Aware of Illegality"
 ]
 
-# Define namespace
 ns = {"akn": "http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17"}
 
-# Function to safely get attribute
 def safe_get(element, attr):
     try:
         return element.get(attr, "") if element is not None else ""
@@ -39,7 +32,6 @@ def safe_get(element, attr):
         logging.error(f"Error getting attribute {attr}: {e}")
         return ""
 
-# Function to safely get text
 def safe_text(element):
     try:
         return element.text.strip() if element is not None and element.text else ""
@@ -47,7 +39,6 @@ def safe_text(element):
         logging.error(f"Error getting text: {e}")
         return ""
 
-# Function to extract metadata and text from XML
 def extract_metadata_and_text(xml_path):
     try:
         tree = etree.parse(xml_path)
@@ -103,7 +94,6 @@ def extract_metadata_and_text(xml_path):
         print(f"Error parsing {xml_path}: {e}")
         return {}, ""
 
-# Function to build the prompt with standardized schema
 def build_prompt():
     return ChatPromptTemplate.from_messages([
         ("system", """You are an expert in legal documents in Serbian language. Analyze the court verdict text and extract the following information in JSON format, using the Montenegrin Criminal Code (Article 220). Keep metadata like names, locations, dates in their original form. Translate and standardize facts of the case to English, using predefined categories where possible. If information is missing, return empty string ('') for strings, false for booleans, 0 for integers. Return only a valid JSON object according to the following schema:
@@ -162,13 +152,11 @@ def process_case(xml_path, llm, prompt):
         print(f"ERROR: Invalid JSON for {xml_path.name}")
         parsed = {}
 
-    # General post-processing for abbreviations
     if parsed.get("Criminal Offense"):
         parsed["Criminal Offense"] = parsed["Criminal Offense"].replace("stav", "st.").replace("čl.", "cl.")
     if parsed.get("Applied Provisions"):
         parsed["Applied Provisions"] = parsed["Applied Provisions"].replace("stav", "st.").replace("čl.", "cl.")
 
-    # Standardize Injury Types based on keywords
     if parsed.get("Injury Types"):
         injuries = parsed["Injury Types"].lower()
         injury_set = set()
@@ -178,7 +166,6 @@ def process_case(xml_path, llm, prompt):
             injury_set.add("severe")
         parsed["Injury Types"] = ",".join(sorted(injury_set)) if injury_set else ""
 
-    # Standardize Victim Relationship based on keywords
     if parsed.get("Victim Relationship"):
         rel = parsed["Victim Relationship"].lower()
         if any(word in rel for word in ["spouse", "supruga", "suprug", "wife", "husband"]):
@@ -192,7 +179,6 @@ def process_case(xml_path, llm, prompt):
         else:
             parsed["Victim Relationship"] = "other"
 
-    # Standardize Violence Nature based on keywords
     if parsed.get("Violence Nature"):
         vio = parsed["Violence Nature"].lower()
         if any(word in vio for word in ["rough violence", "grubo nasilje"]):
@@ -204,7 +190,6 @@ def process_case(xml_path, llm, prompt):
         else:
             parsed["Violence Nature"] = ""
 
-    # Standardize Execution Means based on keywords
     if parsed.get("Execution Means"):
         means = parsed["Execution Means"].lower()
         if any(word in means for word in ["pesnica", "hand", "fist", "šaka"]):
@@ -220,12 +205,10 @@ def process_case(xml_path, llm, prompt):
         else:
             parsed["Execution Means"] = "other"
 
-    # Set Use of Weapon based on Execution Means
     if parsed.get("Execution Means"):
         means = parsed["Execution Means"].lower()
         parsed["Use of Weapon"] = any(word in means for word in ["weapon", "tool"])
 
-    # Standardize Defendant Status based on keywords
     if parsed.get("Defendant Status"):
         status = parsed["Defendant Status"].lower()
         status_parts = []
@@ -237,7 +220,6 @@ def process_case(xml_path, llm, prompt):
             status_parts.append("previously convicted")
         parsed["Defendant Status"] = ", ".join(status_parts) if status_parts else ""
 
-    # Default Verdict Type if not in enum
     if parsed.get("Verdict Type") not in ["PRISON", "SUSPENDED", "ACQUITTED", "DETENTION"]:
         if "odbija se optužba" in text.lower():
             parsed["Verdict Type"] = "ACQUITTED"
@@ -248,15 +230,12 @@ def process_case(xml_path, llm, prompt):
         else:
             parsed["Verdict Type"] = ""
 
-    # Set Aware of Illegality (default to true unless text indicates otherwise)
     if parsed.get("Aware of Illegality") is None:
         parsed["Aware of Illegality"] = True
     else:
-        # Check for explicit indications of unawareness in the text
         if any(phrase in text.lower() for phrase in ["nesvjestan", "nisu znali", "not aware", "unaware"]):
             parsed["Aware of Illegality"] = False
 
-    # Combine metadata and facts
     verdict = {
         "id": meta.get("id", ""),
         "Court": meta.get("Court", ""),
@@ -292,12 +271,10 @@ def process_case(xml_path, llm, prompt):
 
     return verdict
 
-# Main function to process all files
 def run_pipeline():
     llm = ChatOpenAI(model="gpt-4o", temperature=0)
     prompt = build_prompt()
 
-    # Create directory if not exists
     output_csv.parent.mkdir(parents=True, exist_ok=True)
 
     with open(output_csv, "w", encoding="utf-8", newline="") as csv_file:

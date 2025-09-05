@@ -2,12 +2,14 @@ package com.pravnainfo.judgingapp.cbr;
 
 import es.ucm.fdi.gaia.jcolibri.exception.NoApplicableSimilarityFunctionException;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
+import lombok.Getter;
 
 import java.util.List;
 
 public class TabularSimilarity implements LocalSimilarityFunction {
 
     private double[][] matrix;
+    @Getter
     private List<String> categories;
 
     public TabularSimilarity(List<String> categories) {

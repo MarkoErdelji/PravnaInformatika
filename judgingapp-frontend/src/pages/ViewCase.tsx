@@ -74,9 +74,7 @@ export default function ViewCase() {
       </Stack>
 
       {/* Judgment Viewer */}
-      <Paper sx={{ p: 3, borderRadius: 3, boxShadow: 3, mb: 2 }}>
-        <JudgmentViewer xmlString={xmlString} />
-      </Paper>
+      <JudgmentViewer xmlString={xmlString} />
 
       {/* Metadata Panel */}
       <Button

@@ -15,11 +15,12 @@
             <references>
                 <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.Ulcinj" showAs="Osnovni sud u Ulcinju"/>
                 <TLCPerson eId="dAmir" href="/ontology/person/dAmir" showAs="Đokaj Amir"/>
-                <TLCPerson eId="sMilena" href="/ontology/person/sMilena" showAs="Škrelja Milena"/>
+                <TLCPerson eId="mSkrelja" href="/ontology/person/mSkrelja" showAs="Milena Škrelja"/>
                 <TLCPerson eId="rJunuz" href="/ontology/person/rJunuz" showAs="Redžović Junuz"/>
-                <TLCPerson eId="hArmend" href="/ontology/person/hArmend" showAs="Husić Armend"/>
-                <TLCPerson eId="rTidza" href="/ontology/person/rTidza" showAs="Redžović Tidža"/>
-                <TLCPerson eId="rEdona" href="/ontology/person/rEdona" showAs="Redžović Edona"/>
+                <TLCPerson eId="aHusic" href="/ontology/person/aHusic" showAs="Armend Husić"/>
+                <TLCPerson eId="tRedzovic" href="/ontology/person/tRedzovic" showAs="Tidža Redžović"/>
+                <TLCPerson eId="eRedzovic" href="/ontology/person/eRedzovic" showAs="Edona Redžović"/>
+                <TLCPerson eId="rPerovic" href="/ontology/person/rPerovic" showAs="Rasim Perović"/>
                 <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
                 <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
                 <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
@@ -31,56 +32,40 @@
         <judgmentBody>
             <p>
                 <organization id="os" refersTo="#os">OSNOVNI SUD U ULCINJU</organization>, sudija
-                <party id="dAmir" refersTo="#dAmir" as="#judge">Đokaj Amir</party>, uz učešće samostalne referentkinje
-                <party id="sMilena" refersTo="#sMilena" as="#clerk">Škrelja Milene</party> kao zapisničarke, u krivičnom predmetu protiv okrivljenog
-                <party id="rJunuz" refersTo="#rJunuz" as="#defendant">Redžović Junuza</party>, koga brani branilac advokat
-                <party id="hArmend" refersTo="#hArmend" as="#lawyer">Husić Armend</party> iz Ulcinja, zbog krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
-                <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>, nakon pravosnažnosti rješenja o usvajanju sporazuma o priznanju krivice, dana
-                <date date="2019-02-21">21.02.2019.</date> godine donio je
+                <party id="dAmir" refersTo="#dAmir" as="#judge">Đokaj Amir</party>, uz učešće
+                <party id="mSkrelja" refersTo="#mSkrelja" as="#clerk">Milene Škrelja</party> kao zapisničarke, u krivičnom predmetu protiv okrivljenog
+                <party id="rJunuz" refersTo="#rJunuz" as="#defendant">Redžović Junuz</party>, koga brani advokat
+                <party id="aHusic" refersTo="#aHusic" as="#lawyer">Armend Husić</party> iz Ulcinja, zbog krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
+                <ref href="/krivicni/art_220_st_1">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>, nakon pravosnažnosti rješenja o usvajanju sporazuma o priznanju krivice, dana
+                <date date="2019-02-21">21.02.2019.</date> godine, donio je 
             </p>
 
-            <p><b>P R E S U D U</b></p>
+            <p><b>PRESUDU</b></p>
 
             <p>
                 Okrivljeni:
-                <party id="rJunuz" refersTo="#rJunuz">REDŽOVIĆ JUNUZ</party>, JMBG: 0101972223027, od oca Fadila i majke Nazire, rođene Nasradinović,
-                rođen <date date="1972-01-01">01.01.1972.</date> godine u Klezni, sa prebivalištem u Ulcinju, selo Klezna, državljanin Crne Gore, oženjen, otac
-                četvoro djece, od kojih je dvoje maloljetnih, pismen, sa završenom srednjom školom, srednjeg imovnog
-                stanja, neosuđivan.
+                <party id="rJunuz" refersTo="#rJunuz">Redžović Junuz</party>, JMBG: 0101972223027, od oca Fadila i majke Nazire, rođene Nasradinović, rođen <date date="1972-01-01">01.01.1972.</date> godine u Klezni, sa prebivalištem u Ulcinju, selo Klezna, državljanin Crne Gore, oženjen, otac četvoro djece, od kojih je dvoje maloljetnih, pismen, sa završenom srednjom školom, srednjeg imovnog stanja, neosuđivan.
             </p>
 
             <p><b>Kriv je</b></p>
 
             <p>
-                Što je: Dana <date date="2018-11-23">23.11.2018.</date> godine, oko 15,30 časova u Ulcinju, u neposrednoj blizini kružnog toka Vladimirskih Kruta,
-                primjenom grubog nasilja narušio duševni integritet članova svoje porodice, supruge
-                <party id="rTidza" refersTo="#rTidza" as="#victim">Tidže</party> i kćerke
-                <party id="rEdona" refersTo="#rEdona" as="#victim">Edone</party>, svjestan svoga djela, čije je izvršenje htio, na način što se približio vozilu u kojem su bile oštećene, te je
-                najprije počupao zadnju i prednju registarsku tablicu PMV marke Pežo 206, a zatim je uhvatio rukom bravu
-                vozila pokušavajući da otvori vozilo, međutim, kako je vidio da je brava zaključana počeo je da viče supruzi
-                <party id="rTidza" refersTo="#rTidza">Tidži</party> ”izadji napolje, izadji iz auta”, nakon čega je počeo sa predmetnim tablicama da lupa po vozilu, a zatim
-                se popeo na haubu istog i udario rukom i tablicama u prednje vjetrobransko staklo, te kako je nastavio da
-                udara u šoferšajbnu oštećena je pokrenula vozilo krećući se usporeno nekih 100 metara, što osumnjičenog
-                nije spriječavalo da udara po vozilu i nakon što je oštećena zakočila isti je pao na asfaltu, da bi ponovo
-                krenuo prema vozilu počupajući jedan brisač i istim je nastavio da udara po vozilu rukama i brisačem i
-                upućuje im riječi ”izlazi iz auta, to je moje auto”, dok je u trenutku kada je svjedok Perović Rasim istog
-                pokušao da udalji od PMV vikao ”puštite me da ih razbijem”,
+                Što je: Dana <date date="2018-11-23">23.11.2018.</date> godine, oko 15,30 časova u Ulcinju, u neposrednoj blizini kružnog toka Vladimirskih Kruta, primjenom grubog nasilja narušio duševni integritet članova svoje porodice, supruge <party id="tRedzovic" refersTo="#tRedzovic" as="#victim">Tidže</party> i kćerke <party id="eRedzovic" refersTo="#eRedzovic" as="#victim">Edone</party>, svjestan svoga djela, čije je izvršenje htio, na način što se približio vozilu u kojem su bile oštećene, te je najprije počupao zadnju i prednju registarsku tablicu PMV marke Pežo 206, a zatim je uhvatio rukom bravu vozila pokušavajući da otvori vozilo, međutim, kako je vidio da je brava zaključana počeo je da viče supruzi <party id="tRedzovic" refersTo="#tRedzovic">Tidži</party> "izađi napolje, izađi iz auta", nakon čega je počeo sa predmetnim tablicama da lupa po vozilu, a zatim se popeo na haubu istog i udario rukom i tablicama u prednje vjetrobransko staklo, te kako je nastavio da udara u šoferšajbnu oštećena je pokrenula vozilo krećući se usporeno nekih 100 metara, što osumnjičenog nije spriječavalo da udara po vozilu i nakon što je oštećena zakočila isti je pao na asfaltu, da bi ponovo krenuo prema vozilu počupajući jedan brisač i istim je nastavio da udara po vozilu rukama i brisačem i upućuje im riječi "izlazi iz auta, to je moje auto", dok je u trenutku kada je svjedok <party id="rPerovic" refersTo="#rPerovic">Rasim Perović</party> istog pokušao da udalji od PMV vikao "puštite me da ih razbijem",
             </p>
             <p>
-                - čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>,
+                - čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni/art_220_st_1">čl. 220 st. 1 Krivičnog zakonika Crne Gore</ref>,
             </p>
             
             <list>
                 <item id="odluka1">
                     <p>
-                        Pa sud okrivljenom primjenom citiranog zakonskog propisa i <ref href="/krivicni#art_4">čl. 4 st. 2</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_36">36</ref>, <ref href="/krivicni#art_42">42</ref>, <ref href="/krivicni#art_52">52</ref>, <ref href="/krivicni#art_53">53</ref> i <ref href="/krivicni#art_54">54</ref> Krivičnog zakonika, te <ref href="/zkp#art_226">čl. 226</ref>, <ref href="/zkp#art_229">229</ref> i <ref href="/zkp#art_239">239</ref> Zakonika o krivičnom postupku, i <b>z r i č e</b>
+                        Pa sud okrivljenom primjenom citiranog zakonskog propisa i <ref href="/krivicni/art_4_st_2">čl. 4 st. 2</ref>, <ref href="/krivicni/art_15">15</ref>, <ref href="/krivicni/art_36">36</ref>, <ref href="/krivicni/art_42">42</ref>, <ref href="/krivicni/art_52">52</ref>, <ref href="/krivicni/art_53">53</ref> i <ref href="/krivicni/art_54">54</ref> Krivičnog zakonika, te <ref href="/zkp/art_226">čl. 226</ref>, <ref href="/zkp/art_229">229</ref> i <ref href="/zkp/art_239">239</ref> Zakonika o krivičnom postupku, izriče
                     </p>
                 </item>
                 <item id="odluka2">
                     <p>
                         <b>USLOVNU OSUDU</b><br/>
-                        Kojom mu utvrđuje kaznu zatvora u trajanju od 5 (pet) mjeseci i istovremeno određuje da se ista neće izvršiti,
-                        ako okrivljeni u roku od <time duration="P2Y">2 (dvije) godine</time> po pravosnažnosti presude ne učini neko novo krivično djelo.
+                        Kojom mu utvrđuje kaznu zatvora u trajanju od 5 (pet) mjeseci i istovremeno određuje da se ista neće izvršiti, ako okrivljeni u roku od <time duration="P2Y">2 (dvije) godine</time> po pravosnažnosti presude ne učini neko novo krivično djelo.
                     </p>
                 </item>
                 <item id="odluka3">
@@ -90,7 +75,7 @@
                 </item>
                 <item id="odluka4">
                     <p>
-                        Oštećene <party id="rTidza" refersTo="#rTidza" as="#victim">Redžović Tidža</party> i <party id="rEdona" refersTo="#rEdona" as="#victim">Redžović Edona</party> se radi ostvarivanja imovinsko-pravnog zahtjeva upućuju na parnični postupak.
+                        Oštećene <party id="tRedzovic" refersTo="#tRedzovic" as="#victim">Tidža Redžović</party> i <party id="eRedzovic" refersTo="#eRedzovic" as="#victim">Edona Redžović</party> se radi ostvarivanja imovinsko-pravnog zahtjeva upućuju na parnični postupak.
                     </p>
                 </item>
             </list>

@@ -1,0 +1,742 @@
+{
+    "krivicni": {
+        "220": {
+            "2": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "3": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "5": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "4": [
+                null,
+                null
+            ]
+        },
+        "3": {
+            "1": [
+                null,
+                null
+            ]
+        },
+        "4": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "2": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "5": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "13": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "15": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "32": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "42": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "52": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "2": [
+                null,
+                null
+            ]
+        },
+        "53": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "54": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "36": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "2": {
+            "1": [
+                null
+            ]
+        },
+        "51": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "48": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "2": [
+                null
+            ]
+        },
+        "55": {
+            "4": [
+                null
+            ],
+            "5": [
+                null
+            ],
+            "1": [
+                null
+            ]
+        },
+        "56": {
+            "2": [
+                null
+            ],
+            "1": [
+                null
+            ]
+        },
+        "8": {
+            "1": [
+                null
+            ]
+        },
+        "45": {
+            "1": [
+                null,
+                null,
+                null
+            ]
+        },
+        "46": {
+            "1": [
+                null,
+                null,
+                null
+            ]
+        },
+        "300": {
+            "1": [
+                null,
+                null
+            ]
+        },
+        "284": {
+            "1": [
+                null
+            ]
+        },
+        "168": {
+            "1": [
+                null,
+                null
+            ]
+        },
+        "248": {
+            "2": [
+                null,
+                null
+            ],
+            "1": [
+                null,
+                null
+            ]
+        },
+        "240": {
+            "1": [
+                null
+            ]
+        },
+        "152": {
+            "2": [
+                null,
+                null
+            ],
+            "1": [
+                null
+            ]
+        },
+        "33": {
+            "1": [
+                null,
+                null
+            ]
+        },
+        "77a": {
+            "1": [
+                null,
+                null
+            ]
+        },
+        "77b": {
+            "1": [
+                null
+            ]
+        },
+        "41": {
+            "1": [
+                null
+            ]
+        },
+        "36a": {
+            "1": [
+                null
+            ]
+        },
+        "239": {
+            "1": [
+                null
+            ]
+        }
+    },
+    "zkp": {
+        "372": {
+            "1": [
+                "1",
+                null
+            ]
+        },
+        "226": {
+            "3": [
+                null,
+                null
+            ],
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "2": [
+                null,
+                null
+            ]
+        },
+        "374": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "229": {
+            "1": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "239": {
+            "1": [
+                null,
+                null,
+                null
+            ],
+            "2": [
+                null
+            ]
+        },
+        "369": {
+            "1": [
+                null
+            ]
+        },
+        "370": {
+            "1": [
+                null
+            ]
+        },
+        "368": {
+            "1": [
+                null
+            ]
+        },
+        "303": {
+            "1": [
+                null,
+                null,
+                null,
+                null
+            ]
+        },
+        "227": {
+            "2": [
+                null,
+                null
+            ],
+            "1": [
+                null
+            ]
+        },
+        "448": {
+            "1": [
+                null
+            ]
+        },
+        "376": {
+            "8": [
+                null
+            ],
+            "1": [
+                null
+            ]
+        },
+        "64": {
+            "1": [
+                null
+            ]
+        },
+        "69": {
+            "1": [
+                null
+            ]
+        },
+        "70": {
+            "1": [
+                null
+            ]
+        },
+        "58": {
+            "1": [
+                null
+            ]
+        },
+        "24": {
+            "1": [
+                null
+            ]
+        },
+        "262": {
+            "1": [
+                null
+            ]
+        },
+        "356": {
+            "1": [
+                null
+            ]
+        },
+        "175": {
+            "1": [
+                null
+            ]
+        },
+        "367": {
+            "1": [
+                null
+            ]
+        },
+        "179": {
+            "1": [
+                null
+            ]
+        },
+        "324": {
+            "1": [
+                null
+            ]
+        },
+        "261": {
+            "1": [
+                null
+            ]
+        },
+        "267": {
+            "1": [
+                null
+            ]
+        },
+        "300": {
+            "1": [
+                null
+            ]
+        },
+        "113": {
+            "1": [
+                null
+            ]
+        },
+        "100": {
+            "1": [
+                null
+            ]
+        },
+        "212": {
+            "1": [
+                null
+            ]
+        },
+        "109": {
+            "1": [
+                null
+            ]
+        },
+        "211": {
+            "1": [
+                null
+            ]
+        },
+        "8": {
+            "1": [
+                null
+            ]
+        },
+        "12": {
+            "1": [
+                null
+            ]
+        },
+        "154": {
+            "1": [
+                null
+            ]
+        },
+        "282": {
+            "1": [
+                null
+            ]
+        },
+        "111": {
+            "1": [
+                null
+            ]
+        },
+        "161": {
+            "1": [
+                null
+            ]
+        },
+        "288": {
+            "1": [
+                null
+            ]
+        },
+        "259": {
+            "1": [
+                null
+            ]
+        },
+        "271": {
+            "1": [
+                null
+            ]
+        },
+        "208": {
+            "1": [
+                null
+            ]
+        },
+        "268": {
+            "1": [
+                null
+            ]
+        },
+        "157": {
+            "1": [
+                null
+            ]
+        },
+        "293": {
+            "1": [
+                null
+            ]
+        },
+        "392": {
+            "1": [
+                null
+            ]
+        },
+        "115": {
+            "1": [
+                null
+            ]
+        },
+        "266": {
+            "2": [
+                null
+            ],
+            "1": [
+                null
+            ]
+        },
+        "59": {
+            "1": [
+                null
+            ]
+        },
+        "257": {
+            "1": [
+                null
+            ]
+        },
+        "272": {
+            "1": [
+                null
+            ]
+        },
+        "273": {
+            "1": [
+                null
+            ]
+        },
+        "271a": {
+            "1": [
+                null
+            ]
+        },
+        "158": {
+            "1": [
+                null
+            ]
+        },
+        "292": {
+            "1": [
+                null
+            ]
+        },
+        "380": {
+            "1": [
+                null
+            ]
+        },
+        "166": {
+            "1": [
+                null
+            ]
+        },
+        "31": {
+            "1": [
+                null
+            ]
+        },
+        "378": {
+            "1": [
+                null
+            ]
+        },
+        "195": {
+            "1": [
+                null
+            ]
+        },
+        "60": {
+            "1": [
+                null
+            ]
+        },
+        "57": {
+            "3": [
+                null
+            ],
+            "1": [
+                null
+            ]
+        },
+        "194": {
+            "1": [
+                null
+            ]
+        },
+        "457": {
+            "1": [
+                null
+            ]
+        }
+    }
+}

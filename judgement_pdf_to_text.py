@@ -25,7 +25,6 @@ def extract_text_until_keywords(pdf_path: Path, keywords=None) -> str:
                 break
 
         if found_index != -1:
-            # Sečemo tekst do ključne reči i prekidamo dalje čitanje
             accumulated_text.append(page_text[:found_index])
             break
         else:

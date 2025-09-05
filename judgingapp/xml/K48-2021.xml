@@ -17,11 +17,11 @@
                 <TLCOrganization eId="odt" href="/ontology/organization/OsnovnoDrzavnoTuzilastvo.Kolašin" showAs="Osnovno državno tužilaštvo u Kolašinu"/>
                 <TLCPerson eId="aPopovic" href="/ontology/person/aPopovic" showAs="Arsen Popović"/>
                 <TLCPerson eId="lMrdak" href="/ontology/person/lMrdak" showAs="Ljiljana Mrdak"/>
-                <TLCPerson eId="sRakocevic" href="/ontology/person/sRakocevic" showAs="Stanko Rakočević"/>
                 <TLCPerson eId="sA" href="/ontology/person/sA" showAs="Š. A."/>
                 <TLCPerson eId="sB" href="/ontology/person/sB" showAs="Š. B."/>
                 <TLCPerson eId="sM" href="/ontology/person/sM" showAs="Š. M."/>
                 <TLCPerson eId="sP" href="/ontology/person/sP" showAs="Š. P."/>
+                <TLCPerson eId="sRakocevic" href="/ontology/person/sRakocevic" showAs="Stanko Rakočević"/>
                 <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
                 <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
                 <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
@@ -35,8 +35,8 @@
                 <party id="aPopovic" refersTo="#aPopovic" as="#judge">Arsen Popović</party>, uz učešće
                 <party id="lMrdak" refersTo="#lMrdak" as="#clerk">Ljiljane Mrdak</party> kao zapisničara, u krivičnom postupku protiv okrivljenog
                 <party id="sA" refersTo="#sA" as="#defendant">Š. A.</party>, zbog krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
-                <ref href="/krivicni#art_220">čl. 220 st. 3 u vezi st. 1 Krivičnog zakonika</ref> i zbog krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
-                <ref href="/krivicni#art_220">čl. 220 st. 2 u vezi st. 1 Krivičnog zakonika</ref>, po optužnom predlogu
+                <ref href="/krivicni#art_220_st_3">čl. 220 st. 3</ref> u vezi st. 1 Krivičnog zakonika i zbog krivičnog djela nasilje u porodici ili u porodičnoj zajednici iz
+                <ref href="/krivicni#art_220_st_2">čl. 220 st. 2</ref> u vezi st. 1 Krivičnog zakonika, po optužnom predlogu
                 <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva iz Kolašina Kt.br.80/21 od 20.05.2021. godine</organization>, nakon održanog glavnog javnog pretresa dana
                 <date date="2021-09-02">02.09.2021.</date> godine u prisustvu stručnog saradnika
                 <party id="sRakocevic" refersTo="#sRakocevic">Stanka Rakočevića</party>, okrivljenog
@@ -45,12 +45,12 @@
                 <party id="sM" refersTo="#sM" as="#victim">Š. M.</party>, donio je i javno objavio,
             </p>
 
-            <p><b>P R E S U D U</b></p>
+            <p><b>PRESUDU</b></p>
 
             <p>
                 Okrivljeni:
-                <party id="sA" refersTo="#sA">Š. A.</party>, JMBG ….. od oca D. i majke B., rođene Đ., rođen …godine u Kolašinu, gdje je i nastanjen – S., državljanin CG, nezaposlen, oženjen, otac jednog djeteta, pismen, završio srednju školu, lošeg imovnog stanja, osuđivan presudom Osnovnog suda u Kolašinu u predmetu K.br.51/13 iz 2014. godine na uslovnu osudu zbog krivičnog djela iz
-                <ref href="/krivicni#art_152">čl. 152 st. 2 u vezi st. 1 KZ</ref>.
+                <party id="sA" refersTo="#sA">Š. A.</party>, JMBG ….. od oca D. i majke B., rođene Đ., rođen … godine u Kolašinu, gdje je i nastanjen – S., državljanin CG, nezaposlen, oženjen, otac jednog djeteta, pismen, završio srednju školu, lošeg imovnog stanja, osuđivan presudom Osnovnog suda u Kolašinu u predmetu K.br.51/13 iz 2014. godine na uslovnu osudu zbog krivičnog djela iz
+                <ref href="/krivicni#art_152_st_2">čl. 152 st. 2</ref> u vezi st. 1 KZ.
             </p>
 
             <p><b>Kriv je</b></p>
@@ -61,9 +61,8 @@
                 <party id="sP" refersTo="#sP" as="#victim">Š. P.</party> na način što je istom prišao, zavrnuo mu ruku, te ga oborio na pod, a zatim ga udario nekoliko puta otvorenom šakom u predjelu zadnjice i jednom otvorenom šakom u predjelu glave, pritom lomivši posuđe u kući,
             </p>
             <p>
-                - čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 3 u vezi st. 1 Krivičnog zakonika</ref>.
+                - čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220_st_3">čl. 220 st. 3</ref> u vezi st. 1 Krivičnog zakonika.
             </p>
-
             <p>
                 b) Dana <date date="2021-05-09">09.05.2021.</date> godine na istom mjestu kao pod tačkom a) primjenom grubog nasilja narušio duševni integritet članova svoje porodice - majke
                 <party id="sB" refersTo="#sB" as="#victim">Š. B.</party>, malodobnog brata
@@ -71,32 +70,40 @@
                 <party id="sM" refersTo="#sM" as="#victim">Š. M.</party> na način što je sa frižidera uzeo lovačku pušku prijeteći oštećenima "sve ću vas pobiti",
             </p>
             <p>
-                - čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 2 u vezi st. 1 Krivičnog zakonika</ref>.
+                - čime je izvršio krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220_st_2">čl. 220 st. 2</ref> u vezi st. 1 Krivičnog zakonika.
             </p>
 
             <list>
                 <item id="odluka1">
                     <p>
-                        Pa mu sud primjenom citiranih zakonskih odredbi i <ref href="/krivicni#art_42">člana 42</ref>, <ref href="/krivicni#art_45">45</ref>, <ref href="/krivicni#art_46">46</ref> i <ref href="/krivicni#art_48">48 st. 1</ref> Krivičnog zakonika,
-                        <b>UTVRĐUJE</b><br/>
-                        - Za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 3 u vezi st. 1 Krivičnog zakonika</ref> kaznu zatvora u trajanju od 3 (tri) mjeseca;<br/>
-                        - Za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220">čl. 220 st. 2 u vezi st. 1 Krivičnog zakonika</ref> kaznu zatvora u trajanju od 2 (dva) mjeseca;
+                        Pa mu sud primjenom citiranih zakonskih odredbi i <ref href="/krivicni#art_42">čl. 42</ref>, <ref href="/krivicni#art_45">45</ref>, <ref href="/krivicni#art_46">46</ref> i <ref href="/krivicni#art_48_st_1">48 st. 1</ref> Krivičnog zakonika,
                     </p>
                 </item>
                 <item id="odluka2">
                     <p>
-                        Pa sud okrivljenog primjenom citirane zakonske odredbe te <ref href="/krivicni#art_4">čl. 4</ref>, <ref href="/krivicni#art_13">13</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_36">36</ref>, <ref href="/krivicni#art_36a">36a</ref>, <ref href="/krivicni#art_42">42</ref>, <ref href="/krivicni#art_45">45</ref>, <ref href="/krivicni#art_46">46</ref>, <ref href="/krivicni#art_48">48 st. 2</ref> i <ref href="/krivicni#art_51">51</ref> Krivičnog zakonika i <ref href="/zkp#art_229">čl. 229</ref>, <ref href="/zkp#art_239">239</ref> i <ref href="/zkp#art_374">374</ref> ZKP-a,
+                        <b>UTVRĐUJE</b><br/>
+                        - Za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220_st_3">čl. 220 st. 3</ref> u vezi st. 1 Krivičnog zakonika kaznu zatvora u trajanju od 3 (tri) mjeseca,<br/>
+                        - Za krivično djelo nasilje u porodici ili u porodičnoj zajednici iz <ref href="/krivicni#art_220_st_2">čl. 220 st. 2</ref> u vezi st. 1 Krivičnog zakonika kaznu zatvora u trajanju od 2 (dva) mjeseca,
+                    </p>
+                </item>
+                <item id="odluka3">
+                    <p>
+                        Pa sud okrivljenog primjenom citirane zakonske odredbe te <ref href="/krivicni#art_4">čl. 4</ref>, <ref href="/krivicni#art_13">13</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_36">36</ref>, <ref href="/krivicni#art_36a">36a</ref>, <ref href="/krivicni#art_42">42</ref>, <ref href="/krivicni#art_45">45</ref>, <ref href="/krivicni#art_46">46</ref>, <ref href="/krivicni#art_48_st_2">48 st. 2</ref> i <ref href="/krivicni#art_51">51</ref> Krivičnog zakonika i <ref href="/zkp#art_229">čl. 229</ref>, <ref href="/zkp#art_239">239</ref> i <ref href="/zkp#art_374">374</ref> ZKP-a,
+                    </p>
+                </item>
+                <item id="odluka4">
+                    <p>
                         <b>OSUĐUJE</b><br/>
                         Na jedinstvenu kaznu zatvora u trajanju od 4 (četiri) mjeseca i istovremeno određuje da će se ova kazna izvršiti tako što će je okrivljeni izdržavati u prostorijama u kojima stanuje. U izrečenu kaznu zatvora okrivljenom
                         <party id="sA" refersTo="#sA">Š. A.</party> ima se uračunati vrijeme provedeno u pritvoru od <date date="2021-05-09">09.05.2021.</date> do <date date="2021-07-23">23.07.2021.</date> godine.
                     </p>
                 </item>
-                <item id="odluka3">
+                <item id="odluka5">
                     <p>
                         Obavezuje se okrivljeni na plaćanje troškova krivičnog postupka u iznosu od <amount value="750.00">750,00 €</amount> te na plaćanje sudskog paušala u iznosu od <amount value="30.00">30,00 €</amount> uplatom na žiro-račun Osnovnog suda u Kolašinu br.832-196-94.
                     </p>
                 </item>
-                <item id="odluka4">
+                <item id="odluka6">
                     <p>
                         Oštećena <party id="sM" refersTo="#sM" as="#victim">Š. M.</party> radi ostvarenja imovinskopravnog zahtjeva upućuje se na parnični postupak.
                     </p>

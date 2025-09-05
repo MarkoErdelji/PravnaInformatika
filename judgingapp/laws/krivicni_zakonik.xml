@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0">
+  <act>
+    <body>
+      <article eId="art_2">
+        <heading>Osnov i granice krivičnopravne prinude</heading>
+        <paragraph eId="art_2_st_1">Kazna ili druga krivična sankcija može se izreći samo za djelo koje je, prije nego što je učinjeno, bilo zakonom određeno kao krivično djelo i za koje je bila zakonom propisana kazna.</paragraph>
+      </article>
+      <article eId="art_3">
+        <heading>Nema kazne bez krivice</heading>
+        <paragraph eId="art_3_st_1">Kazna i mjere upozorenja mogu se izreći samo učiniocu koji je kriv za učinjeno krivično djelo.</paragraph>
+      </article>
+      <article eId="art_4">
+        <heading>Krivične sankcije i njihova opšta svrha</heading>
+        <paragraph eId="art_4_st_1">Krivične sankcije su: kazne, mjere upozorenja, mjere bezbjednosti i vaspitne mjere.</paragraph>
+        <paragraph eId="art_4_st_2">Opšta svrha propisivanja i izricanja krivičnih sankcija je suzbijanje djela kojima se povređuju ili ugrožavaju vrijednosti zaštićene krivičnim zakonodavstvom.</paragraph>
+      </article>
+      <article eId="art_5">
+        <heading>Krivično djelo</heading>
+        <paragraph eId="art_5_st_1">Krivično djelo je djelo koje je zakonom određeno kao krivično djelo, koje je protivpravno i koje je skrivljeno.</paragraph>
+      </article>
+      <article eId="art_8">
+        <heading>Način izvršenja krivičnog djela</heading>
+        <paragraph eId="art_8_st_1">Krivično djelo je učinjeno u mjestu gdje je izvršilac radio i bio dužan da radi ili gdje je u cjelini ili djelimično nastupila posljedica djela, a u slučaju pokušaja i tamo gdje je posljedica pokušanog djela po njegovom umišljaju trebalo ili mogla da nastupi.</paragraph>
+        <paragraph eId="art_8_st_2">Za saučesnika se smatra da je djelo učinio i u mjestu u kojem je preduzeo radnju saučesništva.</paragraph>
+      </article>
+      <article eId="art_13">
+        <heading>Djelo malog značaja</heading>
+        <paragraph eId="art_13_st_1">Kriv je za krivično djelo učinilac koji je uračunljiv i koji je postupao sa umišljajem, a bio je svjestan ili je bio dužan i mogao biti svjestan da je njegovo djelo zabranjeno.</paragraph>
+        <paragraph eId="art_13_st_2">Za krivično djelo učinjeno iz nehata učinilac može biti kriv samo kad to zakon određuje.</paragraph>
+      </article>
+      <article eId="art_15">
+        <heading>Uračunljivost</heading>
+        <paragraph eId="art_15_st_1">Krivično djelo je učinjeno sa umišljajem kad je učinilac bio svjestan svog djela i htio njegovo izvršenje ili kad je učinilac bio svjestan da može učiniti djelo pa je na to pristao.</paragraph>
+      </article>
+      <article eId="art_32">
+        <heading>Nehat</heading>
+        <paragraph eId="art_32_st_1">U okviru opšte svrhe krivičnih sankcija (<ref href="/zakon#art_4_st_2">čl. 4 st. 2</ref>), svrha kažnjavanja je:
+          <t eId="art_32_st_1_t_1">sprječavanje učinioca da čini krivična djela i uticanje na njega da ubuduće ne čini krivična djela;</t>
+          <t eId="art_32_st_1_t_2">uticanje na druge da ne čine krivična djela;</t>
+          <t eId="art_32_st_1_t_3">izražavanje društvene osude za krivično djelo i obaveze poštovanja zakona;</t>
+          <t eId="art_32_st_1_t_4">jačanje morala i uticaj na razvijanje društvene odgovornosti.</t>
+        </paragraph>
+      </article>
+      <article eId="art_33">
+        <heading>Vrste kazni</heading>
+        <paragraph eId="art_33_st_1">Učinocu krivičnog djela mogu se izreći sljedeće kazne:
+          <t eId="art_33_st_1_t_1">kazna dugotrajnog zatvora;</t>
+          <t eId="art_33_st_1_t_2">kazna zatvora;</t>
+          <t eId="art_33_st_1_t_3">novčana kazna;</t>
+          <t eId="art_33_st_1_t_4">rad u javnom interesu.</t>
+        </paragraph>
+      </article>
+      <article eId="art_36a">
+        <heading>Glavne i sporedne kazne</heading>
+        <paragraph eId="art_36a_st_1">Ako učiniocu krivičnog djela izrekne kaznu zatvora do šest mjeseci, sud može istovremeno odrediti da će se ova kazna izvršiti tako što će je osuđeni izdržavati u prostorijama u kojima stanuje ukoliko se, s obzirom na ličnost učinioca, njegov raniji život, njegovo držanje poslije učinjenog djela, stepen krivice i druge okolnosti pod kojima je djelo učinio, može očekivati da će se i na taj način ostvariti svrha kažnjavanja.</paragraph>
+        <paragraph eId="art_36a_st_2">Osuđeni kome je određeno izvršenje kazne zatvora na način iz stava 1 ovog člana ne smije napuštati prostorije u kojima stanuje, osim u slučajevima propisanim zakonom kojim se uređuje izvršenje krivičnih sankcija. Ukoliko osuđeni jednom u trajanju preko šest časova ili dva puta u trajanju do šest časova samovoljno napusti prostorije u kojima stanuje, sud će odrediti da ostatak kazne zatvora izdrži u Zavodu za izvršenje krivičnih sankcija.</paragraph>
+        <paragraph eId="art_36a_st_3">Osuđenom za krivično djelo protiv braka i porodice koji živi sa oštećenim u istom porodičnom domaćinstvu ili porodičnoj zajednici ne može se odrediti izvršenje kazne zatvora na način iz stava 1 ovog člana.</paragraph>
+      </article>
+      <article eId="art_41">
+        <heading>Uslovni otpust</heading>
+        <paragraph eId="art_41_st_1">Rad u javnom interesu može se izreći za krivična djela za koja je propisana novčana kazna ili zatvor do pet godina.</paragraph>
+        <paragraph eId="art_41_st_2">Rad u javnom interesu ne može biti kraći od šezdeset časova niti duži od trista šezdeset časova i određuje se za vrijeme koje ne može biti kraće od trideset dana, niti duže od šest mjeseci.</paragraph>
+        <paragraph eId="art_41_st_3">Ova kazna se izriče uz pristanak učinioca krivičnog djela i ne može biti duža od šezdeset časova u toku jednog mjeseca.</paragraph>
+        <paragraph eId="art_41_st_4">Rad u javnom interesu je svaki onaj društveno koristan rad kojim se ne vrijeđa ljudsko dostojanstvo i ne vrši se u cilju sticanja dobiti.</paragraph>
+        <paragraph eId="art_41_st_5">Prilikom izricanja ove kazne sud će voditi računa o vrsti učinjenog krivičnog djela, kao i o ličnosti učinioca.</paragraph>
+        <paragraph eId="art_41_st_6">Ukoliko učinilac ne vrši rad u javnom interesu, ova kazna će se zamijeniti kaznom zatvora, tako što će svakih započetih šezdeset časova rada u javnom interesu zamijeniti kaznom zatvora u trajanju od jednog mjeseca.</paragraph>
+      </article>
+      <article eId="art_42a">
+        <heading>Opšta pravila o odmjeravanju kazne</heading>
+        <paragraph eId="art_42a_st_1">Ako je krivično djelo učinjeno iz mržnje prema drugom licu zbog nacionalne ili etničke pripadnosti, pripadnosti rasi ili vjeroispovijesti ili zbog odsustva te pripadnosti, invaliditeta, pola, seksualne orijentacije ili rodnog identiteta, tu okolnost sud će cijeniti kao otežavajuću, osim ako to nije propisano kao obilježje osnovnog ili težeg oblika krivičnog djela.</paragraph>
+        <paragraph eId="art_42a_st_2">Ako je krivično djelo učinjeno prema licu koje pripada posebno ranjivoj kategoriji lica (djeca, lica sa invaliditetom, trudna žena, starija lica, izbjeglice), sud će tu okolnost uzeti kao otežavajuću.</paragraph>
+      </article>
+      <article eId="art_45">
+        <heading>Povrat</heading>
+        <paragraph eId="art_45_st_1">Sud može učiniocu krivičnog djela izreći kaznu ispod granice propisane zakonom ili blažu vrstu kazne, kad:
+          <t eId="art_45_st_1_t_1">zakon predviđa da se učinilac može blaže kazniti;</t>
+          <t eId="art_45_st_1_t_2">zakon predviđa da se učinilac može osloboditi od kazne, a sud ga ne oslobodi od kazne;</t>
+          <t eId="art_45_st_1_t_3">utvrdi da postoje naročito olakšavajuće okolnosti i ocijeni da se i sa ublaženom kaznom može postići svrha kažnjavanja.</t>
+        </paragraph>
+      </article>
+      <article eId="art_46">
+        <heading>Granice ublažavanja kazne</heading>
+        <paragraph eId="art_46_st_1">Kad postoje uslovi za ublažavanje kazne iz člana 45 ovog zakonika, sud će ublažiti kaznu u ovim granicama:
+          <t eId="art_46_st_1_t_1">ako je za krivično djelo kao najmanja mjera kazne propisan zatvor u trajanju od pet ili više godina, kazna se može ublažiti do dvije godine zatvora;</t>
+          <t eId="art_46_st_1_t_2">ako je za krivično djelo kao najmanja mjera kazne propisan zatvor u trajanju od tri ili više godina, kazna se može ublažiti do jedne godine zatvora;</t>
+          <t eId="art_46_st_1_t_3">ako je za krivično djelo kao najmanja mjera kazne propisan zatvor od dvije godine, kazna se može ublažiti do šest mjeseci zatvora;</t>
+          <t eId="art_46_st_1_t_4">ako je za krivično djelo kao najmanja mjera kazne propisan zatvor od jedne godine, kazna se može ublažiti do tri mjeseca zatvora;</t>
+          <t eId="art_46_st_1_t_5">ako je za krivično djelo kao najmanja kazna propisan zatvor ispod jedne godine, kazna se može ublažiti do trideset dana zatvora;</t>
+          <t eId="art_46_st_1_t_6">ako je za krivično djelo propisana kazna zatvora bez naznačenja najmanje mjere, umjesto zatvora može se izreći novčana kazna;</t>
+          <t eId="art_46_st_1_t_7">ako je za krivično djelo propisana novčana kazna sa naznačenjem najmanje mjere, kazna se može ublažiti do šest stotina eura.</t>
+        </paragraph>
+        <paragraph eId="art_46_st_2">Kad je sud ovlašćen da učinioca krivičnog djela oslobodi od kazne može mu kaznu ublažiti, bez ograničenja propisanih za ublažavanje kazne.</paragraph>
+      </article>
+      <article eId="art_48">
+        <heading>Oslobođenje od kazne</heading>
+        <paragraph eId="art_48_st_1">Ako je učinilac jednom radnjom ili sa više radnji učinio više krivičnih djela za koja mu se istovremeno sudi, sud će prethodno utvrditi kazne za svako od tih djela, pa će za sva ta djela izreći jedinstvenu kaznu.</paragraph>
+        <paragraph eId="art_48_st_2">Jedinstvenu kaznu sud će izreći po sljedećim pravilima:
+          <t eId="art_48_st_2_t_1">ako je za neko od krivičnih djela u sticaju utvrdio kaznu dugotrajnog zatvora izreći će samo tu kaznu;</t>
+          <t eId="art_48_st_2_t_2">ako je za krivična djela u sticaju utvrdio kazne zatvora, povisiće najtežu utvrđenu kaznu, s tim da jedinstvena kazna ne smije dostići zbir utvrđenih kazni, niti preći dvadeset godina zatvora;</t>
+          <t eId="art_48_st_2_t_3">ako su za sva krivična djela u sticaju propisane kazne zatvora do tri godine, jedinstvena kazna ne može biti veća od deset godina zatvora;</t>
+          <t eId="art_48_st_2_t_4">ako je za krivično djelo u sticaju utvrdio samo novčane kazne, izreći će jednu novčanu kaznu u visini zbira utvrđenih kazni, s tim da ona ne smije preći dvadeset hiljada eura, odnosno sto hiljada eura kada su jedno ili više krivičnih djela izvršeni iz koristoljublja, a ako je utvrdio samo novčane kazne u dnevnim iznosima ona ne smije preći iznos od tri stotine šezdeset hiljada eura;</t>
+          <t eId="art_48_st_2_t_5">ako je za krivična djela u sticaju utvrdio samo kazne rada u javnom interesu, izreći će jednu kaznu rada u javnom interesu u visini zbira utvrđenih časova rada, s tim da ona ne smije preći tri stotine šezdeset časova, a vrijeme u kojem se rad mora obaviti ne smije biti duže od šest mjeseci;</t>
+          <t eId="art_48_st_2_t_6">ako je za neka krivična djela u sticaju utvrdio kazne zatvora, a za druga djela novčane kazne, izreći će jednu kaznu zatvora i jednu novčanu kaznu po odredbama tač. <ref href="/zakon#art_48_st_2_t_2">čl. 48 st. 2 t. 2</ref> do <ref href="/zakon#art_48_st_2_t_4">čl. 48 st. 2 t. 4</ref> ovog stava.</t>
+        </paragraph>
+        <paragraph eId="art_48_st_3">Novčanu kaznu kao sporednu kaznu sud će izreći ako je utvrđena makar i za jedno krivično djelo u sticaju, a ako je utvrdio više novčanih kazni, izreći će jednu novčanu kaznu po odredbi <ref href="/zakon#art_48_st_2">čl. 48 st. 2</ref> <ref href="/zakon#art_48_st_2_t_4">čl. 48 st. 2 t. 4</ref> ovog člana.</paragraph>
+        <paragraph eId="art_48_st_4">Ako je sud za krivična djela u sticaju utvrdio kazne zatvora i maloljetničkog zatvora, izreći će kaznu zatvora kao jedinstvenu kaznu primjenom pravila predviđenih u <ref href="/zakon#art_48_st_2">čl. 48 st. 2</ref> <ref href="/zakon#art_48_st_2_t_2">čl. 48 st. 2 t. 2</ref> ovog člana.</paragraph>
+      </article>
+      <article eId="art_51">
+        <heading>Produženo krivično djelo</heading>
+        <paragraph eId="art_51_st_1">Vrijeme provedeno u pritvoru, kao i svako drugo lišenje slobode u vezi sa krivičnim djelom uračunavaju se u izrečenu kaznu zatvora, maloljetničkog zatvora, kaznu rada u javnom interesu i novčanu kaznu.</paragraph>
+        <paragraph eId="art_51_st_2">Ako je krivični postupak vođen za više krivičnih djela u sticaju, a pritvor nije određen za svako od njih, vrijeme provedeno u pritvoru uračunava se u izrečenu kaznu zatvora, maloljetničkog zatvora, kaznu rada u javnom interesu i novčanu kaznu za krivično djelo za koje je okrivljeni osuđen.</paragraph>
+        <paragraph eId="art_51_st_3">Zatvor ili novčana kazna koju je osuđeni izdržao, odnosno platio za prekršaj ili privredni prestup, kao i kazna ili disciplinska mjera lišenja slobode koju je izdržao zbog povrede vojne discipline uračunava se u kaznu izrečenu za krivično djelo čija obilježja obuhvataju i obilježja prekršaja, privrednog prestupa, odnosno povrede vojne discipline.</paragraph>
+        <paragraph eId="art_51_st_4">Pri svakom uračunavanju izjednačava se dan pritvora, dan lišenja slobode, dan maloljetničkog zatvora, dan zatvora, osam časova rada u javnom interesu i dvadeset pet eura novčane kazne.</paragraph>
+      </article>
+      <article eId="art_52">
+        <heading>Svrha uslovne osude i sudske opomene</heading>
+        <paragraph eId="art_52_st_1">Mjere upozorenja su: uslovna osuda i sudska opomena.</paragraph>
+        <paragraph eId="art_52_st_2">U okviru opšte svrhe krivičnih sankcija (<ref href="/zakon#art_4_st_2">čl. 4 st. 2</ref>), svrha uslovne osude i sudske opomene je da se prema učiniocu krivičnog djela ne primijeni kazna za lakša krivična djela, kad to nije nužno radi krivičnopravne zaštite i kad se može očekivati da će upozorenje uz prijetnju kazne (uslovna osuda) ili samo upozorenje (sudska opomena) dovoljno uticati na učinioca da više ne vrši krivična djela.</paragraph>
+      </article>
+      <article eId="art_53">
+        <heading>Uslovna osuda</heading>
+        <paragraph eId="art_53_st_1">Uslovnom osudom sud učinocu krivičnog djela utvrđuje kaznu i istovremeno određuje da se ona neće izvršiti, ako osuđeni za vrijeme koje odredi sud, a koje ne može biti kraće od jedne niti duže od pet godina (vrijeme provjeravanja) ne učini novo krivično djelo.</paragraph>
+        <paragraph eId="art_53_st_2">Sud može u uslovnoj osudi odrediti da će se kazna izvršiti i ako osuđeni u određenom roku ne vrati imovinsku korist pribavljenu izvršenjem krivičnog djela, ne naknadi štetu koju je prouzrokovao krivičnim djelom ili ne ispuni druge obaveze predviđene u krivičnopravnim odredbama. Rok za ispunjenje tih obaveza utvrđuje sud u okviru određenog vremena provjeravanja.</paragraph>
+        <paragraph eId="art_53_st_3">Mjere bezbjednosti, izrečene uz uslovnu osudu, izvršavaju se.</paragraph>
+      </article>
+      <article eId="art_54">
+        <heading>Uslovi za izricanje uslovne osude</heading>
+        <paragraph eId="art_54_st_1">Uslovna osuda se može izreći kad je učiniocu utvrđena kazna zatvora u trajanju do dvije godine.</paragraph>
+        <paragraph eId="art_54_st_2">Za krivična djela za koja se može izreći kazna zatvora u trajanju od deset godina ili teža kazna ne može se izreći uslovna osuda.</paragraph>
+        <paragraph eId="art_54_st_3">Uslovna osuda se ne može izreći ako nije proteklo više od pet godina od pravosnažnosti osude kojom je učiniocu izrečena kazna za umišljajno krivično djelo. Uslovna osuda se ne može izreći učiniocu kome su već izrečene dvije uslovne osude.</paragraph>
+        <paragraph eId="art_54_st_4">Pri odlučivanju da li će izreći uslovnu osudu sud će, vodeći računa o svrsi uslovne osude, posebno uzeti u obzir ličnost učinioca, njegov raniji život, njegovo ponašanje poslije izvršenog krivičnog djela, stepen krivice i druge okolnosti pod kojima je djelo učinjeno.</paragraph>
+        <paragraph eId="art_54_st_5">Ako je učiniocu utvrđena i kazna zatvora i novčana kazna, uslovna osuda može se izreći samo za kaznu zatvora.</paragraph>
+      </article>
+      <article eId="art_77b">
+        <heading>Opozivanje uslovne osude zbog novog krivičnog djela</heading>
+        <paragraph eId="art_77b_st_1">Učiniocu krivičnog djela nasilja u porodici ili u porodičnoj zajednici sud će izreći udaljenje iz stana ili drugog prostora za stanovanje ako postoji opasnost da bi učinilac mogao ponovo izvršiti to krivično djelo.</paragraph>
+        <paragraph eId="art_77b_st_2">Sud određuje trajanje mjere iz stava 1 ovog člana, koje ne može biti kraće od tri mjeseca niti duže od tri godine, računajući od dana pravosnažnosti odluke, s tim da se vrijeme provedeno u zatvoru ne uračunava u vrijeme trajanja ove mjere.</paragraph>
+        <paragraph eId="art_77b_st_3">Lice kome je izrečena mjera iz stava 1 ovog člana dužno je, u prisustvu policijskog službenika odmah po pravosnažnosti presude, da napusti stan ili neki drugi stambeni prostor koji čini zajedničko domaćinstvo.</paragraph>
+        <paragraph eId="art_77b_st_4">Po proteku šest mjeseci od početka izvršenja mjere iz stave 1 ovoga člana, sud može, na predlog osuđenog lica, obustaviti njeno izvršenje ako utvrdi da više ne postoji opasnost iz stava 1 ovog člana.</paragraph>
+        <paragraph eId="art_77b_st_5">Sud će o pravosnažno izrečenoj mjeri iz stava 1 ovog člana obavijestiti posebnu organizacionu jedinicu ministarstva nadležnog za poslove pravosuđa koja vrši nadzor nad sprovođenjem uslovnog otpusta i organ uprave nadležan za poslove policije.</paragraph>
+      </article>
+    </body>
+  </act>
+</akomaNtoso>

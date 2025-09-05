@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<akomaNtoso xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0">
+  <act name="act">
+    <meta>
+      <identification source="#paragraf">
+        <FRBRWork>
+          <FRBRthis value="/zkp/main"/>
+          <FRBRuri value="/zkp"/>
+        </FRBRWork>
+      </identification>
+    </meta>
+    <body>
+      <chapter eId="chap_1">
+        <heading>Glava X</heading>
+        <article eId="art_229">
+          <num>229</num>
+          <paragraph eId="art_229_st_1">
+            <num>1</num>
+            <content>
+              <p>Optužba, predlog, pravni lek i druga izjava ili saopštenje podnosi se pismeno ili se daje usmeno na zapisnik. Podnesak iz stava 1. ovog člana mora biti razumljiv i sadržati sve što je potrebno da bi se po njemu moglo postupiti. Ako u ovom zakoniku nije drugačije određeno, organ postupka će podnosioca podneska koji je nerazumljiv ili ne sadrži sve što je potrebno da bi se po njemu moglo postupati pozvati da podnesak ispravi, odnosno dopuni, a ako on to ne učini u određenom roku, podnesak će odbaciti. U pozivu za ispravku, odnosno dopunu podneska podnosilac će se upozoriti na posledice propuštanja. Podnesak koji se po ovom zakoniku dostavlja protivnoj stranci predaje se organu postupka u dovoljnom broju primeraka za taj organ i drugu stranku. Ako ovakav podnesak nije predat u dovoljnom broju primeraka, umnožiće se o trošku podnosioca. Elektronski podnesak</p>
+            </content>
+          </paragraph>
+        </article>
+      </chapter>
+      <chapter eId="chap_2">
+        <heading>Glava XVIII</heading>
+        <article eId="art_372">
+          <num>372</num>
+          <paragraph eId="art_372_st_1">
+            <num>1</num>
+            <content>
+              <p>Branioca ili punomoćnika koji posle izricanja kazne produži da narušava red, veće će isključiti iz daljeg postupka i pozvati stranku ili zastupano lice da uzme drugog branioca, odnosno punomoćnika i o tome obavestiti nadležnu advokatsku komoru. Ako optuženi ili oštećeni, u slučaju iz stava 1. ovog člana, ne mogu odmah bez štete za svoje interese da uzmu drugog branioca ili punomoćnika ili ako u slučaju obavezne odbrane (član 74.) sud nije u mogućnosti da postavi novog branioca bez štete za odbranu, glavni pretres će biti prekinut ili odložen. Ako oštećeni kao tužilac ili privatni tužilac ne uzme drugog punomoćnika, veće može odlučiti da se glavni pretres nastavi bez punomoćnika ako nađe da njegovo odsustvo ne bi bilo štetno za interese zastupanog. Udaljenje drugih lica iz sudnice</p>
+            </content>
+          </paragraph>
+        </article>
+      </chapter>
+      <chapter eId="chap_3">
+        <heading>Glava XIX</heading>
+        <article eId="art_448">
+          <num>448</num>
+          <paragraph eId="art_448_st_1">
+            <num>1</num>
+            <content>
+              <p>Sednica veća počinje izveštajem sudije izvestioca o stanju stvari u spisima predmeta, a ako sednici veća prisustvuju stranke i branilac, sudija izvestilac izlaže sadržaj presude, a stranke i branilac u vremenu koje odredi predsednik veća drugostepenog suda iznose navode žalbe i odgovora na žalbu. Veće može od stranaka i branioca koji su prisutni na sednici zatražiti potrebna objašnjenja u vezi sa žalbom i odgovorom na žalbu, a stranke mogu predložiti da se radi dopune izveštaja pročitaju pojedini delovi spisa, a mogu po dozvoli predsednika veća dati i potrebna objašnjenja za svoje stavove iz žalbe, odnosno odgovora na žalbu, ne ponavljajući ono što je sadržano u izveštaju. O sednici veća vodi se zapisnik koji se priključuje spisima drugostepenog suda. Rešenje iz člana 456. ovog zakonika može se doneti i bez obaveštavanja stranaka i branioca o sednici veća. Pretres pred drugostepenim sudom</p>
+            </content>
+          </paragraph>
+        </article>
+      </chapter>
+    </body>
+  </act>
+</akomaNtoso>
