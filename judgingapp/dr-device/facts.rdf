@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:lc="http://informatika.ftn.uns.ac.rs/legal-case.rdf#">
+
+  <!-- Define the Case class -->
+  <rdfs:Class rdf:about="http://informatika.ftn.uns.ac.rs/legal-case.rdf#Case"/>
+
+  <!-- Example case for domestic violence -->
+  <lc:case rdf:about="http://informatika.ftn.uns.ac.rs/legal-case.rdf#domestic_violence_case_01">
+    <lc:name>Case 01</lc:name>
+    <lc:defendant>Marko Markovic</lc:defendant>
+    <lc:victimRelationship rdf:datatype="xsd:string">SPOUSE</lc:victimRelationship>
+    <lc:violenceNature rdf:datatype="xsd:string">VIOLENCE</lc:violenceNature>
+    <lc:injuryTypes rdf:datatype="xsd:string">SEVERE</lc:injuryTypes>
+    <lc:useOfWeapon rdf:datatype="xsd:boolean">true</lc:useOfWeapon>
+    <lc:protectionMeasureViolation rdf:datatype="xsd:boolean">false</lc:protectionMeasureViolation>
+    <lc:childrenPresent rdf:datatype="xsd:boolean">true</lc:childrenPresent>
+    <lc:numvictims rdf:datatype="xsd:int">1</lc:numvictims>
+    <lc:previouslyConvicted rdf:datatype="xsd:boolean">false</lc:previouslyConvicted>
+  </lc:case>
+
+</rdf:RDF>

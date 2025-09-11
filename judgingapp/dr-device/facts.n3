@@ -1,0 +1,12 @@
+<http://informatika.ftn.uns.ac.rs/legal-case.rdf#Case> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://informatika.ftn.uns.ac.rs/legal-case.rdf#domestic_violence_case_01> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://informatika.ftn.uns.ac.rs/legal-case.rdf#case> .
+<http://informatika.ftn.uns.ac.rs/legal-case.rdf#domestic_violence_case_01> <http://informatika.ftn.uns.ac.rs/legal-case.rdf#name> "Case 01" .
+<http://informatika.ftn.uns.ac.rs/legal-case.rdf#domestic_violence_case_01> <http://informatika.ftn.uns.ac.rs/legal-case.rdf#defendant> "Marko Markovic" .
+<http://informatika.ftn.uns.ac.rs/legal-case.rdf#domestic_violence_case_01> <http://informatika.ftn.uns.ac.rs/legal-case.rdf#victimRelationship> "SPOUSE"^^<xsd:string> .
+<http://informatika.ftn.uns.ac.rs/legal-case.rdf#domestic_violence_case_01> <http://informatika.ftn.uns.ac.rs/legal-case.rdf#violenceNature> "VIOLENCE"^^<xsd:string> .
+<http://informatika.ftn.uns.ac.rs/legal-case.rdf#domestic_violence_case_01> <http://informatika.ftn.uns.ac.rs/legal-case.rdf#injuryTypes> "SEVERE"^^<xsd:string> .
+<http://informatika.ftn.uns.ac.rs/legal-case.rdf#domestic_violence_case_01> <http://informatika.ftn.uns.ac.rs/legal-case.rdf#useOfWeapon> "true"^^<xsd:boolean> .
+<http://informatika.ftn.uns.ac.rs/legal-case.rdf#domestic_violence_case_01> <http://informatika.ftn.uns.ac.rs/legal-case.rdf#protectionMeasureViolation> "false"^^<xsd:boolean> .
+<http://informatika.ftn.uns.ac.rs/legal-case.rdf#domestic_violence_case_01> <http://informatika.ftn.uns.ac.rs/legal-case.rdf#childrenPresent> "true"^^<xsd:boolean> .
+<http://informatika.ftn.uns.ac.rs/legal-case.rdf#domestic_violence_case_01> <http://informatika.ftn.uns.ac.rs/legal-case.rdf#numvictims> "1"^^<xsd:int> .
+<http://informatika.ftn.uns.ac.rs/legal-case.rdf#domestic_violence_case_01> <http://informatika.ftn.uns.ac.rs/legal-case.rdf#previouslyConvicted> "false"^^<xsd:boolean> .

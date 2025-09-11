@@ -1,0 +1,5 @@
+(import-rdf )
+(import-rdf-files facts.rdf)
+(load-compiled-dr-device rulebase.clp)
+(go-dr-device)
+(dr-device_export_rdf rulebase.ruleml export.rdf proof.ruleml basic_punishment increase_punishment aggravating_factor weapon_factor family_offense_factor child_victim_factor recidivist_factor multiple_victims_factor light_offense_factor threat_offense_factor)

@@ -14,3 +14,377 @@
 2025-08-31 09:12:24,619 - ERROR - Invalid JSON for K730-2022.xml: Expecting value: line 2 column 1 (char 1)
 2025-08-31 09:12:26,526 - ERROR - Invalid JSON for K93-2021.xml: Expecting value: line 2 column 1 (char 1)
 2025-08-31 09:12:28,481 - ERROR - Invalid JSON for K998-2020.xml: Expecting value: line 2 column 1 (char 1)
+2025-09-11 17:17:47,188 - ERROR - Error processing K10-2017.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,194 - ERROR - Error processing K10-2024.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,199 - ERROR - Error processing K102-2018.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,204 - ERROR - Error processing K107-2024.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,209 - ERROR - Error processing K151-2014.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,214 - ERROR - Error processing K18-2023.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,220 - ERROR - Error processing K286-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,226 - ERROR - Error processing K406-2022.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,234 - ERROR - Error processing K42-2015.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,239 - ERROR - Error processing K42-2019.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,245 - ERROR - Error processing K438-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,252 - ERROR - Error processing K48-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,259 - ERROR - Error processing K60-2024.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,264 - ERROR - Error processing K730-2022.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,272 - ERROR - Error processing K93-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,278 - ERROR - Error processing K998-2020.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,283 - ERROR - Error processing Najnoviji_kejs.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:17:47,288 - ERROR - Error processing new_case.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,354 - ERROR - Error processing K10-2017.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,360 - ERROR - Error processing K10-2024.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,365 - ERROR - Error processing K102-2018.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,371 - ERROR - Error processing K107-2024.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,375 - ERROR - Error processing K151-2014.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,379 - ERROR - Error processing K18-2023.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,384 - ERROR - Error processing K286-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,389 - ERROR - Error processing K406-2022.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,394 - ERROR - Error processing K42-2015.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,398 - ERROR - Error processing K42-2019.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,403 - ERROR - Error processing K438-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,407 - ERROR - Error processing K48-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,412 - ERROR - Error processing K60-2024.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,416 - ERROR - Error processing K730-2022.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,421 - ERROR - Error processing K93-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,425 - ERROR - Error processing K998-2020.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,430 - ERROR - Error processing Najnoviji_kejs.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:19:49,434 - ERROR - Error processing new_case.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,121 - ERROR - Error processing K10-2017.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,127 - ERROR - Error processing K10-2024.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,131 - ERROR - Error processing K102-2018.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,136 - ERROR - Error processing K107-2024.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,140 - ERROR - Error processing K151-2014.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,145 - ERROR - Error processing K18-2023.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,150 - ERROR - Error processing K286-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,154 - ERROR - Error processing K406-2022.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,159 - ERROR - Error processing K42-2015.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,164 - ERROR - Error processing K42-2019.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,169 - ERROR - Error processing K438-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,175 - ERROR - Error processing K48-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,179 - ERROR - Error processing K60-2024.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,184 - ERROR - Error processing K730-2022.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,189 - ERROR - Error processing K93-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,193 - ERROR - Error processing K998-2020.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,198 - ERROR - Error processing Najnoviji_kejs.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:21:03,202 - ERROR - Error processing new_case.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,371 - ERROR - Error processing K10-2017.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,376 - ERROR - Error processing K10-2024.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,381 - ERROR - Error processing K102-2018.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,386 - ERROR - Error processing K107-2024.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,391 - ERROR - Error processing K151-2014.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,396 - ERROR - Error processing K18-2023.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,401 - ERROR - Error processing K286-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,405 - ERROR - Error processing K406-2022.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,411 - ERROR - Error processing K42-2015.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,415 - ERROR - Error processing K42-2019.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,420 - ERROR - Error processing K438-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,425 - ERROR - Error processing K48-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,430 - ERROR - Error processing K60-2024.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,435 - ERROR - Error processing K730-2022.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,439 - ERROR - Error processing K93-2021.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 17:53:37,444 - ERROR - Error processing K998-2020.xml: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,084 - INFO - Successfully extracted metadata and text from K10-2017.xml
+2025-09-11 18:40:41,096 - ERROR - Error processing K10-2017.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,097 - INFO - Successfully extracted metadata and text from K10-2024.xml
+2025-09-11 18:40:41,099 - ERROR - Error processing K10-2024.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,100 - INFO - Successfully extracted metadata and text from K102-2018.xml
+2025-09-11 18:40:41,102 - ERROR - Error processing K102-2018.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,104 - INFO - Successfully extracted metadata and text from K107-2024.xml
+2025-09-11 18:40:41,107 - ERROR - Error processing K107-2024.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,112 - INFO - Successfully extracted metadata and text from K151-2014.xml
+2025-09-11 18:40:41,115 - ERROR - Error processing K151-2014.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,117 - INFO - Successfully extracted metadata and text from K18-2023.xml
+2025-09-11 18:40:41,120 - ERROR - Error processing K18-2023.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,124 - INFO - Successfully extracted metadata and text from K286-2021.xml
+2025-09-11 18:40:41,126 - ERROR - Error processing K286-2021.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,129 - INFO - Successfully extracted metadata and text from K406-2022.xml
+2025-09-11 18:40:41,132 - ERROR - Error processing K406-2022.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,136 - INFO - Successfully extracted metadata and text from K42-2015.xml
+2025-09-11 18:40:41,138 - ERROR - Error processing K42-2015.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,141 - INFO - Successfully extracted metadata and text from K42-2019.xml
+2025-09-11 18:40:41,144 - ERROR - Error processing K42-2019.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,147 - INFO - Successfully extracted metadata and text from K438-2021.xml
+2025-09-11 18:40:41,149 - ERROR - Error processing K438-2021.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,151 - INFO - Successfully extracted metadata and text from K48-2021.xml
+2025-09-11 18:40:41,153 - ERROR - Error processing K48-2021.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,155 - INFO - Successfully extracted metadata and text from K60-2024.xml
+2025-09-11 18:40:41,157 - ERROR - Error processing K60-2024.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,159 - INFO - Successfully extracted metadata and text from K730-2022.xml
+2025-09-11 18:40:41,162 - ERROR - Error processing K730-2022.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,164 - INFO - Successfully extracted metadata and text from K93-2021.xml
+2025-09-11 18:40:41,167 - ERROR - Error processing K93-2021.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,171 - INFO - Successfully extracted metadata and text from K998-2020.xml
+2025-09-11 18:40:41,175 - ERROR - Error processing K998-2020.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:40:41,177 - INFO - Processing complete. Processed: 0, Skipped: 16
+2025-09-11 18:45:39,888 - INFO - Successfully extracted metadata and text from K10-2017.xml
+2025-09-11 18:45:39,897 - ERROR - Error processing K10-2017.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,898 - INFO - Successfully extracted metadata and text from K10-2024.xml
+2025-09-11 18:45:39,900 - ERROR - Error processing K10-2024.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,901 - INFO - Successfully extracted metadata and text from K102-2018.xml
+2025-09-11 18:45:39,902 - ERROR - Error processing K102-2018.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,903 - INFO - Successfully extracted metadata and text from K107-2024.xml
+2025-09-11 18:45:39,904 - ERROR - Error processing K107-2024.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,905 - INFO - Successfully extracted metadata and text from K151-2014.xml
+2025-09-11 18:45:39,906 - ERROR - Error processing K151-2014.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,908 - INFO - Successfully extracted metadata and text from K18-2023.xml
+2025-09-11 18:45:39,909 - ERROR - Error processing K18-2023.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,911 - INFO - Successfully extracted metadata and text from K286-2021.xml
+2025-09-11 18:45:39,913 - ERROR - Error processing K286-2021.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,914 - INFO - Successfully extracted metadata and text from K406-2022.xml
+2025-09-11 18:45:39,916 - ERROR - Error processing K406-2022.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,918 - INFO - Successfully extracted metadata and text from K42-2015.xml
+2025-09-11 18:45:39,920 - ERROR - Error processing K42-2015.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,920 - INFO - Successfully extracted metadata and text from K42-2019.xml
+2025-09-11 18:45:39,922 - ERROR - Error processing K42-2019.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,924 - INFO - Successfully extracted metadata and text from K438-2021.xml
+2025-09-11 18:45:39,925 - ERROR - Error processing K438-2021.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,926 - INFO - Successfully extracted metadata and text from K48-2021.xml
+2025-09-11 18:45:39,927 - ERROR - Error processing K48-2021.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,928 - INFO - Successfully extracted metadata and text from K60-2024.xml
+2025-09-11 18:45:39,930 - ERROR - Error processing K60-2024.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,931 - INFO - Successfully extracted metadata and text from K730-2022.xml
+2025-09-11 18:45:39,932 - ERROR - Error processing K730-2022.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,933 - INFO - Successfully extracted metadata and text from K93-2021.xml
+2025-09-11 18:45:39,934 - ERROR - Error processing K93-2021.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,935 - INFO - Successfully extracted metadata and text from K998-2020.xml
+2025-09-11 18:45:39,937 - ERROR - Error processing K998-2020.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:45:39,938 - INFO - Processing complete. Processed: 0, Skipped: 16
+2025-09-11 18:47:58,763 - DEBUG - Extracted metadata: {'id': 'K18-2023', 'Court': 'OSNOVNI SUD U HERCEG NOVOM', 'Case Number': 'K.18/2023', 'Verdict Date': '2023-07-04'}
+2025-09-11 18:47:58,764 - DEBUG - Judge: Vesna Gazdi\u0107
+2025-09-11 18:47:58,764 - DEBUG - Clerk: Katarina Risti\u0107
+2025-09-11 18:47:58,764 - DEBUG - Prosecutor: Osnovno državno tužilaštvo
+2025-09-11 18:47:58,764 - DEBUG - Defendant: A. R.
+2025-09-11 18:47:58,764 - DEBUG - Victims: A. M., A. E., A. M., A. E., Number of Victims: 4
+2025-09-11 18:47:58,764 - DEBUG - Judgment body text length: 5161 characters
+2025-09-11 18:47:58,764 - INFO - Successfully extracted metadata and text from K18-2023.xml
+2025-09-11 18:47:58,772 - ERROR - Error processing K18-2023.xml with LLM: 'Input to ChatPromptTemplate is missing variables {\'\\n  "Criminal Offense"\'}.  Expected: [\'\\n  "Criminal Offense"\', \'input\'] Received: [\'input\']'
+2025-09-11 18:47:58,773 - INFO - Processing complete. Processed: 0, Skipped: 1
+2025-09-11 18:49:16,075 - DEBUG - Extracted metadata: {'id': 'K18-2023', 'Court': 'OSNOVNI SUD U HERCEG NOVOM', 'Case Number': 'K.18/2023', 'Verdict Date': '2023-07-04'}
+2025-09-11 18:49:16,075 - DEBUG - Judge: Vesna Gazdi\u0107
+2025-09-11 18:49:16,075 - DEBUG - Clerk: Katarina Risti\u0107
+2025-09-11 18:49:16,076 - DEBUG - Prosecutor: Osnovno državno tužilaštvo
+2025-09-11 18:49:16,076 - DEBUG - Defendant: A. R.
+2025-09-11 18:49:16,076 - DEBUG - Victims: A. M., A. E., A. M., A. E., Number of Victims: 4
+2025-09-11 18:49:16,076 - DEBUG - Judgment body text length: 5161 characters
+2025-09-11 18:49:16,076 - INFO - Successfully extracted metadata and text from K18-2023.xml
+2025-09-11 18:49:16,092 - DEBUG - Request options: {'method': 'post', 'url': '/chat/completions', 'files': None, 'idempotency_key': 'stainless-python-retry-81f23e9f-4414-4194-84ef-ce42702cfa0b', 'json_data': {'messages': [{'content': 'You are an expert in legal documents in Serbian language. Analyze the court verdict text and extract the requested information in JSON format. Keep metadata like names, locations, dates in their original form. Translate and standardize facts of the case to English.\n\nUse these strongly-typed fields:\n- Violence Nature (enum): "NONE", "PHYSICAL", "PSYCHOLOGICAL"\n- Injury Types (enum): "NONE", "MINOR", "SERIOUS", "DEATH"\n- Use of Weapon (boolean): true, false\n- Victim Age (int): 0–120\n- Victim Relationship (enum): "SPOUSE", "CHILD", "PARENT", "SIBLING", "OTHER_RELATIVE"\n- Protection Measure Violation (boolean): true, false\n\nReturn a valid JSON object with all fields. If a field cannot be determined, use appropriate defaults (e.g., "" for strings, false for booleans, 0 for integers). Examples:\n\n\n  "Criminal Offense": "cl. 220 st. 5",\n  "Verdict Type": "CONDITIONAL",\n  "Applied Provisions": "cl. 220 st. 5, cl. 42 st. 1 KZ",\n  "Penalty": "conditional sentence of 6 months",\n  "Event Location": "Podgorica, ul. Mitra Baki\u0107a 154",\n  "Event Date": "2023-01-24",\n  "Violence Nature": "PHYSICAL",\n  "Injury Types": "MINOR",\n  "Use of Weapon": true,\n  "Victim Age": 62,\n  "Victim Relationship": "PARENT",\n  "Protection Measure Violation": true,\n  "Execution Means": "fist, wooden chair",\n  "Procedure Costs": "71.50 EUR",\n  "Defendant Status": "employed",\n  "Defendant Age": 0,\n  "Previous Incidents": "none",\n  "Alcohol or Drugs": false,\n  "Children Present": false,\n  "Aware of Illegality": true\n', 'role': 'system'}, {'content': 'From the following court verdict text, extract the requested information in JSON format:\n\nVerdict:\nOSNOVNI SUD U HERCEG NOVOM, sudija\n                Vesna Gazdi\u0107, uz u\u010deš\u0107e\n                Katarine Risti\u0107 kao zapisni\u010dara, po optužnom predlogu\n                Osnovnog državnog tužilaštva u Herceg Novom Kt.br.13/23 od 08.02.2023. godine i Kt.br.40/23 od 17.03.2023.g., protiv okrivljenog\n                A. R., zbog krivi\u010dnog djela nasilje u porodici ili porodi\u010dnoj zajednici iz\n                \u010dl. 220 st. 5 i st. 2 u vezi st. 1 Krivi\u010dnog zakonika CG i krivi\u010dnog djela nasilje u porodici ili porodi\u010dnoj zajednici iz\n                \u010dl. 220 st. 5 Krivi\u010dnog zakonika CG nakon održanog glavnog i javnog pretresa dana\n                04.07.2023. godine, u prisustvu\n                R. S., okrivljenog i ošte\u0107enih, donio je i javno objavio sljede\u0107u\n            \n\n            PRESUDU\n\n            \n                Okrivljeni:\n                A. R. (JMBG: ...), od oca N. i majke M. ro\u0111. M., ro\u0111en .... godine, u P. sa trenutnim prebivalištem u B. (bez bliže adrese), po zanimanju pomo\u0107ni kuvar, zaposlen u „\u010c.“ DOO B. sa mjese\u010dnom platom od oko ...,00€, oženjen, otac jednog maloljetnog djeteta, ne posjeduje nepokretnosti na svoje ime, državljanin C. G., ranije neosu\u0111ivan\n            \n\n            Kriv je\n\n            \n                Što je:\n            \n            \n                1. dana 24.01.2023. oko 17,00 \u010dasova u selu M., opština H. N., u svojoj porodi\u010dnoj ku\u0107i, prekršio mjeru zaštite od nasilja u porodici – mjeru zabrane uznemiravanja i uho\u0111enja svoje majke ošte\u0107ene\n                A. M. i supruge ošte\u0107ene\n                A. E., koja mu je izre\u010dena od strane Suda za prekršaje u B. – Odjeljenje u H. N. na osnovu Zakona o zaštiti od nasilja u porodici pravosnažnim rješenjem PP br.2279/22-A od 08.11.2022. u trajanju od 1 (jedne) godine, te primjenom grubog nasilja narušio tjelesni integritet \u010dlanova svoje porodice – navedenih ošte\u0107enih, na na\u010din što je ošte\u0107enoj\n                A. E. uputio rije\u010di "kurvetino" i stisnutom pesnicom je udario u predjelu nosa, a onda je drvenom stolicom – sredstvom podobnim da tijelo teško povrijedi i zdravlje teško naruši, udario u predjelu le\u0111a, da bi nakon toga drvenu stolicu bacio u pravcu ošte\u0107ene\n                A. M. i pogodio je istom u predjelu lijeve šake i tom prilikom joj nanio lake tjelesne povrede u vidu dva krvna podliva kože u predjelu naddlanene strane lijeve šake, pri \u010demu je bio svjestan svoga djela i htio njegovo izvršenje,\n            \n            \n                -\u010dime je izvršio krivi\u010dno djelo nasilje u porodici ili u porodi\u010dnoj zajednici iz \u010dl. 220 st. 5 i st. 2 u vezi st. 1 Krivi\u010dnog zakonika Crne Gore,\n            \n            \n                2. dana 20.02.2023. oko 11,00 \u010dasova u selu M., opština H. N., prekršio mjeru zaštite od nasilja u porodici – mjeru zabrane uznemiravanja i uho\u0111enja svoje supruge ošte\u0107ene\n                A. E., koja mu je izre\u010dena od strane Suda za prekršaje u B. – Odjeljenje u H. N. na osnovu Zakona o zaštiti od nasilja u porodici pravosnažnim rješenjem PP br.2279/22-A od 08.11.2022. u trajanju od 1 (jedne) godine na na\u010din što je došao ispred ulaznih vrata od ku\u0107e i po\u010deo da lupa na vrata kako bi mu ošte\u0107ena otvorila, pa kako mu ista nije otvorila vrata uzeo je sjekiru iz dvorišta i istom više puta udario u vrata kojom prilikom ih je oštetio, a što je kod ošte\u0107ene izazvalo osje\u0107aj uznemirenosti, pri \u010demu je bio svjestan svoga djela i htio njegovo izvršenje,\n            \n            \n                -\u010dime je izvršio krivi\u010dno djelo nasilje u porodici ili u porodi\u010dnoj zajednici iz \u010dl. 220 st. 5 KZ CG,\n            \n            \n            \n                \n                    \n                        Pa sud okrivljenom A. R. na osnovu citiranih zakonskih propisa i primjenom \u010dl. 4, 32, 36, 42 KZ CG, te \u010dl. 374, \u010dl. 226 st. 3, \u010dl. 229 st. 1 i \u010dl. 239 st. 2 ZKP-a, prethodno utvr\u0111uje\n                        - za krivi\u010dno djelo nasilje u porodici ili u porodi\u010dnoj zajednici iz \u010dl. 220 st. 5 i st. 2 u vezi st. 1 Krivi\u010dnog zakonika Crne Gore, kaznu zatvora u trajanju od 4 (\u010detiri) mjeseca,\n                        - za krivi\u010dno djelo nasilje u porodici ili u porodi\u010dnoj zajednici iz \u010dl. 220 st. 5 KZ CG, kaznu zatvora u trajanju od 3 (tri) mjeseca,\n                    \n                \n                \n                    \n                        te mu za navedena krivi\u010dna djela primjenom \u010dl. 48, 52, 53 i 54 KZ CG, IZRI\u010cE\n                        USLOVNU OSUDU\n                        Kojom mu utvr\u0111uje jedinstvenu kaznu zatvora u trajanju od 6 (šest) mjeseci, i istovremeno odre\u0111uje da se ova kazna ne\u0107e izvršiti ukoliko okrivljeni u roku od 2 (dvije) godine, od pravosnažnosti presude ne izvrši novo krivi\u010dno djelo.\n                    \n                \n                \n                    \n                        Okrivljeni se obavezuje da plati troškove krivi\u010dnog postupka u iznosu od 71,50€ i troškove sudskog paušala u iznosu od 30,00€ u korist budžeta Crne Gore na žiro ra\u010dun 832-158-14 u roku od 15 dana od pravosnažnosti presude.\n                    \n                \n                \n                    \n                        Ošte\u0107ene A. M. i A. E. se radi imovinsko-pravnog zahtjeva upu\u0107uju na parni\u010dni postupak.', 'role': 'user'}], 'model': 'gpt-4o', 'n': 1, 'stream': False, 'temperature': 0.0}}
+2025-09-11 18:49:16,236 - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2025-09-11 18:49:16,236 - DEBUG - connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=None socket_options=None
+2025-09-11 18:49:16,364 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001BC40E474D0>
+2025-09-11 18:49:16,365 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001BC40A829F0> server_hostname='api.openai.com' timeout=None
+2025-09-11 18:49:16,449 - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001BC40E02E90>
+2025-09-11 18:49:16,449 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-09-11 18:49:16,450 - DEBUG - send_request_headers.complete
+2025-09-11 18:49:16,450 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-09-11 18:49:16,450 - DEBUG - send_request_body.complete
+2025-09-11 18:49:16,450 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-09-11 18:49:21,536 - DEBUG - receive_response_headers.failed exception=KeyboardInterrupt()
+2025-09-11 18:49:21,536 - DEBUG - response_closed.started
+2025-09-11 18:49:21,536 - DEBUG - response_closed.complete
+2025-09-11 18:49:38,209 - INFO - Successfully extracted metadata and text from K10-2017.xml
+2025-09-11 18:49:40,997 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:49:41,430 - INFO - Successfully processed K10-2017.xml
+2025-09-11 18:50:01,573 - INFO - Successfully extracted metadata and text from K10-2017.xml
+2025-09-11 18:50:03,975 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:03,981 - INFO - Successfully processed K10-2017.xml
+2025-09-11 18:50:03,982 - INFO - Successfully extracted metadata and text from K10-2024.xml
+2025-09-11 18:50:08,935 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:08,936 - INFO - Successfully processed K10-2024.xml
+2025-09-11 18:50:08,937 - INFO - Successfully extracted metadata and text from K102-2018.xml
+2025-09-11 18:50:12,215 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:12,536 - INFO - Successfully processed K102-2018.xml
+2025-09-11 18:50:12,537 - INFO - Successfully extracted metadata and text from K107-2024.xml
+2025-09-11 18:50:17,242 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:17,259 - INFO - Successfully processed K107-2024.xml
+2025-09-11 18:50:17,260 - INFO - Successfully extracted metadata and text from K151-2014.xml
+2025-09-11 18:50:19,715 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:19,716 - INFO - Successfully processed K151-2014.xml
+2025-09-11 18:50:19,717 - INFO - Successfully extracted metadata and text from K18-2023.xml
+2025-09-11 18:50:22,973 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:23,046 - INFO - Successfully processed K18-2023.xml
+2025-09-11 18:50:23,047 - INFO - Successfully extracted metadata and text from K286-2021.xml
+2025-09-11 18:50:25,387 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:25,464 - INFO - Successfully processed K286-2021.xml
+2025-09-11 18:50:25,465 - INFO - Successfully extracted metadata and text from K406-2022.xml
+2025-09-11 18:50:27,663 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:27,675 - INFO - Successfully processed K406-2022.xml
+2025-09-11 18:50:27,676 - INFO - Successfully extracted metadata and text from K42-2015.xml
+2025-09-11 18:50:30,714 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:30,715 - INFO - Successfully processed K42-2015.xml
+2025-09-11 18:50:30,716 - INFO - Successfully extracted metadata and text from K42-2019.xml
+2025-09-11 18:50:32,974 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:33,478 - INFO - Successfully processed K42-2019.xml
+2025-09-11 18:50:33,479 - INFO - Successfully extracted metadata and text from K438-2021.xml
+2025-09-11 18:50:35,536 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:35,549 - INFO - Successfully processed K438-2021.xml
+2025-09-11 18:50:35,550 - INFO - Successfully extracted metadata and text from K48-2021.xml
+2025-09-11 18:50:40,230 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:40,231 - INFO - Successfully processed K48-2021.xml
+2025-09-11 18:50:40,232 - INFO - Successfully extracted metadata and text from K60-2024.xml
+2025-09-11 18:50:41,979 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:41,985 - INFO - Successfully processed K60-2024.xml
+2025-09-11 18:50:41,986 - INFO - Successfully extracted metadata and text from K730-2022.xml
+2025-09-11 18:50:44,068 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:44,087 - INFO - Successfully processed K730-2022.xml
+2025-09-11 18:50:44,089 - INFO - Successfully extracted metadata and text from K93-2021.xml
+2025-09-11 18:50:46,932 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:46,944 - INFO - Successfully processed K93-2021.xml
+2025-09-11 18:50:46,945 - INFO - Successfully extracted metadata and text from K998-2020.xml
+2025-09-11 18:50:49,264 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:50:49,266 - INFO - Successfully processed K998-2020.xml
+2025-09-11 18:50:49,266 - INFO - Processing complete. Processed: 16, Skipped: 0
+2025-09-11 18:54:31,093 - INFO - Successfully extracted metadata and text from K10-2017.xml
+2025-09-11 18:54:33,574 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:54:33,579 - INFO - Successfully processed K10-2017.xml
+2025-09-11 18:54:33,580 - INFO - Successfully extracted metadata and text from K10-2024.xml
+2025-09-11 18:57:06,122 - INFO - Successfully extracted metadata and text from K10-2017.xml
+2025-09-11 18:57:10,815 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:57:10,825 - INFO - Successfully processed K10-2017.xml
+2025-09-11 18:57:33,971 - INFO - Successfully extracted metadata and text from K10-2017.xml
+2025-09-11 18:57:37,670 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:57:37,675 - INFO - Successfully processed K10-2017.xml
+2025-09-11 18:57:37,676 - INFO - Successfully extracted metadata and text from K10-2024.xml
+2025-09-11 18:57:40,257 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:57:40,263 - INFO - Successfully processed K10-2024.xml
+2025-09-11 18:57:40,264 - INFO - Successfully extracted metadata and text from K102-2018.xml
+2025-09-11 18:57:46,084 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:57:46,085 - INFO - Successfully processed K102-2018.xml
+2025-09-11 18:57:46,086 - INFO - Successfully extracted metadata and text from K107-2024.xml
+2025-09-11 18:57:55,169 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:57:55,173 - INFO - Successfully processed K107-2024.xml
+2025-09-11 18:57:55,174 - INFO - Successfully extracted metadata and text from K151-2014.xml
+2025-09-11 18:57:58,930 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:57:58,937 - INFO - Successfully processed K151-2014.xml
+2025-09-11 18:57:58,938 - INFO - Successfully extracted metadata and text from K18-2023.xml
+2025-09-11 18:58:11,097 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:58:11,103 - INFO - Successfully processed K18-2023.xml
+2025-09-11 18:58:11,105 - INFO - Successfully extracted metadata and text from K286-2021.xml
+2025-09-11 18:58:14,545 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:58:14,556 - INFO - Successfully processed K286-2021.xml
+2025-09-11 18:58:14,558 - INFO - Successfully extracted metadata and text from K406-2022.xml
+2025-09-11 18:58:16,699 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:58:16,705 - INFO - Successfully processed K406-2022.xml
+2025-09-11 18:58:16,706 - INFO - Successfully extracted metadata and text from K42-2015.xml
+2025-09-11 18:58:20,469 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:58:20,470 - INFO - Successfully processed K42-2015.xml
+2025-09-11 18:58:20,471 - INFO - Successfully extracted metadata and text from K42-2019.xml
+2025-09-11 18:58:24,591 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:58:24,597 - INFO - Successfully processed K42-2019.xml
+2025-09-11 18:58:24,599 - INFO - Successfully extracted metadata and text from K438-2021.xml
+2025-09-11 18:58:33,034 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:58:33,046 - INFO - Successfully processed K438-2021.xml
+2025-09-11 18:58:33,047 - INFO - Successfully extracted metadata and text from K48-2021.xml
+2025-09-11 18:58:36,831 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:58:36,836 - INFO - Successfully processed K48-2021.xml
+2025-09-11 18:58:36,837 - INFO - Successfully extracted metadata and text from K60-2024.xml
+2025-09-11 18:58:39,055 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:58:39,061 - INFO - Successfully processed K60-2024.xml
+2025-09-11 18:58:39,062 - INFO - Successfully extracted metadata and text from K730-2022.xml
+2025-09-11 18:58:44,010 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:58:44,030 - INFO - Successfully processed K730-2022.xml
+2025-09-11 18:58:44,031 - INFO - Successfully extracted metadata and text from K93-2021.xml
+2025-09-11 18:58:47,486 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:58:47,487 - INFO - Successfully processed K93-2021.xml
+2025-09-11 18:58:47,489 - INFO - Successfully extracted metadata and text from K998-2020.xml
+2025-09-11 18:58:50,122 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 18:58:50,123 - INFO - Successfully processed K998-2020.xml
+2025-09-11 18:58:50,123 - INFO - Processing complete. Processed: 16, Skipped: 0
+2025-09-11 19:04:17,922 - INFO - Successfully extracted metadata and text from K10-2017.xml
+2025-09-11 19:04:22,879 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:04:22,890 - INFO - Successfully processed K10-2017.xml
+2025-09-11 19:04:22,891 - INFO - Successfully extracted metadata and text from K10-2024.xml
+2025-09-11 19:04:25,679 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:04:25,686 - INFO - Successfully processed K10-2024.xml
+2025-09-11 19:04:25,687 - INFO - Successfully extracted metadata and text from K102-2018.xml
+2025-09-11 19:04:29,160 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:04:29,166 - INFO - Successfully processed K102-2018.xml
+2025-09-11 19:04:29,169 - INFO - Successfully extracted metadata and text from K107-2024.xml
+2025-09-11 19:04:34,207 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:04:34,209 - INFO - Successfully processed K107-2024.xml
+2025-09-11 19:04:34,210 - INFO - Successfully extracted metadata and text from K151-2014.xml
+2025-09-11 19:04:38,107 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:04:38,114 - INFO - Successfully processed K151-2014.xml
+2025-09-11 19:04:38,116 - INFO - Successfully extracted metadata and text from K18-2023.xml
+2025-09-11 19:04:42,632 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:04:42,634 - INFO - Successfully processed K18-2023.xml
+2025-09-11 19:04:42,635 - INFO - Successfully extracted metadata and text from K286-2021.xml
+2025-09-11 19:04:57,613 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:04:57,623 - INFO - Successfully processed K286-2021.xml
+2025-09-11 19:04:57,624 - INFO - Successfully extracted metadata and text from K406-2022.xml
+2025-09-11 19:05:00,929 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:05:00,936 - INFO - Successfully processed K406-2022.xml
+2025-09-11 19:05:00,938 - INFO - Successfully extracted metadata and text from K42-2015.xml
+2025-09-11 19:05:04,973 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:05:04,977 - INFO - Successfully processed K42-2015.xml
+2025-09-11 19:05:04,978 - INFO - Successfully extracted metadata and text from K42-2019.xml
+2025-09-11 19:05:08,748 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:05:08,760 - INFO - Successfully processed K42-2019.xml
+2025-09-11 19:05:08,761 - INFO - Successfully extracted metadata and text from K438-2021.xml
+2025-09-11 19:05:11,680 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:05:11,681 - INFO - Successfully processed K438-2021.xml
+2025-09-11 19:05:11,683 - INFO - Successfully extracted metadata and text from K48-2021.xml
+2025-09-11 19:05:18,933 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:05:18,940 - INFO - Successfully processed K48-2021.xml
+2025-09-11 19:05:18,941 - INFO - Successfully extracted metadata and text from K60-2024.xml
+2025-09-11 19:05:22,281 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:05:22,286 - INFO - Successfully processed K60-2024.xml
+2025-09-11 19:05:22,287 - INFO - Successfully extracted metadata and text from K730-2022.xml
+2025-09-11 19:05:28,699 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:05:28,705 - INFO - Successfully processed K730-2022.xml
+2025-09-11 19:05:28,707 - INFO - Successfully extracted metadata and text from K93-2021.xml
+2025-09-11 19:05:33,793 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:05:33,794 - INFO - Successfully processed K93-2021.xml
+2025-09-11 19:05:33,795 - INFO - Successfully extracted metadata and text from K998-2020.xml
+2025-09-11 19:05:36,872 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:05:36,872 - INFO - Successfully processed K998-2020.xml
+2025-09-11 19:05:36,873 - INFO - Processing complete. Processed: 16, Skipped: 0
+2025-09-11 19:07:20,905 - INFO - Successfully extracted metadata and text from K10-2017.xml
+2025-09-11 19:07:24,187 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:07:24,198 - INFO - Successfully processed K10-2017.xml
+2025-09-11 19:07:24,200 - INFO - Successfully extracted metadata and text from K10-2024.xml
+2025-09-11 19:07:27,387 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:07:27,400 - INFO - Successfully processed K10-2024.xml
+2025-09-11 19:07:27,401 - INFO - Successfully extracted metadata and text from K102-2018.xml
+2025-09-11 19:07:30,897 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:07:30,901 - INFO - Successfully processed K102-2018.xml
+2025-09-11 19:07:30,903 - INFO - Successfully extracted metadata and text from K107-2024.xml
+2025-09-11 19:07:34,772 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:07:34,778 - INFO - Successfully processed K107-2024.xml
+2025-09-11 19:07:34,779 - INFO - Successfully extracted metadata and text from K151-2014.xml
+2025-09-11 19:07:37,801 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:07:37,808 - INFO - Successfully processed K151-2014.xml
+2025-09-11 19:07:37,809 - INFO - Successfully extracted metadata and text from K18-2023.xml
+2025-09-11 19:07:44,597 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:07:44,606 - INFO - Successfully processed K18-2023.xml
+2025-09-11 19:07:44,607 - INFO - Successfully extracted metadata and text from K286-2021.xml
+2025-09-11 19:07:48,416 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:07:48,421 - INFO - Successfully processed K286-2021.xml
+2025-09-11 19:07:48,422 - INFO - Successfully extracted metadata and text from K406-2022.xml
+2025-09-11 19:07:51,438 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:07:51,450 - INFO - Successfully processed K406-2022.xml
+2025-09-11 19:07:51,451 - INFO - Successfully extracted metadata and text from K42-2015.xml
+2025-09-11 19:07:55,689 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:07:55,699 - INFO - Successfully processed K42-2015.xml
+2025-09-11 19:07:55,700 - INFO - Successfully extracted metadata and text from K42-2019.xml
+2025-09-11 19:07:58,602 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:07:58,610 - INFO - Successfully processed K42-2019.xml
+2025-09-11 19:07:58,611 - INFO - Successfully extracted metadata and text from K438-2021.xml
+2025-09-11 19:08:01,684 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:08:01,713 - INFO - Successfully processed K438-2021.xml
+2025-09-11 19:08:01,714 - INFO - Successfully extracted metadata and text from K48-2021.xml
+2025-09-11 19:08:07,245 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:08:07,257 - INFO - Successfully processed K48-2021.xml
+2025-09-11 19:08:07,259 - INFO - Successfully extracted metadata and text from K60-2024.xml
+2025-09-11 19:08:10,994 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:08:10,999 - INFO - Successfully processed K60-2024.xml
+2025-09-11 19:08:11,001 - INFO - Successfully extracted metadata and text from K730-2022.xml
+2025-09-11 19:08:15,101 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:08:15,106 - INFO - Successfully processed K730-2022.xml
+2025-09-11 19:08:15,108 - INFO - Successfully extracted metadata and text from K93-2021.xml
+2025-09-11 19:08:20,933 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:08:20,934 - INFO - Successfully processed K93-2021.xml
+2025-09-11 19:08:20,937 - INFO - Successfully extracted metadata and text from K998-2020.xml
+2025-09-11 19:08:24,045 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 19:08:24,046 - INFO - Successfully processed K998-2020.xml
+2025-09-11 19:08:24,046 - INFO - Processing complete. Processed: 16, Skipped: 0

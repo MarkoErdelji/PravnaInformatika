@@ -1,6 +1,6 @@
 package com.pravnainfo.judgingapp.dto;
 
-import com.pravnainfo.judgingapp.entity.Verdict;
+import com.pravnainfo.judgingapp.entity.*;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.Attribute;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
 import lombok.AllArgsConstructor;
@@ -17,22 +17,30 @@ public class CaseDescription implements CaseComponent {
     private String court;
     private String date;
     private String judge;
+    private String clerk;
+    private String prosecutor;
+    private String defendantName;
     private String criminalOffense;
-    private Integer numDefendants;
-    private Boolean previouslyConvicted;
+    private String appliedProvisions;
+    private String verdict;
     private Boolean awareOfIllegality;
-    private String victimRelationship;
+    private String mainVictimRelationship;
     private String violenceNature;
     private String injuryTypes;
     private String executionMeans;
     private Boolean protectionMeasureViolation;
-    private Integer defendantAge;
-    private Integer victimAge;
+    private String eventLocation;
+    private String eventDate;
+    private String defendantStatus;
+    private String victims;
+    private Integer mainVictimAge;
     private Boolean alcoholOrDrugs;
     private Boolean childrenPresent;
+    private String penalty;
+    private String procedureCosts;
     private Boolean useOfWeapon;
     private Integer numberOfVictims;
-    private String verdict; // optional for explanation/prediction
+    private String xmlFileName;
 
     @Override
     public Attribute getIdAttribute() {
@@ -43,23 +51,30 @@ public class CaseDescription implements CaseComponent {
         this.dbId = v.getId();
         this.caseId = v.getCaseId();
         this.court = v.getCourt();
-        this.date = v.getDate().toString();
+        this.date = v.getDate() != null ? v.getDate().toString() : "";
         this.judge = v.getJudgeName();
+        this.clerk = v.getClerkName();
+        this.prosecutor = v.getProsecutor();
+        this.defendantName = v.getDefendantName();
         this.criminalOffense = v.getCriminalOffense();
-        this.numDefendants = v.getNumDefendants();
-        this.previouslyConvicted = v.getPreviouslyConvicted();
+        this.appliedProvisions = v.getAppliedProvisions();
+        this.verdict = v.getVerdictType() != null ? v.getVerdictType().name() : null;
         this.awareOfIllegality = v.getAwareOfIllegality();
-        this.victimRelationship = String.valueOf(v.getVictimRelationship());
-        this.violenceNature = String.valueOf(v.getViolenceNature());
-        this.injuryTypes = String.valueOf(v.getInjuryTypes());
-        this.executionMeans = String.valueOf(v.getExecutionMeans());
+        this.mainVictimRelationship = v.getMainVictimRelationship() != null ? v.getMainVictimRelationship().name() : null;
+        this.violenceNature = v.getViolenceNature() != null ? v.getViolenceNature().name() : null;
+        this.injuryTypes = v.getInjuryTypes() != null ? v.getInjuryTypes().name() : null;
         this.protectionMeasureViolation = v.getProtectionMeasureViolation();
-        this.defendantAge = v.getDefendantAge();
-        this.victimAge = v.getVictimAge();
+        this.eventLocation = v.getEventLocation();
+        this.eventDate = v.getEventDate() != null ? v.getEventDate().toString() : "";
+        this.defendantStatus = v.getDefendantStatus();
+        this.victims = v.getVictims();
+        this.mainVictimAge = v.getMainVictimAge();
         this.alcoholOrDrugs = v.getAlcoholOrDrugs();
         this.childrenPresent = v.getChildrenPresent();
+        this.penalty = v.getPenalty();
+        this.procedureCosts = v.getProcedureCosts();
         this.useOfWeapon = v.getUseOfWeapon();
         this.numberOfVictims = v.getNumberOfVictims();
-        this.verdict = v.getVerdict() != null ? v.getVerdict().name() : null;
+        this.xmlFileName = v.getXmlFileName();
     }
 }

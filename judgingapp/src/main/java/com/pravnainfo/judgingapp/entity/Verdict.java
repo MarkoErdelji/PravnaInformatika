@@ -30,6 +30,9 @@ public class Verdict {
     @Column(name = "judge_name")
     private String judgeName;
 
+    @Column(name = "clerk_name")
+    private String clerkName;
+
     @Column(name = "prosecutor")
     private String prosecutor;
 
@@ -43,21 +46,16 @@ public class Verdict {
     private String appliedProvisions;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "verdict")
-    private VerdictType verdict;
+    @Column(name = "verdict_type")
+    private VerdictType verdictType;
 
-    @Column(name = "num_defendants")
-    private Integer numDefendants;
-
-    @Column(name = "previously_convicted")
-    private Boolean previouslyConvicted;
 
     @Column(name = "aware_of_illegality")
     private Boolean awareOfIllegality;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "victim_relationship")
-    private VictimRelationship victimRelationship;
+    @Column(name = "main_victim_relationship")
+    private VictimRelationship mainVictimRelationship;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "violence_nature")
@@ -66,10 +64,6 @@ public class Verdict {
     @Enumerated(EnumType.STRING)
     @Column(name = "injury_types")
     private InjuryTypes injuryTypes;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "execution_means")
-    private ExecutionMeans executionMeans;
 
     @Column(name = "protection_measure_violation")
     private Boolean protectionMeasureViolation;
@@ -86,14 +80,8 @@ public class Verdict {
     @Column(name = "victims")
     private String victims;
 
-    @Column(name = "defendant_age")
-    private Integer defendantAge;
-
-    @Column(name = "victim_age")
-    private Integer victimAge;
-
-    @Column(name = "previous_incidents")
-    private String previousIncidents;
+    @Column(name = "main_victim_age")
+    private Integer mainVictimAge;
 
     @Column(name = "alcohol_or_drugs")
     private Boolean alcoholOrDrugs;

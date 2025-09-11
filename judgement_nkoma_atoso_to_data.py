@@ -7,25 +7,36 @@ from langchain_core.prompts import ChatPromptTemplate
 import json
 import logging
 
-logging.basicConfig(filename='parsing_log.txt', level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+# Configure logging
+logging.basicConfig(
+    filename='parsing_log.txt',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
+os.environ["OPENAI_API_KEY"] = "PLACEHOLDER"
 
-xml_folder = Path("./judgingapp/xml")
-output_csv = Path("./judgingapp/src/main/resources/verdicts.csv")
+# Define paths
+BASE_DIR = Path(__file__).resolve().parent
+XML_FOLDER = BASE_DIR / "judgingapp" / "xml"
+OUTPUT_CSV = BASE_DIR / "judgingapp" / "src" / "main" / "resources" / "verdicts.csv"
 
-verdict_headers = [
-    "id", "Court", "Case Number", "Judge", "Prosecutor", "Defendant",
-    "Criminal Offense", "Injury Types", "Verdict Type", "Applied Provisions",
-    "Verdict Date", "Victim", "Penalty", "Event Location", "Event Date",
-    "Protection Measure Violation", "Execution Means", "Procedure Costs",
-    "Violence Nature", "Victim Relationship", "Defendant Status", "Defendant Age",
-    "Victim Age", "Previous Incidents", "Alcohol or Drugs", "Children Present",
-    "Use of Weapon", "Number of Victims", "Number of Defendants", "Aware of Illegality"
+# Define CSV headers
+VERDICT_HEADERS = [
+    "id", "Court", "Case Number", "Judge", "Clerk", "Prosecutor", "Defendant",
+    "Criminal Offense", "Verdict Type", "Applied Provisions", "Verdict Date",
+    "Victim", "Penalty", "Event Location", "Event Date",
+    "Violence Nature", "Injury Types", "Use of Weapon",
+    "Main Victim Age", "Main Victim Relationship", "Protection Measure Violation",
+     "Procedure Costs", "Defendant Status", "Children Present",
+    "Number of Victims", "Aware of Illegality", "Alcohol or Drugs"
 ]
 
-ns = {"akn": "http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17"}
+# XML namespace
+NS = {"akn": "http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17"}
 
 def safe_get(element, attr):
+    """Safely get an attribute from an XML element."""
     try:
         return element.get(attr, "") if element is not None else ""
     except Exception as e:
@@ -33,6 +44,7 @@ def safe_get(element, attr):
         return ""
 
 def safe_text(element):
+    """Safely get text from an XML element."""
     try:
         return element.text.strip() if element is not None and element.text else ""
     except Exception as e:
@@ -40,96 +52,108 @@ def safe_text(element):
         return ""
 
 def extract_metadata_and_text(xml_path):
+    """Extract metadata and full text from an XML file."""
     try:
         tree = etree.parse(xml_path)
         root = tree.getroot()
 
-        meta = {}
-        meta['id'] = str(xml_path.stem)
-        meta['Court'] = safe_text(root.find(".//akn:FRBRauthor", namespaces=ns))
-        meta['Case Number'] = safe_text(root.find(".//akn:FRBRtitle", namespaces=ns))
-        meta['Verdict Date'] = safe_get(root.find(".//akn:FRBRdate", namespaces=ns), "date")
+        meta = {
+            'id': str(xml_path.stem),
+            'Court': safe_text(root.find(".//akn:FRBRauthor", namespaces=NS)),
+            'Case Number': safe_text(root.find(".//akn:FRBRtitle", namespaces=NS)),
+            'Verdict Date': safe_get(root.find(".//akn:FRBRdate", namespaces=NS), "date"),
+        }
 
-        # Extract judges
-        judges = []
-        for person in root.findall(".//akn:TLCPerson", namespaces=ns):
-            if safe_get(person, "eId") in [safe_get(p, "refersTo").lstrip("#") for p in root.findall(".//akn:party[@as='#judge']", namespaces=ns)]:
-                judges.append(safe_get(person, "showAs"))
-        meta['Judge'] = ", ".join(set(judges)) if judges else ""
+        # Extract Judge
+        judge = root.find(".//akn:party[@as='#judge']", namespaces=NS)
+        meta['Judge'] = safe_get(
+            root.find(f".//akn:TLCPerson[@eId='{safe_get(judge, 'refersTo').lstrip('#')}']", namespaces=NS),
+            "showAs"
+        ) if judge is not None else ""
 
-        # Extract prosecutor
-        prosecutors = []
-        for person in root.findall(".//akn:TLCPerson", namespaces=ns):
-            if safe_get(person, "eId") in [safe_get(p, "refersTo").lstrip("#") for p in root.findall(".//akn:party[@as='#prosecutor']", namespaces=ns)]:
-                prosecutors.append(safe_get(person, "showAs"))
-        if prosecutors:
-            meta['Prosecutor'] = ", ".join(set(prosecutors))
-        else:
-            prosecutor_org = root.find(".//akn:organization[@refersTo='#odt']", namespaces=ns)
-            meta['Prosecutor'] = safe_get(prosecutor_org, "showAs") or "Osnovno državno tužilaštvo"
+        # Extract Clerk
+        clerk = root.find(".//akn:party[@as='#clerk']", namespaces=NS)
+        meta['Clerk'] = safe_get(
+            root.find(f".//akn:TLCPerson[@eId='{safe_get(clerk, 'refersTo').lstrip('#')}']", namespaces=NS),
+            "showAs"
+        ) if clerk is not None else ""
 
-        # Extract defendant
-        defendants = []
-        for person in root.findall(".//akn:TLCPerson", namespaces=ns):
-            if safe_get(person, "eId") in [safe_get(p, "refersTo").lstrip("#") for p in root.findall(".//akn:party[@as='#defendant']", namespaces=ns)]:
-                defendants.append(safe_get(person, "showAs"))
-        meta['Defendant'] = ", ".join(set(defendants)) if defendants else ""
-        meta['Number of Defendants'] = len(set(defendants)) if defendants else 1
+        # Extract Prosecutor
+        prosecutor_org = root.find(".//akn:organization[@refersTo='#odt']", namespaces=NS)
+        meta['Prosecutor'] = safe_get(prosecutor_org, "showAs") or "Osnovno državno tužilaštvo"
 
-        # Extract victim
-        victims = []
-        for person in root.findall(".//akn:TLCPerson", namespaces=ns):
-            if safe_get(person, "eId") in [safe_get(p, "refersTo").lstrip("#") for p in root.findall(".//akn:party[@as='#victim']", namespaces=ns)]:
-                victims.append(safe_get(person, "showAs"))
-        meta['Victim'] = ", ".join(set(victims)) if victims else ""
-        meta['Number of Victims'] = len(set(victims)) if victims else 0
+        # Extract Defendant
+        defendant = root.find(".//akn:party[@as='#defendant']", namespaces=NS)
+        meta['Defendant'] = safe_get(
+            root.find(f".//akn:TLCPerson[@eId='{safe_get(defendant, 'refersTo').lstrip('#')}']", namespaces=NS),
+            "showAs"
+        ) if defendant is not None else ""
 
-        # Extract judgment body text
-        judgment_body = root.find(".//akn:judgmentBody", namespaces=ns)
+        # Extract Victims
+        victims = [
+            safe_get(root.find(f".//akn:TLCPerson[@eId='{safe_get(victim, 'refersTo').lstrip('#')}']", namespaces=NS), "showAs")
+            for victim in root.findall(".//akn:party[@as='#victim']", namespaces=NS)
+            if victim is not None
+        ]
+        meta['Victim'] = ", ".join(victims)
+        meta['Number of Victims'] = len(victims)
+
+        # Extract Judgment Body Text
+        judgment_body = root.find(".//akn:judgmentBody", namespaces=NS)
         full_text = etree.tostring(judgment_body, method="text", encoding="unicode").strip() if judgment_body is not None else ""
 
+        logging.info(f"Successfully extracted metadata and text from {xml_path.name}")
         return meta, full_text
+
     except Exception as e:
         logging.error(f"Error parsing {xml_path}: {e}")
         print(f"Error parsing {xml_path}: {e}")
         return {}, ""
 
 def build_prompt():
+    """Build the prompt for the LLM."""
     return ChatPromptTemplate.from_messages([
-        ("system", """You are an expert in legal documents in Serbian language. Analyze the court verdict text and extract the following information in JSON format, using the Montenegrin Criminal Code (Article 220). Keep metadata like names, locations, dates in their original form. Translate and standardize facts of the case to English, using predefined categories where possible. If information is missing, return empty string ('') for strings, false for booleans, 0 for integers. Return only a valid JSON object according to the following schema:
+        ("system", """You are an expert in legal documents in Serbian language. Analyze the court verdict text and extract the requested information in JSON format. Keep metadata like names, locations, dates in their original form. Translate and standardize facts of the case to English.
 
-        ```json
-          "Criminal Offense": "string", // e.g., 'cl. 220 st. 1'
-          "Injury Types": "string", // Standardized: 'light', 'severe', 'light,severe', or ''
-          "Verdict Type": "string", // Enum: 'PRISON', 'SUSPENDED', 'ACQUITTED', 'DETENTION'
-          "Applied Provisions": "string", // e.g., 'cl. 220 st. 1, cl. 42 st. 1 KZ, cl. 374 ZKP'
-          "Penalty": "string", // In English, e.g., 'prison sentence of 6 months' or ''
-          "Event Location": "string", // Original, e.g., 'Podgorica, ulica Mitra Bakića br. 154'
-          "Event Date": "string", // e.g., '2023-01-24'
-          "Protection Measure Violation": "boolean", // true or false
-          "Execution Means": "string", // Standardized categories: 'hands', 'feet', 'weapon', 'tool', 'verbal', 'other'
-          "Procedure Costs": "string", // In English, e.g., '90.50 € borne by the court' or original if specific
-          "Violence Nature": "string", // Standardized: 'violence', 'threat', 'reckless behaviour', or ''
-          "Victim Relationship": "string", // Standardized: 'spouse', 'parent', 'sibling', 'child', 'other', or ''
-          "Defendant Status": "string", // In English, e.g., 'unemployed, unmarried, previously convicted'
-          "Defendant Age": "string", // e.g., '45 years' or ''
-          "Victim Age": "string", // e.g., '38 years' or ''
-          "Previous Incidents": "string", // In English, e.g., 'convicted by verdict K.no. 850/05' (keep verdict numbers original)
-          "Alcohol or Drugs": "boolean", // true or false
-          "Children Present": "boolean", // true or false
-          "Use of Weapon": "boolean", // true if Execution Means involves 'weapon' or 'tool', false otherwise
-          "Number of Victims": "integer", // Number of victims mentioned
-          "Number of Defendants": "integer", // Number of defendants mentioned
-          "Aware of Illegality": "boolean" // true if defendant was aware of illegality, false otherwise
-        ```"""),
-        ("user", """From the following court verdict text, extract the requested information in JSON format according to the given schema:
+Use these strongly-typed fields:
+- Violence Nature (enum): "NONE", "PHYSICAL", "PSYCHOLOGICAL"
+- Injury Types (enum): "NONE", "MINOR", "SERIOUS", "DEATH"
+- Use of Weapon (boolean): true, false
+- Main Victim Age (int): 0–120
+- Main Victim Relationship (enum): "SPOUSE", "CHILD", "PARENT", "SIBLING", "OTHER_RELATIVE"
+- Protection Measure Violation (boolean): true, false
+- Verdict Type (enum): "ACQUITTAL", "FINE", "PRISON", "SUSPENDED", "FINE_AND_PRISON"
 
-        Verdict:
-        {input}
-        """)
+
+Return a valid JSON object with all fields. If a field cannot be determined, use appropriate defaults (e.g., "" for strings, false for booleans, 0 for integers). Examples:
+
+
+  "Criminal Offense": "cl. 220 st. 5",
+  "Verdict Type": "CONDITIONAL",
+  "Applied Provisions": "cl. 220 st. 5, cl. 42 st. 1 KZ",
+  "Penalty": "conditional sentence of 6 months",
+  "Event Location": "Podgorica, ul. Mitra Bakića 154",
+  "Event Date": "2023-01-24",
+  "Violence Nature": "PHYSICAL",
+  "Injury Types": "MINOR",
+  "Use of Weapon": true,
+  "Main Victim Age": 62,
+  "Main Victim Relationship": "PARENT",
+  "Protection Measure Violation": true,
+  "Procedure Costs": "71.50 EUR",
+  "Defendant Status": "employed",
+  "Alcohol or Drugs": false,
+  "Children Present": false,
+  "Aware of Illegality": true
+"""),
+        ("user", """From the following court verdict text, extract the requested information in JSON format:
+
+Verdict:
+{input}""")
     ])
 
 def clean_response(text):
+    """Clean the LLM response to extract valid JSON."""
     text = text.strip()
     if text.startswith("```json"):
         text = text[len("```json"):].strip()
@@ -138,6 +162,7 @@ def clean_response(text):
     return text
 
 def process_case(xml_path, llm, prompt):
+    """Process a single XML case file."""
     meta, text = extract_metadata_and_text(xml_path)
     if not text or not meta:
         logging.warning(f"Skipped {xml_path.name} due to empty text or metadata.")
@@ -146,148 +171,110 @@ def process_case(xml_path, llm, prompt):
     chain = prompt | llm
     try:
         result = chain.invoke({"input": text})
-        parsed = json.loads(clean_response(result.content))
+        verdict_data = json.loads(clean_response(result.content))
     except json.JSONDecodeError as e:
-        logging.error(f"Invalid JSON for {xml_path.name}: {e}")
-        print(f"ERROR: Invalid JSON for {xml_path.name}")
-        parsed = {}
+        logging.error(f"Error decoding JSON for {xml_path.name}: {e}")
+        print(f"Error decoding JSON for {xml_path.name}")
+        return None
+    except Exception as e:
+        logging.error(f"Error processing {xml_path.name} with LLM: {e}")
+        print(f"Error processing {xml_path.name}")
+        return None
 
-    if parsed.get("Criminal Offense"):
-        parsed["Criminal Offense"] = parsed["Criminal Offense"].replace("stav", "st.").replace("čl.", "cl.")
-    if parsed.get("Applied Provisions"):
-        parsed["Applied Provisions"] = parsed["Applied Provisions"].replace("stav", "st.").replace("čl.", "cl.")
+    # Combine metadata and LLM output
+    verdict = {**meta, **verdict_data}
 
-    if parsed.get("Injury Types"):
-        injuries = parsed["Injury Types"].lower()
-        injury_set = set()
-        if any(word in injuries for word in ["light", "laka", "lake"]):
-            injury_set.add("light")
-        if any(word in injuries for word in ["severe", "teška", "teške"]):
-            injury_set.add("severe")
-        parsed["Injury Types"] = ",".join(sorted(injury_set)) if injury_set else ""
-
-    if parsed.get("Victim Relationship"):
-        rel = parsed["Victim Relationship"].lower()
-        if any(word in rel for word in ["spouse", "supruga", "suprug", "wife", "husband"]):
-            parsed["Victim Relationship"] = "spouse"
-        elif any(word in rel for word in ["parent", "majka", "otac", "mother", "father"]):
-            parsed["Victim Relationship"] = "parent"
-        elif any(word in rel for word in ["sibling", "sestra", "brat", "sister", "brother"]):
-            parsed["Victim Relationship"] = "sibling"
-        elif any(word in rel for word in ["child", "dete", "sin", "kći", "son", "daughter"]):
-            parsed["Victim Relationship"] = "child"
-        else:
-            parsed["Victim Relationship"] = "other"
-
-    if parsed.get("Violence Nature"):
-        vio = parsed["Violence Nature"].lower()
-        if any(word in vio for word in ["rough violence", "grubo nasilje"]):
-            parsed["Violence Nature"] = "violence"
-        elif any(word in vio for word in ["threat", "prijetnja"]):
-            parsed["Violence Nature"] = "threat"
-        elif any(word in vio for word in ["arrogant and reckless behavior", "drsko i bezobzirno ponašanje"]):
-            parsed["Violence Nature"] = "reckless behaviour"
-        else:
-            parsed["Violence Nature"] = ""
-
-    if parsed.get("Execution Means"):
-        means = parsed["Execution Means"].lower()
-        if any(word in means for word in ["pesnica", "hand", "fist", "šaka"]):
-            parsed["Execution Means"] = "hands"
-        elif any(word in means for word in ["noga", "foot", "feet", "kick"]):
-            parsed["Execution Means"] = "feet"
-        elif any(word in means for word in ["oružje", "weapon", "gun", "knife", "pištolj", "nož", "axe", "sjekira"]):
-            parsed["Execution Means"] = "weapon"
-        elif any(word in means for word in ["alat", "tool", "kliješta", "pliers", "chair", "stolice", "hammer"]):
-            parsed["Execution Means"] = "tool"
-        elif any(word in means for word in ["verbal", "prijetnja", "threat", "poruka"]):
-            parsed["Execution Means"] = "verbal"
-        else:
-            parsed["Execution Means"] = "other"
-
-    if parsed.get("Execution Means"):
-        means = parsed["Execution Means"].lower()
-        parsed["Use of Weapon"] = any(word in means for word in ["weapon", "tool"])
-
-    if parsed.get("Defendant Status"):
-        status = parsed["Defendant Status"].lower()
-        status_parts = []
-        if any(word in status for word in ["nezaposlen", "unemployed"]):
-            status_parts.append("unemployed")
-        if any(word in status for word in ["neoženjen", "unmarried", "neoženjena"]):
-            status_parts.append("unmarried")
-        if any(word in status for word in ["osuđivan", "previously convicted", "ranije osuđivan"]):
-            status_parts.append("previously convicted")
-        parsed["Defendant Status"] = ", ".join(status_parts) if status_parts else ""
-
-    if parsed.get("Verdict Type") not in ["PRISON", "SUSPENDED", "ACQUITTED", "DETENTION"]:
-        if "odbija se optužba" in text.lower():
-            parsed["Verdict Type"] = "ACQUITTED"
-        elif "uslovnu osudu" in text.lower():
-            parsed["Verdict Type"] = "SUSPENDED"
-        elif "kazna zatvora" in text.lower() and "neće izvršiti" not in text.lower():
-            parsed["Verdict Type"] = "PRISON"
-        else:
-            parsed["Verdict Type"] = ""
-
-    if parsed.get("Aware of Illegality") is None:
-        parsed["Aware of Illegality"] = True
-    else:
-        if any(phrase in text.lower() for phrase in ["nesvjestan", "nisu znali", "not aware", "unaware"]):
-            parsed["Aware of Illegality"] = False
-
-    verdict = {
-        "id": meta.get("id", ""),
-        "Court": meta.get("Court", ""),
-        "Case Number": meta.get("Case Number", ""),
-        "Judge": meta.get("Judge", ""),
-        "Prosecutor": meta.get("Prosecutor", ""),
-        "Defendant": meta.get("Defendant", ""),
-        "Criminal Offense": parsed.get("Criminal Offense", ""),
-        "Injury Types": parsed.get("Injury Types", ""),
-        "Verdict Type": parsed.get("Verdict Type", ""),
-        "Applied Provisions": parsed.get("Applied Provisions", ""),
-        "Verdict Date": meta.get("Verdict Date", ""),
-        "Victim": meta.get("Victim", ""),
-        "Penalty": parsed.get("Penalty", ""),
-        "Event Location": parsed.get("Event Location", ""),
-        "Event Date": parsed.get("Event Date", ""),
-        "Protection Measure Violation": str(parsed.get("Protection Measure Violation", False)).lower(),
-        "Execution Means": parsed.get("Execution Means", ""),
-        "Procedure Costs": parsed.get("Procedure Costs", ""),
-        "Violence Nature": parsed.get("Violence Nature", ""),
-        "Victim Relationship": parsed.get("Victim Relationship", ""),
-        "Defendant Status": parsed.get("Defendant Status", ""),
-        "Defendant Age": parsed.get("Defendant Age", ""),
-        "Victim Age": parsed.get("Victim Age", ""),
-        "Previous Incidents": parsed.get("Previous Incidents", ""),
-        "Alcohol or Drugs": str(parsed.get("Alcohol or Drugs", False)).lower(),
-        "Children Present": str(parsed.get("Children Present", False)).lower(),
-        "Use of Weapon": str(parsed.get("Use of Weapon", False)).lower(),
-        "Number of Victims": str(meta.get("Number of Victims", 0)),
-        "Number of Defendants": str(meta.get("Number of Defendants", 1)),
-        "Aware of Illegality": str(parsed.get("Aware of Illegality", True)).lower()
+    # Ensure all fields are present with defaults
+    defaults = {
+        "Criminal Offense": "",
+        "Verdict Type": "",
+        "Applied Provisions": "",
+        "Penalty": "",
+        "Event Location": "",
+        "Event Date": "",
+        "Violence Nature": "NONE",
+        "Injury Types": "NONE",
+        "Use of Weapon": False,
+        "Main Victim Age": 0,
+        "Main Victim Relationship": "OTHER_RELATIVE",
+        "Protection Measure Violation": False,
+        "Procedure Costs": "",
+        "Defendant Status": "",
+        "Defendant Age": 0,
+        "Previous Incidents": "",
+        "Alcohol or Drugs": False,
+        "Children Present": False,
+        "Aware of Illegality": True,
+        "Number of Victims": meta.get("Number of Victims", 0),
     }
 
+    for key in VERDICT_HEADERS:
+        if key not in verdict:
+            verdict[key] = defaults.get(key, "")
+
+    # Validate and standardize fields, ensuring uppercase ENUMs
+    verdict["Violence Nature"] = str(verdict.get("Violence Nature", "NONE")).upper()
+    if verdict["Violence Nature"] not in ["NONE", "PHYSICAL", "PSYCHOLOGICAL"]:
+        verdict["Violence Nature"] = "NONE"
+
+    verdict["Injury Types"] = str(verdict.get("Injury Types", "NONE")).upper()
+    if verdict["Injury Types"] not in ["NONE", "MINOR", "SERIOUS", "DEATH"]:
+        verdict["Injury Types"] = "NONE"
+
+    verdict["Main Victim Relationship"] = str(verdict.get("Main Victim Relationship", "OTHER_RELATIVE")).upper()
+    if verdict["Main Victim Relationship"] not in ["SPOUSE", "CHILD", "PARENT", "SIBLING", "OTHER_RELATIVE"]:
+        verdict["Main Victim Relationship"] = "OTHER_RELATIVE"
+
+    verdict["Use of Weapon"] = bool(verdict.get("Use of Weapon", False))
+    verdict["Protection Measure Violation"] = bool(verdict.get("Protection Measure Violation", False))
+    verdict["Main Victim Age"] = int(verdict.get("Main Victim Age", 0))
+    verdict["Number of Victims"] = int(verdict.get("Number of Victims", 0))
+    verdict["Alcohol or Drugs"] = bool(verdict.get("Alcohol or Drugs", False))
+    verdict["Children Present"] = bool(verdict.get("Children Present", False))
+    verdict["Aware of Illegality"] = bool(verdict.get("Aware of Illegality", True))
+
+    logging.info(f"Successfully processed {xml_path.name}")
     return verdict
 
 def run_pipeline():
+    """Run the pipeline to process all XML files and write to CSV."""
     llm = ChatOpenAI(model="gpt-4o", temperature=0)
     prompt = build_prompt()
 
-    output_csv.parent.mkdir(parents=True, exist_ok=True)
+    # Verify XML folder exists
+    if not XML_FOLDER.exists():
+        raise FileNotFoundError(f"XML folder {XML_FOLDER} does not exist.")
+    
+    xml_files = list(XML_FOLDER.glob("*.xml"))
+    if not xml_files:
+        logging.warning(f"No XML files found in {XML_FOLDER}.")
+        print(f"No XML files found in {XML_FOLDER}.")
+        return
 
-    with open(output_csv, "w", encoding="utf-8", newline="") as csv_file:
-        writer = csv.DictWriter(csv_file, fieldnames=verdict_headers, delimiter=";")
+    # Create output directory
+    OUTPUT_CSV.parent.mkdir(parents=True, exist_ok=True)
+
+    processed = 0
+    skipped = 0
+
+    with open(OUTPUT_CSV, "w", encoding="utf-8", newline="") as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=VERDICT_HEADERS, delimiter=";")
         writer.writeheader()
 
-        for xml_file in xml_folder.glob("*.xml"):
+        for xml_file in xml_files:
             print(f"Processing: {xml_file.name}")
             verdict = process_case(xml_file, llm, prompt)
             if verdict:
                 writer.writerow(verdict)
+                processed += 1
             else:
                 print(f"Skipped {xml_file.name} due to error.")
+                skipped += 1
+
+    # Log summary
+    logging.info(f"Processing complete. Processed: {processed}, Skipped: {skipped}")
+    print(f"Processing complete. Processed: {processed}, Skipped: {skipped}")
+
 
 if __name__ == "__main__":
     run_pipeline()

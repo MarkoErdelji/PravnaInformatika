@@ -1,8 +1,10 @@
 package com.pravnainfo.judgingapp.entity;
 
 public enum VerdictType {
+    ACQUITTAL,
+    FINE,
     PRISON,
     SUSPENDED,
-    ACQUITTED,
-    DETENTION
+    FINE_AND_PRISON,
+    DISMISSAL
 }

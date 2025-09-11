@@ -1,58 +1,66 @@
 export interface Verdict {
-  id: string | undefined;
+  id?: number;
   caseId: string;
   court: string;
   verdictNumber: string;
   date: string | null;
   judgeName: string;
+  clerkName: string;
   prosecutor: string;
   defendantName: string;
   criminalOffense: string;
   appliedProvisions: string;
-  verdict: string | null; // Matches VerdictType enum (PRISON, SUSPENDED, ACQUITTED, DETENTION)
+  verdictType: string | null;
   numDefendants: number;
-  previouslyConvicted: boolean;
   awareOfIllegality: boolean;
-  victimRelationship: string | null; // Matches VictimRelationship enum (SPOUSE, PARENT, SIBLING, CHILD, OTHER)
-  violenceNature: string | null; // Matches ViolenceNature enum (VIOLENCE, THREAT, RECKLESS_BEHAVIOUR, NONE)
-  injuryTypes: string | null; // Matches InjuryTypes enum (LIGHT, SEVERE, LIGHT_SEVERE, NONE)
-  executionMeans: string | null; // Matches ExecutionMeans enum (HANDS, FEET, WEAPON, TOOL, VERBAL, OTHER)
+  mainVictimRelationship: string | null;
+  violenceNature: string | null;
+  injuryTypes: string | null;
   protectionMeasureViolation: boolean;
   eventLocation: string;
   eventDate: string | null;
   defendantStatus: string;
   victims: string;
-  defendantAge: number | null;
-  victimAge: number | null;
-  previousIncidents: boolean;
+  mainVictimAge: number;
   alcoholOrDrugs: boolean;
   childrenPresent: boolean;
   penalty: string;
   procedureCosts: string;
   useOfWeapon: boolean;
   numberOfVictims: number;
+  xmlFileName: string;
 }
 
 export interface CaseDescription {
+  dbId: number;
   caseId: string;
-  dbId: string;
+  court: string;
+  date: string;
+  judge: string;
+  clerk: string;
+  prosecutor: string;
+  defendantName: string;
   criminalOffense: string;
-  verdict: string | null; // Matches VerdictType enum
+  appliedProvisions: string;
+  verdictType: string | null;
   numDefendants: number;
-  previouslyConvicted: boolean;
   awareOfIllegality: boolean;
-  victimRelationship: string | null; // Matches VictimRelationship enum
-  violenceNature: string | null; // Matches ViolenceNature enum
-  injuryTypes: string | null; // Matches InjuryTypes enum
-  executionMeans: string | null; // Matches ExecutionMeans enum
+  mainVictimRelationship: string | null;
+  violenceNature: string | null;
+  injuryTypes: string | null;
   protectionMeasureViolation: boolean;
-  defendantAge: number | null;
-  victimAge: number | null;
-  previousIncidents: boolean;
+  eventLocation: string;
+  eventDate: string;
+  defendantStatus: string;
+  victims: string;
+  mainVictimAge: number;
   alcoholOrDrugs: boolean;
   childrenPresent: boolean;
+  penalty: string;
+  procedureCosts: string;
   useOfWeapon: boolean;
   numberOfVictims: number;
+  xmlFileName: string;
 }
 
 export interface SimilarVerdict {

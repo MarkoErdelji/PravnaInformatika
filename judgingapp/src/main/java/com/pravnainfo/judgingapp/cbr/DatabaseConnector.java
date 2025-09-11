@@ -23,13 +23,15 @@ public class DatabaseConnector implements Connector {
     @Autowired
     private IVerdictRepository verdictRepository;
 
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
     @Override
     public void initFromXMLfile(URL file) throws InitializingException {}
 
     @Override
     public Collection<CBRCase> retrieveAllCases() {
         List<Verdict> verdicts = verdictRepository.findAll();
-        verdicts.forEach(verdict -> {        System.out.print(verdict.getCaseId());});
+        verdicts.forEach(verdict -> System.out.print(verdict.getCaseId() + " "));
         LinkedList<CBRCase> cases = new LinkedList<>();
         for (Verdict v : verdicts) {
             CBRCase cbrCase = new CBRCase();
@@ -48,28 +50,35 @@ public class DatabaseConnector implements Connector {
     public void storeCases(Collection<CBRCase> cases) {
         for (CBRCase cbrCase : cases) {
             CaseDescription cd = (CaseDescription) cbrCase.getDescription();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
-            LocalDate date = LocalDate.parse(cd.getDate(), formatter);
             Verdict v = Verdict.builder()
-                    .court(cd.getCourt())
-                    .judgeName(cd.getJudge())
-                    .date(date)
-                    .criminalOffense(cd.getCriminalOffense())
-                    .numDefendants(cd.getNumDefendants())
-                    .previouslyConvicted(cd.getPreviouslyConvicted())
-                    .awareOfIllegality(cd.getAwareOfIllegality())
-                    .victimRelationship(VictimRelationship.valueOf(cd.getVictimRelationship()))
-                    .violenceNature(ViolenceNature.valueOf(cd.getViolenceNature()))
-                    .injuryTypes(InjuryTypes.valueOf(cd.getInjuryTypes()))
-                    .executionMeans(ExecutionMeans.valueOf(cd.getExecutionMeans()))
-                    .protectionMeasureViolation(cd.getProtectionMeasureViolation())
-                    .defendantAge(cd.getDefendantAge())
-                    .victimAge(cd.getVictimAge())
-                    .alcoholOrDrugs(cd.getAlcoholOrDrugs())
-                    .childrenPresent(cd.getChildrenPresent())
-                    .useOfWeapon(cd.getUseOfWeapon())
-                    .numberOfVictims(cd.getNumberOfVictims())
-                    .verdict(cd.getVerdict() != null ? Enum.valueOf(VerdictType.class, cd.getVerdict()) : null)
+                    .caseId(cd.getCaseId() != null ? cd.getCaseId() : "")
+                    .court(cd.getCourt() != null ? cd.getCourt() : "")
+                    .verdictNumber(cd.getCaseId() != null ? cd.getCaseId() : "")
+                    .date(parseDate(cd.getDate()))
+                    .judgeName(cd.getJudge() != null ? cd.getJudge() : "")
+                    .clerkName(cd.getClerk() != null ? cd.getClerk() : "")
+                    .prosecutor(cd.getProsecutor() != null ? cd.getProsecutor() : "")
+                    .defendantName(cd.getDefendantName() != null ? cd.getDefendantName() : "")
+                    .criminalOffense(cd.getCriminalOffense() != null ? cd.getCriminalOffense() : "")
+                    .appliedProvisions(cd.getAppliedProvisions() != null ? cd.getAppliedProvisions() : "")
+                    .verdictType(cd.getVerdict() != null ? parseVerdictType(cd.getVerdict()) : VerdictType.DISMISSAL)
+                    .awareOfIllegality(cd.getAwareOfIllegality() != null ? cd.getAwareOfIllegality() : true)
+                    .mainVictimRelationship(cd.getMainVictimRelationship() != null ? parseVictimRelationship(cd.getMainVictimRelationship()) : VictimRelationship.OTHER_RELATIVE)
+                    .violenceNature(cd.getViolenceNature() != null ? parseViolenceNature(cd.getViolenceNature()) : ViolenceNature.NONE)
+                    .injuryTypes(cd.getInjuryTypes() != null ? parseInjuryTypes(cd.getInjuryTypes()) : InjuryTypes.NONE)
+                    .protectionMeasureViolation(cd.getProtectionMeasureViolation() != null ? cd.getProtectionMeasureViolation() : false)
+                    .eventLocation(cd.getEventLocation() != null ? cd.getEventLocation() : "")
+                    .eventDate(parseDate(cd.getEventDate()))
+                    .defendantStatus(cd.getDefendantStatus() != null ? cd.getDefendantStatus() : "")
+                    .victims(cd.getVictims() != null ? cd.getVictims() : "")
+                    .mainVictimAge(cd.getMainVictimAge() != null ? cd.getMainVictimAge() : 0)
+                    .alcoholOrDrugs(cd.getAlcoholOrDrugs() != null ? cd.getAlcoholOrDrugs() : false)
+                    .childrenPresent(cd.getChildrenPresent() != null ? cd.getChildrenPresent() : false)
+                    .penalty(cd.getPenalty() != null ? cd.getPenalty() : "")
+                    .procedureCosts(cd.getProcedureCosts() != null ? cd.getProcedureCosts() : "")
+                    .useOfWeapon(cd.getUseOfWeapon() != null ? cd.getUseOfWeapon() : false)
+                    .numberOfVictims(cd.getNumberOfVictims() != null ? cd.getNumberOfVictims() : 0)
+                    .xmlFileName(cd.getXmlFileName() != null ? cd.getXmlFileName() : "")
                     .build();
             Verdict saved = verdictRepository.save(v);
             cd.setDbId(saved.getId()); // update CBR case with DB ID
@@ -81,4 +90,56 @@ public class DatabaseConnector implements Connector {
 
     @Override
     public void close() {}
+
+    private LocalDate parseDate(String date) {
+        try {
+            return date != null && !date.isEmpty() ? LocalDate.parse(date, DATE_FORMATTER) : null;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private VerdictType parseVerdictType(String verdict) {
+        if (verdict == null || verdict.isEmpty() || verdict.equalsIgnoreCase("NONE")) {
+            return VerdictType.DISMISSAL;
+        }
+        try {
+            return VerdictType.valueOf(verdict.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return VerdictType.DISMISSAL;
+        }
+    }
+
+    private VictimRelationship parseVictimRelationship(String relationship) {
+        if (relationship == null || relationship.isEmpty()) {
+            return VictimRelationship.OTHER_RELATIVE;
+        }
+        try {
+            return VictimRelationship.valueOf(relationship.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return VictimRelationship.OTHER_RELATIVE;
+        }
+    }
+
+    private ViolenceNature parseViolenceNature(String violence) {
+        if (violence == null || violence.isEmpty()) {
+            return ViolenceNature.NONE;
+        }
+        try {
+            return ViolenceNature.valueOf(violence.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return ViolenceNature.NONE;
+        }
+    }
+
+    private InjuryTypes parseInjuryTypes(String injuries) {
+        if (injuries == null || injuries.isEmpty()) {
+            return InjuryTypes.NONE;
+        }
+        try {
+            return InjuryTypes.valueOf(injuries.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return InjuryTypes.NONE;
+        }
+    }
 }

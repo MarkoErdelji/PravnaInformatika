@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lrml:LegalRuleML
+    xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ruleml="http://ruleml.org/spec">
+
+  <lrml:Statements>
+
+    <!-- 10 generic rules for Član 220 -->
+
+    <!-- st.1: Severe injury + weapon -->
+    <lrml:PrescriptiveStatement key="ps1">
+      <ruleml:Rule key=":rule1" closure="universal" strength="defeasible">
+        <ruleml:if>
+          <ruleml:And>
+            <ruleml:Atom>
+              <ruleml:Rel iri="lc:injuryTypes"/>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+              <ruleml:Data xsi:type="xs:string">SEVERE</ruleml:Data>
+            </ruleml:Atom>
+            <ruleml:Atom>
+              <ruleml:Rel iri="lc:useOfWeapon"/>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+              <ruleml:Data xsi:type="xs:boolean">true</ruleml:Data>
+            </ruleml:Atom>
+          </ruleml:And>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel>violates_st1</ruleml:Rel>
+            <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <!-- st.2: Severe injury without weapon -->
+    <lrml:PrescriptiveStatement key="ps2">
+      <ruleml:Rule key=":rule2" closure="universal" strength="defeasible">
+        <ruleml:if>
+          <ruleml:And>
+            <ruleml:Atom>
+              <ruleml:Rel iri="lc:injuryTypes"/>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+              <ruleml:Data xsi:type="xs:string">SEVERE</ruleml:Data>
+            </ruleml:Atom>
+            <ruleml:Negation>
+              <ruleml:Atom>
+                <ruleml:Rel iri="lc:useOfWeapon"/>
+                <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+                <ruleml:Data xsi:type="xs:boolean">true</ruleml:Data>
+              </ruleml:Atom>
+            </ruleml:Negation>
+          </ruleml:And>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel>violates_st2</ruleml:Rel>
+            <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <!-- st.3: Children present -->
+    <lrml:PrescriptiveStatement key="ps3">
+      <ruleml:Rule key=":rule3" closure="universal" strength="defeasible">
+        <ruleml:if>
+          <ruleml:Atom>
+            <ruleml:Rel iri="lc:childrenPresent"/>
+            <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            <ruleml:Data xsi:type="xs:boolean">true</ruleml:Data>
+          </ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel>violates_st3</ruleml:Rel>
+            <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <!-- st.4: Previously convicted -->
+    <lrml:PrescriptiveStatement key="ps4">
+      <ruleml:Rule key=":rule4" closure="universal" strength="defeasible">
+        <ruleml:if>
+          <ruleml:Atom>
+            <ruleml:Rel iri="lc:previouslyConvicted"/>
+            <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            <ruleml:Data xsi:type="xs:boolean">true</ruleml:Data>
+          </ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel>violates_st4</ruleml:Rel>
+            <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <!-- st.5: Protection measure violation -->
+    <lrml:PrescriptiveStatement key="ps5">
+      <ruleml:Rule key=":rule5" closure="universal" strength="defeasible">
+        <ruleml:if>
+          <ruleml:Atom>
+            <ruleml:Rel iri="lc:protectionMeasureViolation"/>
+            <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            <ruleml:Data xsi:type="xs:boolean">true</ruleml:Data>
+          </ruleml:Atom>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel>violates_st5</ruleml:Rel>
+            <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <!-- Combination rules to accumulate penalties -->
+    <lrml:PrescriptiveStatement key="ps6">
+      <ruleml:Rule key=":rule6" closure="universal" strength="defeasible">
+        <ruleml:if>
+          <ruleml:And>
+            <ruleml:Atom>
+              <ruleml:Rel>violates_st1</ruleml:Rel>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            </ruleml:Atom>
+            <ruleml:Atom>
+              <ruleml:Rel>violates_st3</ruleml:Rel>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:And>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel>accumulated_penalty_lv1</ruleml:Rel>
+            <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps7">
+      <ruleml:Rule key=":rule7" closure="universal" strength="defeasible">
+        <ruleml:if>
+          <ruleml:And>
+            <ruleml:Atom>
+              <ruleml:Rel>violates_st1</ruleml:Rel>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            </ruleml:Atom>
+            <ruleml:Atom>
+              <ruleml:Rel>violates_st5</ruleml:Rel>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:And>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel>accumulated_penalty_lv2</ruleml:Rel>
+            <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps8">
+      <ruleml:Rule key=":rule8" closure="universal" strength="defeasible">
+        <ruleml:if>
+          <ruleml:And>
+            <ruleml:Atom>
+              <ruleml:Rel>violates_st2</ruleml:Rel>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            </ruleml:Atom>
+            <ruleml:Atom>
+              <ruleml:Rel>violates_st3</ruleml:Rel>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:And>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel>accumulated_penalty_lv3</ruleml:Rel>
+            <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps9">
+      <ruleml:Rule key=":rule9" closure="universal" strength="defeasible">
+        <ruleml:if>
+          <ruleml:And>
+            <ruleml:Atom>
+              <ruleml:Rel>violates_st1</ruleml:Rel>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            </ruleml:Atom>
+            <ruleml:Atom>
+              <ruleml:Rel>violates_st3</ruleml:Rel>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            </ruleml:Atom>
+            <ruleml:Atom>
+              <ruleml:Rel>violates_st5</ruleml:Rel>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:And>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel>accumulated_penalty_lv4</ruleml:Rel>
+            <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+    <lrml:PrescriptiveStatement key="ps10">
+      <ruleml:Rule key=":rule10" closure="universal" strength="defeasible">
+        <ruleml:if>
+          <ruleml:And>
+            <ruleml:Atom>
+              <ruleml:Rel>violates_st2</ruleml:Rel>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            </ruleml:Atom>
+            <ruleml:Atom>
+              <ruleml:Rel>violates_st4</ruleml:Rel>
+              <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:And>
+        </ruleml:if>
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel>accumulated_penalty_lv5</ruleml:Rel>
+            <ruleml:Var type="lc:defendant">Defendant</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:then>
+      </ruleml:Rule>
+    </lrml:PrescriptiveStatement>
+
+  </lrml:Statements>
+</lrml:LegalRuleML>

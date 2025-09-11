@@ -1,5 +1,9 @@
 package com.pravnainfo.judgingapp.entity;
 
 public enum VictimRelationship {
-    SPOUSE, PARENT, SIBLING, CHILD, OTHER
+    SPOUSE,
+    CHILD,
+    PARENT,
+    SIBLING,
+    OTHER_RELATIVE
 }

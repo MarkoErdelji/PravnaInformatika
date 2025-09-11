@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+     <!ENTITY defeasible "http://lpis.csd.auth.gr/systems/dr-device/defeasible.rdfs#">
+     <!ENTITY export "http://startrek.csd.auth.gr/dr-device/export/export.rdf#"> 
+     <!ENTITY proof-export "http://startrek.csd.auth.gr/dr-device/proof/proof.ruleml#"> 
+]>
+
+<rdf:RDF
+     xmlns:rdf='&rdf;'
+     xmlns:rdfs='&rdfs;'
+     xmlns:defeasible='&defeasible;'
+     xmlns:export='&export;'
+>
+
+<rdfs:Class rdf:about='&export;basic_punishment'>
+     <rdfs:label rdf:resource='basic_punishment'/>
+     <rdfs:subClassOf rdf:resource='&defeasible;DefeasibleObject'/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about='&export;increase_punishment'>
+     <rdfs:label rdf:resource='increase_punishment'/>
+     <rdfs:subClassOf rdf:resource='&defeasible;DefeasibleObject'/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about='&export;aggravating_factor'>
+     <rdfs:label rdf:resource='aggravating_factor'/>
+     <rdfs:subClassOf rdf:resource='&defeasible;DefeasibleObject'/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about='&export;weapon_factor'>
+     <rdfs:label rdf:resource='weapon_factor'/>
+     <rdfs:subClassOf rdf:resource='&defeasible;DefeasibleObject'/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about='&export;family_offense_factor'>
+     <rdfs:label rdf:resource='family_offense_factor'/>
+     <rdfs:subClassOf rdf:resource='&defeasible;DefeasibleObject'/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about='&export;child_victim_factor'>
+     <rdfs:label rdf:resource='child_victim_factor'/>
+     <rdfs:subClassOf rdf:resource='&defeasible;DefeasibleObject'/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about='&export;recidivist_factor'>
+     <rdfs:label rdf:resource='recidivist_factor'/>
+     <rdfs:subClassOf rdf:resource='&defeasible;DefeasibleObject'/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about='&export;multiple_victims_factor'>
+     <rdfs:label rdf:resource='multiple_victims_factor'/>
+     <rdfs:subClassOf rdf:resource='&defeasible;DefeasibleObject'/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about='&export;light_offense_factor'>
+     <rdfs:label rdf:resource='light_offense_factor'/>
+     <rdfs:subClassOf rdf:resource='&defeasible;DefeasibleObject'/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about='&export;threat_offense_factor'>
+     <rdfs:label rdf:resource='threat_offense_factor'/>
+     <rdfs:subClassOf rdf:resource='&defeasible;DefeasibleObject'/>
+</rdfs:Class>
+
+
+<rdf:Property rdf:about='&export;defendant'>
+     <rdfs:domain rdf:resource='&export;basic_punishment'/>
+</rdf:Property>
+
+<rdf:Property rdf:about='&export;defendant'>
+     <rdfs:domain rdf:resource='&export;increase_punishment'/>
+</rdf:Property>
+
+<rdf:Property rdf:about='&export;defendant'>
+     <rdfs:domain rdf:resource='&export;aggravating_factor'/>
+</rdf:Property>
+
+<rdf:Property rdf:about='&export;defendant'>
+     <rdfs:domain rdf:resource='&export;weapon_factor'/>
+</rdf:Property>
+
+<rdf:Property rdf:about='&export;defendant'>
+     <rdfs:domain rdf:resource='&export;family_offense_factor'/>
+</rdf:Property>
+
+<rdf:Property rdf:about='&export;defendant'>
+     <rdfs:domain rdf:resource='&export;child_victim_factor'/>
+</rdf:Property>
+
+<rdf:Property rdf:about='&export;defendant'>
+     <rdfs:domain rdf:resource='&export;recidivist_factor'/>
+</rdf:Property>
+
+<rdf:Property rdf:about='&export;defendant'>
+     <rdfs:domain rdf:resource='&export;multiple_victims_factor'/>
+</rdf:Property>
+
+<rdf:Property rdf:about='&export;defendant'>
+     <rdfs:domain rdf:resource='&export;light_offense_factor'/>
+</rdf:Property>
+
+<rdf:Property rdf:about='&export;defendant'>
+     <rdfs:domain rdf:resource='&export;threat_offense_factor'/>
+</rdf:Property>
+
+<export:basic_punishment rdf:about='&export;basic_punishment1'>
+     <export:defendant>Marko Markovic</export:defendant>
+     <defeasible:truthStatus>defeasibly-proven-positive</defeasible:truthStatus>
+     <defeasible:proof rdf:datatype='&xsd;anyURI'>&proof-export;proof1</defeasible:proof>
+</export:basic_punishment>
+
+<export:family_offense_factor rdf:about='&export;family_offense_factor1'>
+     <export:defendant>Marko Markovic</export:defendant>
+     <defeasible:truthStatus>defeasibly-proven-positive</defeasible:truthStatus>
+     <defeasible:proof rdf:datatype='&xsd;anyURI'>&proof-export;proof2</defeasible:proof>
+</export:family_offense_factor>
+
+<export:multiple_victims_factor rdf:about='&export;multiple_victims_factor1'>
+     <export:defendant>Marko Markovic</export:defendant>
+     <defeasible:truthStatus>defeasibly-proven-positive</defeasible:truthStatus>
+     <defeasible:proof rdf:datatype='&xsd;anyURI'>&proof-export;proof3</defeasible:proof>
+</export:multiple_victims_factor>
+
+</rdf:RDF>

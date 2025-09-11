@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://www.ruleml.org/0.91/xsd"
+         xmlns:lc="http://ftn.uns.ac.rs/legal-case"
+         xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
+         xmlns:ruleml="http://ruleml.org/spec"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         proof="proof.ruleml"
+         rdf_export="export.rdf"
+         rdf_export_classes="&#xA;                basic_punishment&#xA;                increase_punishment&#xA;                aggravating_factor&#xA;                weapon_factor&#xA;                family_offense_factor&#xA;                child_victim_factor&#xA;                recidivist_factor&#xA;                multiple_victims_factor&#xA;                light_offense_factor&#xA;                threat_offense_factor&#xA;            "
+         rdf_import="&#34;facts.rdf&#34;">
+   <Assert>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="rule1">rule1</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel uri="lc:case"/>
+               </op>
+               <slot>
+                  <Ind uri="lc:defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+               <slot>
+                  <Ind uri="lc:injuryTypes"/>
+                  <Data xsi:type="xs:string">SEVERE</Data>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>basic_punishment</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="rule2">rule2</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel uri="lc:case"/>
+               </op>
+               <slot>
+                  <Ind uri="lc:defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+               <slot>
+                  <Ind uri="lc:protectionMeasureViolation"/>
+                  <Data xsi:type="xs:boolean">true</Data>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>increase_punishment</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="rule3">rule3</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel uri="lc:case"/>
+               </op>
+               <slot>
+                  <Ind uri="lc:defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+               <slot>
+                  <Ind uri="lc:childrenPresent"/>
+                  <Data xsi:type="xs:boolean">true</Data>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>aggravating_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="rule4">rule4</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel uri="lc:case"/>
+               </op>
+               <slot>
+                  <Ind uri="lc:defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+               <slot>
+                  <Ind uri="lc:useOfWeapon"/>
+                  <Data xsi:type="xs:boolean">true</Data>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>weapon_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="rule5">rule5</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel uri="lc:case"/>
+               </op>
+               <slot>
+                  <Ind uri="lc:defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+               <slot>
+                  <Ind uri="lc:victimRelationship"/>
+                  <Data xsi:type="xs:string">SPOUSE</Data>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>family_offense_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="rule6">rule6</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel uri="lc:case"/>
+               </op>
+               <slot>
+                  <Ind uri="lc:defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+               <slot>
+                  <Ind uri="lc:victimRelationship"/>
+                  <Data xsi:type="xs:string">CHILD</Data>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>child_victim_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="rule7">rule7</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel uri="lc:case"/>
+               </op>
+               <slot>
+                  <Ind uri="lc:defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+               <slot>
+                  <Ind uri="lc:previouslyConvicted"/>
+                  <Data xsi:type="xs:boolean">true</Data>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>recidivist_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="rule8">rule8</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel uri="lc:case"/>
+               </op>
+               <slot>
+                  <Ind uri="lc:defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+               <slot>
+                  <Ind uri="lc:numvictims"/>
+                  <Var>NumVictims</Var>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>multiple_victims_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="rule9">rule9</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel uri="lc:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="lc:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind uri="lc:violenceNature"/>
+                     <Data xsi:type="xs:string">RECKLESS_BEHAVIOUR</Data>
+                  </slot>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="lc:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="lc:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind uri="lc:injuryTypes"/>
+                     <Data xsi:type="xs:string">NONE</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>light_offense_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+         <superior>
+            <Ind uri="rule1"/>
+         </superior>
+         <superior>
+            <Ind uri="rule6"/>
+         </superior>
+         <superior>
+            <Ind uri="rule8"/>
+         </superior>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="rule10">rule10</Ind>
+         </oid>
+         <body>
+            <And>
+               <Atom>
+                  <op>
+                     <Rel uri="lc:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="lc:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind uri="lc:violenceNature"/>
+                     <Data xsi:type="xs:string">THREAT</Data>
+                  </slot>
+               </Atom>
+               <Atom>
+                  <op>
+                     <Rel uri="lc:case"/>
+                  </op>
+                  <slot>
+                     <Ind uri="lc:defendant"/>
+                     <Var>Defendant</Var>
+                  </slot>
+                  <slot>
+                     <Ind uri="lc:injuryTypes"/>
+                     <Data xsi:type="xs:string">NONE</Data>
+                  </slot>
+               </Atom>
+            </And>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>threat_offense_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </head>
+         <superior>
+            <Ind uri="rule1"/>
+         </superior>
+         <superior>
+            <Ind uri="rule6"/>
+         </superior>
+         <superior>
+            <Ind uri="rule8"/>
+         </superior>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="pen1">pen1</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel>basic_punishment</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>imprisonment</Rel>
+               </op>
+               <slot>
+                  <Ind uri="value"/>
+                  <Data xsi:type="xs:integer">6</Data>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="pen2">pen2</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel>increase_punishment</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>fine</Rel>
+               </op>
+               <slot>
+                  <Ind uri="value"/>
+                  <Data xsi:type="xs:integer">5000</Data>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="pen3">pen3</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel>aggravating_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>fine</Rel>
+               </op>
+               <slot>
+                  <Ind uri="value"/>
+                  <Data xsi:type="xs:integer">10000</Data>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="pen3">pen3</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel>weapon_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>fine</Rel>
+               </op>
+               <slot>
+                  <Ind uri="value"/>
+                  <Data xsi:type="xs:integer">10000</Data>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="pen3">pen3</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel>family_offense_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>fine</Rel>
+               </op>
+               <slot>
+                  <Ind uri="value"/>
+                  <Data xsi:type="xs:integer">10000</Data>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="pen4">pen4</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel>child_victim_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>imprisonment</Rel>
+               </op>
+               <slot>
+                  <Ind uri="value"/>
+                  <Data xsi:type="xs:integer">12</Data>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="pen3">pen3</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel>recidivist_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>fine</Rel>
+               </op>
+               <slot>
+                  <Ind uri="value"/>
+                  <Data xsi:type="xs:integer">10000</Data>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="pen5">pen5</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel>multiple_victims_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>imprisonment</Rel>
+               </op>
+               <slot>
+                  <Ind uri="value"/>
+                  <Data xsi:type="xs:integer">24</Data>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="pen6">pen6</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel>light_offense_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>fine</Rel>
+               </op>
+               <slot>
+                  <Ind uri="value"/>
+                  <Data xsi:type="xs:integer">2000</Data>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+      <Implies ruletype="defeasiblerule">
+         <oid>
+            <Ind uri="pen7">pen7</Ind>
+         </oid>
+         <body>
+            <Atom>
+               <op>
+                  <Rel>threat_offense_factor</Rel>
+               </op>
+               <slot>
+                  <Ind uri="defendant"/>
+                  <Var>Defendant</Var>
+               </slot>
+            </Atom>
+         </body>
+         <head>
+            <Atom>
+               <op>
+                  <Rel>fine</Rel>
+               </op>
+               <slot>
+                  <Ind uri="value"/>
+                  <Data xsi:type="xs:integer">3000</Data>
+               </slot>
+            </Atom>
+         </head>
+      </Implies>
+   </Assert>
+</RuleML>

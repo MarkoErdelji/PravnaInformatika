@@ -6,6 +6,7 @@ import RetrieveSimilar from './pages/RetrieveSimilar'
 import ReasonCase from './pages/ReasonCase'
 import NavBar from './components/NavBar'
 import { Container } from '@mui/material'
+import LawsViewer from './components/LawsViewer'
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
           <Route path="/add" element={<AddCase />} />
           <Route path="/retrieve" element={<RetrieveSimilar />} />
           <Route path="/reason" element={<ReasonCase />} />
+                    <Route path="/laws/:lawType" element={<LawsViewer />} />
+
         </Routes>
       </Container>
     </>

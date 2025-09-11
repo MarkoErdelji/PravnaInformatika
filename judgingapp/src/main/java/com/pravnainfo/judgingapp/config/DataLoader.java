@@ -47,26 +47,22 @@ public class DataLoader implements CommandLineRunner {
                         .verdictNumber(getSafeString(record, "Case Number"))
                         .date(parseDate(getSafeString(record, "Verdict Date")))
                         .judgeName(getSafeString(record, "Judge"))
+                        .clerkName(getSafeString(record, "Clerk"))
                         .prosecutor(getSafeString(record, "Prosecutor"))
                         .defendantName(getSafeString(record, "Defendant"))
                         .criminalOffense(getSafeString(record, "Criminal Offense"))
                         .appliedProvisions(getSafeString(record, "Applied Provisions"))
-                        .verdict(parseVerdictType(getSafeString(record, "Verdict Type")))
-                        .numDefendants(parseInteger(getSafeString(record, "Number of Defendants"), 1))
-                        .previouslyConvicted(!getSafeString(record, "Previous Incidents").isEmpty())
+                        .verdictType(parseVerdictType(getSafeString(record, "Verdict Type")))
                         .awareOfIllegality(Boolean.parseBoolean(getSafeString(record, "Aware of Illegality")))
-                        .victimRelationship(parseVictimRelationship(getSafeString(record, "Victim Relationship")))
+                        .mainVictimRelationship(parseVictimRelationship(getSafeString(record, "Main Victim Relationship")))
                         .violenceNature(parseViolenceNature(getSafeString(record, "Violence Nature")))
                         .injuryTypes(parseInjuryTypes(getSafeString(record, "Injury Types")))
-                        .executionMeans(parseExecutionMeans(getSafeString(record, "Execution Means")))
                         .protectionMeasureViolation(Boolean.parseBoolean(getSafeString(record, "Protection Measure Violation")))
                         .eventLocation(getSafeString(record, "Event Location"))
                         .eventDate(parseDate(getSafeString(record, "Event Date")))
                         .defendantStatus(getSafeString(record, "Defendant Status"))
                         .victims(getSafeString(record, "Victim"))
-                        .defendantAge(parseAge(getSafeString(record, "Defendant Age")))
-                        .victimAge(parseAge(getSafeString(record, "Victim Age")))
-                        .previousIncidents(getSafeString(record, "Previous Incidents"))
+                        .mainVictimAge(parseInteger(getSafeString(record, "Main Victim Age"), 0))
                         .alcoholOrDrugs(Boolean.parseBoolean(getSafeString(record, "Alcohol or Drugs")))
                         .childrenPresent(Boolean.parseBoolean(getSafeString(record, "Children Present")))
                         .penalty(getSafeString(record, "Penalty"))
@@ -99,83 +95,55 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private VerdictType parseVerdictType(String verdict) {
-        if (verdict == null || verdict.isEmpty()) return VerdictType.SUSPENDED;
+        if (verdict == null || verdict.isEmpty() || verdict.equalsIgnoreCase("NONE")) {
+            return VerdictType.DISMISSAL;
+        }
         try {
             return VerdictType.valueOf(verdict.toUpperCase());
         } catch (IllegalArgumentException e) {
-            return VerdictType.SUSPENDED;
+            return VerdictType.DISMISSAL;
         }
     }
 
     private VictimRelationship parseVictimRelationship(String relationship) {
-        if (relationship == null || relationship.isEmpty()) return VictimRelationship.OTHER;
+        if (relationship == null || relationship.isEmpty()) {
+            return VictimRelationship.OTHER_RELATIVE;
+        }
         try {
             return VictimRelationship.valueOf(relationship.toUpperCase());
         } catch (IllegalArgumentException e) {
-            return VictimRelationship.OTHER;
+            return VictimRelationship.OTHER_RELATIVE;
         }
     }
 
     private ViolenceNature parseViolenceNature(String violence) {
-        if (violence == null || violence.isEmpty()) return ViolenceNature.NONE;
-        String normalized = violence.toLowerCase();
-        if (normalized.contains("rough violence")) {
-            return ViolenceNature.VIOLENCE;
-        } else if (normalized.contains("threat")) {
-            return ViolenceNature.THREAT;
-        } else if (normalized.contains("arrogant and reckless behavior")) {
-            return ViolenceNature.RECKLESS_BEHAVIOUR;
-        } else {
+        if (violence == null || violence.isEmpty()) {
+            return ViolenceNature.NONE;
+        }
+        try {
+            return ViolenceNature.valueOf(violence.toUpperCase());
+        } catch (IllegalArgumentException e) {
             return ViolenceNature.NONE;
         }
     }
 
     private InjuryTypes parseInjuryTypes(String injuries) {
-        if (injuries == null || injuries.isEmpty()) return InjuryTypes.NONE;
-        String normalized = injuries.toLowerCase();
-        if (normalized.contains("light") && normalized.contains("severe")) {
-            return InjuryTypes.LIGHT_SEVERE;
-        } else if (normalized.contains("light")) {
-            return InjuryTypes.LIGHT;
-        } else if (normalized.contains("severe")) {
-            return InjuryTypes.SEVERE;
-        } else {
+        if (injuries == null || injuries.isEmpty()) {
+            return InjuryTypes.NONE;
+        }
+        try {
+            return InjuryTypes.valueOf(injuries.toUpperCase());
+        } catch (IllegalArgumentException e) {
             return InjuryTypes.NONE;
         }
     }
 
-    private ExecutionMeans parseExecutionMeans(String means) {
-        if (means == null || means.isEmpty()) return ExecutionMeans.OTHER;
-        String normalized = means.toLowerCase();
-        if (normalized.contains("hands")) {
-            return ExecutionMeans.HANDS;
-        } else if (normalized.contains("feet")) {
-            return ExecutionMeans.FEET;
-        } else if (normalized.contains("weapon")) {
-            return ExecutionMeans.WEAPON;
-        } else if (normalized.contains("tool")) {
-            return ExecutionMeans.TOOL;
-        } else if (normalized.contains("verbal")) {
-            return ExecutionMeans.VERBAL;
-        } else {
-            return ExecutionMeans.OTHER;
-        }
-    }
 
     private Integer parseInteger(String value, int defaultValue) {
         try {
             return value != null && !value.isEmpty() ? Integer.parseInt(value) : defaultValue;
         } catch (NumberFormatException e) {
             return defaultValue;
-        }
-    }
-
-    private Integer parseAge(String age) {
-        if (age == null || age.isEmpty()) return null;
-        try {
-            return Integer.parseInt(age.replaceAll("[^0-9]", ""));
-        } catch (NumberFormatException e) {
-            return null;
         }
     }
 }

@@ -22,7 +22,6 @@ import axios from 'axios'
 import type { Verdict, SimilarVerdict } from './types'
 import JudgmentViewer from '../components/JudgmentViewer'
 
-
 export default function ViewCase() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
@@ -91,12 +90,29 @@ export default function ViewCase() {
             <Typography><b>Verdict Number:</b> {caseData.verdictNumber}</Typography>
             <Typography><b>Date:</b> {caseData.date}</Typography>
             <Typography><b>Judge Name:</b> {caseData.judgeName}</Typography>
+            <Typography><b>Clerk Name:</b> {caseData.clerkName}</Typography>
             <Typography><b>Prosecutor:</b> {caseData.prosecutor}</Typography>
             <Typography><b>Defendant Name:</b> {caseData.defendantName}</Typography>
             <Typography><b>Criminal Offense:</b> {caseData.criminalOffense}</Typography>
             <Typography><b>Applied Provisions:</b> {caseData.appliedProvisions}</Typography>
-            <Typography><b>Verdict:</b> {caseData.verdict}</Typography>
-            {/* add the rest of metadata as needed */}
+            <Typography><b>Verdict Type:</b> {caseData.verdictType}</Typography>
+            <Typography><b>Num Defendants:</b> {caseData.numDefendants}</Typography>
+            <Typography><b>Aware of Illegality:</b> {caseData.awareOfIllegality ? 'Yes' : 'No'}</Typography>
+            <Typography><b>Main Victim Relationship:</b> {caseData.mainVictimRelationship}</Typography>
+            <Typography><b>Violence Nature:</b> {caseData.violenceNature}</Typography>
+            <Typography><b>Injury Types:</b> {caseData.injuryTypes}</Typography>
+            <Typography><b>Protection Measure Violation:</b> {caseData.protectionMeasureViolation ? 'Yes' : 'No'}</Typography>
+            <Typography><b>Event Location:</b> {caseData.eventLocation}</Typography>
+            <Typography><b>Event Date:</b> {caseData.eventDate}</Typography>
+            <Typography><b>Defendant Status:</b> {caseData.defendantStatus}</Typography>
+            <Typography><b>Victims:</b> {caseData.victims}</Typography>
+            <Typography><b>Main Victim Age:</b> {caseData.mainVictimAge}</Typography>
+            <Typography><b>Alcohol or Drugs:</b> {caseData.alcoholOrDrugs ? 'Yes' : 'No'}</Typography>
+            <Typography><b>Children Present:</b> {caseData.childrenPresent ? 'Yes' : 'No'}</Typography>
+            <Typography><b>Penalty:</b> {caseData.penalty}</Typography>
+            <Typography><b>Procedure Costs:</b> {caseData.procedureCosts}</Typography>
+            <Typography><b>Use of Weapon:</b> {caseData.useOfWeapon ? 'Yes' : 'No'}</Typography>
+            <Typography><b>Number of Victims:</b> {caseData.numberOfVictims}</Typography>
           </Stack>
         </Paper>
       </Collapse>
@@ -110,9 +126,9 @@ export default function ViewCase() {
               <Table>
                 <TableHead>
                   <TableRow>
-                    <TableCell><b>Case</b></TableCell>
+                    <TableCell><b>Case ID</b></TableCell>
                     <TableCell><b>Similarity</b></TableCell>
-                    <TableCell align="right"><b>Action</b></TableCell>
+                    <TableCell align="right"><b>Actions</b></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
