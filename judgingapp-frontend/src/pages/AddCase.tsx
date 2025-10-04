@@ -41,7 +41,6 @@ function AddCase() {
       isArmed: false,
       useOfForceOrThreat: false,
       caughtInTheAct: false,
-      intentForSmallGain: false,
       causedSevereInjury: false,
       deathCaused: false,
       attemptedCrime: false,
@@ -61,7 +60,6 @@ function AddCase() {
   const accusationsWatch = watch('accusations');
   const isTakenWatch = watch('isTaken');
   const caughtInTheActWatch = watch('caughtInTheAct');
-  const intentForSmallGainWatch = watch('intentForSmallGain');
   const deathCausedWatch = watch('deathCaused');
   const valueOfStolenItemsWatch = watch('valueOfStolenItems');
   const numberOfPerpetratorsWatch = watch('numberOfPerpetrators');
@@ -103,13 +101,6 @@ function AddCase() {
     }
   }, [accusationsWatch, caughtInTheActWatch, setValue]);
 
-  // Constraint: MalaImovinskaKorist implies VrijednostUkradenihStvari < 150
-  useEffect(() => {
-    if (intentForSmallGainWatch && valueOfStolenItemsWatch >= 150) {
-      setValue('intentForSmallGain', false);
-      setSnackbar({ open: true, message: 'Mala imovinska korist nije moguća ako je vrijednost ≥ 150€', severity: 'error' });
-    }
-  }, [intentForSmallGainWatch, valueOfStolenItemsWatch, setValue]);
 
   // Constraint: BrojUčinilaca >= 2 for Član 241(4)
   useEffect(() => {
@@ -153,7 +144,6 @@ function AddCase() {
       isArmed: data.isArmed,
       useOfForceOrThreat: data.useOfForceOrThreat,
       caughtInTheAct: data.caughtInTheAct,
-      intentForSmallGain: data.intentForSmallGain,
       causedSevereInjury: data.causedSevereInjury,
       deathCaused: data.deathCaused,
       attemptedCrime: data.attemptedCrime,
@@ -605,25 +595,6 @@ function AddCase() {
                   label="Zatečenost na djelu"
                   onChange={(e) => field.onChange(e.target.value === 'true')}
                   value={field.value ? 'true' : 'false'}
-                >
-                  <MenuItem value="true">Da</MenuItem>
-                  <MenuItem value="false">Ne</MenuItem>
-                </Select>
-              )}
-            />
-          </FormControl>
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Mala imovinska korist</InputLabel>
-            <Controller
-              name="intentForSmallGain"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  label="Mala imovinska korist"
-                  onChange={(e) => field.onChange(e.target.value === 'true')}
-                  value={field.value ? 'true' : 'false'}
-                  disabled={valueOfStolenItemsWatch >= 150}
                 >
                   <MenuItem value="true">Da</MenuItem>
                   <MenuItem value="false">Ne</MenuItem>

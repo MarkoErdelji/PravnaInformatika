@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-os.environ["OPENAI_API_KEY"] = "PLACEHOLDER"
+os.environ["OPENAI_API_KEY"] = "PLACEHOLDFER"
 
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
 

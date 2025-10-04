@@ -59,7 +59,6 @@ public class CaseDescription implements CaseComponent {
         this.isArmed = verdict.getIsArmed();
         this.useOfForceOrThreat = verdict.getUseOfForceOrThreat();
         this.caughtInTheAct = verdict.getCaughtInTheAct();
-        this.intentForSmallGain = verdict.getIntentForSmallGain();
         this.causedSevereInjury = verdict.getCausedSevereInjury();
         this.deathCaused = verdict.getDeathCaused();
         this.attemptedCrime = verdict.getAttemptedCrime();

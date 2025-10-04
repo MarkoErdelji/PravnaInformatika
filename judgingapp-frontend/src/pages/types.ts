@@ -26,7 +26,6 @@ export interface Verdict {
   isArmed: boolean;
   useOfForceOrThreat: boolean;
   caughtInTheAct: boolean;
-  intentForSmallGain: boolean;
   causedSevereInjury: boolean;
   deathCaused: boolean;
   attemptedCrime: boolean;
@@ -52,7 +51,6 @@ export interface CaseDescription {
   isArmed: boolean;
   useOfForceOrThreat: boolean;
   caughtInTheAct: boolean;
-  intentForSmallGain: boolean;
   causedSevereInjury: boolean;
   deathCaused: boolean;
   attemptedCrime: boolean;

@@ -102,9 +102,6 @@ public class Verdict {
     @Column(name = "caught_in_the_act")
     private Boolean caughtInTheAct;
 
-    @Column(name = "intent_for_small_gain")
-    private Boolean intentForSmallGain;
-
     @Column(name = "caused_severe_injury")
     private Boolean causedSevereInjury;
 

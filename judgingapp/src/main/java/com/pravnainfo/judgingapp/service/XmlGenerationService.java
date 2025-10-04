@@ -85,7 +85,7 @@ public class XmlGenerationService {
             - judgment: %s
             - appliedProvisions: %s
             - accusations: %s
-            - factualCircumstances: [isMovableProperty: %s, isTaken: %s, intentToAppropriate: %s, valueOfStolenItems: %s, isCulturalOrNaturalGood: %s, breakingAndEntering: %s, particularlyDangerousOrBrazen: %s, exploitingHelplessness: %s, duringDisaster: %s, numberOfPerpetrators: %s, isArmed: %s, useOfForceOrThreat: %s, caughtInTheAct: %s, intentForSmallGain: %s, causedSevereInjury: %s, deathCaused: %s, attemptedCrime: %s]
+            - factualCircumstances: [isMovableProperty: %s, isTaken: %s, intentToAppropriate: %s, valueOfStolenItems: %s, isCulturalOrNaturalGood: %s, breakingAndEntering: %s, particularlyDangerousOrBrazen: %s, exploitingHelplessness: %s, duringDisaster: %s, numberOfPerpetrators: %s, isArmed: %s, useOfForceOrThreat: %s, caughtInTheAct: %s, causedSevereInjury: %s, deathCaused: %s, attemptedCrime: %s]
             - xmlFileName: %s
 
             REMEMBER: Only include what's explicitly provided. No invented data.
@@ -117,7 +117,6 @@ public class XmlGenerationService {
                 safeBoolean(verdict.getIsArmed(), false),
                 safeBoolean(verdict.getUseOfForceOrThreat(), false),
                 safeBoolean(verdict.getCaughtInTheAct(), false),
-                safeBoolean(verdict.getIntentForSmallGain(), false),
                 safeBoolean(verdict.getCausedSevereInjury(), false),
                 safeBoolean(verdict.getDeathCaused(), false),
                 safeBoolean(verdict.getAttemptedCrime(), false),

@@ -13,9 +13,6 @@ function ReasonCase() {
   const navigate = useNavigate();
   const { register, handleSubmit, control, formState: { errors }, setValue, watch } = useForm<CaseDescription>({
     defaultValues: {
-      caseId: '',
-      defendantNames: [],
-      victim: '',
       accusationTypes: [],
       judgment: null,
       isMovableProperty: false,
@@ -31,7 +28,6 @@ function ReasonCase() {
       isArmed: false,
       useOfForceOrThreat: false,
       caughtInTheAct: false,
-      intentForSmallGain: false,
       causedSevereInjury: false,
       deathCaused: false,
       attemptedCrime: false,
@@ -47,7 +43,6 @@ function ReasonCase() {
   const accusationsWatch = watch('accusationTypes');
   const isTakenWatch = watch('isTaken');
   const caughtInTheActWatch = watch('caughtInTheAct');
-  const intentForSmallGainWatch = watch('intentForSmallGain');
   const deathCausedWatch = watch('deathCaused');
   const valueOfStolenItemsWatch = watch('valueOfStolenItems');
   const numberOfPerpetratorsWatch = watch('numberOfPerpetrators');
@@ -89,14 +84,6 @@ function ReasonCase() {
     }
   }, [accusationsWatch, caughtInTheActWatch, setValue]);
 
-  // Constraint: MalaImovinskaKorist implies VrijednostUkradenihStvari < 150
-  useEffect(() => {
-    if (intentForSmallGainWatch && valueOfStolenItemsWatch >= 150) {
-      setValue('intentForSmallGain', false);
-      setSnackbar({ open: true, message: 'Mala imovinska korist nije moguća ako je vrijednost ≥ 150€', severity: 'error' });
-    }
-  }, [intentForSmallGainWatch, valueOfStolenItemsWatch, setValue]);
-
   // Constraint: BrojUčinilaca >= 2 for Član 241(4)
   useEffect(() => {
     if (accusationsWatch.includes('čl. 241 st. 4') && numberOfPerpetratorsWatch < 2) {
@@ -105,16 +92,6 @@ function ReasonCase() {
     }
   }, [accusationsWatch, numberOfPerpetratorsWatch, setValue]);
 
-  // Constraint: NačinIzvršenja for Član 240
-  useEffect(() => {
-    if (accusationsWatch.some(acc => acc.includes('240'))) {
-      if (!watch('breakingAndEntering') && !watch('particularlyDangerousOrBrazen') && 
-          !watch('exploitingHelplessness') && !watch('duringDisaster')) {
-        setValue('breakingAndEntering', true);
-        setSnackbar({ open: true, message: 'Član 240 zahtijeva barem jedan kvalifikujući način izvršenja', severity: 'error' });
-      }
-    }
-  }, [accusationsWatch, setValue]);
 
   const onSubmit = (data: CaseDescription) => {
     setStatus('loading');
@@ -122,7 +99,7 @@ function ReasonCase() {
       ...data,
       accusationTypes: data.accusationTypes.map(acc => {
         const match = acc.match(/^čl\. (\d+)(?:\s*st\. (\d+))?$/i);
-        return match ? (match[2] ? `ARTICLE_${match[1]}_ST_${match[2]}` : `ARTICLE_${match[1]}`) : 'OTHER';
+        return match ? (match[2] ? `ARTICLE_${match[1]}_ST_${match[2]}` : `ARTICLE_${match[1]}_NONE`) : 'OTHER';
       }),
     };
     axios.post<ReasonResponse>('/api/cases/reason', payload)
@@ -157,54 +134,6 @@ function ReasonCase() {
       <Divider sx={{ mb: 3 }} />
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Typography variant="h6" sx={{ mt: 2, mb: 1, fontWeight: 'medium' }}>Identifikacija slučaja</Typography>
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
-          <TextField
-            label="ID presude"
-            {...register('caseId', { required: 'ID presude je obavezan' })}
-            fullWidth
-            margin="normal"
-            error={!!errors.caseId}
-            helperText={errors.caseId?.message}
-            variant="outlined"
-          />
-        </Box>
-
-        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Učesnici</Typography>
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
-          <Autocomplete
-            multiple
-            freeSolo
-            options={[]}
-            value={watch('defendantNames') || []}
-            onChange={(event, newValue) => setValue('defendantNames', newValue)}
-            renderTags={(value, getTagProps) =>
-              value.map((option, index) => (
-                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-              ))
-            }
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Imena optuženih"
-                helperText={errors.defendantNames?.message || 'Unesite imena optuženih, odvojena zarezima'}
-                fullWidth
-                margin="normal"
-                error={!!errors.defendantNames}
-                variant="outlined"
-              />
-            )}
-          />
-          <TextField
-            label="Žrtva"
-            {...register('victim', { required: 'Ime žrtve je obavezno' })}
-            fullWidth
-            margin="normal"
-            error={!!errors.victim}
-            helperText={errors.victim?.message}
-            variant="outlined"
-          />
-        </Box>
 
         <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Detalji slučaja</Typography>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
@@ -477,25 +406,6 @@ function ReasonCase() {
                   label="Zatečenost na djelu"
                   onChange={(e) => field.onChange(e.target.value === 'true')}
                   value={field.value ? 'true' : 'false'}
-                >
-                  <MenuItem value="true">Da</MenuItem>
-                  <MenuItem value="false">Ne</MenuItem>
-                </Select>
-              )}
-            />
-          </FormControl>
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Mala imovinska korist</InputLabel>
-            <Controller
-              name="intentForSmallGain"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  label="Mala imovinska korist"
-                  onChange={(e) => field.onChange(e.target.value === 'true')}
-                  value={field.value ? 'true' : 'false'}
-                  disabled={valueOfStolenItemsWatch >= 150}
                 >
                   <MenuItem value="true">Da</MenuItem>
                   <MenuItem value="false">Ne</MenuItem>

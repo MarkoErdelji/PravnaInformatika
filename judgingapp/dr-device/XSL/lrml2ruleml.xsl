@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://www.ruleml.org/0.91/xsd"
-	xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
-    xmlns:ruleml="http://ruleml.org/spec"
-	xmlns:lc="http://ftn.uns.ac.rs/legal-case"
-    exclude-result-prefixes="xs"
-    version="2.0">
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns="http://www.ruleml.org/0.91/xsd"
+                xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/"
+                xmlns:ruleml="http://ruleml.org/spec"
+                xmlns:lc="http://ftn.uns.ac.rs/legal-case"
+                exclude-result-prefixes="xs"
+                version="2.0">
     <xsl:output method="xml" indent="yes"/>
-    
+
     <xsl:template match="/">
         <xsl:apply-templates select="lrml:LegalRuleML"/>
     </xsl:template>
@@ -17,18 +17,7 @@
         <RuleML>
             <xsl:attribute name="proof">proof.ruleml</xsl:attribute>
             <xsl:attribute name="rdf_export">export.rdf</xsl:attribute>
-            <xsl:attribute name="rdf_export_classes">
-                basic_punishment
-                increase_punishment
-                aggravating_factor
-                weapon_factor
-                family_offense_factor
-                child_victim_factor
-                recidivist_factor
-                multiple_victims_factor
-                light_offense_factor
-                threat_offense_factor
-            </xsl:attribute>
+            <xsl:attribute name="rdf_export_classes">is_theft_lv1 is_theft_lv2 is_theft_lv3 is_theft_lv4 is_theft_lv5 is_theft_lv6 min_imprisonment max_imprisonment monetary_penalty</xsl:attribute>
             <xsl:attribute name="rdf_import">&quot;facts.rdf&quot;</xsl:attribute>
             <xsl:apply-templates select="lrml:Statements"/>
         </RuleML>
@@ -53,7 +42,7 @@
             <xsl:call-template name="superiority"/>
         </Implies>
     </xsl:template>
-    
+
     <xsl:template match="ruleml:Rule">
         <oid>
             <Ind>
@@ -171,7 +160,7 @@
             </xsl:for-each>
         </Atom>
     </xsl:template>
-    
+
     <xsl:template match="ruleml:Rel">
         <op>
             <Rel><xsl:value-of select="."/></Rel>
@@ -188,9 +177,8 @@
     <xsl:template match="ruleml:Fun">
         <Fun in="yes"><xsl:value-of select="."/></Fun>
     </xsl:template>
-    
+
     <!-- superiority relations -->
-    
     <xsl:template name="superiority">
         <xsl:variable name="currentPrescriptiveStatementKey" select="@key"/>
         <xsl:for-each select="//lrml:Override[@over=concat('#',$currentPrescriptiveStatementKey)]">
@@ -203,13 +191,12 @@
             </superior>
         </xsl:for-each>
     </xsl:template>
-    
+
     <!-- legal norms' sanction -->
-    
     <xsl:template match="lrml:ReparationStatement">
         <xsl:apply-templates select="lrml:Reparation"/>
     </xsl:template>
-    
+
     <xsl:template match="lrml:Reparation">
         <xsl:variable name="penaltyKey" select="replace(lrml:appliesPenalty/@keyref,'^(#)','')"/>
         <xsl:for-each select="lrml:toPrescriptiveStatement">
@@ -246,5 +233,4 @@
             </Implies>
         </xsl:for-each>
     </xsl:template>
-    
 </xsl:stylesheet>

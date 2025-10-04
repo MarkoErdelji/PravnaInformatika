@@ -38,7 +38,6 @@ public class CbrApplication implements StandardCBRApplication {
         NNConfig config = new NNConfig();
         config.setDescriptionSimFunction(new Average());
 
-        // Boolean attributes for theft-specific facts
         config.addMapping(new Attribute("isMovableProperty", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("isTaken", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("intentToAppropriate", CaseDescription.class), new Equal());
@@ -50,20 +49,16 @@ public class CbrApplication implements StandardCBRApplication {
         config.addMapping(new Attribute("isArmed", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("useOfForceOrThreat", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("caughtInTheAct", CaseDescription.class), new Equal());
-        config.addMapping(new Attribute("intentForSmallGain", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("causedSevereInjury", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("deathCaused", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("attemptedCrime", CaseDescription.class), new Equal());
 
-        // Numerical attributes
         config.addMapping(new Attribute("valueOfStolenItems", CaseDescription.class), new NullAwareInterval(10000.0));
         config.addMapping(new Attribute("numberOfPerpetrators", CaseDescription.class), new NullAwareInterval(5));
 
-        // Accusation similarity (high weight for list of AccusationType)
         config.addMapping(new Attribute("accusationTypes", CaseDescription.class), new AccusationSimilarity());
         config.setWeight(new Attribute("accusationTypes", CaseDescription.class), 3.0);
 
-        // Judgment similarity (only for retrieval config)
         if (includeJudgment) {
             TabularSimilarity judgmentSim = new TabularSimilarity(
                     Arrays.stream(VerdictType.values()).map(Enum::name).toList()

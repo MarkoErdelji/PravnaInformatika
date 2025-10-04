@@ -32,10 +32,8 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Clear existing data
         verdictRepository.deleteAll();
 
-        // Load CSV
         try (InputStreamReader reader = new InputStreamReader(
                 new ClassPathResource("verdicts.csv").getInputStream(), StandardCharsets.UTF_8);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
@@ -78,7 +76,6 @@ public class DataLoader implements CommandLineRunner {
                         .isArmed(parseBoolean(getSafeString(record, "IS ARMED")))
                         .useOfForceOrThreat(parseBoolean(getSafeString(record, "USE OF FORCE OR THREAT")))
                         .caughtInTheAct(parseBoolean(getSafeString(record, "CAUGHT IN THE ACT")))
-                        .intentForSmallGain(parseBoolean(getSafeString(record, "INTENT FOR SMALL GAIN")))
                         .causedSevereInjury(parseBoolean(getSafeString(record, "CAUSED SEVERE INJURY")))
                         .deathCaused(parseBoolean(getSafeString(record, "DEATH CAUSED")))
                         .attemptedCrime(parseBoolean(getSafeString(record, "ATTEMPTED CRIME")))
