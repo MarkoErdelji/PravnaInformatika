@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd"
+            xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
+    <judgment>
+        <meta>
+            <identification source="#court">
+                <FRBRWork>
+                    <FRBRauthor>OSNOVNI SUD U BARU</FRBRauthor>
+                    <FRBRdate date="2022-07-11">2022-07-11</FRBRdate>
+                    <FRBRtitle>K.br. 64/22</FRBRtitle>
+                    <FRBRcountry>ME</FRBRcountry>
+                </FRBRWork>
+            </identification>
+            <references>
+                <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.Baru" showAs="Osnovni sud u Baru"/>
+                <TLCOrganization eId="odt" href="/ontology/organization/OsnovnoDrzavnoTuzilastvo.Baru" showAs="Osnovno državno tužilaštvo u Baru"/>
+                <TLCPerson eId="tSpasojevic" href="/ontology/person/tSpasojevic" showAs="Tamara Spasojević"/>
+                <TLCPerson eId="aStanisic" href="/ontology/person/aStanisic" showAs="Ana Stanišić"/>
+                <TLCPerson eId="bA" href="/ontology/person/bA" showAs="B. A."/>
+                <TLCPerson eId="dP" href="/ontology/person/dP" showAs="Đ. P."/>
+                <TLCPerson eId="fV" href="/ontology/person/fV" showAs="F. V."/>
+                <TLCPerson eId="bM" href="/ontology/person/bM" showAs="B. M."/>
+                <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
+                <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
+                <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
+                <TLCRole eId="lawyer" href="/ontology/role/lawyer" showAs="Branilac"/>
+                <TLCRole eId="victim" href="/ontology/role/victim" showAs="Oštećeni"/>
+            </references>
+        </meta>
+
+        <judgmentBody>
+            <p>
+                <organization id="os" refersTo="#os">OSNOVNI SUD U BARU</organization>, sudija
+                <party id="tSpasojevic" refersTo="#tSpasojevic" as="#judge">Tamara Spasojević</party>, sa zapisničarom
+                <party id="aStanisic" refersTo="#aStanisic" as="#clerk">Anom Stanišić</party> u krivičnom predmetu
+                okrivljenog <party id="bA" refersTo="#bA" as="#defendant">B. A.</party>, zbog krivičnog djela krađa iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 Krivičnog zakonika Crne Gore</ref>, po optužnom predlogu
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Baru Kt.br.499/21 od 29.04.2022. godine</organization>, nakon održanog glavnog,
+                javnog pretresa u prisustvu zastupnika optužbe savjetnika kod Osnovnog državnog tužilaštva u Baru
+                <party id="dP" refersTo="#dP">Đ. P.</party>, okrivljenog i branioca okrivljenog
+                <party id="fV" refersTo="#fV" as="#lawyer">F. V.</party>, advokata iz B., dana
+                <date date="2022-07-11">11.07.2022.</date> godine donio je i istog dana javno objavio
+            </p>
+
+            <p><b>PRESUDU</b></p>
+
+            <p>
+                Okrivljeni:
+                <party id="bA" refersTo="#bA">B. A.</party>, JMB...., od oca F. i majke B., rođene K., rođen
+                <date date="2002-01-01">01.01.2002.</date> godine u K., Republika S., stanuje u B., P. V. bb,
+                državljanin Crne Gore, razumije crnogorski jezik a njegov je romski, radnik, neoženjen, bez djece, pismen, sa
+                završena četiri razreda osnovne škole, lošeg imovnog stanja, osuđivan presudom Osnovnog suda u Baru
+                K.br.250/20 koja je postala pravosnažna dana <date date="2020-11-19">19.11.2020.</date> godine, zbog krivičnog djela krađa iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1</ref> u vezi člana <ref href="/krivicni#art_23_st_2">23 st. 2</ref> KZ CG, kojom mu je izrečena uslovna osuda i utvrđena kazna zatvora u trajanju od 3
+                mjeseca, uslovno na 1 godinu, presudom Osnovnog suda u Baru K.br.90/21 koja je postala pravosnažna dana
+                <date date="2021-06-28">28.06.2021.</date> godine zbog krivičnog djela krađa
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 Krivičnog zakonika Crne Gore</ref>, kojom je osuđen na
+                kaznu zatvora u trajanju od 30 (trideset) dana, presudom Osnovnog suda u Baru K br. 224/21 koja je postala
+                pravosnažna dana <date date="2021-12-03">03.12.2021.</date> godine zbog krivičnog djela iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZCG</ref> na kaznu zatvora u trajanju od
+                30 dana, presudom Osnovnog suda u Baru K br. 244/21 koja je postala pravosnažna dana
+                <date date="2021-12-03">03.12.2021.</date> godine zbog krivičnog djela iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZCG</ref> na kaznu zatvora u trajanju od 3 mjeseca, presudom Osnovnog suda u
+                Baru K br. 177/21 koja je postala pravosnažna dana <date date="2022-01-20">20.01.2022.</date> godine zbog krivičnog djela iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZCG</ref> na kaznu zatvora u trajanju od 3 mjeseca i presudom Osnovnog suda u Baru K br. 190/21 koja je postala
+                pravosnažna dana <date date="2022-01-21">21.01.2022.</date> godine zbog krivičnog djela iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZCG</ref> na kaznu zatvora u trajanju od 4
+                mjeseca.
+            </p>
+
+            <p><b>Kriv je</b></p>
+
+            <p>
+                Što je: U septembru <date date="2021-09">2021.</date> godine, u dnevnim časovima, u Baru, na parkingu kod zelene pijace i ispred Auto Moto
+                saveza, svjestan svog djela čije je izvršenje htio i svjestan da je njegovo djelo zabranjeno, tuđe pokretne stvari
+                oduzeo drugom, u namjeri da njihovim prisvajanjem sebi pribavi protivpravnu imovinsku korist, na način što
+                je otvorio nezaključani prtljažnik parkiranog putničkog vozila »Golf III« u svojini oštećenog
+                <party id="bM" refersTo="#bM" as="#victim">B. M.</party>, i iz njega
+                oduzeo i prisvojio njegove stvari: štap za pecanje »Shimano catana 30 50-100 g«, vrijednosti 87,40 € ,
+                varaličarski štap »Plusinno, 270« 60 g, vrijednosti 75,17 €, mašinicu za ribolov »Okuma 4000« vrijednosti 88,44
+                € , mašinicu za ribolov » Shimano vanford 500 XG« vrijednosti 299, 52 €, torbu za ribolov nepoznate marke
+                vrijednosti 20 €, strunu »Tournament daiwa braid 8 0.14 mm«, vrijednosti 31,00 € i mašinu za pumpanje auto
+                guma, nepoznate marke, vrijednosti 30,00 € i tako sebi pribavio protivpravnu imovinsku korist u ukupnoj
+                visini od 631,53 €
+            </p>
+
+            <p>
+                - čime je izvršio krivično djelo krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 Krivičnog zakonika Crne Gore</ref>
+            </p>
+
+            <list>
+                <item id="odluka1">
+                    <p>
+                        Pa sud okrivljenog primjenom <ref href="/krivicni#art_2">čl. 2</ref>, <ref href="/krivicni#art_4">4</ref>, <ref href="/krivicni#art_5">5</ref>, <ref href="/krivicni#art_13">13</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_36">36</ref> i <ref href="/krivicni#art_42">42</ref> Krivičnog zakonika Crne Gore, te <ref href="/zkp#art_226">čl. 226</ref>, <ref href="/zkp#art_229">229</ref> i <ref href="/zkp#art_374">374</ref> Zakonika o krivičnom postupku,
+                        <b>OSUĐUJE</b><br/>
+                        Na kaznu zatvora u trajanju od 2 (dva) mjeseca.
+                    </p>
+                </item>
+                <item id="odluka2">
+                    <p>
+                        Na osnovu <ref href="/zkp#art_239_st_2">čl. 239 st. 2 ZKP-a</ref> obavezuje se okrivljeni <party id="bA" refersTo="#bA">B. A.</party> da svjedoku oštećenom <party id="bM" refersTo="#bM" as="#victim">B. M.</party> na ime postavljenog
+                        imovinsko pravnog zahtjeva isplati iznos od <amount value="556.36">556,36 eura</amount>, u roku od <time duration="P15D">15 dana</time> po pravosnažnosti presude, pod
+                        prijetnjom prinudnog izvršenja.
+                    </p>
+                </item>
+                <item id="odluka3">
+                    <p>
+                        Okrivljeni je dužan da plati troškove postupka u iznosu od <amount value="170.50">170,50 €</amount>, kao i na ime sudskog paušala u iznosu od
+                        <amount value="50.00">50,00 €</amount>, u roku od <time duration="P15D">15 dana</time> po pravosnažnosti presude, pod prijetnjom prinudnog izvršenja.
+                    </p>
+                </item>
+            </list>
+        </judgmentBody>
+    </judgment>
+</akomaNtoso>

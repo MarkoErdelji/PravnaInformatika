@@ -1,74 +1,100 @@
-import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
-  Paper,
-  Box,
-  Typography,
-  Stack,
-  Collapse,
-  Button,
-  Divider,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow
-} from '@mui/material'
-import axios from 'axios'
-import type { Verdict, SimilarVerdict } from './types'
-import JudgmentViewer from '../components/JudgmentViewer'
+  Paper, Box, Typography, Stack, Collapse, Button, Divider, Dialog, DialogTitle, DialogContent,
+  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Snackbar, Alert,
+  CircularProgress
+} from '@mui/material';
+import axios from 'axios';
+import type { Verdict, SimilarVerdict } from './types';
+import JudgmentViewer from '../components/JudgmentViewer';
 
 export default function ViewCase() {
-  const { id } = useParams<{ id: string }>()
-  const navigate = useNavigate()
-  const [caseData, setCaseData] = useState<Verdict | null>(null)
-  const [xmlString, setXmlString] = useState<string>('')
-  const [showMetadata, setShowMetadata] = useState(false)
-  const [similarCases, setSimilarCases] = useState<SimilarVerdict[]>([])
-  const [openModal, setOpenModal] = useState(false)
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const [caseData, setCaseData] = useState<Verdict | null>(null);
+  const [xmlString, setXmlString] = useState<string>('');
+  const [showMetadata, setShowMetadata] = useState(false);
+  const [similarCases, setSimilarCases] = useState<SimilarVerdict[]>([]);
+  const [openModal, setOpenModal] = useState(false);
+  const [snackbar, setSnackbar] = useState<{ open: boolean, message: string, severity: 'error' }>({
+    open: false,
+    message: '',
+    severity: 'error',
+  });
 
   useEffect(() => {
     if (id) {
+      // Fetch case details
       axios.get<Verdict>(`/api/cases/${id}`)
         .then(res => setCaseData(res.data))
-        .catch(err => console.error(err))
+        .catch(err => {
+          console.error(err);
+          setSnackbar({ open: true, message: 'Greška pri dohvatanju podataka o slučaju', severity: 'error' });
+        });
 
+      // Fetch XML content
       axios.get(`/api/verdicts/${id}/xml`, { responseType: 'text' })
         .then(res => setXmlString(res.data))
-        .catch(err => console.error(err))
+        .catch(err => {
+          console.error(err);
+          setSnackbar({ open: true, message: 'Greška pri dohvatanju XML dokumenta', severity: 'error' });
+        });
     }
-  }, [id])
+  }, [id]);
 
   const handleShowSimilar = () => {
     if (id) {
       axios.get<SimilarVerdict[]>(`/api/cases/retrieve/${id}`)
         .then(res => {
-          setSimilarCases(res.data)
-          setOpenModal(true)
+          setSimilarCases(res.data);
+          setOpenModal(true);
         })
         .catch(err => {
-          console.error(err)
-          alert('Error retrieving similar cases')
-        })
+          console.error(err);
+          setSnackbar({ open: true, message: 'Greška pri pronalaženju sličnih slučajeva', severity: 'error' });
+        });
     }
+  };
+
+  const handleCloseModal = () => setOpenModal(false);
+
+  const handleSnackbarClose = () => {
+    setSnackbar({ ...snackbar, open: false });
+  };
+
+  if (!caseData || !xmlString) {
+    return (
+      <Box sx={{ my: 4, px: 3, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+        <Typography variant="h6" sx={{ mb: 2 }}>Učitavanje...</Typography>
+        <CircularProgress size={50} />
+        <Snackbar
+          open={snackbar.open}
+          autoHideDuration={6000}
+          onClose={handleSnackbarClose}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        >
+          <Alert onClose={handleSnackbarClose} severity={snackbar.severity} sx={{ width: '100%' }}>
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
+      </Box>
+    );
   }
-
-  const handleCloseModal = () => setOpenModal(false)
-
-  if (!caseData || !xmlString) return <Typography>Loading...</Typography>
 
   return (
     <Box sx={{ my: 4, px: 3 }}>
       <Stack direction="row" justifyContent="space-between" alignItems="center" mb={3}>
-        <Typography variant="h4" fontWeight="bold">
-          Case: {caseData.caseId}
+        <Typography variant="h4" fontWeight="bold" color="primary.main">
+          Slučaj: {caseData.caseId}
         </Typography>
-        <Button variant="contained" color="primary" onClick={handleShowSimilar}>
-          Show Similar Cases
+        <Button 
+          variant="contained" 
+          color="primary" 
+          onClick={handleShowSimilar}
+          sx={{ textTransform: 'none', fontSize: '1.1rem' }}
+        >
+          Prikaz sličnih slučajeva
         </Button>
       </Stack>
 
@@ -78,62 +104,70 @@ export default function ViewCase() {
       {/* Metadata Panel */}
       <Button
         variant="contained"
+        color="secondary"
         onClick={() => setShowMetadata(prev => !prev)}
-        sx={{ mb: 2 }}
+        sx={{ my: 2, textTransform: 'none', fontSize: '1.1rem' }}
       >
-        {showMetadata ? 'Hide Metadata' : 'Show Metadata'}
+        {showMetadata ? 'Sakrij metapodatke' : 'Prikaži metapodatke'}
       </Button>
       <Collapse in={showMetadata}>
-        <Paper sx={{ p: 3, borderRadius: 3, backgroundColor: '#f5f5f5' }}>
+        <Paper sx={{ p: 3, borderRadius: 3, backgroundColor: '#f5f5f5', boxShadow: 2 }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 'medium' }}>Metapodaci slučaja</Typography>
+          <Divider sx={{ mb: 2 }} />
           <Stack spacing={1.5}>
-            <Typography><b>Court:</b> {caseData.court}</Typography>
-            <Typography><b>Verdict Number:</b> {caseData.verdictNumber}</Typography>
-            <Typography><b>Date:</b> {caseData.date}</Typography>
-            <Typography><b>Judge Name:</b> {caseData.judgeName}</Typography>
-            <Typography><b>Clerk Name:</b> {caseData.clerkName}</Typography>
-            <Typography><b>Prosecutor:</b> {caseData.prosecutor}</Typography>
-            <Typography><b>Defendant Name:</b> {caseData.defendantName}</Typography>
-            <Typography><b>Criminal Offense:</b> {caseData.criminalOffense}</Typography>
-            <Typography><b>Applied Provisions:</b> {caseData.appliedProvisions}</Typography>
-            <Typography><b>Verdict Type:</b> {caseData.verdictType}</Typography>
-            <Typography><b>Num Defendants:</b> {caseData.numDefendants}</Typography>
-            <Typography><b>Aware of Illegality:</b> {caseData.awareOfIllegality ? 'Yes' : 'No'}</Typography>
-            <Typography><b>Main Victim Relationship:</b> {caseData.mainVictimRelationship}</Typography>
-            <Typography><b>Violence Nature:</b> {caseData.violenceNature}</Typography>
-            <Typography><b>Injury Types:</b> {caseData.injuryTypes}</Typography>
-            <Typography><b>Protection Measure Violation:</b> {caseData.protectionMeasureViolation ? 'Yes' : 'No'}</Typography>
-            <Typography><b>Event Location:</b> {caseData.eventLocation}</Typography>
-            <Typography><b>Event Date:</b> {caseData.eventDate}</Typography>
-            <Typography><b>Defendant Status:</b> {caseData.defendantStatus}</Typography>
-            <Typography><b>Victims:</b> {caseData.victims}</Typography>
-            <Typography><b>Main Victim Age:</b> {caseData.mainVictimAge}</Typography>
-            <Typography><b>Alcohol or Drugs:</b> {caseData.alcoholOrDrugs ? 'Yes' : 'No'}</Typography>
-            <Typography><b>Children Present:</b> {caseData.childrenPresent ? 'Yes' : 'No'}</Typography>
-            <Typography><b>Penalty:</b> {caseData.penalty}</Typography>
-            <Typography><b>Procedure Costs:</b> {caseData.procedureCosts}</Typography>
-            <Typography><b>Use of Weapon:</b> {caseData.useOfWeapon ? 'Yes' : 'No'}</Typography>
-            <Typography><b>Number of Victims:</b> {caseData.numberOfVictims}</Typography>
+            <Typography><b>ID presude:</b> {caseData.caseId}</Typography>
+            <Typography><b>Sud:</b> {caseData.court}</Typography>
+            <Typography><b>Broj presude:</b> {caseData.caseNumber}</Typography>
+            <Typography><b>Datum presude:</b> {caseData.verdictDate || 'Nije naveden'}</Typography>
+            <Typography><b>Sudija:</b> {caseData.judge}</Typography>
+            <Typography><b>Pisar:</b> {caseData.clerk}</Typography>
+            <Typography><b>Tužilac:</b> {caseData.prosecutor}</Typography>
+            <Typography><b>Imena optuženih:</b> {caseData.defendantNames.join(', ')}</Typography>
+            <Typography><b>Žrtva:</b> {caseData.victim}</Typography>
+            <Typography><b>Kratak opis:</b> {caseData.shortDescription}</Typography>
+            <Typography><b>Presuda:</b> {caseData.judgment || 'Nema presude'}</Typography>
+            <Typography><b>Primijenjene odredbe:</b> {caseData.appliedProvisions}</Typography>
+            <Typography><b>Optužbe:</b> {caseData.accusations.join(', ')}</Typography>
+            <Typography><b>Vrsta stvari (tuđa i pokretna):</b> {caseData.isMovableProperty ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Radnja oduzimanja:</b> {caseData.isTaken ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Namjera prisvajanja:</b> {caseData.intentToAppropriate ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Vrijednost ukradenih stvari (€):</b> {caseData.valueOfStolenItems}</Typography>
+            <Typography><b>Status kulturnog ili prirodnog dobra:</b> {caseData.isCulturalOrNaturalGood ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Provala:</b> {caseData.breakingAndEntering ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Posebno opasan ili drzak:</b> {caseData.particularlyDangerousOrBrazen ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Iskorištavanje bespomoćnosti:</b> {caseData.exploitingHelplessness ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Tokom katastrofe:</b> {caseData.duringDisaster ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Broj izvršitelja:</b> {caseData.numberOfPerpetrators}</Typography>
+            <Typography><b>Prisustvo oružja:</b> {caseData.isArmed ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Upotreba sile ili prijetnje:</b> {caseData.useOfForceOrThreat ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Zatečenost na djelu:</b> {caseData.caughtInTheAct ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Mala imovinska korist:</b> {caseData.intentForSmallGain ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Nanesene teške povrede:</b> {caseData.causedSevereInjury ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Smrt lica:</b> {caseData.deathCaused ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Pokušaj djela:</b> {caseData.attemptedCrime ? 'Da' : 'Ne'}</Typography>
           </Stack>
         </Paper>
       </Collapse>
 
       {/* Similar Cases Modal */}
-      <Dialog open={openModal} onClose={handleCloseModal} maxWidth="md" fullWidth>
-        <DialogTitle>Similar Cases for {caseData.caseId}</DialogTitle>
-        <DialogContent>
+      <Dialog open={openModal} onClose={handleCloseModal} maxWidth="md" fullWidth sx={{ '& .MuiDialog-paper': { borderRadius: 2 } }}>
+        <DialogTitle sx={{ bgcolor: 'primary.main', color: 'white', fontWeight: 'bold' }}>
+          Slični slučajevi za {caseData.caseId}
+        </DialogTitle>
+        <DialogContent sx={{ p: 3 }}>
           {similarCases.length > 0 ? (
-            <TableContainer component={Paper} sx={{ mt: 2 }}>
+            <TableContainer component={Paper} sx={{ mt: 2, boxShadow: 2 }}>
               <Table>
                 <TableHead>
-                  <TableRow>
-                    <TableCell><b>Case ID</b></TableCell>
-                    <TableCell><b>Similarity</b></TableCell>
-                    <TableCell align="right"><b>Actions</b></TableCell>
+                  <TableRow sx={{ bgcolor: 'grey.100' }}>
+                    <TableCell sx={{ fontWeight: 'bold' }}>ID presude</TableCell>
+                    <TableCell sx={{ fontWeight: 'bold' }}>Sličnost</TableCell>
+                    <TableCell align="right" sx={{ fontWeight: 'bold' }}>Akcije</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {similarCases.map((sc, index) => (
-                    <TableRow key={index}>
+                    <TableRow key={index} sx={{ '&:hover': { bgcolor: 'grey.50' } }}>
                       <TableCell>{sc.caseDescription.caseId}</TableCell>
                       <TableCell>{(sc.similarity * 100).toFixed(2)}%</TableCell>
                       <TableCell align="right">
@@ -141,11 +175,12 @@ export default function ViewCase() {
                           variant="outlined"
                           color="secondary"
                           onClick={() => {
-                            navigate(`/view/${sc.caseDescription.dbId}`)
-                            setOpenModal(false)
+                            navigate(`/view/${sc.caseDescription.dbId}`);
+                            setOpenModal(false);
                           }}
+                          sx={{ textTransform: 'none' }}
                         >
-                          View
+                          Pogledaj
                         </Button>
                       </TableCell>
                     </TableRow>
@@ -154,10 +189,30 @@ export default function ViewCase() {
               </Table>
             </TableContainer>
           ) : (
-            <Typography sx={{ mt: 2 }}>No similar cases found.</Typography>
+            <Typography sx={{ mt: 2, fontSize: '1.1rem' }}>Nema pronađenih sličnih slučajeva.</Typography>
           )}
+          <Button
+            onClick={handleCloseModal}
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ mt: 3, py: 1.5, fontSize: '1.1rem', textTransform: 'none' }}
+          >
+            Zatvori
+          </Button>
         </DialogContent>
       </Dialog>
+
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert onClose={handleSnackbarClose} severity={snackbar.severity} sx={{ width: '100%' }}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
-  )
+  );
 }

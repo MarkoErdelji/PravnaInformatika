@@ -1,393 +1,183 @@
-import { useForm, Controller } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form';
 import {
   Box, Button, TextField, Typography, Select, MenuItem, FormControl, InputLabel,
   Dialog, DialogTitle, DialogContent, Table, TableContainer, TableHead, TableRow,
-  TableCell, TableBody, Paper, CircularProgress, Stack, Autocomplete, Chip, Divider
-} from '@mui/material'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import type { CaseDescription, ReasonResponse } from './types'
+  TableCell, TableBody, Paper, CircularProgress, Autocomplete, Chip, Divider, Snackbar, Alert
+} from '@mui/material';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import type { CaseDescription, ReasonResponse } from './types';
 
 function ReasonCase() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { register, handleSubmit, control, formState: { errors }, setValue, watch } = useForm<CaseDescription>({
     defaultValues: {
-      dbId: 0,
       caseId: '',
-      court: '',
-      verdictNumber: '',
-      date: '',
-      judgeName: '',
-      clerkName: '',
-      prosecutor: '',
-      defendantName: '',
-      criminalOffense: '',
-      appliedProvisions: '',
-      verdictType: null,
-      awareOfIllegality: true,
-      mainVictimRelationship: null,
-      violenceNature: null,
-      injuryTypes: null,
-      protectionMeasureViolation: false,
-      eventLocation: '',
-      eventDate: '',
-      defendantStatus: '',
-      victims: '',
-      mainVictimAge: 0,
-      alcoholOrDrugs: false,
-      childrenPresent: false,
-      penalty: '',
-      procedureCosts: '',
-      useOfWeapon: false,
-      numberOfVictims: 0,
-      xmlFileName: '',
+      defendantNames: [],
+      victim: '',
+      accusationTypes: [],
+      judgment: null,
+      isMovableProperty: false,
+      isTaken: false,
+      intentToAppropriate: false,
+      valueOfStolenItems: 0,
+      isCulturalOrNaturalGood: false,
+      breakingAndEntering: false,
+      particularlyDangerousOrBrazen: false,
+      exploitingHelplessness: false,
+      duringDisaster: false,
+      numberOfPerpetrators: 1,
+      isArmed: false,
+      useOfForceOrThreat: false,
+      caughtInTheAct: false,
+      intentForSmallGain: false,
+      causedSevereInjury: false,
+      deathCaused: false,
+      attemptedCrime: false,
     },
-  })
+  });
 
-  const [result, setResult] = useState<ReasonResponse | null>(null)
-  const [openModal, setOpenModal] = useState(false)
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [criminalOffenseOptions, setCriminalOffenseOptions] = useState<string[]>([])
-  const [appliedProvisionsOptions, setAppliedProvisionsOptions] = useState<string[]>([])
-  const [statusOptions, setStatusOptions] = useState<string[]>([])
+  const [result, setResult] = useState<ReasonResponse | null>(null);
+  const [openModal, setOpenModal] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [accusationOptions, setAccusationOptions] = useState<string[]>([]);
+  const [snackbar, setSnackbar] = useState<{ open: boolean, message: string, severity: 'error' }>({ open: false, message: '', severity: 'error' });
 
-  const statuteChoices = ['st. 1', 'st. 2', 'st. 3', 'st. 4', 'st. 5']
-  const clauseChoices = Array.from({ length: 500 }, (_, i) => (i + 1).toString()) // cl. 1 to cl. 500
-  const statusChoices = ['unemployed', 'married', 'father of children', 'retired']
-
-  const victimsWatch = watch('victims')
+  const accusationsWatch = watch('accusationTypes');
+  const isTakenWatch = watch('isTaken');
+  const caughtInTheActWatch = watch('caughtInTheAct');
+  const intentForSmallGainWatch = watch('intentForSmallGain');
+  const deathCausedWatch = watch('deathCaused');
+  const valueOfStolenItemsWatch = watch('valueOfStolenItems');
+  const numberOfPerpetratorsWatch = watch('numberOfPerpetrators');
 
   useEffect(() => {
-    const victimList = victimsWatch ? victimsWatch.split(',').map(v => v.trim()).filter(v => v.length > 0) : []
-    setValue('numberOfVictims', victimList.length)
-  }, [victimsWatch, setValue])
+    axios.get<string[]>('/api/cases/accusations')
+      .then(res => setAccusationOptions(res.data))
+      .catch(err => {
+        console.error(err);
+        setSnackbar({ open: true, message: 'Greška pri dohvatanju optužbi', severity: 'error' });
+      });
+  }, []);
+
+  // Constraint: SmrtLica implies NaneseneTeškePovrede
+  useEffect(() => {
+    if (deathCausedWatch) {
+      setValue('causedSevereInjury', true);
+    }
+  }, [deathCausedWatch, setValue]);
+
+  // Constraint: RadnjaOduzimanja implies VrstaStvari
+  useEffect(() => {
+    if (isTakenWatch) {
+      setValue('isMovableProperty', true);
+    }
+  }, [isTakenWatch, setValue]);
+
+  // Constraint: NamjeraPrisvajanja for krađa-related accusations
+  useEffect(() => {
+    if (accusationsWatch.some(acc => acc.includes('239') || acc.includes('240') || acc.includes('241'))) {
+      setValue('intentToAppropriate', true);
+    }
+  }, [accusationsWatch, setValue]);
+
+  // Constraint: UpotrebaSileIliPrijetnje for Član 241 when ZatečenostNaDelu
+  useEffect(() => {
+    if (accusationsWatch.includes('čl. 241') && caughtInTheActWatch) {
+      setValue('useOfForceOrThreat', true);
+    }
+  }, [accusationsWatch, caughtInTheActWatch, setValue]);
+
+  // Constraint: MalaImovinskaKorist implies VrijednostUkradenihStvari < 150
+  useEffect(() => {
+    if (intentForSmallGainWatch && valueOfStolenItemsWatch >= 150) {
+      setValue('intentForSmallGain', false);
+      setSnackbar({ open: true, message: 'Mala imovinska korist nije moguća ako je vrijednost ≥ 150€', severity: 'error' });
+    }
+  }, [intentForSmallGainWatch, valueOfStolenItemsWatch, setValue]);
+
+  // Constraint: BrojUčinilaca >= 2 for Član 241(4)
+  useEffect(() => {
+    if (accusationsWatch.includes('čl. 241 st. 4') && numberOfPerpetratorsWatch < 2) {
+      setValue('numberOfPerpetrators', 2);
+      setSnackbar({ open: true, message: 'Član 241 st. 4 zahtijeva barem 2 izvršioca', severity: 'error' });
+    }
+  }, [accusationsWatch, numberOfPerpetratorsWatch, setValue]);
+
+  // Constraint: NačinIzvršenja for Član 240
+  useEffect(() => {
+    if (accusationsWatch.some(acc => acc.includes('240'))) {
+      if (!watch('breakingAndEntering') && !watch('particularlyDangerousOrBrazen') && 
+          !watch('exploitingHelplessness') && !watch('duringDisaster')) {
+        setValue('breakingAndEntering', true);
+        setSnackbar({ open: true, message: 'Član 240 zahtijeva barem jedan kvalifikujući način izvršenja', severity: 'error' });
+      }
+    }
+  }, [accusationsWatch, setValue]);
 
   const onSubmit = (data: CaseDescription) => {
-    setStatus('loading')
-    axios.post<ReasonResponse>('/api/cases/reason', data)
+    setStatus('loading');
+    const payload = {
+      ...data,
+      accusationTypes: data.accusationTypes.map(acc => {
+        const match = acc.match(/^čl\. (\d+)(?:\s*st\. (\d+))?$/i);
+        return match ? (match[2] ? `ARTICLE_${match[1]}_ST_${match[2]}` : `ARTICLE_${match[1]}`) : 'OTHER';
+      }),
+    };
+    axios.post<ReasonResponse>('/api/cases/reason', payload)
       .then(res => {
-        setResult({ ...res.data, caseDescription: data })
-        setStatus('success')
-        setOpenModal(true)
+        setResult({ ...res.data, caseDescription: data });
+        setStatus('success');
+        setOpenModal(true);
       })
       .catch(err => {
-        console.error(err)
-        setStatus('error')
-        setOpenModal(true)
-      })
-  }
+        console.error(err);
+        setStatus('error');
+        setSnackbar({ open: true, message: 'Greška prilikom obrade slučaja', severity: 'error' });
+        setOpenModal(true);
+      });
+  };
 
   const handleCloseModal = () => {
-    setOpenModal(false)
-    setStatus('idle')
-    setResult(null)
-    setCriminalOffenseOptions([])
-    setAppliedProvisionsOptions([])
-    setStatusOptions([])
-  }
+    setOpenModal(false);
+    setStatus('idle');
+    setResult(null);
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbar({ ...snackbar, open: false });
+  };
 
   return (
     <Box sx={{ maxWidth: 1200, mx: 'auto', my: 4, p: 3, bgcolor: 'background.paper', borderRadius: 2, boxShadow: 3 }}>
       <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold', color: 'primary.main' }}>
-        Reason Case
+        Obradi slučaj
       </Typography>
       <Divider sx={{ mb: 3 }} />
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* Case Identification */}
-        <Typography variant="h6" sx={{ mt: 2, mb: 1, fontWeight: 'medium' }}>Case Identification</Typography>
+        <Typography variant="h6" sx={{ mt: 2, mb: 1, fontWeight: 'medium' }}>Identifikacija slučaja</Typography>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
           <TextField
-            label="Case ID"
-            {...register('caseId', { required: 'Case ID is required' })}
+            label="ID presude"
+            {...register('caseId', { required: 'ID presude je obavezan' })}
             fullWidth
             margin="normal"
             error={!!errors.caseId}
             helperText={errors.caseId?.message}
             variant="outlined"
           />
-          <TextField
-            label="Court"
-            {...register('court', { required: 'Court is required' })}
-            fullWidth
-            margin="normal"
-            error={!!errors.court}
-            helperText={errors.court?.message}
-            variant="outlined"
-          />
-          <TextField
-            label="Verdict Number"
-            {...register('verdictNumber', { required: 'Verdict Number is required' })}
-            fullWidth
-            margin="normal"
-            error={!!errors.verdictNumber}
-            helperText={errors.verdictNumber?.message}
-            variant="outlined"
-          />
-          <TextField
-            label="Verdict Date"
-            type="date"
-            {...register('date', { required: 'Verdict Date is required' })}
-            fullWidth
-            margin="normal"
-            InputLabelProps={{ shrink: true }}
-            error={!!errors.date}
-            helperText={errors.date?.message}
-            variant="outlined"
-          />
         </Box>
 
-        {/* Parties Involved */}
-        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Parties Involved</Typography>
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
-          <TextField
-            label="Judge Name"
-            {...register('judgeName', { required: 'Judge Name is required' })}
-            fullWidth
-            margin="normal"
-            error={!!errors.judgeName}
-            helperText={errors.judgeName?.message}
-            variant="outlined"
-          />
-          <TextField
-            label="Clerk Name"
-            {...register('clerkName')}
-            fullWidth
-            margin="normal"
-            error={!!errors.clerkName}
-            helperText={errors.clerkName?.message}
-            variant="outlined"
-          />
-          <TextField
-            label="Prosecutor"
-            {...register('prosecutor', { required: 'Prosecutor is required' })}
-            fullWidth
-            margin="normal"
-            error={!!errors.prosecutor}
-            helperText={errors.prosecutor?.message}
-            variant="outlined"
-          />
-          <TextField
-            label="Defendant Name"
-            {...register('defendantName', { required: 'Defendant Name is required' })}
-            fullWidth
-            margin="normal"
-            error={!!errors.defendantName}
-            helperText={errors.defendantName?.message}
-            variant="outlined"
-          />
-          <TextField
-            label="Victims (comma separated)"
-            {...register('victims', { required: 'Victims are required' })}
-            fullWidth
-            margin="normal"
-            error={!!errors.victims}
-            helperText={errors.victims?.message || 'Enter victims separated by commas (e.g., Victim1, Victim2)'}
-            variant="outlined"
-          />
-        </Box>
-
-        {/* Case Details */}
-        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Case Details</Typography>
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
-          <Autocomplete
-            multiple
-            options={statuteChoices}
-            value={criminalOffenseOptions}
-            onChange={(event, newValue) => {
-              setCriminalOffenseOptions(newValue)
-              setValue('criminalOffense', newValue.length > 0 ? `cl. 220 ${newValue.join(', ')}` : '')
-            }}
-            renderTags={(value, getTagProps) =>
-              value.map((option, index) => (
-                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-              ))
-            }
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Criminal Offense"
-                helperText="Select statutes for cl. 220"
-                fullWidth
-                margin="normal"
-                error={!!errors.criminalOffense}
-                variant="outlined"
-              />
-            )}
-          />
-          <Autocomplete
-            multiple
-            freeSolo
-            options={clauseChoices}
-            value={appliedProvisionsOptions}
-            onChange={(event, newValue) => {
-              setAppliedProvisionsOptions(newValue)
-              const formatted = newValue.map(v => {
-                const match = v.match(/^(\d+)(?:\s*st\.(\d+))?$/i)
-                if (match) {
-                  return match[2] ? `cl. ${match[1]} st. ${match[2]}` : `cl. ${match[1]}`
-                }
-                return v
-              }).join(', ')
-              setValue('appliedProvisions', formatted)
-            }}
-            renderTags={(value, getTagProps) =>
-              value.map((option, index) => (
-                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-              ))
-            }
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Applied Provisions"
-                helperText={errors.appliedProvisions?.message || "Enter clauses (e.g., '3', '226 st. 3', '374')"}
-                fullWidth
-                margin="normal"
-                error={!!errors.appliedProvisions}
-                variant="outlined"
-              />
-            )}
-          />
-          <Controller
-            name="appliedProvisions"
-            control={control}
-            rules={{
-              validate: value => {
-                if (!value) return true
-                const clauses = value.split(',').map(c => c.trim())
-                return clauses.every(c => /^cl\. \d+( st\.\d+)?$/.test(c)) || "Enter in format 'cl. [number]' or 'cl. [number] st.[number]' (e.g., 'cl. 200', 'cl. 226 st. 3')"
-              }
-            }}
-            render={({ field }) => <input type="hidden" {...field} />}
-          />
-          <FormControl fullWidth margin="normal" error={!!errors.verdictType}>
-            <InputLabel>Verdict Type</InputLabel>
-            <Controller
-              name="verdictType"
-              control={control}
-              rules={{ required: 'Verdict Type is required' }}
-              render={({ field }) => (
-                <Select {...field} label="Verdict Type" value={field.value || ''}>
-                  <MenuItem value="ACQUITTAL">Acquittal</MenuItem>
-                  <MenuItem value="FINE">Fine</MenuItem>
-                  <MenuItem value="PRISON">Prison</MenuItem>
-                  <MenuItem value="SUSPENDED">Suspended</MenuItem>
-                  <MenuItem value="FINE_AND_PRISON">Fine and Prison</MenuItem>
-                  <MenuItem value="DISMISSAL">Dismissal</MenuItem>
-                </Select>
-              )}
-            />
-            {errors.verdictType && <Typography color="error">{errors.verdictType.message}</Typography>}
-          </FormControl>
-        </Box>
-
-        {/* Incident Details */}
-        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Incident Details</Typography>
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
-          <TextField
-            label="Event Location"
-            {...register('eventLocation', { required: 'Event Location is required' })}
-            fullWidth
-            margin="normal"
-            error={!!errors.eventLocation}
-            helperText={errors.eventLocation?.message}
-            variant="outlined"
-          />
-          <TextField
-            label="Event Date"
-            type="date"
-            {...register('eventDate', { required: 'Event Date is required' })}
-            fullWidth
-            margin="normal"
-            InputLabelProps={{ shrink: true }}
-            error={!!errors.eventDate}
-            helperText={errors.eventDate?.message}
-            variant="outlined"
-          />
-          <FormControl fullWidth margin="normal" error={!!errors.violenceNature}>
-            <InputLabel>Violence Nature</InputLabel>
-            <Controller
-              name="violenceNature"
-              control={control}
-              rules={{ required: 'Violence Nature is required' }}
-              render={({ field }) => (
-                <Select {...field} label="Violence Nature" value={field.value || ''}>
-                  <MenuItem value="NONE">None</MenuItem>
-                  <MenuItem value="PHYSICAL">Physical</MenuItem>
-                  <MenuItem value="PSYCHOLOGICAL">Psychological</MenuItem>
-                </Select>
-              )}
-            />
-            {errors.violenceNature && <Typography color="error">{errors.violenceNature.message}</Typography>}
-          </FormControl>
-          <FormControl fullWidth margin="normal" error={!!errors.injuryTypes}>
-            <InputLabel>Injury Types</InputLabel>
-            <Controller
-              name="injuryTypes"
-              control={control}
-              rules={{ required: 'Injury Types is required' }}
-              render={({ field }) => (
-                <Select {...field} label="Injury Types" value={field.value || ''}>
-                  <MenuItem value="NONE">None</MenuItem>
-                  <MenuItem value="MINOR">Minor</MenuItem>
-                  <MenuItem value="SERIOUS">Serious</MenuItem>
-                  <MenuItem value="DEATH">Death</MenuItem>
-                </Select>
-              )}
-            />
-            {errors.injuryTypes && <Typography color="error">{errors.injuryTypes.message}</Typography>}
-          </FormControl>
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Use of Weapon</InputLabel>
-            <Controller
-              name="useOfWeapon"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  label="Use of Weapon"
-                  onChange={(e) => field.onChange(e.target.value === 'true')}
-                  value={field.value ? 'true' : 'false'}
-                >
-                  <MenuItem value="true">Yes</MenuItem>
-                  <MenuItem value="false">No</MenuItem>
-                </Select>
-              )}
-            />
-          </FormControl>
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Protection Measure Violation</InputLabel>
-            <Controller
-              name="protectionMeasureViolation"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  label="Protection Measure Violation"
-                  onChange={(e) => field.onChange(e.target.value === 'true')}
-                  value={field.value ? 'true' : 'false'}
-                >
-                  <MenuItem value="true">Yes</MenuItem>
-                  <MenuItem value="false">No</MenuItem>
-                </Select>
-              )}
-            />
-          </FormControl>
-        </Box>
-
-        {/* Defendant Information */}
-        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Defendant Information</Typography>
+        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Učesnici</Typography>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
           <Autocomplete
             multiple
             freeSolo
-            options={statusChoices}
-            value={statusOptions}
-            onChange={(event, newValue) => {
-              setStatusOptions(newValue)
-              setValue('defendantStatus', newValue.join(', '))
-            }}
+            options={[]}
+            value={watch('defendantNames') || []}
+            onChange={(event, newValue) => setValue('defendantNames', newValue)}
             renderTags={(value, getTagProps) =>
               value.map((option, index) => (
                 <Chip variant="outlined" label={option} {...getTagProps({ index })} />
@@ -396,136 +186,378 @@ function ReasonCase() {
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="Defendant Status"
-                helperText="Select or add statuses (comma-separated)"
+                label="Imena optuženih"
+                helperText={errors.defendantNames?.message || 'Unesite imena optuženih, odvojena zarezima'}
                 fullWidth
                 margin="normal"
-                error={!!errors.defendantStatus}
+                error={!!errors.defendantNames}
                 variant="outlined"
               />
             )}
           />
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Aware of Illegality</InputLabel>
+          <TextField
+            label="Žrtva"
+            {...register('victim', { required: 'Ime žrtve je obavezno' })}
+            fullWidth
+            margin="normal"
+            error={!!errors.victim}
+            helperText={errors.victim?.message}
+            variant="outlined"
+          />
+        </Box>
+
+        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Detalji slučaja</Typography>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
+          <Autocomplete
+            multiple
+            options={accusationOptions}
+            value={watch('accusationTypes') || []}
+            onChange={(event, newValue) => setValue('accusationTypes', newValue)}
+            renderTags={(value, getTagProps) =>
+              value.map((option, index) => (
+                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+              ))
+            }
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Optužbe"
+                helperText={errors.accusationTypes?.message || 'Izaberite optužbe (npr. čl. 239 st. 1)'}
+                fullWidth
+                margin="normal"
+                error={!!errors.accusationTypes}
+                variant="outlined"
+              />
+            )}
+          />
+          <FormControl fullWidth margin="normal" error={!!errors.judgment}>
+            <InputLabel>Presuda</InputLabel>
             <Controller
-              name="awareOfIllegality"
+              name="judgment"
+              control={control}
+              rules={{ required: 'Presuda je obavezna' }}
+              render={({ field }) => (
+                <Select {...field} label="Presuda" value={field.value || ''}>
+                  <MenuItem value="ACQUITTAL">Oslobađajuća</MenuItem>
+                  <MenuItem value="FINE">Novčana kazna</MenuItem>
+                  <MenuItem value="PRISON">Zatvor</MenuItem>
+                  <MenuItem value="SUSPENDED">Uslovna</MenuItem>
+                  <MenuItem value="FINE_AND_PRISON">Novčana kazna i zatvor</MenuItem>
+                  <MenuItem value="DISMISSAL">Odbacivanje</MenuItem>
+                </Select>
+              )}
+            />
+            {errors.judgment && <Typography color="error">{errors.judgment.message}</Typography>}
+          </FormControl>
+        </Box>
+
+        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Osnovne činjenice</Typography>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Vrsta stvari</InputLabel>
+            <Controller
+              name="isMovableProperty"
               control={control}
               render={({ field }) => (
                 <Select
                   {...field}
-                  label="Aware of Illegality"
+                  label="Vrsta stvari"
                   onChange={(e) => field.onChange(e.target.value === 'true')}
                   value={field.value ? 'true' : 'false'}
+                  disabled={isTakenWatch}
                 >
-                  <MenuItem value="true">Yes</MenuItem>
-                  <MenuItem value="false">No</MenuItem>
+                  <MenuItem value="true">Tuđa i pokretna</MenuItem>
+                  <MenuItem value="false">Nije pokretna</MenuItem>
                 </Select>
               )}
             />
           </FormControl>
-        </Box>
-
-        {/* Victim Information */}
-        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Victim Information</Typography>
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Radnja oduzimanja</InputLabel>
+            <Controller
+              name="isTaken"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label="Radnja oduzimanja"
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                  value={field.value ? 'true' : 'false'}
+                >
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
+                </Select>
+              )}
+            />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Namjera prisvajanja</InputLabel>
+            <Controller
+              name="intentToAppropriate"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label="Namjera prisvajanja"
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                  value={field.value ? 'true' : 'false'}
+                  disabled={accusationsWatch.some(acc => acc.includes('239') || acc.includes('240') || acc.includes('241'))}
+                >
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
+                </Select>
+              )}
+            />
+          </FormControl>
           <TextField
-            label="Number of Victims"
+            label="Vrijednost ukradenih stvari (€)"
             type="number"
-            {...register('numberOfVictims', { valueAsNumber: true })}
+            {...register('valueOfStolenItems', { 
+              valueAsNumber: true, 
+              min: { value: 0, message: 'Vrijednost mora biti nenegativna' } 
+            })}
             fullWidth
             margin="normal"
-            disabled
-            helperText="Automatically calculated from Victims field"
+            error={!!errors.valueOfStolenItems}
+            helperText={errors.valueOfStolenItems?.message}
             variant="outlined"
           />
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Status kulturnog ili prirodnog dobra</InputLabel>
+            <Controller
+              name="isCulturalOrNaturalGood"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label="Status kulturnog ili prirodnog dobra"
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                  value={field.value ? 'true' : 'false'}
+                >
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
+                </Select>
+              )}
+            />
+          </FormControl>
+        </Box>
+
+        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Kvalifikujuće činjenice</Typography>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Provala</InputLabel>
+            <Controller
+              name="breakingAndEntering"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label="Provala"
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                  value={field.value ? 'true' : 'false'}
+                >
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
+                </Select>
+              )}
+            />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Posebno opasan ili drzak</InputLabel>
+            <Controller
+              name="particularlyDangerousOrBrazen"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label="Posebno opasan ili drzak"
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                  value={field.value ? 'true' : 'false'}
+                >
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
+                </Select>
+              )}
+            />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Iskorištavanje bespomoćnosti</InputLabel>
+            <Controller
+              name="exploitingHelplessness"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label="Iskorištavanje bespomoćnosti"
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                  value={field.value ? 'true' : 'false'}
+                >
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
+                </Select>
+              )}
+            />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Tokom katastrofe</InputLabel>
+            <Controller
+              name="duringDisaster"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label="Tokom katastrofe"
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                  value={field.value ? 'true' : 'false'}
+                >
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
+                </Select>
+              )}
+            />
+          </FormControl>
           <TextField
-            label="Main Victim Age"
+            label="Broj izvršitelja"
             type="number"
-            {...register('mainVictimAge', { valueAsNumber: true })}
+            {...register('numberOfPerpetrators', { 
+              valueAsNumber: true, 
+              min: { value: 1, message: 'Broj izvršitelja mora biti barem 1' } 
+            })}
             fullWidth
             margin="normal"
-            error={!!errors.mainVictimAge}
-            helperText={errors.mainVictimAge?.message}
+            error={!!errors.numberOfPerpetrators}
+            helperText={errors.numberOfPerpetrators?.message}
             variant="outlined"
           />
-          <FormControl fullWidth margin="normal" error={!!errors.mainVictimRelationship}>
-            <InputLabel>Main Victim Relationship</InputLabel>
-            <Controller
-              name="mainVictimRelationship"
-              control={control}
-              rules={{ required: 'Main Victim Relationship is required' }}
-              render={({ field }) => (
-                <Select {...field} label="Main Victim Relationship" value={field.value || ''}>
-                  <MenuItem value="SPOUSE">Spouse</MenuItem>
-                  <MenuItem value="CHILD">Child</MenuItem>
-                  <MenuItem value="PARENT">Parent</MenuItem>
-                  <MenuItem value="SIBLING">Sibling</MenuItem>
-                  <MenuItem value="OTHER_RELATIVE">Other Relative</MenuItem>
-                </Select>
-              )}
-            />
-            {errors.mainVictimRelationship && <Typography color="error">{errors.mainVictimRelationship.message}</Typography>}
-          </FormControl>
-        </Box>
-
-        {/* Case Outcomes */}
-        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Case Outcomes</Typography>
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
-          <TextField
-            label="Penalty"
-            {...register('penalty')}
-            fullWidth
-            margin="normal"
-            error={!!errors.penalty}
-            helperText={errors.penalty?.message}
-            variant="outlined"
-          />
-          <TextField
-            label="Procedure Costs"
-            {...register('procedureCosts')}
-            fullWidth
-            margin="normal"
-            error={!!errors.procedureCosts}
-            helperText={errors.procedureCosts?.message}
-            variant="outlined"
-          />
-        </Box>
-
-        {/* Additional Factors */}
-        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Additional Factors</Typography>
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
           <FormControl fullWidth margin="normal">
-            <InputLabel>Alcohol or Drugs</InputLabel>
+            <InputLabel>Prisustvo oružja</InputLabel>
             <Controller
-              name="alcoholOrDrugs"
+              name="isArmed"
               control={control}
               render={({ field }) => (
                 <Select
                   {...field}
-                  label="Alcohol or Drugs"
+                  label="Prisustvo oružja"
                   onChange={(e) => field.onChange(e.target.value === 'true')}
                   value={field.value ? 'true' : 'false'}
                 >
-                  <MenuItem value="true">Yes</MenuItem>
-                  <MenuItem value="false">No</MenuItem>
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
                 </Select>
               )}
             />
           </FormControl>
           <FormControl fullWidth margin="normal">
-            <InputLabel>Children Present</InputLabel>
+            <InputLabel>Upotreba sile ili prijetnje</InputLabel>
             <Controller
-              name="childrenPresent"
+              name="useOfForceOrThreat"
               control={control}
               render={({ field }) => (
                 <Select
                   {...field}
-                  label="Children Present"
+                  label="Upotreba sile ili prijetnje"
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                  value={field.value ? 'true' : 'false'}
+                  disabled={accusationsWatch.includes('čl. 241') && caughtInTheActWatch}
+                >
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
+                </Select>
+              )}
+            />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Zatečenost na djelu</InputLabel>
+            <Controller
+              name="caughtInTheAct"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label="Zatečenost na djelu"
                   onChange={(e) => field.onChange(e.target.value === 'true')}
                   value={field.value ? 'true' : 'false'}
                 >
-                  <MenuItem value="true">Yes</MenuItem>
-                  <MenuItem value="false">No</MenuItem>
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
+                </Select>
+              )}
+            />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Mala imovinska korist</InputLabel>
+            <Controller
+              name="intentForSmallGain"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label="Mala imovinska korist"
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                  value={field.value ? 'true' : 'false'}
+                  disabled={valueOfStolenItemsWatch >= 150}
+                >
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
+                </Select>
+              )}
+            />
+          </FormControl>
+        </Box>
+
+        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Činjenice o posledicama</Typography>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Nanesene teške povrede</InputLabel>
+            <Controller
+              name="causedSevereInjury"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label="Nanesene teške povrede"
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                  value={field.value ? 'true' : 'false'}
+                  disabled={deathCausedWatch}
+                >
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
+                </Select>
+              )}
+            />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Smrt lica</InputLabel>
+            <Controller
+              name="deathCaused"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label="Smrt lica"
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                  value={field.value ? 'true' : 'false'}
+                >
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
+                </Select>
+              )}
+            />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Pokušaj djela</InputLabel>
+            <Controller
+              name="attemptedCrime"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  label="Pokušaj djela"
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                  value={field.value ? 'true' : 'false'}
+                >
+                  <MenuItem value="true">Da</MenuItem>
+                  <MenuItem value="false">Ne</MenuItem>
                 </Select>
               )}
             />
@@ -539,44 +571,44 @@ function ReasonCase() {
           fullWidth
           sx={{ mt: 4, py: 1.5, fontSize: '1.1rem', fontWeight: 'bold' }}
         >
-          Reason Case
+          Obradi slučaj
         </Button>
       </form>
 
       <Dialog open={openModal} onClose={handleCloseModal} maxWidth="md" fullWidth sx={{ '& .MuiDialog-paper': { borderRadius: 2 } }}>
         <DialogTitle sx={{ bgcolor: 'primary.main', color: 'white', fontWeight: 'bold' }}>
-          Reasoning Results
+          Rezultati obrade
         </DialogTitle>
         <DialogContent sx={{ p: 3 }}>
           {status === 'loading' && (
-            <Stack alignItems="center" sx={{ py: 4 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', py: 4, flexDirection: 'column' }}>
               <CircularProgress size={50} />
-              <Typography sx={{ mt: 2, fontSize: '1.1rem' }}>Reasoning in progress...</Typography>
-            </Stack>
+              <Typography sx={{ mt: 2, fontSize: '1.1rem' }}>Obrađivanje u toku...</Typography>
+            </Box>
           )}
 
           {status === 'error' && (
             <Typography color="error" sx={{ py: 3, fontSize: '1.1rem', textAlign: 'center' }}>
-              ❌ Error during reasoning. Please try again.
+              ❌ Greška prilikom obrade. Pokušajte ponovo.
             </Typography>
           )}
 
           {status === 'success' && result && (
             <>
               <Typography variant="h6" sx={{ mb: 2, fontWeight: 'medium' }}>
-                You chose: <strong>{result.caseDescription?.verdictType || 'No verdict'}</strong>
+                Izabrali ste: <strong>{result.caseDescription?.judgment || 'Nema presude'}</strong>
               </Typography>
               <Typography variant="h6" sx={{ mb: 3, fontWeight: 'medium' }}>
-                Predicted verdict: <strong>{result.predictedVerdict}</strong>
+                Predviđena presuda: <strong>{result.predictedVerdict}</strong>
               </Typography>
-              <Typography variant="h6" sx={{ mb: 2, fontWeight: 'medium' }}>Similar Cases</Typography>
+              <Typography variant="h6" sx={{ mb: 2, fontWeight: 'medium' }}>Slični slučajevi</Typography>
               <TableContainer component={Paper} sx={{ boxShadow: 2 }}>
                 <Table>
                   <TableHead>
                     <TableRow sx={{ bgcolor: 'grey.100' }}>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Case ID</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Similarity</TableCell>
-                      <TableCell align="right" sx={{ fontWeight: 'bold' }}>Actions</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold' }}>ID presude</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold' }}>Sličnost</TableCell>
+                      <TableCell align="right" sx={{ fontWeight: 'bold' }}>Akcije</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -589,12 +621,12 @@ function ReasonCase() {
                             variant="outlined"
                             color="secondary"
                             onClick={() => {
-                              navigate(`/view/${sc.caseDescription.dbId}`)
-                              setOpenModal(false)
+                              navigate(`/view/${sc.caseDescription.dbId}`);
+                              setOpenModal(false);
                             }}
                             sx={{ textTransform: 'none' }}
                           >
-                            View
+                            Pogledaj
                           </Button>
                         </TableCell>
                       </TableRow>
@@ -612,12 +644,23 @@ function ReasonCase() {
             fullWidth
             sx={{ mt: 3, py: 1.5, fontSize: '1.1rem', textTransform: 'none' }}
           >
-            Close
+            Zatvori
           </Button>
         </DialogContent>
       </Dialog>
+
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert onClose={handleSnackbarClose} severity={snackbar.severity} sx={{ width: '100%' }}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
-  )
+  );
 }
 
-export default ReasonCase
+export default ReasonCase;

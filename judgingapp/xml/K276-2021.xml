@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd"
+            xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
+    <judgment>
+        <meta>
+            <identification source="#court">
+                <FRBRWork>
+                    <FRBRauthor>OSNOVNI SUD U BARU</FRBRauthor>
+                    <FRBRdate date="2022-04-20">2022-04-20</FRBRdate>
+                    <FRBRtitle>K.br. 276/21</FRBRtitle>
+                    <FRBRcountry>ME</FRBRcountry>
+                </FRBRWork>
+            </identification>
+            <references>
+                <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.Baru" showAs="Osnovni sud u Baru"/>
+                <TLCOrganization eId="odt" href="/ontology/organization/OsnovnoDrzavnoTuzilastvo.Baru" showAs="Osnovno državno tužilaštvo u Baru"/>
+                <TLCPerson eId="tSpasojevic" href="/ontology/person/tSpasojevic" showAs="Tamara Spasojević"/>
+                <TLCPerson eId="aStanisic" href="/ontology/person/aStanisic" showAs="Ana Stanišić"/>
+                <TLCPerson eId="aN" href="/ontology/person/aN" showAs="A. N."/>
+                <TLCPerson eId="sB" href="/ontology/person/sB" showAs="S. B."/>
+                <TLCPerson eId="cD" href="/ontology/person/cD" showAs="Ć. D."/>
+                <TLCPerson eId="cV" href="/ontology/person/cV" showAs="Ć. V."/>
+                <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
+                <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
+                <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
+                <TLCRole eId="prosecutor" href="/ontology/role/prosecutor" showAs="Zastupnik optužbe"/>
+                <TLCRole eId="victim" href="/ontology/role/victim" showAs="Oštećena"/>
+            </references>
+        </meta>
+
+        <judgmentBody>
+            <p>
+                <organization id="os" refersTo="#os">OSNOVNI SUD U BARU</organization>, sudija
+                <party id="tSpasojevic" refersTo="#tSpasojevic" as="#judge">Tamara Spasojević</party>, sa zapisničarom
+                <party id="aStanisic" refersTo="#aStanisic" as="#clerk">Anom Stanišić</party>, u krivičnom predmetu okrivljenog
+                <party id="aN" refersTo="#aN" as="#defendant">A. N.</party>, zbog krivičnog djela krađa
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 Krivičnog zakonika Crne Gore</ref>, po optužnom predlogu
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Baru Kt.br.579/21 od 23.11.2021. godine</organization>,
+                nakon održanog glavnog, javnog pretresa u prisustvu zastupnika optužbe savjetnika kod Osnovnog državnog tužilaštva
+                <party id="sB" refersTo="#sB" as="#prosecutor">S. B.</party> i okrivljenog, dana
+                <date date="2022-04-20">20.04.2022.</date> godine donio je i istog dana javno objavio
+            </p>
+
+            <p><b>PRESUDU</b></p>
+
+            <p>
+                Okrivljeni:
+                <party id="aN" refersTo="#aN">A. N.</party>, JMB ..., od oca R. i majke N., rođene S., rođen
+                <date date="1989-02-04">04.02.1989.</date> godine u P., sa prebivalištem u B., naselje S., državljanin Crne Gore,
+                oženjen, otac jednog djeteta, bez obrazovanja, po zanimanju radnik, lošeg imovnog stanja, osuđivan i to presudom
+                Osnovnog suda u Kotoru K.br. 369/08 koja je postala pravosnažna dana <date date="2009-02-18">18.02.2009.</date> godine,
+                zbog krivičnog djela iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ CG</ref>, kojom mu je izrečena uslovna osuda i
+                utvrđena kazna zatvora u trajanju od 6 mjeseci, uslovno na 1 godinu, presudom Osnovnog suda u Baru K.br. 322/09 koja
+                je postala pravosnažna dana <date date="2010-04-26">26.04.2010.</date> godine, zbog krivičnog djela iz
+                <ref href="/krivicni#art_242_st_1">čl. 242 st. 1 KZ CG</ref>, kojom mu je izrečena kazna zatvora u trajanju od 8 mjeseci,
+                presudom Višeg suda u Podgorici K.br. 196/09 koja je postala pravosnažna dana <date date="2010-04-29">29.04.2010.</date>
+                godine, zbog krivičnog djela iz <ref href="/krivicni#art_242_st_4">čl. 242 st. 4 u vezi st. 1 KZ CG</ref>, kojom mu je
+                izrečena kazna zatvora u trajanju od 1 godine i 6 mjeseci, presudom Osnovnog suda u Podgorici K.br. 10/1065 koja je
+                postala pravosnažna dana <date date="2011-05-17">17.05.2011.</date> godine, zbog krivičnog djela iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ CG</ref>, kojom mu je izrečena kazna zatvora u trajanju od 4 mjeseca,
+                presudom Osnovnog suda u Podgorici K.br. 10/1135 koja je postala pravosnažna dana <date date="2012-03-28">28.03.2012.</date>
+                godine, zbog krivičnog djela iz <ref href="/krivicni#art_376_st_3">čl. 376 st. 3 u vezi st. 1 i 2 KZ CG</ref>, kojom mu je
+                izrečena kazna zatvora u trajanju od 6 mjeseci, presudom Osnovnog suda u Podgorici K.br. 275/13 koja je postala
+                pravosnažna dana <date date="2013-12-12">12.12.2013.</date> godine, zbog krivičnog djela iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ CG</ref>, kojom mu je izrečena kazna zatvora u trajanju od 5 mjeseci,
+                presudom Osnovnog suda u Podgorici K.br. 222/14 koja je postala pravosnažna dana <date date="2015-02-05">05.02.2015.</date>
+                godine, zbog krivičnog djela iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ CG</ref>, kojom mu je izrečena kazna
+                zatvora u trajanju od 1 godine i 10 mjeseci, presudom Osnovnog suda u Baru K.br. 430/14 koja je postala pravosnažna
+                dana <date date="2015-04-23">23.04.2015.</date> godine, zbog krivičnog djela iz <ref href="/krivicni#art_241_st_1">čl. 241 st. 1 KZ CG</ref>,
+                kojom mu je izrečena kazna zatvora u trajanju od 1 godine i 6 mjeseci, presudom Osnovnog suda u Podgorici K.br. 54/14
+                koja je postala pravosnažna dana <date date="2015-06-18">18.06.2015.</date> godine, zbog krivičnog djela iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ CG</ref>, kojom mu je izrečena kazna zatvora u trajanju od 4 mjeseca,
+                presudom Osnovnog suda u Podgorici K.br. 841/18 koja je postala pravosnažna dana <date date="2019-02-15">15.02.2019.</date>
+                godine, zbog krivičnog djela iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ CG</ref>, kojom mu je izrečena kazna
+                zatvora u trajanju od 10 mjeseci, presudom Osnovnog suda u Podgorici K.br. 157/20 koja je postala pravosnažna dana
+                <date date="2020-05-26">26.05.2020.</date> godine, zbog krivičnog djela iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ CG</ref>,
+                kojom mu je izrečena kazna zatvora u trajanju od 1 godine i presudom Osnovnog suda u Baru K.br. 165/21 koja je postala
+                pravosnažna dana <date date="2021-08-28">28.08.2021.</date> godine, zbog krivičnog djela iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ CG</ref>, kojom mu je izrečena kazna zatvora u trajanju od 5 mjeseci.
+            </p>
+
+            <p><b>Kriv je</b></p>
+
+            <p>
+                Zato što je: Dana <date date="2021-10-26">26.10.2021.</date> godine, u B., na B. 24 N., svjestan svog djela, čije izvršenje je htio,
+                znajući da je njegovo djelo zabranjeno, tuđu pokretnu stvar oduzeo drugom u namjeri da njenim prisvajanjem sebi pribavi
+                protivpravnu imovinsku korist u iznosu koji prelazi <amount value="150.00">150,00 eura</amount>, na način što je prišao parkiranom
+                vozilu marke „Citroen Berlingo“ koje se nalazilo ispred Veterinarske ambulante „P.“ i koje je bilo otključano i otvoreno i sa
+                sjedišta suvozača otuđio veću žensku kožnu torbu marke „Carpisa“ u kojoj su se nalazili novčanik sive boje marke „Guess“ u
+                kojem su se nalazili lična karta, stara i nova vozačka dozvola na ime oštećene <party id="cD" refersTo="#cD" as="#victim">Ć. D.</party>,
+                tri bankovne kartice „Erste“, „Prve banke“ i „NLB banke“, nekoliko kartica za popuste i iznos od <amount value="85.00">85,00 eura</amount>,
+                kao i novčanik crne boje u kojem se nalazila lična karta na ime <party id="cV" refersTo="#cV">Ć. V.</party>, zdravstvena knjižica,
+                penzionerska karta, kartice za popuste, kartica računa „NLB banke“, iznos od <amount value="80.00">80,00 eura</amount> u papirnim apoenima
+                i jedna kovanica od <amount value="2.00">2,00 eura</amount> i kovanica od <amount value="2.00">2,00 KM</amount>, neseser sa šminkom, crna kutija
+                i naočare marke „Ray ban“, četiri svežnja ključeva, vlažne maramice, sprej za dezinfekciju i računi, čime je sebi pribavio
+                protivpravnu imovinsku korist u iznosu od <amount value="349.18">349,18 eura</amount>.
+            </p>
+            <p>
+                - čime je izvršio krivično djelo – krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 Krivičnog zakonika Crne Gore</ref>.
+            </p>
+
+            <list>
+                <item id="odluka1">
+                    <p>
+                        Pa ga sud primjenom <ref href="/krivicni#art_2">čl. 2</ref>, <ref href="/krivicni#art_4">4</ref>, <ref href="/krivicni#art_5">5</ref>,
+                        <ref href="/krivicni#art_13">13</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_32">32</ref>,
+                        <ref href="/krivicni#art_36">36</ref> i <ref href="/krivicni#art_42">42</ref> Krivičnog zakonika Crne Gore i
+                        <ref href="/zkp#art_226">čl. 226</ref>, <ref href="/zkp#art_229">229</ref> i <ref href="/zkp#art_374">374</ref> Zakonika o krivičnom postupku
+                        <b>OSUĐUJE</b><br/>
+                        Na kaznu zatvora u trajanju od 2 (dva) mjeseca.
+                    </p>
+                </item>
+                <item id="odluka2">
+                    <p>
+                        Okrivljeni je dužan da na ime troškova krivičnog postupka uplati ovom sudu iznos od <amount value="60.50">60,50 eura</amount>,
+                        a po osnovu sudskog paušala iznos od <amount value="30.00">30,00 eura</amount>, sve u roku od <time duration="P15D">15 dana</time>
+                        po pravosnažnosti presude, pod prijetnjom prinudnog izvršenja.
+                    </p>
+                </item>
+            </list>
+        </judgmentBody>
+    </judgment>
+</akomaNtoso>

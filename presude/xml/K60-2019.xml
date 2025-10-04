@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd"
+            xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
+    <judgment>
+        <meta>
+            <identification source="#court">
+                <FRBRWork>
+                    <FRBRauthor>OSNOVNI SUD U BARU</FRBRauthor>
+                    <FRBRdate date="2019-06-04">2019-06-04</FRBRdate>
+                    <FRBRtitle>K.br. 60/19</FRBRtitle>
+                    <FRBRcountry>ME</FRBRcountry>
+                </FRBRWork>
+            </identification>
+            <references>
+                <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.Baru" showAs="Osnovni sud u Baru"/>
+                <TLCOrganization eId="odt" href="/ontology/organization/OsnovnoDrzavnoTuzilastvo.Baru" showAs="Osnovno državno tužilaštvo u Baru"/>
+                <TLCPerson eId="gScepanovic" href="/ontology/person/gScepanovic" showAs="Goran Šćepanović"/>
+                <TLCPerson eId="mMinic" href="/ontology/person/mMinic" showAs="Milijana Minić"/>
+                <TLCPerson eId="rM" href="/ontology/person/rM" showAs="R. M."/>
+                <TLCPerson eId="iRajkovic" href="/ontology/person/iRajkovic" showAs="Irena Rajković"/>
+                <TLCPerson eId="gN" href="/ontology/person/gN" showAs="G. N."/>
+                <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
+                <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
+                <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Optuženi"/>
+                <TLCRole eId="prosecutor" href="/ontology/role/prosecutor" showAs="Tužilac"/>
+                <TLCRole eId="victim" href="/ontology/role/victim" showAs="Oštećena"/>
+            </references>
+        </meta>
+
+        <judgmentBody>
+            <p>
+                <organization id="os" refersTo="#os">OSNOVNI SUD U BARU</organization>, sudija
+                <party id="gScepanovic" refersTo="#gScepanovic" as="#judge">Goran Šćepanović</party>, kao sudija pojedinac, sa
+                zapisničarom <party id="mMinic" refersTo="#mMinic" as="#clerk">Milijanom Minić</party>, u krivičnom predmetu optuženog
+                <party id="rM" refersTo="#rM" as="#defendant">R. M.</party>, zbog krivičnog djela teška krađa iz
+                <ref href="/krivicni#art_240_st_1_tč_1">čl. 240 st. 1 tč. 1 Krivičnog zakonika</ref>, po optužnici
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Baru Kt.br. 55/19 od 28.03.2019. godine</organization>,
+                nakon održanog glavnog javnog pretresa u prisustvu
+                <party id="iRajkovic" refersTo="#iRajkovic" as="#prosecutor">Irene Rajković</party> i optuženog, dana
+                <date date="2019-06-04">04.06.2019.</date> godine donio je, a dana <date date="2019-06-05">05.06.2019.</date> godine javno objavio,
+            </p>
+
+            <p><b>PRESUDU</b></p>
+
+            <p>
+                Optuženi:
+                <party id="rM" refersTo="#rM">R. M.</party>, od oca V. i majke S., rođene V., rođen..., u B., sa prebivalištem u B., naselje Š., državljanin C. G., konobar, oženjen, otac jednog djeteta, pismen, sa završenom srednjom školom, lošeg imovnog stanja, osuđivan presudom Osnovnog suda u Ulcinju K.br.93/06 od 01.05.2007. godine zbog krivičnog djela krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ</ref> na kaznu zatvora u trajanju od četiri mjeseca, presudom Osnovnog suda u Baru K.br.442/05 od 14.05.2007. godine zbog krivičnog djela krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ</ref> na kaznu zatvora u trajanju od tri mjeseca, presudom Osnovnog suda u Baru K.br.35/06 od 07.06.2007. godine zbog krivičnog djela krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ</ref> na kaznu zatvora u trajanju od tri mjeseca, presudom Osnovnog suda u Kotoru K.br. 416/06 od 18.09.2007. godine zbog krivičnog djela krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ</ref> na kaznu zatvora u trajanju od trideset dana, presudom Osnovnog suda u Kotoru K.br. 635/06 od 12.05.2008. godine zbog krivičnog djela teška krađa iz <ref href="/krivicni#art_240_st_1_tč_1">čl. 240 st. 1 tač. 1 KZ CG</ref> na kaznu zatvora u trajanju od jedne godine, presudom Osnovnog suda u Baru K.br.317/07 od 02.06.2008. godine zbog krivičnog djela krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ</ref> na kaznu zatvora u trajanju od tri mjeseca, presudom Osnovnog suda u Baru K.br. 58/07 od 06.11.2008. godine zbog krivičnog djela krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1</ref> u vezi <ref href="/krivicni#art_49">čl. 49 KZ</ref> na kaznu zatvora u trajanju od jedne godine, presudom Osnovnog suda u Baru K.br.25/08 od 22.01.2009. godine zbog krivičnog djela teška krađa iz <ref href="/krivicni#art_240_st_1_tč_1">čl. 240 st. 1 tač. 1</ref> u vezi <ref href="/krivicni#art_49">čl. 49 KZ</ref> na kaznu zatvora u trajanju od jedne godine, presudom Osnovnog suda u Baru K.br. 45/07 od 22.01.2009. godine zbog krivičnog djela teška krađa iz <ref href="/krivicni#art_240_st_1_tč_1">čl. 240 st. 1 tač. 1</ref> u vezi <ref href="/krivicni#art_49">čl. 49 KZ</ref> na kaznu zatvora u trajanju od jedne godine i četiri mjeseca, presudom Osnovnog suda u Baru K.br.140/06 od 04.02.2009. godine zbog krivičnog djela teška krađa iz <ref href="/krivicni#art_240_st_1_tč_1">čl. 240 st. 1 tč. 1 KZ</ref> na kaznu zatvora u trajanju od jedne godine, presudom Osnovnog suda u Baru K.br.491/12 od 13.05.2013. godine zbog krivičnog djela krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ</ref> na kaznu zatvora u trajanju od tri mjeseca, presudom Osnovnog suda u Baru K.br.457/12 od 30.05.2013. godine zbog krivičnog djela krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ</ref> na kaznu zatvora u trajanju od šest mjeseci, presudom Osnovnog suda u Kolašinu K.br.8/13-12 od 14.06.2013. godine zbog krivičnog djela zloupotreba povjerenja iz <ref href="/krivicni#art_249_st_1">čl. 249 st. 1 KZ</ref> na kaznu zatvora u trajanju od 12 mjeseci, presudom Osnovnog suda u Ulcinju K.br.15/13 od 21.03.2007. godine zbog krivičnog djela teška krađa iz <ref href="/krivicni#art_240_st_1_tč_1">čl. 240 st. 1 tč. 1</ref> u vezi <ref href="/krivicni#art_49">čl. 49 KZ</ref> na kaznu zatvora u trajanju od tri godine, presudom Osnovnog suda u Baru K.br.242/13 od 19.03.2014. godine, zbog krivičnog djela teška krađa iz <ref href="/krivicni#art_240_st_1">čl. 240 st. 1 KZ</ref> na kaznu zatvora u trajanju od tri godine, presudom Osnovnog suda u Baru K.br.179/14 od 30.09.2014. godine zbog krivičnog djela teška krađa iz <ref href="/krivicni#art_240_st_1_tč_1">čl. 240 st. 1 tč. 1</ref> u vezi <ref href="/krivicni#art_20">čl. 20 KZ</ref> na kaznu zatvora u trajanju od jedne godine,
+            </p>
+
+            <p><b>Kriv je</b></p>
+
+            <p>
+                Što je: Dana <date date="2012-12-13">13. decembra 2012.</date> godine, u stambenom objektu, vlasništvo oštećene
+                <party id="gN" refersTo="#gN" as="#victim">G. N.</party>, u naselju Partizanski put, u Sutomoru, Opština Bar, svjestan svog djela čije je izvršenje htio, iako je znao da je njegovo djelo zabranjeno, obijanjem oduzeo tuđe pokretne stvari, u namjeri da njihovim prisvajanjem sebi pribavi protivpravnu imovinsku korist, na način što je upotrebom podesnog sredstva i fizičke snage, djelovao na prozorsko staklo u prizemlju objekta, koje je polomio, te otvorio prozor i kroz isti ušao u unutrašnjost stambenog objekta, gdje je izvršio premetačinu i iz istog oduzeo lap top nepoznate marke, novčane vrijednosti od <amount value="165.00">165,00 eura</amount>, kao i razni sitni alat, novčane vrijednosti od <amount value="30.00">30,00 eura</amount>, vlasništvo oštećene <party id="gN" refersTo="#gN">G. N.</party>, sve prednje ukupne novčane vrijednosti pod <amount value="195.00">195,00 eura</amount>,
+            </p>
+
+            <p>
+                - čime je izvršio - krivično djelo teška krađa iz <ref href="/krivicni#art_240_st_1_tč_1">čl. 240 st. 1 tač. 1 Krivičnog zakonika</ref>
+            </p>
+
+            <list>
+                <item id="odluka1">
+                    <p>
+                        Pa ga sud primjenom <ref href="/krivicni#art_4">čl. 4</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_36">36</ref> i <ref href="/krivicni#art_42">42 Krivičnog zakonika</ref> i <ref href="/zkp#art_226">čl. 226</ref>, <ref href="/zkp#art_229">229</ref> i <ref href="/zkp#art_374">374 ZKP-a</ref>,
+                        <b>OSUĐUJE</b><br/>
+                        Na kaznu zatvora u trajanju od 2 (dvije) godine.
+                    </p>
+                </item>
+                <item id="odluka2">
+                    <p>
+                        Optuženi je dužan da plati troškove krivičnog postupka u iznosu od <amount value="50.00">50,00 €</amount>, u roku od <time duration="P15D">15 dana</time> od dana pravosnažnosti, pod prijetnjom izvršenja.
+                    </p>
+                </item>
+            </list>
+        </judgmentBody>
+    </judgment>
+</akomaNtoso>

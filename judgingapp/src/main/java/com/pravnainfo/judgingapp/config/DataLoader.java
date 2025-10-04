@@ -14,6 +14,9 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -41,35 +44,46 @@ public class DataLoader implements CommandLineRunner {
                      .withSkipHeaderRecord(true))) {
 
             for (CSVRecord record : csvParser) {
+                String defendantStr = getSafeString(record, "DEFENDANT");
+                List<String> defendantList = List.of(defendantStr.split(","))
+                        .stream().map(String::trim).filter(s -> !s.isEmpty()).collect(Collectors.toList());
+
+                String accusationStr = getSafeString(record, "ACCUSATION");
+                List<String> accusationList = List.of(accusationStr.split(";"))
+                        .stream().map(String::trim).filter(s -> !s.isEmpty()).collect(Collectors.toList());
+
                 Verdict verdict = Verdict.builder()
-                        .caseId(getSafeString(record, "id"))
-                        .court(getSafeString(record, "Court"))
-                        .verdictNumber(getSafeString(record, "Case Number"))
-                        .date(parseDate(getSafeString(record, "Verdict Date")))
-                        .judgeName(getSafeString(record, "Judge"))
-                        .clerkName(getSafeString(record, "Clerk"))
-                        .prosecutor(getSafeString(record, "Prosecutor"))
-                        .defendantName(getSafeString(record, "Defendant"))
-                        .criminalOffense(getSafeString(record, "Criminal Offense"))
-                        .appliedProvisions(getSafeString(record, "Applied Provisions"))
-                        .verdictType(parseVerdictType(getSafeString(record, "Verdict Type")))
-                        .awareOfIllegality(Boolean.parseBoolean(getSafeString(record, "Aware of Illegality")))
-                        .mainVictimRelationship(parseVictimRelationship(getSafeString(record, "Main Victim Relationship")))
-                        .violenceNature(parseViolenceNature(getSafeString(record, "Violence Nature")))
-                        .injuryTypes(parseInjuryTypes(getSafeString(record, "Injury Types")))
-                        .protectionMeasureViolation(Boolean.parseBoolean(getSafeString(record, "Protection Measure Violation")))
-                        .eventLocation(getSafeString(record, "Event Location"))
-                        .eventDate(parseDate(getSafeString(record, "Event Date")))
-                        .defendantStatus(getSafeString(record, "Defendant Status"))
-                        .victims(getSafeString(record, "Victim"))
-                        .mainVictimAge(parseInteger(getSafeString(record, "Main Victim Age"), 0))
-                        .alcoholOrDrugs(Boolean.parseBoolean(getSafeString(record, "Alcohol or Drugs")))
-                        .childrenPresent(Boolean.parseBoolean(getSafeString(record, "Children Present")))
-                        .penalty(getSafeString(record, "Penalty"))
-                        .procedureCosts(getSafeString(record, "Procedure Costs"))
-                        .useOfWeapon(Boolean.parseBoolean(getSafeString(record, "Use of Weapon")))
-                        .numberOfVictims(parseInteger(getSafeString(record, "Number of Victims"), 0))
-                        .xmlFileName(sanitizeCaseId(getSafeString(record, "id")) + ".xml")
+                        .caseId(getSafeString(record, "ID"))
+                        .court(getSafeString(record, "COURT"))
+                        .caseNumber(getSafeString(record, "CASE NUMBER"))
+                        .judge(getSafeString(record, "JUDGE"))
+                        .clerk(getSafeString(record, "CLERK"))
+                        .prosecutor(getSafeString(record, "PROSECUTOR"))
+                        .defendantNames(defendantList)
+                        .victim(getSafeString(record, "VICTIM"))
+                        .shortDescription(getSafeString(record, "SHORT DESCRIPTION"))
+                        .judgment(getSafeString(record, "JUDGMENT"))
+                        .appliedProvisions(getSafeString(record, "APPLIED PROVISIONS"))
+                        .accusations(accusationList)
+                        .verdictDate(parseDate(getSafeString(record, "VERDICT DATE")))
+                        .isMovableProperty(parseBoolean(getSafeString(record, "IS MOVABLE PROPERTY")))
+                        .isTaken(parseBoolean(getSafeString(record, "IS TAKEN")))
+                        .intentToAppropriate(parseBoolean(getSafeString(record, "INTENT TO APPROPRIATE")))
+                        .valueOfStolenItems(parseDouble(getSafeString(record, "VALUE OF STOLEN ITEMS"), 0.0))
+                        .isCulturalOrNaturalGood(parseBoolean(getSafeString(record, "IS CULTURAL OR NATURAL GOOD")))
+                        .breakingAndEntering(parseBoolean(getSafeString(record, "BREAKING AND ENTERING")))
+                        .particularlyDangerousOrBrazen(parseBoolean(getSafeString(record, "PARTICULARLY DANGEROUS OR BRAZEN")))
+                        .exploitingHelplessness(parseBoolean(getSafeString(record, "EXPLOITING HELPLESSNESS")))
+                        .duringDisaster(parseBoolean(getSafeString(record, "DURING DISASTER")))
+                        .isArmed(parseBoolean(getSafeString(record, "IS ARMED")))
+                        .useOfForceOrThreat(parseBoolean(getSafeString(record, "USE OF FORCE OR THREAT")))
+                        .caughtInTheAct(parseBoolean(getSafeString(record, "CAUGHT IN THE ACT")))
+                        .intentForSmallGain(parseBoolean(getSafeString(record, "INTENT FOR SMALL GAIN")))
+                        .causedSevereInjury(parseBoolean(getSafeString(record, "CAUSED SEVERE INJURY")))
+                        .deathCaused(parseBoolean(getSafeString(record, "DEATH CAUSED")))
+                        .attemptedCrime(parseBoolean(getSafeString(record, "ATTEMPTED CRIME")))
+                        .numberOfPerpetrators(parseInteger(getSafeString(record, "NUMBER OF PERPETRATORS"), 1))
+                        .xmlFileName(sanitizeCaseId(getSafeString(record, "ID")) + ".xml")
                         .build();
 
                 verdictRepository.save(verdict);
@@ -94,50 +108,21 @@ public class DataLoader implements CommandLineRunner {
         }
     }
 
-    private VerdictType parseVerdictType(String verdict) {
-        if (verdict == null || verdict.isEmpty() || verdict.equalsIgnoreCase("NONE")) {
-            return VerdictType.DISMISSAL;
-        }
+    private Boolean parseBoolean(String value) {
         try {
-            return VerdictType.valueOf(verdict.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return VerdictType.DISMISSAL;
+            return value != null && !value.isEmpty() ? Boolean.parseBoolean(value.toLowerCase()) : false;
+        } catch (Exception e) {
+            return false;
         }
     }
 
-    private VictimRelationship parseVictimRelationship(String relationship) {
-        if (relationship == null || relationship.isEmpty()) {
-            return VictimRelationship.OTHER_RELATIVE;
-        }
+    private Double parseDouble(String value, double defaultValue) {
         try {
-            return VictimRelationship.valueOf(relationship.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return VictimRelationship.OTHER_RELATIVE;
+            return value != null && !value.isEmpty() ? Double.parseDouble(value) : defaultValue;
+        } catch (NumberFormatException e) {
+            return defaultValue;
         }
     }
-
-    private ViolenceNature parseViolenceNature(String violence) {
-        if (violence == null || violence.isEmpty()) {
-            return ViolenceNature.NONE;
-        }
-        try {
-            return ViolenceNature.valueOf(violence.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return ViolenceNature.NONE;
-        }
-    }
-
-    private InjuryTypes parseInjuryTypes(String injuries) {
-        if (injuries == null || injuries.isEmpty()) {
-            return InjuryTypes.NONE;
-        }
-        try {
-            return InjuryTypes.valueOf(injuries.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return InjuryTypes.NONE;
-        }
-    }
-
 
     private Integer parseInteger(String value, int defaultValue) {
         try {

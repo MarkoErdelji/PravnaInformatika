@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd"
+            xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
+    <judgment>
+        <meta>
+            <identification source="#court">
+                <FRBRWork>
+                    <FRBRauthor>OSNOVNI SUD U PODGORICI</FRBRauthor>
+                    <FRBRdate date="2019-12-03">2019-12-03</FRBRdate>
+                    <FRBRtitle>K.br. 242/19</FRBRtitle>
+                    <FRBRcountry>ME</FRBRcountry>
+                </FRBRWork>
+            </identification>
+            <references>
+                <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.Podgorica" showAs="Osnovni sud u Podgorici"/>
+                <TLCOrganization eId="odt" href="/ontology/organization/OsnovnoDrzavnoTuzilastvo.Podgorica" showAs="Osnovno državno tužilaštvo u Podgorici"/>
+                <TLCPerson eId="zJovovic" href="/ontology/person/zJovovic" showAs="Željka Jovović"/>
+                <TLCPerson eId="dRajkovic" href="/ontology/person/dRajkovic" showAs="Danijela Rajković"/>
+                <TLCPerson eId="dD" href="/ontology/person/dD" showAs="D. D."/>
+                <TLCPerson eId="iVuksanovic" href="/ontology/person/iVuksanovic" showAs="Ivana Vuksanović"/>
+                <TLCPerson eId="mM" href="/ontology/person/mM" showAs="M. M."/>
+                <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sutkinja"/>
+                <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
+                <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljena"/>
+                <TLCRole eId="prosecutor" href="/ontology/role/prosecutor" showAs="Zastupnica optužbe"/>
+                <TLCRole eId="victim" href="/ontology/role/victim" showAs="Oštećena"/>
+            </references>
+        </meta>
+
+        <judgmentBody>
+            <p>
+                <organization id="os" refersTo="#os">OSNOVNI SUD U PODGORICI</organization>, kao prvostepeni, krivični, po sutkinji
+                <party id="zJovovic" refersTo="#zJovovic" as="#judge">Željki Jovović</party>, uz učešće samostalne referentkinje
+                <party id="dRajkovic" refersTo="#dRajkovic" as="#clerk">Danijele Rajković</party> kao zapisničarke, u krivičnom predmetu protiv okrivljene
+                <party id="dD" refersTo="#dD" as="#defendant">D. D.</party>, zbog krivičnog djela razbojnička krađa iz
+                <ref href="/krivicni#art_241_st_6">čl. 241 st. 6</ref> u vezi st. 1 Krivičnog zakonika Crne Gore, odlučujući po optužnom predlogu
+                <organization id="odt" refersTo="#odt">ODT-a Podgorica Kt. br. 110/19 od 12.04.2019. godine</organization>, nakon glavnog i javnog pretresa održanog
+                dana <date date="2019-12-03">03.12.2019.</date> godine, u prisustvu zastupnice optužbe
+                <party id="iVuksanovic" refersTo="#iVuksanovic" as="#prosecutor">Ivane Vuksanović</party> i odsustvu uredno pozvane okrivljene, izrekao je i istog dana javno objavio,
+            </p>
+
+            <p><b>PRESUDU</b></p>
+
+            <p>
+                Okrivljena:
+                <party id="dD" refersTo="#dD">D. D.</party> od oca F. i majke F., rođene R., rođena xx. xx. 19xx. godine u Đakovici, Republika Kosovo, sa
+                prebivalištem u Podgorici Tuzi bb, državljanka Republike Kosovo, razumije crnogorski jezik, njen jezik je
+                romski, nezaposlena, udovica, majka petoro djece, pismena, završila drugi razred Osnovne škole, lošeg
+                imovnog stanja, neosuđivana.
+            </p>
+
+            <p><b>Kriva je</b></p>
+
+            <p>
+                Što je: Dana <date date="2019-01-24">24. januara 2019.</date> godine, oko 13:00 časova, u Podgorici, u Ulici Kralja Nikole, svjesna svog djela čije je
+                izvršenje htjela i znajući da je isto zabranjeno, oduzela tuđu pokretnu stvar, u namjeri da njenim prisvajanjem
+                sebi pribavi malu imovinsku korist, pa kada je zatečena na djelu krađe, u namjeri da ukradenu stvari zadrži,
+                upotrijebila silu prema oštećenoj <party id="mM" refersTo="#mM" as="#victim">M. M.</party>, na način što je u butiku "Ana" koji se nalazi u označenoj ulici, u TC
+                "Nikić", oduzela mobilni telefon marke "Xaomi Redmi 6A", vrijednosti 101,00 eura, vlasništvo oštećene
+                <party id="mM" refersTo="#mM">M. M.</party>, nakon čega je izašla iz butika i uputila se ka Trgu Božane Vučinić, da bi, kada je oštećena krenula za njom
+                tražeći da telefon vrati, negirala da je isti uzela iako ga je prethodno bila istresla na pločnik iz torbe koju je
+                nosila, a zatim kada je oštećena sustigla i uhvatila za ručke od torbe kako bi vratila oduzeti telefon, više puta
+                je nogama udarila u predjelu butina i stomaka, čupala za kosu i ugrizla je za gornji dio šake desne ruke,
+                nanoseći joj tom prilikom laku tjelesnu povredu u vidu ujedine u predjelu desnog naddlana, nakon čega je iz
+                torbe izvadila oduzeti telefon, bacila ga na beton i udaljila se u nepoznatom pravcu,
+            </p>
+            <p>
+                - čime je izvršila krivično djelo razbojnička krađa iz <ref href="/krivicni#art_241_st_6">čl. 241 st. 6</ref> u vezi st. 1 Krivičnog zakonika Crne Gore.
+            </p>
+            
+            <list>
+                <item id="odluka1">
+                    <p>
+                        Pa sud okrivljenoj za navedeno krivično djelo primjenom <ref href="/krivicni#art_4_st_2">čl. 4 st. 2</ref>, <ref href="/krivicni#art_42_st_1">čl. 42 st. 1</ref>, <ref href="/krivicni#art_52_st_2">čl. 52 st. 2</ref>, <ref href="/krivicni#art_53">čl. 53</ref> i <ref href="/krivicni#art_54">54</ref> Krivičnog zakonika Crne Gore i <ref href="/zkp#art_226">čl. 226</ref>, <ref href="/zkp#art_229">229</ref> i <ref href="/zkp#art_374">374</ref> Zakonika o krivičnom postupku, izriče
+                    </p>
+                </item>
+            </list>
+            
+            <p><b>USLOVNU OSUDU</b></p>
+            
+            <p>
+                S tim što joj utvrđuje kaznu zatvora u trajanju od 4 (četiri) mjeseca i istovremeno određuje da se ista neće
+                izvršiti, ako okrivljena u roku od <time duration="P3Y">3 (tri) godine</time> po pravosnažnosti presude ne izvrši novo krivično djelo.
+                Obavezuje se okrivljena da plati na ime troškova krivičnog postupka iznos od <amount value="151.00">151,00 eura</amount>, u roku od <time duration="P15D">15 dana</time>
+                po pravosnažnosti presude, pod prijetnjom prinudnog izvršenja.
+            </p>
+        </judgmentBody>
+    </judgment>
+</akomaNtoso>

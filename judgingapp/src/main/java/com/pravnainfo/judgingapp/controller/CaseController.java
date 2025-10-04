@@ -3,6 +3,7 @@ package com.pravnainfo.judgingapp.controller;
 import com.pravnainfo.judgingapp.cbr.CbrApplication;
 import com.pravnainfo.judgingapp.dto.CaseDescription;
 import com.pravnainfo.judgingapp.dto.SimilarVerdict;
+import com.pravnainfo.judgingapp.entity.AccusationType;
 import com.pravnainfo.judgingapp.entity.Verdict;
 import com.pravnainfo.judgingapp.repository.IVerdictRepository;
 import com.pravnainfo.judgingapp.service.XmlGenerationService;
@@ -19,10 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -58,13 +56,24 @@ public class CaseController {
 
         return examples;
     }
-    // List all cases
+
+    @GetMapping("/accusations")
+    public List<String> getSupportedAccusations() {
+        return Arrays.stream(AccusationType.values())
+                .filter(type -> type != AccusationType.OTHER)
+                .map(type -> {
+                    String article = type.getArticle();
+                    String stav = type.getStav();
+                    return stav.isEmpty() ? "čl. " + article : "čl. " + article + " st. " + stav;
+                })
+                .collect(Collectors.toList());
+    }
+
     @GetMapping
     public List<Verdict> getAllCases() {
         return verdictRepository.findAll();
     }
 
-    // Get single case by DB ID
     @GetMapping("/{id}")
     public ResponseEntity<Verdict> getCaseById(@PathVariable Long id) {
         return verdictRepository.findById(id)
@@ -79,21 +88,34 @@ public class CaseController {
     @PostMapping("/add")
     public ResponseEntity<Verdict> addCase(@RequestBody Verdict newCase,
                                            @RequestParam(value = "folder", required = false) String folder) throws IOException, ExecutionException {
+
         if (newCase.getCaseId() == null || newCase.getCaseId().isEmpty()) {
             return ResponseEntity.badRequest().body(null);
         }
 
-        Verdict saved = verdictRepository.save(newCase);
+        if (newCase.getAccusations() == null || newCase.getAccusations().isEmpty()) {
+            newCase.setAccusations(new ArrayList<>());
+        }
 
-        String xmlContent = xmlGenerationService.generateAkomaNtosoXml(saved, loadXmlExamples());
+        if (newCase.getDefendantNames() == null || newCase.getDefendantNames().isEmpty()) {
+            newCase.setDefendantNames(new ArrayList<>());
+        }
+
+        String xmlContent = xmlGenerationService.generateAkomaNtosoXml(newCase, loadXmlExamples());
 
         String targetFolder = (folder != null && !folder.isEmpty()) ? folder : DEFAULT_XML_FOLDER;
-        String xmlFileName = saveXmlToFile(xmlContent, targetFolder, saved.getCaseId());
+        String xmlFileName = saveXmlToFile(xmlContent, targetFolder, newCase.getCaseId());
 
-        saved.setXmlFileName(xmlFileName);
-        verdictRepository.save(saved);
+        newCase.setXmlFileName(xmlFileName);
 
-        return ResponseEntity.ok(saved);
+        verdictRepository.save(newCase);
+
+        cbrApplication.configure();
+        cbrApplication.preCycle();
+        cbrApplication.addAndPersistCase(new CaseDescription(newCase));
+        cbrApplication.postCycle();
+
+        return ResponseEntity.ok(newCase);
     }
 
     private String saveXmlToFile(String xmlContent, String folder, String caseId) throws IOException {
@@ -121,7 +143,7 @@ public class CaseController {
         // Weighted majority vote
         Map<String, Double> verdictScores = new HashMap<>();
         for (SimilarVerdict sv : similarCases) {
-            String verdict = sv.getCaseDescription().getVerdict();
+            String verdict = sv.getCaseDescription().getJudgment();
             double similarity = sv.getSimilarity();
             verdictScores.merge(verdict, similarity, Double::sum);
         }

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd"
+            xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
+    <judgment>
+        <meta>
+            <identification source="#court">
+                <FRBRWork>
+                    <FRBRauthor>OSNOVNI SUD U NIKŠIĆU</FRBRauthor>
+                    <FRBRdate date="2015-04-03">2015-04-03</FRBRdate>
+                    <FRBRtitle>K.br. 175/14</FRBRtitle>
+                    <FRBRcountry>ME</FRBRcountry>
+                </FRBRWork>
+            </identification>
+            <references>
+                <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.Niksic" showAs="Osnovni sud u Nikšiću"/>
+                <TLCOrganization eId="odt" href="/ontology/organization/OsnovnoDrzavnoTuzilastvo.Niksic" showAs="Osnovno državno tužilaštvo u Nikšiću"/>
+                <TLCPerson eId="vKovacevic" href="/ontology/person/vKovacevic" showAs="Vesna Kovačević"/>
+                <TLCPerson eId="rNikolic" href="/ontology/person/rNikolic" showAs="Rade Nikolić"/>
+                <TLCPerson eId="gR" href="/ontology/person/gR" showAs="G. R."/>
+                <TLCPerson eId="gD" href="/ontology/person/gD" showAs="G. D."/>
+                <TLCPerson eId="vKrovikapic" href="/ontology/person/vKrovikapic" showAs="Vesna Krovikapić"/>
+                <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
+                <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
+                <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
+                <TLCRole eId="prosecutor" href="/ontology/role/prosecutor" showAs="Zamjenik tužioca"/>
+            </references>
+        </meta>
+
+        <judgmentBody>
+            <p>
+                <organization id="os" refersTo="#os">OSNOVNI SUD U NIKŠIĆU</organization>, sudija
+                <party id="vKovacevic" refersTo="#vKovacevic" as="#judge">Vesna Kovačević</party>, uz učešće
+                <party id="rNikolic" refersTo="#rNikolic" as="#clerk">Rade Nikolić</party> kao zapisničara, u krivičnom postupku protiv okrivljenih
+                <party id="gR" refersTo="#gR" as="#defendant">G. R.</party> zbog produženog krivičnog djela krađa iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1</ref> u vezi <ref href="/krivicni#art_49">čl. 49</ref> Krivičnog zakonika i
+                <party id="gD" refersTo="#gD" as="#defendant">G. D.</party> zbog krivičnog djela krađa iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1</ref> Krivičnog zakonika, po optužnom predlogu
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Nikšiću Kt.br.82/14 od 31.03.2014. godine</organization>, nakon završenog glavnog i javnog pretresa dana
+                <date date="2015-04-03">03.04.2015.</date> godine, u prisustvu zamjenika ODT-a
+                <party id="vKrovikapic" refersTo="#vKrovikapic" as="#prosecutor">Vesne Krovikapić</party> i okrivljenih
+                <party id="gR" refersTo="#gR">G. R.</party> i <party id="gD" refersTo="#gD">G. D.</party>, istog dana donio je i javno objavio
+            </p>
+
+            <p><b>PRESUDU</b></p>
+
+            <p>
+                Prema okrivljenima:
+                <party id="gR" refersTo="#gR">G. R.</party>, JMBG:..., od oca M... i majke M..., rođ. M..., rođ. <date date="1978-04-09">9.04.1978.</date> godine u Nikšiću, sa prebivalištem u Nikšiću,
+                Selo Javljen – Krstac, državljanin CG, pismen, po zanimanju poljoprivrednik, neoženjen, završio srednju
+                školu, srednjeg imovnog stanja, ranije neosuđivan,
+                <party id="gD" refersTo="#gD">G. D.</party>, JMBG:..., od oca M... i majke M..., rođ. Milošević, rođ. <date date="1982-08-05">05.08.1982.</date> godine u Nikšiću, sa prebivalištem u
+                Nikšiću, Selo Javljen – Krstac, državljanin CG, pismen, po zanimanju poljoprivrednik, neoženjen, završio
+                srednju školu, srednjeg imovnog stanja, ranije neosuđivan,
+            </p>
+
+            <p>
+                Shodno <ref href="/zkp#art_372_st_1_tac_1">čl. 372 st. 1 tač. 1</ref> Zakonika o krivičnom postupku
+            </p>
+
+            <p><b>ODBIJA SE OPTUŽBA</b></p>
+
+            <p>
+                Da su: Dana, <date date="2013-12-30">30.12.2013.</date> godine u Nikšiću po prethodnom dogovoru, iako su bili svjesni svog djela i htjeli njegovo
+                izvršenje, u namjeri da sebi pribave protivpravnu imovinsku korist, iz šumskog kompleksa koji se nalazi u
+                mjestu Golija – Petrova Dola, vlasništvo B... G..., oduzeli 9 trupaca tehničkog drveta jele, ukupne mase 5,10
+                m3, prečnika na panju 36 do 50 cm, u ukupnoj vrijednosti od <amount value="204.00">204,00 eura</amount>,
+            </p>
+
+            <p>
+                Okrivljeni <party id="gR" refersTo="#gR">G. R.</party>
+            </p>
+
+            <p>
+                Dana, <date date="2013-12-29">29.12.2013.</date> godine u Nikšiću, iako je bio svjestan svoga djela i htio njegovo izvršenje, u namjeri da sebi
+                pribavi protivpravnu imovinsku korist, iz šumskog kompleksa koji se nalazi u mjestu Golija – Petrova Dola,
+                vlasništvo B... G..., oduzeo 11 trupaca tehničkog drveta jele, ukupne mase 8,81 m3, prečnika na panju 45 do 64
+                cm, u ukupnoj vrijednosti od <amount value="370.00">370,00 eura</amount>,
+            </p>
+
+            <p>
+                čime bi izvršili i to okrivljeni <party id="gR" refersTo="#gR">G. R.</party> produženo krivično djelo krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1</ref> u vezi <ref href="/krivicni#art_49">čl. 49</ref> Krivičnog
+                zakonika, a okrivljeni <party id="gD" refersTo="#gD">G. D.</party> krivično djelo krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1</ref> Krivičnog zakonika,
+            </p>
+
+            <p>
+                Troškovi krivičnog postupka u iznosu od <amount value="44.00">44,00 eura</amount> padaju na teret budžetskih sredstava ovog
+                suda.
+            </p>
+        </judgmentBody>
+    </judgment>
+</akomaNtoso>

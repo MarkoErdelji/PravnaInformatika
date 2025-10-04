@@ -3,6 +3,9 @@ package com.pravnainfo.judgingapp.entity;
 import lombok.*;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -15,92 +18,108 @@ public class Verdict {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "case_id", unique = true, nullable = false)
     private String caseId;
 
     @Column(name = "court")
     private String court;
 
-    @Column(name = "verdict_number")
-    private String verdictNumber;
+    @Column(name = "case_number")
+    private String caseNumber;
 
-    @Column(name = "date")
-    private LocalDate date;
+    @Column(name = "judge")
+    private String judge;
 
-    @Column(name = "judge_name")
-    private String judgeName;
-
-    @Column(name = "clerk_name")
-    private String clerkName;
+    @Column(name = "clerk")
+    private String clerk;
 
     @Column(name = "prosecutor")
     private String prosecutor;
 
+    @Builder.Default
+    @ElementCollection
+    @CollectionTable(name = "verdict_defendants", joinColumns = @JoinColumn(name = "verdict_id"))
     @Column(name = "defendant_name")
-    private String defendantName;
+    private List<String> defendantNames = new ArrayList<>();
 
-    @Column(name = "criminal_offense")
-    private String criminalOffense;
+    @Column(name = "victim")
+    private String victim;
+
+    @Column(name = "short_description")
+    private String shortDescription;
+
+    @Column(name = "judgment")
+    private String judgment;
 
     @Column(name = "applied_provisions")
     private String appliedProvisions;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "verdict_type")
-    private VerdictType verdictType;
+    @Builder.Default
+    @ElementCollection
+    @CollectionTable(name = "verdict_accusations", joinColumns = @JoinColumn(name = "verdict_id"))
+    @Column(name = "accusation")
+    private List<String> accusations = new ArrayList<>();
 
+    @Column(name = "verdict_date")
+    private LocalDate verdictDate;
 
-    @Column(name = "aware_of_illegality")
-    private Boolean awareOfIllegality;
+    @Column(name = "is_movable_property")
+    private Boolean isMovableProperty;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "main_victim_relationship")
-    private VictimRelationship mainVictimRelationship;
+    @Column(name = "is_taken")
+    private Boolean isTaken;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "violence_nature")
-    private ViolenceNature violenceNature;
+    @Column(name = "intent_to_appropriate")
+    private Boolean intentToAppropriate;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "injury_types")
-    private InjuryTypes injuryTypes;
+    @Column(name = "value_of_stolen_items")
+    private Double valueOfStolenItems;
 
-    @Column(name = "protection_measure_violation")
-    private Boolean protectionMeasureViolation;
+    @Column(name = "is_cultural_or_natural_good")
+    private Boolean isCulturalOrNaturalGood;
 
-    @Column(name = "event_location")
-    private String eventLocation;
+    @Column(name = "breaking_and_entering")
+    private Boolean breakingAndEntering;
 
-    @Column(name = "event_date")
-    private LocalDate eventDate;
+    @Column(name = "particularly_dangerous_or_brazen")
+    private Boolean particularlyDangerousOrBrazen;
 
-    @Column(name = "defendant_status")
-    private String defendantStatus;
+    @Column(name = "exploiting_helplessness")
+    private Boolean exploitingHelplessness;
 
-    @Column(name = "victims")
-    private String victims;
+    @Column(name = "during_disaster")
+    private Boolean duringDisaster;
 
-    @Column(name = "main_victim_age")
-    private Integer mainVictimAge;
+    @Column(name = "number_of_perpetrators")
+    private Integer numberOfPerpetrators;
 
-    @Column(name = "alcohol_or_drugs")
-    private Boolean alcoholOrDrugs;
+    @Column(name = "is_armed")
+    private Boolean isArmed;
 
-    @Column(name = "children_present")
-    private Boolean childrenPresent;
+    @Column(name = "use_of_force_or_threat")
+    private Boolean useOfForceOrThreat;
 
-    @Column(name = "penalty")
-    private String penalty;
+    @Column(name = "caught_in_the_act")
+    private Boolean caughtInTheAct;
 
-    @Column(name = "procedure_costs")
-    private String procedureCosts;
+    @Column(name = "intent_for_small_gain")
+    private Boolean intentForSmallGain;
 
-    @Column(name = "use_of_weapon")
-    private Boolean useOfWeapon;
+    @Column(name = "caused_severe_injury")
+    private Boolean causedSevereInjury;
 
-    @Column(name = "number_of_victims")
-    private Integer numberOfVictims;
+    @Column(name = "death_caused")
+    private Boolean deathCaused;
+
+    @Column(name = "attempted_crime")
+    private Boolean attemptedCrime;
 
     @Column(name = "xml_file_name")
     private String xmlFileName;
+
+    public List<AccusationType> getAccusationTypes() {
+        return accusations.stream()
+                .map(AccusationType::parse)
+                .collect(Collectors.toList());
+    }
 }

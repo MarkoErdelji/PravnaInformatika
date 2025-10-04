@@ -34,81 +34,42 @@ public class CbrApplication implements StandardCBRApplication {
         retrievalConfig = createNNConfig(true);
     }
 
-    private NNConfig createNNConfig(boolean includeVerdict) {
+    private NNConfig createNNConfig(boolean includeJudgment) {
         NNConfig config = new NNConfig();
         config.setDescriptionSimFunction(new Average());
 
-        config.addMapping(new Attribute("awareOfIllegality", CaseDescription.class), new Equal());
-        config.addMapping(new Attribute("protectionMeasureViolation", CaseDescription.class), new Equal());
-        config.addMapping(new Attribute("alcoholOrDrugs", CaseDescription.class), new Equal());
-        config.addMapping(new Attribute("childrenPresent", CaseDescription.class), new Equal());
-        config.addMapping(new Attribute("useOfWeapon", CaseDescription.class), new Equal());
+        // Boolean attributes for theft-specific facts
+        config.addMapping(new Attribute("isMovableProperty", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("isTaken", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("intentToAppropriate", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("isCulturalOrNaturalGood", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("breakingAndEntering", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("particularlyDangerousOrBrazen", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("exploitingHelplessness", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("duringDisaster", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("isArmed", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("useOfForceOrThreat", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("caughtInTheAct", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("intentForSmallGain", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("causedSevereInjury", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("deathCaused", CaseDescription.class), new Equal());
+        config.addMapping(new Attribute("attemptedCrime", CaseDescription.class), new Equal());
 
-        config.addMapping(new Attribute("numberOfVictims", CaseDescription.class), new NullAwareInterval(5));
-        config.addMapping(new Attribute("mainVictimAge", CaseDescription.class), new NullAwareInterval(100));
+        // Numerical attributes
+        config.addMapping(new Attribute("valueOfStolenItems", CaseDescription.class), new NullAwareInterval(10000.0));
+        config.addMapping(new Attribute("numberOfPerpetrators", CaseDescription.class), new NullAwareInterval(5));
 
-        // --- Injury similarity ---
-        TabularSimilarity injurySim = new TabularSimilarity(
-                Arrays.stream(InjuryTypes.values()).map(Enum::name).toList()
-        );
-        for (String i1 : injurySim.getCategories()) {
-            for (String i2 : injurySim.getCategories()) {
-                double sim;
-                if (i1.equals(i2)) {
-                    sim = 1.0;
-                } else if ((i1.equals("MINOR") && i2.equals("SERIOUS")) || (i1.equals("SERIOUS") && i2.equals("MINOR"))) {
-                    sim = 0.6; // minor vs serious
-                } else if ((i1.equals("SERIOUS") && i2.equals("DEATH")) || (i1.equals("DEATH") && i2.equals("SERIOUS"))) {
-                    sim = 0.7; // serious vs death
-                } else {
-                    sim = 0.2;
-                }
-                injurySim.setSimilarity(i1, i2, sim);
-            }
-        }
-        config.addMapping(new Attribute("injuryTypes", CaseDescription.class), injurySim);
+        // Accusation similarity (high weight for list of AccusationType)
+        config.addMapping(new Attribute("accusationTypes", CaseDescription.class), new AccusationSimilarity());
+        config.setWeight(new Attribute("accusationTypes", CaseDescription.class), 3.0);
 
-        // --- Victim relationship similarity ---
-        TabularSimilarity relationSim = new TabularSimilarity(
-                Arrays.stream(VictimRelationship.values()).map(Enum::name).toList()
-        );
-        for (String r1 : relationSim.getCategories()) {
-            for (String r2 : relationSim.getCategories()) {
-                double sim = r1.equals(r2) ? 1.0 : 0.2;
-                if ((r1.equals("PARENT") && r2.equals("CHILD")) || (r1.equals("CHILD") && r2.equals("PARENT"))) sim = 0.7;
-                if ((r1.equals("SPOUSE") && r2.equals("CHILD")) || (r1.equals("CHILD") && r2.equals("SPOUSE"))) sim = 0.5;
-                relationSim.setSimilarity(r1, r2, sim);
-            }
-        }
-        config.addMapping(new Attribute("mainVictimRelationship", CaseDescription.class), relationSim);
-
-        // --- Violence similarity ---
-        TabularSimilarity violenceSim = new TabularSimilarity(
-                Arrays.stream(ViolenceNature.values()).map(Enum::name).toList()
-        );
-        for (String v1 : violenceSim.getCategories()) {
-            for (String v2 : violenceSim.getCategories()) {
-                double sim;
-                if (v1.equals(v2)) {
-                    sim = 1.0;
-                } else if ((v1.equals("PHYSICAL") && v2.equals("PSYCHOLOGICAL")) ||
-                        (v1.equals("PSYCHOLOGICAL") && v2.equals("PHYSICAL"))) {
-                    sim = 0.5;
-                } else {
-                    sim = 0.0; // NONE vs others
-                }
-                violenceSim.setSimilarity(v1, v2, sim);
-            }
-        }
-        config.addMapping(new Attribute("violenceNature", CaseDescription.class), violenceSim);
-
-        // --- Verdict similarity (only for retrieval config) ---
-        if (includeVerdict) {
-            TabularSimilarity verdictSim = new TabularSimilarity(
+        // Judgment similarity (only for retrieval config)
+        if (includeJudgment) {
+            TabularSimilarity judgmentSim = new TabularSimilarity(
                     Arrays.stream(VerdictType.values()).map(Enum::name).toList()
             );
-            for (String v1 : verdictSim.getCategories()) {
-                for (String v2 : verdictSim.getCategories()) {
+            for (String v1 : judgmentSim.getCategories()) {
+                for (String v2 : judgmentSim.getCategories()) {
                     double sim;
                     if (v1.equals(v2)) {
                         sim = 1.0;
@@ -121,13 +82,16 @@ public class CbrApplication implements StandardCBRApplication {
                     } else if ((v1.equals("FINE") && v2.equals("FINE_AND_PRISON")) ||
                             (v1.equals("FINE_AND_PRISON") && v2.equals("FINE"))) {
                         sim = 0.7;
+                    } else if ((v1.equals("ACQUITTAL") && v2.equals("DISMISSAL")) ||
+                            (v1.equals("DISMISSAL") && v2.equals("ACQUITTAL"))) {
+                        sim = 0.8;
                     } else {
                         sim = 0.3;
                     }
-                    verdictSim.setSimilarity(v1, v2, sim);
+                    judgmentSim.setSimilarity(v1, v2, sim);
                 }
             }
-            config.addMapping(new Attribute("verdict", CaseDescription.class), verdictSim);
+            config.addMapping(new Attribute("judgment", CaseDescription.class), judgmentSim);
         }
 
         return config;
@@ -140,9 +104,8 @@ public class CbrApplication implements StandardCBRApplication {
         cbrCase.setDescription(newCase);
 
         caseBase.getCases().add(cbrCase);
-
-        connector.storeCases(List.of(cbrCase));
     }
+
     @Override
     public CBRCaseBase preCycle() throws ExecutionException {
         caseBase.init(connector);

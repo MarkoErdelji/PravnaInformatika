@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd"
+            xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
+    <judgment>
+        <meta>
+            <identification source="#court">
+                <FRBRWork>
+                    <FRBRauthor>OSNOVNI SUD U BARU</FRBRauthor>
+                    <FRBRdate date="2013-05-30">2013-05-30</FRBRdate>
+                    <FRBRtitle>K.br. 457/12</FRBRtitle>
+                    <FRBRcountry>ME</FRBRcountry>
+                </FRBRWork>
+            </identification>
+            <references>
+                <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.Baru" showAs="Osnovni sud u Baru"/>
+                <TLCOrganization eId="odt" href="/ontology/organization/OsnovnoDrzavnoTuzilastvo.Baru" showAs="Osnovno državno tužilaštvo u Baru"/>
+                <TLCPerson eId="zL" href="/ontology/person/zL" showAs="Zoran Lekić"/>
+                <TLCPerson eId="dM" href="/ontology/person/dM" showAs="Danijela Marković"/>
+                <TLCPerson eId="rM" href="/ontology/person/rM" showAs="R. M."/>
+                <TLCPerson eId="nA" href="/ontology/person/nA" showAs="Nusreta Arapović"/>
+                <TLCPerson eId="rS" href="/ontology/person/rS" showAs="R. S."/>
+                <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
+                <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
+                <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
+                <TLCRole eId="prosecutor" href="/ontology/role/prosecutor" showAs="Zamjenik ODT-a"/>
+                <TLCRole eId="victim" href="/ontology/role/victim" showAs="Oštećeni"/>
+            </references>
+        </meta>
+
+        <judgmentBody>
+            <p>
+                <organization id="os" refersTo="#os">OSNOVNI SUD U BARU</organization>, sudija
+                <party id="zL" refersTo="#zL" as="#judge">Zoran Lekić</party>, kao sudija pojedinac, sa zapisničarom
+                <party id="dM" refersTo="#dM" as="#clerk">Danijelom Marković</party>, u krivičnom predmetu protiv okrivljenog
+                <party id="rM" refersTo="#rM" as="#defendant">R. M.</party>, zbog krivičnog djela krađa iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 Krivičnog zakonika</ref>, po optužnom predlogu
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Baru Kt.br.821/12 od 08.11.2012. godine</organization>,
+                nakon glavnog i javnog pretresa održanog dana <date date="2013-05-30">30.05.2013.</date> godine u prisustvu zastupnika optužbe
+                zamjenika ODT-a iz Bara <party id="nA" refersTo="#nA" as="#prosecutor">Nusrete Arapović</party> i okrivljenog, istog dana je donio i javno objavio,
+            </p>
+
+            <p><b>PRESUDU</b></p>
+
+            <p>
+                Okrivljeni:
+                <party id="rM" refersTo="#rM">R. M.</party>, od oca V. i majke S., rođene V., rođen <date date="1980-08-14">14.08.1980.</date> godine u B., sa prebivalištem u B., I. bb., Š., zgrada B. A-4, nezaposlen, oženjen, završio srednju školu, lošeg imovnog stanja, osuđen: presudom Osnovnog suda u Baru K.br.5/00 od <date date="2000-11-28">28.11.2000.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_144_st_1">čl. 144 st. 1 KZ RCG</ref> na kaznu zatvora u trajanju od tri mjeseca, presudom Osnovnog suda u Beranama K.br.64/06 od <date date="2006-12-01">01.12.2006.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ CG</ref> na kaznu zatvora u trajanju od šest mjeseci uslovno na jednu godinu, presudom Osnovnog suda u Baru K.br.35/06 od <date date="2007-06-07">07.06.2007.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ</ref> na kaznu zatvora u trajanju od tri mjeseca, presudom Osnovnog suda u Baru K.br.442/05 od <date date="2007-05-14">14.05.2007.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ</ref> na kaznu zatvora u trajanju od tri mjeseca, presudom Osnovnog suda u Ulcinju K.br.1/05 od <date date="2004-11-06">06.11.2004.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ</ref> na kaznu zatvora u trajanju od četiri mjeseca, presudom Osnovnog suda u Baru K.br. 627/06 od <date date="2006-12-20">20.12.2006.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_240_st_1_tac_1">čl. 240 st. 1 tač. 1 KZ</ref> u vezi <ref href="/krivicni#art_49">čl. 49 KZ</ref> na kaznu zatvora u trajanju od osam mjeseci, presudom Osnovnog suda u Baru K.br.317/07 od <date date="2008-06-02">02.06.2008.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ</ref> na kaznu zatvora u trajanju od tri mjeseca, presudom Osnovnog suda u Kotoru K.br.416/06 od <date date="2007-09-18">18.09.2007.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ</ref> na kaznu zatvora u trajanju od trideset dana, presudom Osnovnog suda u Kotoru K.br. 635/06 od <date date="2008-05-12">12.05.2008.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_240_st_1_tac_1">čl. 240 st. 1 tač. 1 KZ CG</ref> na kaznu zatvora u trajanju od jedne godine, presudom Osnovnog suda u Baru K.br.624/07 od <date date="2007-03-21">21.03.2007.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_240_st_1">čl. 240 st. 1 KZ</ref> na kaznu zatvora u trajanju od jedne godine, presudom Osnovnog suda u Baru K.br. 58/07 od <date date="2008-11-06">06.11.2008.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1</ref> u vezi <ref href="/krivicni#art_49">čl. 49 KZ</ref> na kaznu zatvora u trajanju od jedne godine, presudom Osnovnog suda u Ulcinju K.br.93/06 od <date date="2007-05-01">01.05.2007.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 KZ</ref> na kaznu zatvora u trajanju od četiri mjeseca, presudom Osnovnog suda u Baru K.br. 45/07 od <date date="2009-01-22">22.01.2009.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_240_st_1_tac_1">čl. 240 st. 1 tač. 1</ref> u vezi <ref href="/krivicni#art_49">čl. 49 KZ</ref> na kaznu zatvora u trajanju od jedne godine i četiri mjeseca, presudom Osnovnog suda u Baru K.br.25/08 od <date date="2009-01-22">22.01.2009.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_240_st_1_tac_1">čl. 240 st. 1 tač. 1</ref> u vezi <ref href="/krivicni#art_49">čl. 49 KZ</ref> na kaznu zatvora u trajanju od jedne godine i presudom Osnovnog suda u Baru K.br.140/06 od <date date="2009-02-04">04.02.2009.</date> godine zbog krivičnog djela iz <ref href="/krivicni#art_240_st_1_tac_1_2">čl. 240 st. 1 tač. 1 i 2 KZ</ref> na kaznu zatvora u trajanju od jedne godine, koje kazne je izdržao,
+            </p>
+
+            <p><b>Kriv je</b></p>
+
+            <p>
+                Zato što je: Dana <date date="2012-11-08">08.11.2012.</date> godine, u naselju P. u S., Opština Bar, sa čamca vlasništvo oštećenog
+                <party id="rS" refersTo="#rS" as="#victim">R. S.</party> oduzeo pokretne stvari – vanbrodski motor marke „M.“ . KS, crne boje, svjestan da svojim radnjama može učiniti djelo, i htio je njegovo izvršenje, na način što je podesnim sredstvom pokidao lanac i katanac na čamcu a zatim odšrafio sa istog vanbrodski motor, koji je odnio sa sobom u namjeri da sebi pribavi protivpravnu imovinsku korist u iznosu od <amount value="270.00">270,00 eura</amount>,
+            </p>
+            <p>
+                - čime je izvršio krivično djelo - krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 Krivičnog zakonika</ref>.
+            </p>
+            
+            <list>
+                <item id="odluka1">
+                    <p>
+                        Pa ga sud primjenom citiranog zakonskog propisa te <ref href="/krivicni#art_4">čl. 4</ref>, <ref href="/krivicni#art_5">5</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_36">36</ref> i <ref href="/krivicni#art_42">42</ref> Krivičnog zakonika i <ref href="/zkp#art_369">čl. 369</ref>, <ref href="/zkp#art_370">370</ref> i <ref href="/zkp#art_374">374</ref> Zakonika o krivičnom postupku,
+                        <b>OSUĐUJE</b><br/>
+                        Na kaznu zatvora u trajanju od 6 (šest) mjeseci.
+                    </p>
+                </item>
+                <item id="odluka2">
+                    <p>
+                        Oštećeni <party id="rS" refersTo="#rS" as="#victim">R. S.</party> se radi ostvarivanja imovinsko-pravnog zahtjeva upućuje na parnicu.
+                    </p>
+                </item>
+                <item id="odluka3">
+                    <p>
+                        Okrivljeni je dužan da plati troškove krivičnog postupka na ime sudskog paušala u iznosu od <amount value="20.00">20,00 eura</amount>, u roku od <time duration="P15D">15 dana</time> od dana pravosnažnosti presude, pod prijetnjom prinudnog izvršenja.
+                    </p>
+                </item>
+            </list>
+        </judgmentBody>
+    </judgment>
+</akomaNtoso>

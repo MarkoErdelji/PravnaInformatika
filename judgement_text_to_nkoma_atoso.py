@@ -11,8 +11,8 @@ from dotenv import load_dotenv
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-
 os.environ["OPENAI_API_KEY"] = "PLACEHOLDER"
+
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
 example_dir = pathlib.Path("./presude/primer")
@@ -48,7 +48,7 @@ prompt = ChatPromptTemplate.from_messages([
   - <p> za referencu na krivično djelo (-čime je učinio...).
   - !IMPORTANT: Odvoj pasuse da imaju smisla kasnije za prikazivanje, treba da budu celine i popravi reci koje nise pravopisne naprimer P R E S U D U u PRESUDU i sve ostale gde nadjes pravopisne
   greske moras obavezno da popravis, takodje pazi da nemas duplikata referenci osoba.
-- Koristi <ref> tagove za članke zakona (npr. <ref href="/krivicni#art_220">čl. 220 st. 1</ref>).
+- Koristi <ref> tagove za članke zakona (npr. <ref href="/krivicni#art_239">čl. 239 st. 1</ref>).
 - Održavaj hijerarhiju i semantiku tagova (<party> za osobe, <organization> za institucije, <date> za datume, <amount> za iznose, <time> za trajanje).
 - Svi tekstualni sadržaji moraju biti XML-escaped (npr. & -> &amp;, < -> &lt;).
 - Ako je tekst u formatu koji sugeriše podnaslov (npr. velika slova, bold), označi ga sa <b> unutar <p>.
@@ -84,22 +84,6 @@ def clean_xml_response(xml_string: str) -> str:
         )
     return xml_string
 
-def validate_xml(xml_string: str) -> bool:
-    """Validate if the generated XML is well-formed and Akoma Ntoso compliant."""
-    try:
-        tree = ET.fromstring(xml_string)
-        if tree.tag != '{http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17}akomaNtoso':
-            logger.error("XML does not have <akomaNtoso> as root")
-            return False
-        if not tree.find('.//{http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17}judgment'):
-            logger.error("XML does not contain <judgment> element")
-            return False
-        if not tree.find('.//{http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17}list'):
-            logger.warning("No <list> element found, but proceeding")
-        return True
-    except ET.ParseError as e:
-        logger.error(f"Invalid XML generated: {e}")
-        return False
 
 def convert_presuda(text: str, file_path: pathlib.Path):
     """Convert text to Akoma Ntoso XML and save it."""
@@ -109,10 +93,6 @@ def convert_presuda(text: str, file_path: pathlib.Path):
         xml_content = clean_xml_response(result.content)
 
         logger.debug(f"Raw LLM response: {result.content}")
-
-        if not validate_xml(xml_content):
-            logger.error(f"Skipping {file_path}: Generated XML is not well-formed or not Akoma Ntoso compliant")
-            return
 
         output_dir = pathlib.Path("./judgingapp/xml")
         output_dir.mkdir(parents=True, exist_ok=True)

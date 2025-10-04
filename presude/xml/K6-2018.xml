@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd"
+            xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
+    <judgment>
+        <meta>
+            <identification source="#court">
+                <FRBRWork>
+                    <FRBRauthor>OSNOVNI SUD U KOLAŠINU</FRBRauthor>
+                    <FRBRdate date="2018-11-09">2018-11-09</FRBRdate>
+                    <FRBRtitle>K.br. 6/18</FRBRtitle>
+                    <FRBRcountry>ME</FRBRcountry>
+                </FRBRWork>
+            </identification>
+            <references>
+                <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.Kolašin" showAs="Osnovni sud u Kolašinu"/>
+                <TLCOrganization eId="odt" href="/ontology/organization/OsnovnoDrzavnoTuzilastvo.Kolašin" showAs="Osnovno državno tužilaštvo u Kolašinu"/>
+                <TLCPerson eId="aPopovic" href="/ontology/person/aPopovic" showAs="Arsen Popović"/>
+                <TLCPerson eId="lMrdak" href="/ontology/person/lMrdak" showAs="Ljiljana Mrdak"/>
+                <TLCPerson eId="mM" href="/ontology/person/mM" showAs="M. M."/>
+                <TLCPerson eId="vGrujic" href="/ontology/person/vGrujic" showAs="Vojislav Grujić"/>
+                <TLCPerson eId="m" href="/ontology/person/m" showAs="M."/>
+                <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
+                <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
+                <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
+                <TLCRole eId="prosecutor" href="/ontology/role/prosecutor" showAs="Tužilac"/>
+                <TLCRole eId="victim" href="/ontology/role/victim" showAs="Oštećeni"/>
+            </references>
+        </meta>
+
+        <judgmentBody>
+            <p>
+                <organization id="os" refersTo="#os">OSNOVNI SUD U KOLAŠINU</organization>, sudija
+                <party id="aPopovic" refersTo="#aPopovic" as="#judge">Arsen Popović</party>, uz učešće
+                <party id="lMrdak" refersTo="#lMrdak" as="#clerk">Ljiljane Mrdak</party> kao zapisničara, u krivičnom postupku protiv okrivljenog
+                <party id="mM" refersTo="#mM" as="#defendant">M. M.</party>, zbog krivičnog djela krađa iz
+                <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 Krivičnog zakonika</ref>, po optužnom predlogu
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Kolašinu Kt.br. 191/17 od 29.12.2017. godine</organization>, nakon održanog glavnog javnog pretresa dana
+                <date date="2018-11-09">09.11.2018.</date> godine, u prisustvu rukovodioca
+                <party id="vGrujic" refersTo="#vGrujic" as="#prosecutor">Vojislava Grujića</party> i okrivljenog
+                <party id="mM" refersTo="#mM">M. M.</party>, donio je i javno objavio,
+            </p>
+
+            <p><b>PRESUDU</b></p>
+
+            <p>
+                Prema okrivljenom
+                <party id="mM" refersTo="#mM">M. M.</party>, JMBG … od oca R. i majke S., rođene B., rođen … godine u K., gdje je i nastanjen - ul. M., državljanin Crne Gore, nezaposlen, oženjen, otac troje djece, pismen, završio srednju školu, lošeg imovnog stanja, osuđivan presudom Osnovnog suda u Kolašinu u predmetu K.br.127/16 zbog krivičnog djela iz <ref href="/krivicni#art_239">čl. 239 KZ</ref> na uslovnu osudu i presudu Osnovnog suda u Kolašinu u predmetu K.br.4/16 zbog krivičnog djela iz <ref href="/krivicni#art_239">čl. 239 KZ</ref> na uslovnu osudu.
+            </p>
+
+            <p>
+                - na osnovu <ref href="/zkp#art_372_st_1_t_1">čl. 372 st. 1 t. 1 ZKP-a</ref>,
+            </p>
+
+            <p><b>ODBIJA SE OPTUŽBA</b></p>
+
+            <p>
+                Daje:
+            </p>
+
+            <p>
+                U periodu od <date date="2017-07-03">03.07.2017.</date> godine do <date date="2017-10-03">03.10.2017.</date> godine u porodičnoj kući u ul. M. - Kolašin, svjestan svog djela, čije izvršenje je htio, znajući da je isto zabranjeno oduzeo tuđu pokretnu stvar, u namjeri da njenim prisvajanjem sebi pribavi protivpravnu imovinsku korist na način što je na mjernom ormaru i to na osiguračima istog, mimo mjernog brojila, priključio svoj stambeni objekat na elektro mrežu kablom 2 x 2,5 mm CU, pa je tako oduzeo električnu energiju vlasništvo <party id="m" refersTo="#m" as="#victim">M.</party> Kolašin u vrijednosti od <amount value="327.77">327,77 €</amount>,
+            </p>
+
+            <p>
+                - čime bi izvršio krivično djelo krađa iz <ref href="/krivicni#art_239_st_1">čl. 239 st. 1 Krivičnog zakonika</ref>.
+            </p>
+
+            <p>
+                Troškovi krivičnog postupka u iznosu od <amount value="220.00">220,00 €</amount> padaju na teret budžetskih sredstava suda.
+            </p>
+
+            <p>
+                Oštećeni <party id="m" refersTo="#m" as="#victim">M.</party> radi ostvarenja svog imovinsko-pravnog zahtjeva upućuje se na parnični postupak.
+            </p>
+        </judgmentBody>
+    </judgment>
+</akomaNtoso>

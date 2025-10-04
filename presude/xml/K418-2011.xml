@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17 ../schemas/akomantoso30.xsd"
+            xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17">
+    <judgment>
+        <meta>
+            <identification source="#court">
+                <FRBRWork>
+                    <FRBRauthor>OSNOVNI SUD U BIJELOM POLJU</FRBRauthor>
+                    <FRBRdate date="2011-12-14">2011-12-14</FRBRdate>
+                    <FRBRtitle>K.br. 418/11</FRBRtitle>
+                    <FRBRcountry>ME</FRBRcountry>
+                </FRBRWork>
+            </identification>
+            <references>
+                <TLCOrganization eId="os" href="/ontology/organization/OsnovniSud.BijeloPolje" showAs="Osnovni sud u Bijelom Polju"/>
+                <TLCOrganization eId="odt" href="/ontology/organization/OsnovnoDrzavnoTuzilastvo.BijeloPolje" showAs="Osnovno državno tužilaštvo u Bijelom Polju"/>
+                <TLCPerson eId="vRaicevic" href="/ontology/person/vRaicevic" showAs="Violeta Raičević"/>
+                <TLCPerson eId="lJoksimovic" href="/ontology/person/lJoksimovic" showAs="Ljiljana Joksimović"/>
+                <TLCPerson eId="jZ" href="/ontology/person/jZ" showAs="J. Z."/>
+                <TLCPerson eId="dS" href="/ontology/person/dS" showAs="D. S."/>
+                <TLCPerson eId="kKljajevic" href="/ontology/person/kKljajevic" showAs="Katarina Kljajević"/>
+                <TLCPerson eId="pO" href="/ontology/person/pO" showAs="P. O."/>
+                <TLCPerson eId="jS" href="/ontology/person/jS" showAs="J. S."/>
+                <TLCPerson eId="jR" href="/ontology/person/jR" showAs="J. R."/>
+                <TLCRole eId="judge" href="/ontology/role/judge" showAs="Sudija"/>
+                <TLCRole eId="clerk" href="/ontology/role/clerk" showAs="Zapisničar"/>
+                <TLCRole eId="defendant" href="/ontology/role/defendant" showAs="Okrivljeni"/>
+                <TLCRole eId="lawyer" href="/ontology/role/lawyer" showAs="Branilac"/>
+                <TLCRole eId="victim" href="/ontology/role/victim" showAs="Oštećeni"/>
+            </references>
+        </meta>
+
+        <judgmentBody>
+            <p>
+                <organization id="os" refersTo="#os">OSNOVNI SUD U BIJELOM POLJU</organization>, sudija
+                <party id="vRaicevic" refersTo="#vRaicevic" as="#judge">Violeta Raičević</party>, uz učešće
+                <party id="lJoksimovic" refersTo="#lJoksimovic" as="#clerk">Ljiljane Joksimović</party> kao zapisničara, u krivičnom predmetu protiv okrivljenih
+                <party id="jZ" refersTo="#jZ" as="#defendant">J. Z.</party> i
+                <party id="dS" refersTo="#dS" as="#defendant">D. S.</party>, oba iz Herceg Novog, zbog krivičnog djela razbojnička krađa iz
+                <ref href="/krivicni#art_241_st_1">čl. 241 st. 1 Krivičnog zakonika</ref>, po optužnici
+                <organization id="odt" refersTo="#odt">Osnovnog državnog tužilaštva u Bijelom Polju Kt.br.374/11 od 17.10.2011. godine</organization>, nakon održanog usmenog glavnog i javnog pretresa u prisustvu zamjenika
+                <party id="kKljajevic" refersTo="#kKljajevic">Katarine Kljajević</party>, okrivljenog
+                <party id="jZ" refersTo="#jZ">J. Z.</party> i njegovog branioca advokata
+                <party id="pO" refersTo="#pO" as="#lawyer">P. O.</party>, okrivljenog
+                <party id="dS" refersTo="#dS">D. S.</party> i njegovog branioca advokata
+                <party id="jS" refersTo="#jS" as="#lawyer">J. S.</party> te oštećenog
+                <party id="jR" refersTo="#jR" as="#victim">J. R.</party>, dana
+                <date date="2011-12-14">14.12.2011.</date> godine donio je i javno objavio:
+            </p>
+
+            <p><b>PRESUDU</b></p>
+
+            <p>
+                Okrivljeni:
+                <party id="jZ" refersTo="#jZ">J. Z.</party>, JMBG ….. od oca M… i majke R… rođene B…, rođen ….. godine u J…, državljanin Srbije, sa boravištem u Herceg Novom ul. B… broj ..- Z…, zaposlen u B… B…, sa završenom srednjom školom, vojsku služio u Ohridu 1979/80, dobrog imovnog stanja, u pritvoru od <date date="2011-08-30">30.08.2011.</date> godine.
+            </p>
+            <p>
+                Okrivljeni:
+                <party id="dS" refersTo="#dS">D. S.</party>, JMBG ………. od oca N… i majke V.. rođene S…, rođen ….. godine, u D…, državljanin Crne Gore sa prebivalištem u Herceg Novom, ul. I B… b…, broj …, S…, pismen sa završenom srednjom školom, u pritvoru od <date date="2011-08-31">31.08.2011.</date> godine do <date date="2011-12-14">14.12.2011.</date> godine.
+            </p>
+
+            <p><b>Krivi su</b></p>
+
+            <p>
+                Što su: Dana <date date="2011-07-29">29.07.2011.</date> godine, oko 02,00 do 03,00 h, u naselju N. Opština Bijelo Polje, uz pomoć merdevina ušli u unutrašnjost kuće vlasništvo
+                <party id="jM" refersTo="#jM" as="#victim">J. M.</party>, na način što su prislonili merdevine uz terasu prvog sprata kuće uz koje se okrivljeni
+                <party id="dS" refersTo="#dS">D. S.</party> popeo na terasu, a zatim ušao u unutrašnjost kuće - spavaću sobu kroz otvorena vrata od terase iz koje je izašao u hodnik, spustio se niz stepenice i otključao ulazna vrata od kuće kroz koja je ušao okrivljeni
+                <party id="jZ" refersTo="#jZ">J. Z.</party>, nakon čega su se popeli na sprat kuće, izvršili premetačinu po sobama tražeći novac, gdje su u spavaćoj sobi u kojoj je spavao oštećeni
+                <party id="jR" refersTo="#jR">J. R.</party>, sa komode oduzeli jedan kožni novčanik u kojem se nalazilo <amount value="350.00">350,00 €</amount>, zatim tri mobilna telefona marke "Samsung", sa SIM karticama brojeva 067-833-850, 077-225-285 i 068-123-303 i jedan sladoled Frikom King, da bi kad se oštećeni
+                <party id="jR" refersTo="#jR">J. R.</party> probudio i upitao "ko je to" okrivljeni
+                <party id="jZ" refersTo="#jZ">J. Z.</party> ga je upotrebom sile - gasnog pištolja marke "ME9" Mini Para, cal.9mm PA bez fabričkog broja koji je držao u ruci, više puta udario u predjelu glave kojom prilikom mu je nanio laku tjelesnu povredu u vidu dvije rasjekotine poglavine u namjeri da ukradene stvari zadrže nakon čega su se bježeći udaljili iz kuće,
+            </p>
+            <p>
+                - čime su kao saizvršioci izvršili krivično djelo razbojnička krađa iz <ref href="/krivicni#art_241_st_1">čl. 241 st. 1 Krivičnog zakonika</ref>,
+            </p>
+            
+            <list>
+                <item id="odluka1">
+                    <p>
+                        Pa ih sud primjenom članova <ref href="/krivicni#art_2">2</ref>, <ref href="/krivicni#art_4">4</ref>, <ref href="/krivicni#art_5">5</ref>, <ref href="/krivicni#art_13">13</ref>, <ref href="/krivicni#art_15">15</ref>, <ref href="/krivicni#art_23">23</ref>, <ref href="/krivicni#art_32">32</ref>, <ref href="/krivicni#art_36">36</ref>, <ref href="/krivicni#art_42">42</ref> i <ref href="/krivicni#art_51">51</ref> Krivičnog zakonika Crne Gore i <ref href="/zkp#art_226">čl. 226</ref>, <ref href="/zkp#art_229">229</ref>, <ref href="/zkp#art_239">239</ref> i <ref href="/zkp#art_374">374</ref> Zakonika o krivičnom postupku Crne Gore,
+                        <b>OSUĐUJE</b>
+                    </p>
+                </item>
+                <item id="odluka2">
+                    <p>
+                        Okrivljenog <party id="jZ" refersTo="#jZ">J. Z.</party>, na kaznu zatvora u trajanju od <time duration="P2Y6M">2 godine i 6 mjeseci</time>, u koju kaznu mu se ima uračunati vrijeme provedeno u pritvoru.
+                    </p>
+                </item>
+                <item id="odluka3">
+                    <p>
+                        Okrivljenog <party id="dS" refersTo="#dS">D. S.</party>, na kaznu zatvora u trajanju od <time duration="P1Y">1 godine</time> u koju kaznu mu se ima uračunati vrijeme provedeno u pritvoru.
+                    </p>
+                </item>
+                <item id="odluka4">
+                    <p>
+                        Okrivljeni se obavezuju na plaćanje paušala u iznosu od po <amount value="30.00">30,00 €</amount> te na solidarno plaćanje troškova postupka u iznosu od <amount value="95.00">95,00 €</amount> s tim što se posebno obavezuju i to: okrivljeni <party id="dS" refersTo="#dS">D. S.</party> da plati troškove krivičnog postupka u iznosu od <amount value="800.00">800,00 €</amount> a okrivljeni <party id="jZ" refersTo="#jZ">J. Z.</party> u iznosu od <amount value="1170.00">1.170,00 €</amount>, a sve na žiro račun ovog suda broj 832-151-35, u roku od <time duration="P15D">15 dana</time> od pravnosnažnosti presude, s tim što će o troškovima o kojima ne postoje podaci biti odlučeno posebnim rješenjem.
+                    </p>
+                </item>
+                <item id="odluka5">
+                    <p>
+                        Obavezuju se okrivljeni da oštećenom <party id="jR" refersTo="#jR">J. R.</party> vrate oduzete stvari i to: jedan kožni novčanik i <amount value="350.00">350,00 €</amount>, zatim tri mobilna telefona marke "Samsung", sa SIM karticama brojeva 067-833-850, 077-225-285 i 068-123-303, u roku od <time duration="P15D">15 dana</time> po pravosnažnosti presude.
+                    </p>
+                </item>
+            </list>
+        </judgmentBody>
+    </judgment>
+</akomaNtoso>
