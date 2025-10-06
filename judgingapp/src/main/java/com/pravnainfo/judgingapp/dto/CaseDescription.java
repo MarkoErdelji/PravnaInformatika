@@ -26,19 +26,13 @@ public class CaseDescription implements CaseComponent {
     private Boolean isTaken;
     private Boolean intentToAppropriate;
     private Double valueOfStolenItems;
-    private Boolean isCulturalOrNaturalGood;
     private Boolean breakingAndEntering;
-    private Boolean particularlyDangerousOrBrazen;
-    private Boolean exploitingHelplessness;
-    private Boolean duringDisaster;
-    private Boolean isArmed;
     private Boolean useOfForceOrThreat;
     private Boolean caughtInTheAct;
-    private Boolean intentForSmallGain;
     private Boolean causedSevereInjury;
     private Boolean deathCaused;
-    private Boolean attemptedCrime;
-    private Integer numberOfPerpetrators;
+    private Double monetaryPenalty;
+    private Double prisonPenalty;
 
     public CaseDescription(Verdict verdict) {
         this.dbId = verdict.getId();
@@ -51,18 +45,12 @@ public class CaseDescription implements CaseComponent {
         this.isTaken = verdict.getIsTaken();
         this.intentToAppropriate = verdict.getIntentToAppropriate();
         this.valueOfStolenItems = verdict.getValueOfStolenItems();
-        this.isCulturalOrNaturalGood = verdict.getIsCulturalOrNaturalGood();
         this.breakingAndEntering = verdict.getBreakingAndEntering();
-        this.particularlyDangerousOrBrazen = verdict.getParticularlyDangerousOrBrazen();
-        this.exploitingHelplessness = verdict.getExploitingHelplessness();
-        this.duringDisaster = verdict.getDuringDisaster();
-        this.isArmed = verdict.getIsArmed();
         this.useOfForceOrThreat = verdict.getUseOfForceOrThreat();
         this.caughtInTheAct = verdict.getCaughtInTheAct();
         this.causedSevereInjury = verdict.getCausedSevereInjury();
         this.deathCaused = verdict.getDeathCaused();
-        this.attemptedCrime = verdict.getAttemptedCrime();
-        this.numberOfPerpetrators = verdict.getNumberOfPerpetrators();
+        this.monetaryPenalty = verdict.getMonetaryPenalty();
     }
 
 

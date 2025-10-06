@@ -75,26 +75,8 @@ public class Verdict {
     @Column(name = "value_of_stolen_items")
     private Double valueOfStolenItems;
 
-    @Column(name = "is_cultural_or_natural_good")
-    private Boolean isCulturalOrNaturalGood;
-
     @Column(name = "breaking_and_entering")
     private Boolean breakingAndEntering;
-
-    @Column(name = "particularly_dangerous_or_brazen")
-    private Boolean particularlyDangerousOrBrazen;
-
-    @Column(name = "exploiting_helplessness")
-    private Boolean exploitingHelplessness;
-
-    @Column(name = "during_disaster")
-    private Boolean duringDisaster;
-
-    @Column(name = "number_of_perpetrators")
-    private Integer numberOfPerpetrators;
-
-    @Column(name = "is_armed")
-    private Boolean isArmed;
 
     @Column(name = "use_of_force_or_threat")
     private Boolean useOfForceOrThreat;
@@ -108,11 +90,14 @@ public class Verdict {
     @Column(name = "death_caused")
     private Boolean deathCaused;
 
-    @Column(name = "attempted_crime")
-    private Boolean attemptedCrime;
-
     @Column(name = "xml_file_name")
     private String xmlFileName;
+
+    @Column(name = "monetary_penalty")
+    private Double monetaryPenalty;
+
+    @Column(name = "prison_penalty")
+    private Double prisonPenalty;
 
     public List<AccusationType> getAccusationTypes() {
         return accusations.stream()

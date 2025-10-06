@@ -23,7 +23,7 @@ public class AccusationSimilarity implements LocalSimilarityFunction {
                 if (a1.equals(a2)) {
                     sim = 1.0;
                 } else if (t1.getArticle().equals(t2.getArticle())) {
-                    sim = 0.9; // Same article, different stav
+                    sim = 0.9;
                 } else if ((t1.getArticle().equals("239") && t2.getArticle().equals("240")) ||
                         (t1.getArticle().equals("240") && t2.getArticle().equals("239"))) {
                     sim = 0.7;
@@ -34,7 +34,7 @@ public class AccusationSimilarity implements LocalSimilarityFunction {
                         (t1.getArticle().equals("241") && t2.getArticle().equals("239"))) {
                     sim = 0.5;
                 } else {
-                    sim = 0.2; // Any vs. OTHER
+                    sim = 0.2;
                 }
                 tabular.setSimilarity(a1, a2, sim);
             }

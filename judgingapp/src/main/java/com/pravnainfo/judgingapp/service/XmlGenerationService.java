@@ -8,9 +8,7 @@ import com.pravnainfo.judgingapp.entity.Verdict;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class XmlGenerationService {
@@ -30,12 +28,12 @@ public class XmlGenerationService {
                 ? String.join("; ", verdict.getAccusations())
                 : "";
 
-        String prompt = buildSmartPrompt(verdict, examples, defendantNamesStr, accusationsStr);
+        String prompt = buildCreativePrompt(verdict, examples, defendantNamesStr, accusationsStr);
 
         ChatCompletionCreateParams params = ChatCompletionCreateParams.builder()
                 .model("gpt-4o")
                 .addSystemMessage(prompt)
-                .temperature(0.7)
+                .temperature(0.4)
                 .build();
 
         ChatCompletion response = client.chat().completions().create(params);
@@ -45,31 +43,30 @@ public class XmlGenerationService {
         return cleanXmlResponse(result);
     }
 
-    private String buildSmartPrompt(Verdict verdict, List<String> examples,
-                                    String defendantNamesStr, String accusationsStr) {
+    private String buildCreativePrompt(Verdict verdict, List<String> examples,
+                                       String defendantNamesStr, String accusationsStr) {
         return """
-            You are a legal XML specialist that generates strictly factual Akoma Ntoso XML for legal verdicts.
+            You are an expert legal document drafter specializing in Akoma Ntoso XML for Montenegrin court verdicts. Your task is to generate a precise, legally compliant XML document that is engaging, natural, and varied in its narrative style, using Montenegrin legal terminology, while strictly adhering to the provided case data.
 
             CRITICAL CONSTRAINTS:
-            1. USE ONLY THE PROVIDED DATA - DO NOT INVENT ANY INFORMATION
-            2. Never add things unless explicitly provided
-            3. Do not infer relationships between fields (e.g., valueOfStolenItems ≠ punishment amount)
-            4. Stick strictly to the provided field meanings
-            5. You have to estimate the punishment amount yourself
-            
-            FIELD USAGE GUIDE:
-            - appliedProvisions: Use exactly as provided for legal references
-            - Boolean flags (isMovableProperty, isTaken, etc.): Use for factual circumstances only
+            1. USE ONLY THE PROVIDED DATA - DO NOT INVENT ANY INFORMATION.
+            2. Never infer or add details (e.g., relationships between fields like valueOfStolenItems and punishment amount).
+            3. Use provided field values exactly as given (e.g., appliedProvisions, monetaryPenalty, prisonPenalty).
+            4. If monetaryPenalty or prisonPenalty are provided, use them as the exact punishment amounts in the judgment. If not provided, estimate penalties within the legal range of the accusation (e.g., čl. 239 st. 1: fine or up to 3 years; čl. 240 st. 1: 1–7 years; čl. 241 st. 4: 2–10 years).
+            5. Boolean flags (isMovableProperty, isTaken, etc.) describe factual circumstances only.
+
+            STYLE GUIDELINES:
+            - Craft natural, varied, and contextually rich narrative text using formal Montenegrin legal language.
+            - Ensure the narrative reflects the case's context (e.g., theft, aggravated theft, robbery) and aligns with the shortDescription.
+            - Use varied sentence structures to describe the act, avoiding repetitive phrasing, while keeping the tone authoritative and precise.
+            - Include all relevant legal references (appliedProvisions, accusations) in the appropriate XML elements.
+            - Format dates as DD.MM.YYYY for Montenegrin conventions.
 
             STRUCTURE RULES:
-            - Include only elements that have actual data
-            - Maintain Akoma Ntoso schema compliance
-            = Format sentences to make sense in line with an actual judgement, be creative here.
+            - Generate valid Akoma Ntoso XML compliant with the schema.
             
-            Examples of valid structure:
-            """ + String.join("\n\n", examples) + """
-
-            Now generate Akoma Ntoso XML for this exact case:
+            EXAMPLES OF VALID STRUCTURE:
+            %s
 
             CASE DATA (USE ONLY THIS):
             - caseId: %s
@@ -85,12 +82,14 @@ public class XmlGenerationService {
             - judgment: %s
             - appliedProvisions: %s
             - accusations: %s
-            - factualCircumstances: [isMovableProperty: %s, isTaken: %s, intentToAppropriate: %s, valueOfStolenItems: %s, isCulturalOrNaturalGood: %s, breakingAndEntering: %s, particularlyDangerousOrBrazen: %s, exploitingHelplessness: %s, duringDisaster: %s, numberOfPerpetrators: %s, isArmed: %s, useOfForceOrThreat: %s, caughtInTheAct: %s, causedSevereInjury: %s, deathCaused: %s, attemptedCrime: %s]
+            - factualCircumstances: [isMovableProperty: %s, isTaken: %s, intentToAppropriate: %s, valueOfStolenItems: %s, breakingAndEntering: %s, useOfForceOrThreat: %s, caughtInTheAct: %s, causedSevereInjury: %s, deathCaused: %s]
+            - monetaryPenalty: %s
+            - prisonPenalty: %s
             - xmlFileName: %s
 
-            REMEMBER: Only include what's explicitly provided. No invented data.
-            Output only the valid Akoma Ntoso XML without explanations.
+            OUTPUT: Generate only the Akoma Ntoso XML without explanations or additional text.
             """.formatted(
+                String.join("\n\n", examples),
                 safeString(verdict.getCaseId()),
                 safeString(verdict.getCourt()),
                 safeString(verdict.getCaseNumber()),
@@ -108,18 +107,13 @@ public class XmlGenerationService {
                 safeBoolean(verdict.getIsTaken(), false),
                 safeBoolean(verdict.getIntentToAppropriate(), false),
                 safeDouble(verdict.getValueOfStolenItems(), 0.0),
-                safeBoolean(verdict.getIsCulturalOrNaturalGood(), false),
                 safeBoolean(verdict.getBreakingAndEntering(), false),
-                safeBoolean(verdict.getParticularlyDangerousOrBrazen(), false),
-                safeBoolean(verdict.getExploitingHelplessness(), false),
-                safeBoolean(verdict.getDuringDisaster(), false),
-                safeInteger(verdict.getNumberOfPerpetrators(), 1),
-                safeBoolean(verdict.getIsArmed(), false),
                 safeBoolean(verdict.getUseOfForceOrThreat(), false),
                 safeBoolean(verdict.getCaughtInTheAct(), false),
                 safeBoolean(verdict.getCausedSevereInjury(), false),
                 safeBoolean(verdict.getDeathCaused(), false),
-                safeBoolean(verdict.getAttemptedCrime(), false),
+                safeDouble(verdict.getMonetaryPenalty()),
+                safeDouble(verdict.getPrisonPenalty()),
                 safeString(verdict.getXmlFileName())
         );
     }
@@ -129,11 +123,9 @@ public class XmlGenerationService {
             throw new IllegalStateException("AI returned empty response");
         }
 
-        // Remove code blocks if present
         result = result.replaceFirst("^```xml\\s*", "");
         result = result.replaceFirst("```$", "");
 
-        // Basic validation
         if (!result.trim().startsWith("<") || !result.contains("akomaNtoso")) {
             throw new IllegalStateException("AI returned invalid XML format");
         }
@@ -149,11 +141,11 @@ public class XmlGenerationService {
         return value != null ? String.valueOf(value) : String.valueOf(defaultValue);
     }
 
-    private String safeInteger(Integer value, int defaultValue) {
+    private String safeDouble(Double value, double defaultValue) {
         return value != null ? String.valueOf(value) : String.valueOf(defaultValue);
     }
 
-    private String safeDouble(Double value, double defaultValue) {
-        return value != null ? String.valueOf(value) : String.valueOf(defaultValue);
+    private String safeDouble(Double value) {
+        return value != null ? String.valueOf(value) : "";
     }
 }

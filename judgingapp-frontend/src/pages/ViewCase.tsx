@@ -6,8 +6,9 @@ import {
   CircularProgress
 } from '@mui/material';
 import axios from 'axios';
-import type { Verdict, SimilarVerdict } from './types';
+import { type Verdict, type SimilarVerdict, verdictTranslations } from './types';
 import JudgmentViewer from '../components/JudgmentViewer';
+
 
 export default function ViewCase() {
   const { id } = useParams<{ id: string }>();
@@ -32,7 +33,6 @@ export default function ViewCase() {
           console.error(err);
           setSnackbar({ open: true, message: 'Greška pri dohvatanju podataka o slučaju', severity: 'error' });
         });
-
       // Fetch XML content
       axios.get(`/api/verdicts/${id}/xml`, { responseType: 'text' })
         .then(res => setXmlString(res.data))
@@ -88,19 +88,17 @@ export default function ViewCase() {
         <Typography variant="h4" fontWeight="bold" color="primary.main">
           Slučaj: {caseData.caseId}
         </Typography>
-        <Button 
-          variant="contained" 
-          color="primary" 
+        <Button
+          variant="contained"
+          color="primary"
           onClick={handleShowSimilar}
           sx={{ textTransform: 'none', fontSize: '1.1rem' }}
         >
           Prikaz sličnih slučajeva
         </Button>
       </Stack>
-
       {/* Judgment Viewer */}
       <JudgmentViewer xmlString={xmlString} />
-
       {/* Metadata Panel */}
       <Button
         variant="contained"
@@ -125,72 +123,63 @@ export default function ViewCase() {
             <Typography><b>Imena optuženih:</b> {caseData.defendantNames.join(', ')}</Typography>
             <Typography><b>Žrtva:</b> {caseData.victim}</Typography>
             <Typography><b>Kratak opis:</b> {caseData.shortDescription}</Typography>
-            <Typography><b>Presuda:</b> {caseData.judgment || 'Nema presude'}</Typography>
+            <Typography><b>Presuda:</b> {verdictTranslations[caseData.judgment || 'NONE']}</Typography>
             <Typography><b>Primijenjene odredbe:</b> {caseData.appliedProvisions}</Typography>
             <Typography><b>Optužbe:</b> {caseData.accusations.join(', ')}</Typography>
             <Typography><b>Vrsta stvari (tuđa i pokretna):</b> {caseData.isMovableProperty ? 'Da' : 'Ne'}</Typography>
             <Typography><b>Radnja oduzimanja:</b> {caseData.isTaken ? 'Da' : 'Ne'}</Typography>
             <Typography><b>Namjera prisvajanja:</b> {caseData.intentToAppropriate ? 'Da' : 'Ne'}</Typography>
             <Typography><b>Vrijednost ukradenih stvari (€):</b> {caseData.valueOfStolenItems}</Typography>
-            <Typography><b>Status kulturnog ili prirodnog dobra:</b> {caseData.isCulturalOrNaturalGood ? 'Da' : 'Ne'}</Typography>
             <Typography><b>Provala:</b> {caseData.breakingAndEntering ? 'Da' : 'Ne'}</Typography>
-            <Typography><b>Posebno opasan ili drzak:</b> {caseData.particularlyDangerousOrBrazen ? 'Da' : 'Ne'}</Typography>
-            <Typography><b>Iskorištavanje bespomoćnosti:</b> {caseData.exploitingHelplessness ? 'Da' : 'Ne'}</Typography>
-            <Typography><b>Tokom katastrofe:</b> {caseData.duringDisaster ? 'Da' : 'Ne'}</Typography>
-            <Typography><b>Broj izvršitelja:</b> {caseData.numberOfPerpetrators}</Typography>
-            <Typography><b>Prisustvo oružja:</b> {caseData.isArmed ? 'Da' : 'Ne'}</Typography>
             <Typography><b>Upotreba sile ili prijetnje:</b> {caseData.useOfForceOrThreat ? 'Da' : 'Ne'}</Typography>
             <Typography><b>Zatečenost na djelu:</b> {caseData.caughtInTheAct ? 'Da' : 'Ne'}</Typography>
-            <Typography><b>Mala imovinska korist:</b> {caseData.intentForSmallGain ? 'Da' : 'Ne'}</Typography>
             <Typography><b>Nanesene teške povrede:</b> {caseData.causedSevereInjury ? 'Da' : 'Ne'}</Typography>
             <Typography><b>Smrt lica:</b> {caseData.deathCaused ? 'Da' : 'Ne'}</Typography>
-            <Typography><b>Pokušaj djela:</b> {caseData.attemptedCrime ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Novčana kazna (€):</b> {caseData.monetaryPenalty || 'Nema'}</Typography>
+            <Typography><b>Godine zatvora:</b> {caseData.prisonPenalty || 'Nema'}</Typography>
           </Stack>
         </Paper>
       </Collapse>
-
       {/* Similar Cases Modal */}
       <Dialog open={openModal} onClose={handleCloseModal} maxWidth="md" fullWidth sx={{ '& .MuiDialog-paper': { borderRadius: 2 } }}>
         <DialogTitle sx={{ bgcolor: 'primary.main', color: 'white', fontWeight: 'bold' }}>
           Slični slučajevi za {caseData.caseId}
         </DialogTitle>
         <DialogContent sx={{ p: 3 }}>
-          {similarCases.length > 0 ? (
-            <TableContainer component={Paper} sx={{ mt: 2, boxShadow: 2 }}>
-              <Table>
-                <TableHead>
-                  <TableRow sx={{ bgcolor: 'grey.100' }}>
-                    <TableCell sx={{ fontWeight: 'bold' }}>ID presude</TableCell>
-                    <TableCell sx={{ fontWeight: 'bold' }}>Sličnost</TableCell>
-                    <TableCell align="right" sx={{ fontWeight: 'bold' }}>Akcije</TableCell>
+          <TableContainer component={Paper} sx={{ boxShadow: 2 }}>
+            <Table>
+              <TableHead>
+                <TableRow sx={{ bgcolor: 'grey.100' }}>
+                  <TableCell sx={{ fontWeight: 'bold' }}>ID presude</TableCell>
+                  <TableCell sx={{ fontWeight: 'bold' }}>Sličnost</TableCell>
+                  <TableCell sx={{ fontWeight: 'bold' }}>Presuda</TableCell>
+                  <TableCell align="right" sx={{ fontWeight: 'bold' }}>Akcije</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {similarCases.map((sc, index) => (
+                  <TableRow key={index} sx={{ '&:hover': { bgcolor: 'grey.50' } }}>
+                    <TableCell>{sc.caseDescription.caseId}</TableCell>
+                    <TableCell>{(sc.similarity * 100).toFixed(2)}%</TableCell>
+                    <TableCell>{verdictTranslations[sc.caseDescription.judgment || 'NONE']}</TableCell>
+                    <TableCell align="right">
+                      <Button
+                        variant="outlined"
+                        color="secondary"
+                        onClick={() => {
+                          navigate(`/view/${sc.caseDescription.dbId}`);
+                          setOpenModal(false);
+                        }}
+                        sx={{ textTransform: 'none', mr: 1 }}
+                      >
+                        Pogledaj
+                      </Button>
+                    </TableCell>
                   </TableRow>
-                </TableHead>
-                <TableBody>
-                  {similarCases.map((sc, index) => (
-                    <TableRow key={index} sx={{ '&:hover': { bgcolor: 'grey.50' } }}>
-                      <TableCell>{sc.caseDescription.caseId}</TableCell>
-                      <TableCell>{(sc.similarity * 100).toFixed(2)}%</TableCell>
-                      <TableCell align="right">
-                        <Button
-                          variant="outlined"
-                          color="secondary"
-                          onClick={() => {
-                            navigate(`/view/${sc.caseDescription.dbId}`);
-                            setOpenModal(false);
-                          }}
-                          sx={{ textTransform: 'none' }}
-                        >
-                          Pogledaj
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          ) : (
-            <Typography sx={{ mt: 2, fontSize: '1.1rem' }}>Nema pronađenih sličnih slučajeva.</Typography>
-          )}
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
           <Button
             onClick={handleCloseModal}
             variant="contained"
@@ -202,7 +191,6 @@ export default function ViewCase() {
           </Button>
         </DialogContent>
       </Dialog>
-
       <Snackbar
         open={snackbar.open}
         autoHideDuration={6000}

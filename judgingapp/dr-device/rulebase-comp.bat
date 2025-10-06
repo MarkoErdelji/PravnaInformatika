@@ -1,0 +1,5 @@
+(import-rdf )
+(import-rdf-files facts.rdf)
+(load-compiled-dr-device rulebase.clp)
+(go-dr-device)
+(dr-device_export_rdf rulebase.ruleml export.rdf proof.ruleml is_theft_lv1 is_theft_lv2 is_theft_lv3 is_theft_lv4 is_theft_lv5 is_theft_lv6 min_imprisonment max_imprisonment monetary_penalty)

@@ -3,7 +3,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import type { Verdict } from './types';
+import { verdictTranslations, type Verdict } from './types';
 
 function Home() {
   const [cases, setCases] = useState<Verdict[]>([]);
@@ -40,7 +40,7 @@ function Home() {
               <TableRow key={c.id} sx={{ '&:hover': { bgcolor: 'grey.50' } }}>
                 <TableCell>{c.caseId}</TableCell>
                 <TableCell>{c.court}</TableCell>
-                <TableCell>{c.judgment || 'Nema presude'}</TableCell>
+                <TableCell>{verdictTranslations[c.judgment || 'NONE']}</TableCell>
                 <TableCell>
                   <Button component={Link} to={`/view/${c.id}`} variant="outlined" color="secondary" sx={{ textTransform: 'none' }}>
                     Pogledaj

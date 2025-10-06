@@ -67,19 +67,14 @@ public class DataLoader implements CommandLineRunner {
                         .isMovableProperty(parseBoolean(getSafeString(record, "IS MOVABLE PROPERTY")))
                         .isTaken(parseBoolean(getSafeString(record, "IS TAKEN")))
                         .intentToAppropriate(parseBoolean(getSafeString(record, "INTENT TO APPROPRIATE")))
-                        .valueOfStolenItems(parseDouble(getSafeString(record, "VALUE OF STOLEN ITEMS"), 0.0))
-                        .isCulturalOrNaturalGood(parseBoolean(getSafeString(record, "IS CULTURAL OR NATURAL GOOD")))
+                        .valueOfStolenItems(parseDouble(getSafeString(record, "VALUE OF STOLEN ITEMS")))
                         .breakingAndEntering(parseBoolean(getSafeString(record, "BREAKING AND ENTERING")))
-                        .particularlyDangerousOrBrazen(parseBoolean(getSafeString(record, "PARTICULARLY DANGEROUS OR BRAZEN")))
-                        .exploitingHelplessness(parseBoolean(getSafeString(record, "EXPLOITING HELPLESSNESS")))
-                        .duringDisaster(parseBoolean(getSafeString(record, "DURING DISASTER")))
-                        .isArmed(parseBoolean(getSafeString(record, "IS ARMED")))
                         .useOfForceOrThreat(parseBoolean(getSafeString(record, "USE OF FORCE OR THREAT")))
                         .caughtInTheAct(parseBoolean(getSafeString(record, "CAUGHT IN THE ACT")))
                         .causedSevereInjury(parseBoolean(getSafeString(record, "CAUSED SEVERE INJURY")))
                         .deathCaused(parseBoolean(getSafeString(record, "DEATH CAUSED")))
-                        .attemptedCrime(parseBoolean(getSafeString(record, "ATTEMPTED CRIME")))
-                        .numberOfPerpetrators(parseInteger(getSafeString(record, "NUMBER OF PERPETRATORS"), 1))
+                        .monetaryPenalty(parseDouble(getSafeString(record, "MONETARY PENALTY")))
+                        .prisonPenalty(parseDouble(getSafeString(record, "PRISON YEARS")))
                         .xmlFileName(sanitizeCaseId(getSafeString(record, "ID")) + ".xml")
                         .build();
 
@@ -113,11 +108,11 @@ public class DataLoader implements CommandLineRunner {
         }
     }
 
-    private Double parseDouble(String value, double defaultValue) {
+    private Double parseDouble(String value) {
         try {
-            return value != null && !value.isEmpty() ? Double.parseDouble(value) : defaultValue;
+            return value != null && !value.isEmpty() ? Double.parseDouble(value) : null;
         } catch (NumberFormatException e) {
-            return defaultValue;
+            return null;
         }
     }
 

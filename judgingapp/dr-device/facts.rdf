@@ -3,25 +3,18 @@
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
          xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
          xmlns:lc="http://ftn.uns.ac.rs/legal-case#">
-  <!-- Define the Case class -->
   <rdfs:Class rdf:about="http://ftn.uns.ac.rs/legal-case#Case"/>
   <lc:case rdf:about="http://ftn.uns.ac.rs/legal-case#theft_case">
-    <lc:defendant>Marko Erdelji</lc:defendant>
+    <lc:defendant>Ivan Stanković</lc:defendant>
     <lc:is_movable_property>true</lc:is_movable_property>
     <lc:is_taken>true</lc:is_taken>
     <lc:intent_to_appropriate>true</lc:intent_to_appropriate>
-    <lc:is_cultural_or_natural_good>false</lc:is_cultural_or_natural_good>
     <lc:breaking_and_entering>true</lc:breaking_and_entering>
-    <lc:particularly_dangerous_or_brazen>false</lc:particularly_dangerous_or_brazen>
-    <lc:exploiting_helplessness>false</lc:exploiting_helplessness>
-    <lc:during_disaster>false</lc:during_disaster>
-    <lc:is_armed >false</lc:is_armed>
-    <lc:use_of_force_or_threat>false</lc:use_of_force_or_threat>
-    <lc:caught_in_the_act>false</lc:caught_in_the_act>
-    <lc:caused_severe_injury>false</lc:caused_severe_injury>
+    <lc:use_of_force_or_threat>true</lc:use_of_force_or_threat>
+    <lc:caught_in_the_act>true</lc:caught_in_the_act>
+    <lc:caused_severe_injury>true</lc:caused_severe_injury>
     <lc:death_caused>false</lc:death_caused>
-    <lc:attempted_crime>false</lc:attempted_crime>
-    <lc:number_of_perpetrators rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">135</lc:number_of_perpetrators>
-     <lc:value_of_stolen_items rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</lc:value_of_stolen_items>
+    <lc:case>ROBBERY-2025-001</lc:case>
+    <lc:value_of_stolen_items rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1500</lc:value_of_stolen_items>
   </lc:case>
 </rdf:RDF>

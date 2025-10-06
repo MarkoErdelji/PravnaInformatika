@@ -1,0 +1,98 @@
+2025-10-06 19:47:37,280 - INFO - Successfully extracted metadata and text from K125-2021.xml
+2025-10-06 19:47:46,198 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:47:46,230 - INFO - Successfully processed K125-2021.xml
+2025-10-06 19:47:46,232 - INFO - Successfully extracted metadata and text from K175-2014.xml
+2025-10-06 19:47:48,628 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:47:48,636 - INFO - Successfully processed K175-2014.xml
+2025-10-06 19:47:48,638 - INFO - Successfully extracted metadata and text from K210-2023.xml
+2025-10-06 19:47:58,639 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:47:58,653 - INFO - Successfully processed K210-2023.xml
+2025-10-06 19:47:58,655 - INFO - Successfully extracted metadata and text from K224-2021.xml
+2025-10-06 19:48:02,238 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:48:02,241 - INFO - Successfully processed K224-2021.xml
+2025-10-06 19:48:02,243 - INFO - Successfully extracted metadata and text from K242-2019.xml
+2025-10-06 19:48:05,903 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:48:05,921 - INFO - Successfully processed K242-2019.xml
+2025-10-06 19:48:05,925 - INFO - Successfully extracted metadata and text from K276-2021.xml
+2025-10-06 19:48:09,635 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:48:09,663 - INFO - Successfully processed K276-2021.xml
+2025-10-06 19:48:09,666 - INFO - Successfully extracted metadata and text from K30-2017.xml
+2025-10-06 19:48:12,994 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:48:13,011 - INFO - Successfully processed K30-2017.xml
+2025-10-06 19:48:13,014 - INFO - Successfully extracted metadata and text from K300-2015.xml
+2025-10-06 19:48:15,436 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:48:15,452 - INFO - Successfully processed K300-2015.xml
+2025-10-06 19:48:15,455 - INFO - Successfully extracted metadata and text from K352-2015.xml
+2025-10-06 19:48:18,298 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:48:18,299 - INFO - Successfully processed K352-2015.xml
+2025-10-06 19:48:18,300 - INFO - Successfully extracted metadata and text from K418-2011.xml
+2025-10-06 19:48:21,471 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:48:21,471 - INFO - Successfully processed K418-2011.xml
+2025-10-06 19:48:21,474 - INFO - Successfully extracted metadata and text from K457-2012.xml
+2025-10-06 19:48:25,069 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:48:25,089 - INFO - Successfully processed K457-2012.xml
+2025-10-06 19:48:25,091 - INFO - Successfully extracted metadata and text from K6-2018.xml
+2025-10-06 19:48:29,362 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:48:29,389 - INFO - Successfully processed K6-2018.xml
+2025-10-06 19:48:29,392 - INFO - Successfully extracted metadata and text from K60-2019.xml
+2025-10-06 19:48:33,030 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:48:33,048 - INFO - Successfully processed K60-2019.xml
+2025-10-06 19:48:33,051 - INFO - Successfully extracted metadata and text from K64-2022.xml
+2025-10-06 19:48:37,639 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:48:37,671 - INFO - Successfully processed K64-2022.xml
+2025-10-06 19:48:37,673 - INFO - Successfully extracted metadata and text from K83-2021.xml
+2025-10-06 19:48:45,946 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:48:45,967 - INFO - Successfully processed K83-2021.xml
+2025-10-06 19:48:45,973 - INFO - Successfully extracted metadata and text from K86-2020.xml
+2025-10-06 19:48:48,918 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 19:48:48,937 - INFO - Successfully processed K86-2020.xml
+2025-10-06 19:48:48,937 - INFO - Processing complete. Processed: 16, Skipped: 0
+2025-10-06 20:10:29,447 - INFO - Successfully extracted metadata and text from K125-2021.xml
+2025-10-06 20:10:37,571 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:10:37,584 - INFO - Successfully processed K125-2021.xml
+2025-10-06 20:10:37,586 - INFO - Successfully extracted metadata and text from K175-2014.xml
+2025-10-06 20:10:42,038 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:10:42,039 - INFO - Successfully processed K175-2014.xml
+2025-10-06 20:10:42,040 - INFO - Successfully extracted metadata and text from K210-2023.xml
+2025-10-06 20:10:44,952 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:10:44,953 - INFO - Successfully processed K210-2023.xml
+2025-10-06 20:10:44,955 - INFO - Successfully extracted metadata and text from K224-2021.xml
+2025-10-06 20:10:48,005 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:10:48,027 - INFO - Successfully processed K224-2021.xml
+2025-10-06 20:10:48,028 - INFO - Successfully extracted metadata and text from K242-2019.xml
+2025-10-06 20:10:51,262 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:10:51,277 - INFO - Successfully processed K242-2019.xml
+2025-10-06 20:10:51,278 - INFO - Successfully extracted metadata and text from K276-2021.xml
+2025-10-06 20:10:54,081 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:10:54,095 - INFO - Successfully processed K276-2021.xml
+2025-10-06 20:10:54,096 - INFO - Successfully extracted metadata and text from K30-2017.xml
+2025-10-06 20:10:56,166 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:10:56,176 - INFO - Successfully processed K30-2017.xml
+2025-10-06 20:10:56,178 - INFO - Successfully extracted metadata and text from K300-2015.xml
+2025-10-06 20:10:58,956 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:10:58,977 - INFO - Successfully processed K300-2015.xml
+2025-10-06 20:10:58,978 - INFO - Successfully extracted metadata and text from K352-2015.xml
+2025-10-06 20:11:02,153 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:11:02,176 - INFO - Successfully processed K352-2015.xml
+2025-10-06 20:11:02,177 - INFO - Successfully extracted metadata and text from K418-2011.xml
+2025-10-06 20:11:05,714 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:11:05,725 - INFO - Successfully processed K418-2011.xml
+2025-10-06 20:11:05,726 - INFO - Successfully extracted metadata and text from K457-2012.xml
+2025-10-06 20:11:08,333 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:11:08,346 - INFO - Successfully processed K457-2012.xml
+2025-10-06 20:11:08,347 - INFO - Successfully extracted metadata and text from K6-2018.xml
+2025-10-06 20:11:12,756 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:11:12,764 - INFO - Successfully processed K6-2018.xml
+2025-10-06 20:11:12,765 - INFO - Successfully extracted metadata and text from K60-2019.xml
+2025-10-06 20:11:15,231 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:11:15,245 - INFO - Successfully processed K60-2019.xml
+2025-10-06 20:11:15,247 - INFO - Successfully extracted metadata and text from K64-2022.xml
+2025-10-06 20:11:18,629 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:11:18,645 - INFO - Successfully processed K64-2022.xml
+2025-10-06 20:11:18,646 - INFO - Successfully extracted metadata and text from K83-2021.xml
+2025-10-06 20:11:27,888 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:11:27,889 - INFO - Successfully processed K83-2021.xml
+2025-10-06 20:11:27,890 - INFO - Successfully extracted metadata and text from K86-2020.xml
+2025-10-06 20:11:30,625 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 20:11:30,644 - INFO - Successfully processed K86-2020.xml
+2025-10-06 20:11:30,644 - INFO - Processing complete. Processed: 16, Skipped: 0

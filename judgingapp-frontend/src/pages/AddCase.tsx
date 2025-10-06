@@ -3,12 +3,12 @@ import {
   Box, Button, TextField, Typography, Select, MenuItem, FormControl, InputLabel,
   Dialog, DialogTitle, DialogContent, Table, TableContainer, TableHead, TableRow,
   TableCell, TableBody, Paper, Autocomplete, Chip, Divider, Snackbar, Alert,
-  CircularProgress
+  CircularProgress, Stack
 } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import type { Verdict, ReasonResponse } from './types';
+import { type Verdict, type ReasonResponse, verdictTranslations, accusationTranslations } from './types';
 
 function AddCase() {
   const navigate = useNavigate();
@@ -32,37 +32,32 @@ function AddCase() {
       isTaken: false,
       intentToAppropriate: false,
       valueOfStolenItems: 0,
-      isCulturalOrNaturalGood: false,
       breakingAndEntering: false,
-      particularlyDangerousOrBrazen: false,
-      exploitingHelplessness: false,
-      duringDisaster: false,
-      numberOfPerpetrators: 1,
-      isArmed: false,
       useOfForceOrThreat: false,
       caughtInTheAct: false,
       causedSevereInjury: false,
       deathCaused: false,
-      attemptedCrime: false,
+      monetaryPenalty: null,
+      prisonPenalty: null,
     },
   });
-
   const [reasonResult, setReasonResult] = useState<ReasonResponse | null>(null);
   const [openModal, setOpenModal] = useState(false);
+  const [metadataModalOpen, setMetadataModalOpen] = useState(false);
+  const [selectedCase, setSelectedCase] = useState<Verdict | null>(null);
   const [accusationOptions, setAccusationOptions] = useState<string[]>([]);
   const [selectedVerdict, setSelectedVerdict] = useState<string | null>(null);
+  const [monetaryPenalty, setMonetaryPenalty] = useState<number | null>(null);
+  const [prisonPenalty, setPrisonPenalty] = useState<number | null>(null);
   const [snackbar, setSnackbar] = useState<{ open: boolean, message: string, severity: 'success' | 'error' }>({
     open: false,
     message: '',
     severity: 'success',
   });
-
   const accusationsWatch = watch('accusations');
   const isTakenWatch = watch('isTaken');
   const caughtInTheActWatch = watch('caughtInTheAct');
   const deathCausedWatch = watch('deathCaused');
-  const valueOfStolenItemsWatch = watch('valueOfStolenItems');
-  const numberOfPerpetratorsWatch = watch('numberOfPerpetrators');
 
   useEffect(() => {
     axios.get<string[]>('/api/cases/accusations')
@@ -101,26 +96,6 @@ function AddCase() {
     }
   }, [accusationsWatch, caughtInTheActWatch, setValue]);
 
-
-  // Constraint: BrojUčinilaca >= 2 for Član 241(4)
-  useEffect(() => {
-    if (accusationsWatch.includes('čl. 241 st. 4') && numberOfPerpetratorsWatch < 2) {
-      setValue('numberOfPerpetrators', 2);
-      setSnackbar({ open: true, message: 'Član 241 st. 4 zahtijeva barem 2 izvršioca', severity: 'error' });
-    }
-  }, [accusationsWatch, numberOfPerpetratorsWatch, setValue]);
-
-  // Constraint: NačinIzvršenja for Član 240
-  useEffect(() => {
-    if (accusationsWatch.some(acc => acc.includes('240'))) {
-      if (!watch('breakingAndEntering') && !watch('particularlyDangerousOrBrazen') && 
-          !watch('exploitingHelplessness') && !watch('duringDisaster')) {
-        setValue('breakingAndEntering', true);
-        setSnackbar({ open: true, message: 'Član 240 zahtijeva barem jedan kvalifikujući način izvršenja', severity: 'error' });
-      }
-    }
-  }, [accusationsWatch, setValue]);
-
   const onSubmit = (data: Verdict) => {
     const caseDescription = {
       caseId: data.caseId,
@@ -135,18 +110,13 @@ function AddCase() {
       isTaken: data.isTaken,
       intentToAppropriate: data.intentToAppropriate,
       valueOfStolenItems: data.valueOfStolenItems,
-      isCulturalOrNaturalGood: data.isCulturalOrNaturalGood,
       breakingAndEntering: data.breakingAndEntering,
-      particularlyDangerousOrBrazen: data.particularlyDangerousOrBrazen,
-      exploitingHelplessness: data.exploitingHelplessness,
-      duringDisaster: data.duringDisaster,
-      numberOfPerpetrators: data.numberOfPerpetrators,
-      isArmed: data.isArmed,
       useOfForceOrThreat: data.useOfForceOrThreat,
       caughtInTheAct: data.caughtInTheAct,
       causedSevereInjury: data.causedSevereInjury,
       deathCaused: data.deathCaused,
-      attemptedCrime: data.attemptedCrime,
+      monetaryPenalty: null,
+      prisonPenalty: null,
     };
     axios.post<ReasonResponse>('/api/cases/reason', caseDescription)
       .then(res => {
@@ -166,6 +136,8 @@ function AddCase() {
       const caseData: Verdict = {
         ...formData,
         judgment: selectedVerdict,
+        monetaryPenalty: shouldShowMonetary(selectedVerdict) ? monetaryPenalty : null,
+        prisonPenalty: shouldShowPrison(selectedVerdict) ? prisonPenalty : null,
       };
       axios.post('/api/cases/add', caseData)
         .then(res => {
@@ -173,6 +145,8 @@ function AddCase() {
           setOpenModal(false);
           reset();
           setSelectedVerdict(null);
+          setMonetaryPenalty(null);
+          setPrisonPenalty(null);
         })
         .catch(err => {
           console.error(err);
@@ -185,11 +159,42 @@ function AddCase() {
     setOpenModal(false);
     setReasonResult(null);
     setSelectedVerdict(null);
+    setMonetaryPenalty(null);
+    setPrisonPenalty(null);
+  };
+
+  const handleMetadataOpen = (caseId: string) => {
+    axios.get<Verdict>(`/api/cases/${caseId}`)
+      .then(res => {
+        setSelectedCase(res.data);
+        setMetadataModalOpen(true);
+      })
+      .catch(err => {
+        console.error(err);
+        setSnackbar({ open: true, message: 'Greška pri dohvatanju metapodataka', severity: 'error' });
+      });
+  };
+
+  const handleMetadataClose = () => {
+    setMetadataModalOpen(false);
+    setSelectedCase(null);
   };
 
   const handleSnackbarClose = () => {
     setSnackbar({ ...snackbar, open: false });
   };
+
+  const shouldShowMonetary = (verdict: string) => ['FINE', 'FINE_AND_PRISON'].includes(verdict);
+  const shouldShowPrison = (verdict: string) => ['PRISON', 'FINE_AND_PRISON'].includes(verdict);
+
+  useEffect(() => {
+    if (selectedVerdict && !shouldShowMonetary(selectedVerdict)) {
+      setMonetaryPenalty(null);
+    }
+    if (selectedVerdict && !shouldShowPrison(selectedVerdict)) {
+      setPrisonPenalty(null);
+    }
+  }, [selectedVerdict]);
 
   return (
     <Box sx={{ maxWidth: 1200, mx: 'auto', my: 4, p: 3, bgcolor: 'background.paper', borderRadius: 2, boxShadow: 3 }}>
@@ -197,7 +202,6 @@ function AddCase() {
         Dodaj novi slučaj
       </Typography>
       <Divider sx={{ mb: 3 }} />
-
       <form onSubmit={handleSubmit(onSubmit)}>
         <Typography variant="h6" sx={{ mt: 2, mb: 1, fontWeight: 'medium' }}>Identifikacija slučaja</Typography>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
@@ -240,7 +244,6 @@ function AddCase() {
             variant="outlined"
           />
         </Box>
-
         <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Učesnici</Typography>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
           <TextField
@@ -285,7 +288,7 @@ function AddCase() {
               <TextField
                 {...params}
                 label="Imena optuženih"
-                helperText={errors.defendantNames?.message || 'Unesite imena optuženih, odvojena zarezima'}
+                helperText={errors.defendantNames?.message || 'Unesite jedno ime po unosu i pritisnite Enter za dodavanje'}
                 fullWidth
                 margin="normal"
                 error={!!errors.defendantNames}
@@ -303,7 +306,6 @@ function AddCase() {
             variant="outlined"
           />
         </Box>
-
         <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Detalji slučaja</Typography>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
           <Autocomplete
@@ -356,19 +358,15 @@ function AddCase() {
               rules={{ required: 'Tip presude je obavezan' }}
               render={({ field }) => (
                 <Select {...field} label="Tip presude" value={field.value || ''}>
-                  <MenuItem value="ACQUITTAL">Oslobađajuća</MenuItem>
-                  <MenuItem value="FINE">Novčana kazna</MenuItem>
-                  <MenuItem value="PRISON">Zatvor</MenuItem>
-                  <MenuItem value="SUSPENDED">Uslovna</MenuItem>
-                  <MenuItem value="FINE_AND_PRISON">Novčana kazna i zatvor</MenuItem>
-                  <MenuItem value="DISMISSAL">Odbacivanje</MenuItem>
+                  {Object.entries(verdictTranslations).map(([key, value]) => (
+                    key !== 'NONE' && <MenuItem key={key} value={key}>{value}</MenuItem>
+                  ))}
                 </Select>
               )}
             />
             {errors.judgment && <Typography color="error">{errors.judgment.message}</Typography>}
           </FormControl>
         </Box>
-
         <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Osnovne činjenice</Typography>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
           <FormControl fullWidth margin="normal">
@@ -430,9 +428,9 @@ function AddCase() {
           <TextField
             label="Vrijednost ukradenih stvari (€)"
             type="number"
-            {...register('valueOfStolenItems', { 
-              valueAsNumber: true, 
-              min: { value: 0, message: 'Vrijednost mora biti nenegativna' } 
+            {...register('valueOfStolenItems', {
+              valueAsNumber: true,
+              min: { value: 0, message: 'Vrijednost mora biti nenegativna' }
             })}
             fullWidth
             margin="normal"
@@ -440,26 +438,7 @@ function AddCase() {
             helperText={errors.valueOfStolenItems?.message}
             variant="outlined"
           />
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Status kulturnog ili prirodnog dobra</InputLabel>
-            <Controller
-              name="isCulturalOrNaturalGood"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  label="Status kulturnog ili prirodnog dobra"
-                  onChange={(e) => field.onChange(e.target.value === 'true')}
-                  value={field.value ? 'true' : 'false'}
-                >
-                  <MenuItem value="true">Da</MenuItem>
-                  <MenuItem value="false">Ne</MenuItem>
-                </Select>
-              )}
-            />
-          </FormControl>
         </Box>
-
         <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Kvalifikujuće činjenice</Typography>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
           <FormControl fullWidth margin="normal">
@@ -471,91 +450,6 @@ function AddCase() {
                 <Select
                   {...field}
                   label="Provala"
-                  onChange={(e) => field.onChange(e.target.value === 'true')}
-                  value={field.value ? 'true' : 'false'}
-                >
-                  <MenuItem value="true">Da</MenuItem>
-                  <MenuItem value="false">Ne</MenuItem>
-                </Select>
-              )}
-            />
-          </FormControl>
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Posebno opasan ili drzak</InputLabel>
-            <Controller
-              name="particularlyDangerousOrBrazen"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  label="Posebno opasan ili drzak"
-                  onChange={(e) => field.onChange(e.target.value === 'true')}
-                  value={field.value ? 'true' : 'false'}
-                >
-                  <MenuItem value="true">Da</MenuItem>
-                  <MenuItem value="false">Ne</MenuItem>
-                </Select>
-              )}
-            />
-          </FormControl>
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Iskorištavanje bespomoćnosti</InputLabel>
-            <Controller
-              name="exploitingHelplessness"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  label="Iskorištavanje bespomoćnosti"
-                  onChange={(e) => field.onChange(e.target.value === 'true')}
-                  value={field.value ? 'true' : 'false'}
-                >
-                  <MenuItem value="true">Da</MenuItem>
-                  <MenuItem value="false">Ne</MenuItem>
-                </Select>
-              )}
-            />
-          </FormControl>
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Tokom katastrofe</InputLabel>
-            <Controller
-              name="duringDisaster"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  label="Tokom katastrofe"
-                  onChange={(e) => field.onChange(e.target.value === 'true')}
-                  value={field.value ? 'true' : 'false'}
-                >
-                  <MenuItem value="true">Da</MenuItem>
-                  <MenuItem value="false">Ne</MenuItem>
-                </Select>
-              )}
-            />
-          </FormControl>
-          <TextField
-            label="Broj izvršitelja"
-            type="number"
-            {...register('numberOfPerpetrators', { 
-              valueAsNumber: true, 
-              min: { value: 1, message: 'Broj izvršitelja mora biti barem 1' } 
-            })}
-            fullWidth
-            margin="normal"
-            error={!!errors.numberOfPerpetrators}
-            helperText={errors.numberOfPerpetrators?.message}
-            variant="outlined"
-          />
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Prisustvo oružja</InputLabel>
-            <Controller
-              name="isArmed"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  label="Prisustvo oružja"
                   onChange={(e) => field.onChange(e.target.value === 'true')}
                   value={field.value ? 'true' : 'false'}
                 >
@@ -603,7 +497,6 @@ function AddCase() {
             />
           </FormControl>
         </Box>
-
         <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Činjenice o posledicama</Typography>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
           <FormControl fullWidth margin="normal">
@@ -643,26 +536,7 @@ function AddCase() {
               )}
             />
           </FormControl>
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Pokušaj djela</InputLabel>
-            <Controller
-              name="attemptedCrime"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  label="Pokušaj djela"
-                  onChange={(e) => field.onChange(e.target.value === 'true')}
-                  value={field.value ? 'true' : 'false'}
-                >
-                  <MenuItem value="true">Da</MenuItem>
-                  <MenuItem value="false">Ne</MenuItem>
-                </Select>
-              )}
-            />
-          </FormControl>
         </Box>
-
         <Button
           type="submit"
           variant="contained"
@@ -673,7 +547,6 @@ function AddCase() {
           Obradi i dodaj slučaj
         </Button>
       </form>
-
       <Dialog open={openModal} onClose={handleCloseModal} maxWidth="md" fullWidth sx={{ '& .MuiDialog-paper': { borderRadius: 2 } }}>
         <DialogTitle sx={{ bgcolor: 'primary.main', color: 'white', fontWeight: 'bold' }}>
           Rezultati obrade
@@ -682,10 +555,19 @@ function AddCase() {
           {reasonResult ? (
             <>
               <Typography variant="h6" sx={{ mb: 2, fontWeight: 'medium' }}>
-                Unijeli ste: <strong>{reasonResult.caseDescription.judgment || 'Nema presude'}</strong>
+                Moj izbor: <strong>{verdictTranslations[reasonResult.caseDescription.judgment || 'NONE']}</strong>
               </Typography>
-              <Typography variant="h6" sx={{ mb: 3, fontWeight: 'medium' }}>
-                Predviđena presuda: <strong>{reasonResult.predictedVerdict}</strong>
+              <Typography variant="h6" sx={{ mb: 2, fontWeight: 'medium' }}>
+                Rasudjivanje po slučaju: <strong>{verdictTranslations[reasonResult.predictedVerdict]}</strong>
+              </Typography>
+              <Typography variant="h6" sx={{ mb: 2, fontWeight: 'medium' }}>
+                Rasudjivanje po pravilima: <strong>{verdictTranslations[reasonResult.drDeviceResults.judgment]}</strong>
+              </Typography>
+              <Typography variant="body1" sx={{ mb: 2 }}>
+                Kazna (po pravilima): {reasonResult.drDeviceResults.penalty}
+              </Typography>
+              <Typography variant="body1" sx={{ mb: 3 }}>
+                Optužba (po pravilima): {reasonResult.drDeviceResults.accusation}
               </Typography>
               <FormControl fullWidth sx={{ mb: 3 }}>
                 <InputLabel>Konačna presuda za spremanje</InputLabel>
@@ -693,14 +575,41 @@ function AddCase() {
                   value={selectedVerdict || ''}
                   onChange={(e) => setSelectedVerdict(e.target.value)}
                 >
-                  <MenuItem value={reasonResult.caseDescription.judgment || ''}>
-                    Koristi moj izbor ({reasonResult.caseDescription.judgment || 'Nema'})
+                  <MenuItem value={reasonResult.caseDescription.judgment || 'NONE'}>
+                    Moj izbor ({verdictTranslations[reasonResult.caseDescription.judgment || 'NONE']})
                   </MenuItem>
                   <MenuItem value={reasonResult.predictedVerdict}>
-                    Koristi predviđenu presudu ({reasonResult.predictedVerdict})
+                    Rasudjivanje po slučaju ({verdictTranslations[reasonResult.predictedVerdict]})
+                  </MenuItem>
+                  <MenuItem value={reasonResult.drDeviceResults.judgment}>
+                    Rasudjivanje po pravilima ({verdictTranslations[reasonResult.drDeviceResults.judgment]})
                   </MenuItem>
                 </Select>
               </FormControl>
+              {selectedVerdict && (
+                <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2, mb: 3 }}>
+                  {shouldShowMonetary(selectedVerdict) && (
+                    <TextField
+                      label="Novčana kazna (€)"
+                      type="number"
+                      value={monetaryPenalty ?? ''}
+                      onChange={(e) => setMonetaryPenalty(e.target.value ? Number(e.target.value) : null)}
+                      fullWidth
+                      variant="outlined"
+                    />
+                  )}
+                  {shouldShowPrison(selectedVerdict) && (
+                    <TextField
+                      label="Godine zatvora"
+                      type="number"
+                      value={prisonPenalty ?? ''}
+                      onChange={(e) => setPrisonPenalty(e.target.value ? Number(e.target.value) : null)}
+                      fullWidth
+                      variant="outlined"
+                    />
+                  )}
+                </Box>
+              )}
               <Typography variant="h6" sx={{ mb: 2, fontWeight: 'medium' }}>Slični slučajevi</Typography>
               <TableContainer component={Paper} sx={{ boxShadow: 2 }}>
                 <Table>
@@ -724,9 +633,17 @@ function AddCase() {
                               navigate(`/view/${sc.caseDescription.dbId}`);
                               setOpenModal(false);
                             }}
-                            sx={{ textTransform: 'none' }}
+                            sx={{ textTransform: 'none', mr: 1 }}
                           >
                             Pogledaj
+                          </Button>
+                          <Button
+                            variant="outlined"
+                            color="primary"
+                            onClick={() => handleMetadataOpen(sc.caseDescription.dbId!.toString())}
+                            sx={{ textTransform: 'none' }}
+                          >
+                            Prikaz metapodataka
                           </Button>
                         </TableCell>
                       </TableRow>
@@ -762,7 +679,55 @@ function AddCase() {
           )}
         </DialogContent>
       </Dialog>
-
+      <Dialog open={metadataModalOpen} onClose={handleMetadataClose} maxWidth="md" fullWidth sx={{ '& .MuiDialog-paper': { borderRadius: 2 } }}>
+        <DialogTitle sx={{ bgcolor: 'primary.main', color: 'white', fontWeight: 'bold' }}>
+          Metapodaci slučaja {selectedCase?.caseId}
+        </DialogTitle>
+        <DialogContent sx={{ p: 3 }}>
+          {selectedCase ? (
+            <Stack spacing={1.5}>
+              <Typography><b>ID presude:</b> {selectedCase.caseId}</Typography>
+              <Typography><b>Sud:</b> {selectedCase.court}</Typography>
+              <Typography><b>Broj presude:</b> {selectedCase.caseNumber}</Typography>
+              <Typography><b>Datum presude:</b> {selectedCase.verdictDate || 'Nije naveden'}</Typography>
+              <Typography><b>Sudija:</b> {selectedCase.judge}</Typography>
+              <Typography><b>Pisar:</b> {selectedCase.clerk}</Typography>
+              <Typography><b>Tužilac:</b> {selectedCase.prosecutor}</Typography>
+              <Typography><b>Imena optuženih:</b> {selectedCase.defendantNames.join(', ')}</Typography>
+              <Typography><b>Žrtva:</b> {selectedCase.victim}</Typography>
+              <Typography><b>Kratak opis:</b> {selectedCase.shortDescription}</Typography>
+              <Typography><b>Presuda:</b> {verdictTranslations[selectedCase.judgment || 'NONE']}</Typography>
+              <Typography><b>Primijenjene odredbe:</b> {selectedCase.appliedProvisions}</Typography>
+              <Typography><b>Optužbe:</b> {selectedCase.accusations.join(', ')}</Typography>
+              <Typography><b>Vrsta stvari (tuđa i pokretna):</b> {selectedCase.isMovableProperty ? 'Da' : 'Ne'}</Typography>
+              <Typography><b>Radnja oduzimanja:</b> {selectedCase.isTaken ? 'Da' : 'Ne'}</Typography>
+              <Typography><b>Namjera prisvajanja:</b> {selectedCase.intentToAppropriate ? 'Da' : 'Ne'}</Typography>
+              <Typography><b>Vrijednost ukradenih stvari (€):</b> {selectedCase.valueOfStolenItems}</Typography>
+              <Typography><b>Provala:</b> {selectedCase.breakingAndEntering ? 'Da' : 'Ne'}</Typography>
+              <Typography><b>Upotreba sile ili prijetnje:</b> {selectedCase.useOfForceOrThreat ? 'Da' : 'Ne'}</Typography>
+              <Typography><b>Zatečenost na djelu:</b> {selectedCase.caughtInTheAct ? 'Da' : 'Ne'}</Typography>
+              <Typography><b>Nanesene teške povrede:</b> {selectedCase.causedSevereInjury ? 'Da' : 'Ne'}</Typography>
+              <Typography><b>Smrt lica:</b> {selectedCase.deathCaused ? 'Da' : 'Ne'}</Typography>
+              <Typography><b>Novčana kazna (€):</b> {selectedCase.monetaryPenalty || 'Nema'}</Typography>
+              <Typography><b>Godine zatvora:</b> {selectedCase.prisonPenalty || 'Nema'}</Typography>
+            </Stack>
+          ) : (
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', py: 4, flexDirection: 'column' }}>
+              <CircularProgress size={50} />
+              <Typography sx={{ mt: 2, fontSize: '1.1rem' }}>Učitavanje...</Typography>
+            </Box>
+          )}
+          <Button
+            onClick={handleMetadataClose}
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ mt: 3, py: 1.5, fontSize: '1.1rem', textTransform: 'none' }}
+          >
+            Zatvori
+          </Button>
+        </DialogContent>
+      </Dialog>
       <Snackbar
         open={snackbar.open}
         autoHideDuration={6000}

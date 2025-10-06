@@ -41,23 +41,16 @@ public class CbrApplication implements StandardCBRApplication {
         config.addMapping(new Attribute("isMovableProperty", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("isTaken", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("intentToAppropriate", CaseDescription.class), new Equal());
-        config.addMapping(new Attribute("isCulturalOrNaturalGood", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("breakingAndEntering", CaseDescription.class), new Equal());
-        config.addMapping(new Attribute("particularlyDangerousOrBrazen", CaseDescription.class), new Equal());
-        config.addMapping(new Attribute("exploitingHelplessness", CaseDescription.class), new Equal());
-        config.addMapping(new Attribute("duringDisaster", CaseDescription.class), new Equal());
-        config.addMapping(new Attribute("isArmed", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("useOfForceOrThreat", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("caughtInTheAct", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("causedSevereInjury", CaseDescription.class), new Equal());
         config.addMapping(new Attribute("deathCaused", CaseDescription.class), new Equal());
-        config.addMapping(new Attribute("attemptedCrime", CaseDescription.class), new Equal());
 
         config.addMapping(new Attribute("valueOfStolenItems", CaseDescription.class), new NullAwareInterval(10000.0));
-        config.addMapping(new Attribute("numberOfPerpetrators", CaseDescription.class), new NullAwareInterval(5));
 
         config.addMapping(new Attribute("accusationTypes", CaseDescription.class), new AccusationSimilarity());
-        config.setWeight(new Attribute("accusationTypes", CaseDescription.class), 3.0);
+        config.setWeight(new Attribute("accusationTypes", CaseDescription.class), 1.2);
 
         if (includeJudgment) {
             TabularSimilarity judgmentSim = new TabularSimilarity(
@@ -87,6 +80,8 @@ public class CbrApplication implements StandardCBRApplication {
                 }
             }
             config.addMapping(new Attribute("judgment", CaseDescription.class), judgmentSim);
+            config.addMapping(new Attribute("prisonPenalty", CaseDescription.class), new NullAwareInterval(10.0));
+            config.addMapping(new Attribute("monetaryPenalty", CaseDescription.class), new NullAwareInterval(10000.0));
         }
 
         return config;

@@ -16,6 +16,12 @@ logging.basicConfig(
 os.environ["OPENAI_API_KEY"] = "PLACEHOLDER"
 
 BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = BASE_DIR.parent if BASE_DIR.name == 'scripts' else BASE_DIR
+XML_FOLDER = BASE_DIR / "judgingapp" / "xml"
+OUTPUT_CSV = BASE_DIR / "judgingapp" / "src" / "main" / "resources" / "verdicts.csv"
+
+BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = BASE_DIR.parent if BASE_DIR.name == 'scripts' else BASE_DIR
 XML_FOLDER = BASE_DIR / "judgingapp" / "xml"
 OUTPUT_CSV = BASE_DIR / "judgingapp" / "src" / "main" / "resources" / "verdicts.csv"
 
@@ -23,10 +29,10 @@ VERDICT_HEADERS = [
     "ID", "COURT", "CASE NUMBER", "JUDGE", "CLERK", "PROSECUTOR", "DEFENDANT", "VERDICT DATE", "VICTIM",
     "SHORT DESCRIPTION", "JUDGMENT", "APPLIED PROVISIONS", "ACCUSATION",
     "IS MOVABLE PROPERTY", "IS TAKEN", "INTENT TO APPROPRIATE", "VALUE OF STOLEN ITEMS",
-    "IS CULTURAL OR NATURAL GOOD", "BREAKING AND ENTERING", "PARTICULARLY DANGEROUS OR BRAZEN",
-    "EXPLOITING HELPLESSNESS", "DURING DISASTER", "NUMBER OF PERPETRATORS", "IS ARMED",
-    "USE OF FORCE OR THREAT", "CAUGHT IN THE ACT", "INTENT FOR SMALL GAIN",
-    "CAUSED SEVERE INJURY", "DEATH CAUSED", "ATTEMPTED CRIME"
+    "BREAKING AND ENTERING",
+    "USE OF FORCE OR THREAT", "CAUGHT IN THE ACT",
+    "CAUSED SEVERE INJURY", "DEATH CAUSED",
+    "MONETARY PENALTY", "PRISON YEARS"
 ]
 
 NS = {"akn": "http://docs.oasis-open.org/legaldocml/ns/akn/3.0/WD17"}
@@ -114,21 +120,15 @@ Use these strongly-typed fields:
 - IS TAKEN (boolean): Whether the item was taken from another person
 - INTENT TO APPROPRIATE (boolean): Whether there was intent to appropriate the item for unlawful gain
 - VALUE OF STOLEN ITEMS (number): Value of stolen items in euros (minimum 0)
-- IS CULTURAL OR NATURAL GOOD (boolean): Whether the stolen item is a cultural or natural good
 - BREAKING AND ENTERING (boolean): Whether the theft involved breaking and entering closed spaces
-- PARTICULARLY DANGEROUS OR BRAZEN (boolean): Whether the theft was committed in a particularly dangerous or brazen manner
-- EXPLOITING HELPLESSNESS (boolean): Whether the theft exploited helplessness or a difficult state of a person
-- DURING DISASTER (boolean): Whether the theft occurred during a fire, flood, earthquake, or other disaster
-- NUMBER OF PERPETRATORS (number): Number of perpetrators involved (minimum 1, must match number of defendants)
-- IS ARMED (boolean): Whether the perpetrator carried a weapon or dangerous tool
 - USE OF FORCE OR THREAT (boolean): Whether force or threat to life/body was used
 - CAUGHT IN THE ACT (boolean): Whether the perpetrator was caught in the act of theft
-- INTENT FOR SMALL GAIN (boolean): Whether the intent was to gain a small benefit (<150 euros)
 - CAUSED SEVERE INJURY (boolean): Whether severe bodily injury was intentionally caused
 - DEATH CAUSED (boolean): Whether a person was intentionally killed during the act
-- ATTEMPTED CRIME (boolean): Whether the act was an attempt
+- MONETARY PENALTY (number or null): Monetary penalty in euros if JUDGMENT is FINE or FINE_AND_PRISON, otherwise null
+- PRISON YEARS (number or null): Prison sentence in years if JUDGMENT is PRISON or FINE_AND_PRISON, otherwise null
 
-Return a valid JSON object with all fields. If a field cannot be determined, use appropriate defaults (e.g., [] for arrays, "" for strings, false for booleans, 0 for numbers). Example:
+Return a valid JSON object with all fields. If a field cannot be determined, use appropriate defaults (e.g., [] for arrays, "" for strings, false for booleans, 0 for numbers, null for MONETARY PENALTY and PRISON YEARS if not applicable). Example:
 
 
   "SHORT DESCRIPTION": "Okrivljeni je priključio svoj stambeni objekat na elektromrežu zaobilazeći brojilo kablom 2x2.5 mm CU, oduzimajući električnu energiju od oštećenog.",
@@ -139,19 +139,13 @@ Return a valid JSON object with all fields. If a field cannot be determined, use
   "IS TAKEN": true,
   "INTENT TO APPROPRIATE": true,
   "VALUE OF STOLEN ITEMS": 327.77,
-  "IS CULTURAL OR NATURAL GOOD": false,
   "BREAKING AND ENTERING": false,
-  "PARTICULARLY DANGEROUS OR BRAZEN": false,
-  "EXPLOITING HELPLESSNESS": false,
-  "DURING DISASTER": false,
-  "NUMBER OF PERPETRATORS": 1,
-  "IS ARMED": false,
   "USE OF FORCE OR THREAT": false,
   "CAUGHT IN THE ACT": false,
-  "INTENT FOR SMALL GAIN": false,
   "CAUSED SEVERE INJURY": false,
   "DEATH CAUSED": false,
-  "ATTEMPTED CRIME": false
+  "MONETARY PENALTY": null,
+  "PRISON YEARS": null
 
 """),
         ("user", """From the following court verdict text, extract the requested information in JSON format:
@@ -192,7 +186,7 @@ def process_case(xml_path, llm, prompt):
             verdict_data["ACCUSATION"] = []
         
     except json.JSONDecodeError as e:
-        logging.error(f"Error decoding JSON for {xml_path.name}: {e}")
+        logging.error(f"Unable to decode JSON for {xml_path.name}: {e}")
         print(f"Error decoding JSON for {xml_path.name}")
         return None
     except Exception as e:
@@ -220,19 +214,13 @@ def process_case(xml_path, llm, prompt):
         "IS TAKEN": False,
         "INTENT TO APPROPRIATE": False,
         "VALUE OF STOLEN ITEMS": 0.0,
-        "IS CULTURAL OR NATURAL GOOD": False,
         "BREAKING AND ENTERING": False,
-        "PARTICULARLY DANGEROUS OR BRAZEN": False,
-        "EXPLOITING HELPLESSNESS": False,
-        "DURING DISASTER": False,
-        "NUMBER OF PERPETRATORS": 1,
-        "IS ARMED": False,
         "USE OF FORCE OR THREAT": False,
         "CAUGHT IN THE ACT": False,
-        "INTENT FOR SMALL GAIN": False,
         "CAUSED SEVERE INJURY": False,
         "DEATH CAUSED": False,
-        "ATTEMPTED CRIME": False
+        "MONETARY PENALTY": None,
+        "PRISON YEARS": None
     }
 
     for key in VERDICT_HEADERS:
@@ -247,19 +235,20 @@ def process_case(xml_path, llm, prompt):
     verdict["IS TAKEN"] = bool(verdict.get("IS TAKEN", False))
     verdict["INTENT TO APPROPRIATE"] = bool(verdict.get("INTENT TO APPROPRIATE", False))
     verdict["VALUE OF STOLEN ITEMS"] = float(verdict.get("VALUE OF STOLEN ITEMS", 0.0))
-    verdict["IS CULTURAL OR NATURAL GOOD"] = bool(verdict.get("IS CULTURAL OR NATURAL GOOD", False))
     verdict["BREAKING AND ENTERING"] = bool(verdict.get("BREAKING AND ENTERING", False))
-    verdict["PARTICULARLY DANGEROUS OR BRAZEN"] = bool(verdict.get("PARTICULARLY DANGEROUS OR BRAZEN", False))
-    verdict["EXPLOITING HELPLESSNESS"] = bool(verdict.get("EXPLOITING HELPLESSNESS", False))
-    verdict["DURING DISASTER"] = bool(verdict.get("DURING DISASTER", False))
-    verdict["NUMBER OF PERPETRATORS"] = int(verdict.get("NUMBER OF PERPETRATORS", 1))
-    verdict["IS ARMED"] = bool(verdict.get("IS ARMED", False))
     verdict["USE OF FORCE OR THREAT"] = bool(verdict.get("USE OF FORCE OR THREAT", False))
     verdict["CAUGHT IN THE ACT"] = bool(verdict.get("CAUGHT IN THE ACT", False))
-    verdict["INTENT FOR SMALL GAIN"] = bool(verdict.get("INTENT FOR SMALL GAIN", False))
     verdict["CAUSED SEVERE INJURY"] = bool(verdict.get("CAUSED SEVERE INJURY", False))
     verdict["DEATH CAUSED"] = bool(verdict.get("DEATH CAUSED", False))
-    verdict["ATTEMPTED CRIME"] = bool(verdict.get("ATTEMPTED CRIME", False))
+    verdict["MONETARY PENALTY"] = float(verdict.get("MONETARY PENALTY")) if verdict.get("MONETARY PENALTY") is not None else ""
+    verdict["PRISON YEARS"] = float(verdict.get("PRISON YEARS")) if verdict.get("PRISON YEARS") is not None else ""
+
+    # Set to empty if not applicable based on JUDGMENT
+    judgment = verdict.get("JUDGMENT", "").upper()
+    if judgment not in ["FINE", "FINE_AND_PRISON"]:
+        verdict["MONETARY PENALTY"] = ""
+    if judgment not in ["PRISON", "FINE_AND_PRISON"]:
+        verdict["PRISON YEARS"] = ""
 
     logging.info(f"Successfully processed {xml_path.name}")
     return verdict

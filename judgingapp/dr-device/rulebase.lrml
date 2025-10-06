@@ -2,8 +2,7 @@
 <lrml:LegalRuleML xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://docs.oasis-open.org/legalruleml/ns/v1.0/ xsd-compact/lrml-compact.xsd" xmlns:ruleml="http://ruleml.org/spec">
     <lrml:Statements>
 
-        <!-- Basic Theft Level 1 - Clan 239 (1) -->
-        <lrml:PrescriptiveStatement key="ps1">
+       <lrml:PrescriptiveStatement key="ps1">
             <ruleml:Rule key=":rule1" closure="universal" strength="defeasible">
                 <ruleml:if>
                     <ruleml:And>
@@ -33,7 +32,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Not Basic Theft - Value too low -->
         <lrml:PrescriptiveStatement key="ps2">
             <ruleml:Rule key=":rule2" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -63,7 +61,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Aggravated Theft Level 2 - Clan 240 (1) -->
         <lrml:PrescriptiveStatement key="ps3">
             <ruleml:Rule key=":rule3" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -99,7 +96,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 2 negates Level 1 -->
         <lrml:PrescriptiveStatement key="ps4">
             <ruleml:Rule key=":rule4" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -121,7 +117,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- High Value Theft Level 3 - Clan 240 (3) -->
         <lrml:PrescriptiveStatement key="ps5">
             <ruleml:Rule key=":rule5" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -164,7 +159,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 3 negates Level 2 -->
         <lrml:PrescriptiveStatement key="ps6">
             <ruleml:Rule key=":rule6" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -186,7 +180,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 3 negates Level 1 -->
         <lrml:PrescriptiveStatement key="ps7">
             <ruleml:Rule key=":rule7" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -208,7 +201,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Robbery Level 4 - Clan 241 (1) -->
         <lrml:PrescriptiveStatement key="ps8">
             <ruleml:Rule key=":rule8" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -249,7 +241,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 4 negates Level 3 -->
         <lrml:PrescriptiveStatement key="ps9">
             <ruleml:Rule key=":rule9" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -271,7 +262,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 4 negates Level 2 -->
         <lrml:PrescriptiveStatement key="ps10">
             <ruleml:Rule key=":rule10" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -293,7 +283,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 4 negates Level 1 -->
         <lrml:PrescriptiveStatement key="ps11">
             <ruleml:Rule key=":rule11" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -315,7 +304,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Severe Aggravated Robbery Level 5 - Clan 241 (4) - FIXED -->
         <lrml:PrescriptiveStatement key="ps12">
             <ruleml:Rule key=":rule12" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -361,7 +349,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 5 negates Level 4 -->
         <lrml:PrescriptiveStatement key="ps13">
             <ruleml:Rule key=":rule13" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -383,7 +370,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 5 negates Level 3 -->
         <lrml:PrescriptiveStatement key="ps14">
             <ruleml:Rule key=":rule14" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -405,7 +391,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 5 negates Level 2 -->
         <lrml:PrescriptiveStatement key="ps15">
             <ruleml:Rule key=":rule15" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -427,7 +412,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 5 negates Level 1 -->
         <lrml:PrescriptiveStatement key="ps16">
             <ruleml:Rule key=":rule16" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -449,7 +433,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Robbery with Death Level 6 - Clan 241 (5) - FIXED -->
         <lrml:PrescriptiveStatement key="ps17">
             <ruleml:Rule key=":rule17" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -495,7 +478,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 6 negates Level 5 -->
         <lrml:PrescriptiveStatement key="ps18">
             <ruleml:Rule key=":rule18" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -517,7 +499,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 6 negates Level 4 -->
         <lrml:PrescriptiveStatement key="ps19">
             <ruleml:Rule key=":rule19" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -539,7 +520,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 6 negates Level 3 -->
         <lrml:PrescriptiveStatement key="ps20">
             <ruleml:Rule key=":rule20" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -561,7 +541,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 6 negates Level 2 -->
         <lrml:PrescriptiveStatement key="ps21">
             <ruleml:Rule key=":rule21" closure="universal" strength="defeasible">
                 <ruleml:if>
@@ -583,7 +562,6 @@
             </ruleml:Rule>
         </lrml:PrescriptiveStatement>
 
-        <!-- Negation: Level 6 negates Level 1 -->
         <lrml:PrescriptiveStatement key="ps22">
             <ruleml:Rule key=":rule22" closure="universal" strength="defeasible">
                 <ruleml:if>

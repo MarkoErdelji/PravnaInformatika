@@ -6,18 +6,16 @@ import com.pravnainfo.judgingapp.dto.SimilarVerdict;
 import com.pravnainfo.judgingapp.entity.AccusationType;
 import com.pravnainfo.judgingapp.entity.Verdict;
 import com.pravnainfo.judgingapp.repository.IVerdictRepository;
+import com.pravnainfo.judgingapp.service.DrDeviceService;
 import com.pravnainfo.judgingapp.service.XmlGenerationService;
 import es.ucm.fdi.gaia.jcolibri.exception.ExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
@@ -35,6 +33,9 @@ public class CaseController {
 
     @Autowired
     private XmlGenerationService xmlGenerationService;
+
+    @Autowired
+    private DrDeviceService drDeviceService;
 
     private static final String DEFAULT_XML_FOLDER = "./xml/";
 
@@ -133,14 +134,12 @@ public class CaseController {
     }
 
     @PostMapping("/reason")
-    public ResponseEntity<Map<String, Object>> reasonCase(@RequestBody CaseDescription queryCase) throws ExecutionException {
-        // Initialize CBR
+    public ResponseEntity<Map<String, Object>> reasonCase(@RequestBody CaseDescription queryCase) throws ExecutionException, IOException, InterruptedException {
         cbrApplication.configure();
         cbrApplication.preCycle();
 
         List<SimilarVerdict> similarCases = cbrApplication.predictVerdict(queryCase);
 
-        // Weighted majority vote
         Map<String, Double> verdictScores = new HashMap<>();
         for (SimilarVerdict sv : similarCases) {
             String verdict = sv.getCaseDescription().getJudgment();
@@ -152,16 +151,18 @@ public class CaseController {
                 .map(Map.Entry::getKey)
                 .orElse("UNKNOWN");
 
+        Map<String, Object> drDeviceResults = drDeviceService.reasonCase(queryCase);
+
         Map<String, Object> response = new HashMap<>();
         response.put("predictedVerdict", predictedVerdict);
         response.put("similarCases", similarCases);
+        response.put("drDeviceResults", drDeviceResults);
 
         cbrApplication.postCycle();
 
         return ResponseEntity.ok(response);
     }
 
-    // Retrieve similar cases for an existing Verdict ID
     @GetMapping("/retrieve/{id}")
     public ResponseEntity<List<SimilarVerdict>> retrieveSimilarCases(@PathVariable Long id) throws ExecutionException {
         cbrApplication.configure();
@@ -170,7 +171,7 @@ public class CaseController {
         return verdictRepository.findById(id)
                 .map(verdict -> {
                     CaseDescription queryCase = new CaseDescription(verdict);
-                    List<SimilarVerdict> similarCases = null;
+                    List<SimilarVerdict> similarCases;
                     try {
                         similarCases = cbrApplication.getSimilarCases(queryCase);
                     } catch (ExecutionException e) {

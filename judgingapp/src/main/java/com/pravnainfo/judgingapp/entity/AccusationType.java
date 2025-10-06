@@ -51,7 +51,6 @@ public enum AccusationType {
                 .replace("stav ", "st. ")
                 .replace("u vezi", "");
 
-        // Pattern to match article and optional stav (e.g., "239 st. 1" or "240")
         Pattern pattern = Pattern.compile("(\\d+)\\s*(st\\.\\s*(\\d+))?\\s*(tač\\s*(\\d+))?\\s*");
         Matcher matcher = pattern.matcher(trimmed);
 
@@ -63,7 +62,6 @@ public enum AccusationType {
         String stav = matcher.group(3) != null ? matcher.group(3) : "";
         String tač = matcher.group(5) != null ? matcher.group(5) : "";
 
-        // Handle "tač" as equivalent to "st." for specific cases (e.g., 240 st. 1 tač 1)
         if (!tač.isEmpty()) {
             stav = tač;
         }
