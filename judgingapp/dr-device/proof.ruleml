@@ -11,13 +11,61 @@
 <Ind uri='&proof-export;proof1'>proof1</Ind>
 </oid>
 <Literal>
-<RDF_resource uri='&export;is_theft_lv11'/>
+<neg_RDF_resource uri='&export;is_theft_lv11'/>
 </Literal>
 <Defeasible_Proof>
 <supportive_rule>
-<rule_ref rule='&rulebase;rule1'/>
+<rule_ref rule='&rulebase;rule22'/>
 </supportive_rule>
 <defeasible_body_grounds>
+<Defeasibly_Proved>
+<oid>
+<Ind uri='&proof-export;proof2'>proof2</Ind>
+</oid>
+<Literal>
+<RDF_resource uri='is_theft_lv6f'/>
+</Literal>
+<Defeasible_Proof>
+<supportive_rule>
+<rule_ref rule='&rulebase;rule17'/>
+</supportive_rule>
+<defeasible_body_grounds>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
 <Definitely_Proved>
 <Literal>
 <RDF_resource uri='&lc;theft_case'/>
@@ -60,22 +108,58 @@
 </defeasible_attackers_blocked>
 </Defeasible_Proof>
 </Defeasibly_Proved>
-<Defeasibly_Proved>
-<oid>
-<Ind uri='&proof-export;proof2'>proof2</Ind>
-</oid>
-<Literal>
-<RDF_resource uri='&export;min_imprisonment1'/>
-</Literal>
-<Defeasible_Proof>
-<supportive_rule>
-<rule_ref rule='&rulebase;pen_lv1_min'/>
-</supportive_rule>
-<defeasible_body_grounds>
-<proof_ref proof='&proof-export;proof1'/>
 </defeasible_body_grounds>
 <not_strongly_attacked/>
 <defeasible_attackers_blocked>
+<Blocked>
+<Blocked_Defeasible_rule>
+<rule_ref rule='&rulebase;rule1'/>
+<defeasible_body_grounds>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+</defeasible_body_grounds>
+<Attacked_by_Superior>
+<rule_ref rule='&rulebase;rule22'/>
+<defeasible_body_grounds>
+<proof_ref proof='&proof-export;proof2'/>
+</defeasible_body_grounds>
+</Attacked_by_Superior>
+</Blocked_Defeasible_rule>
+</Blocked>
 </defeasible_attackers_blocked>
 </Defeasible_Proof>
 </Defeasibly_Proved>
@@ -84,17 +168,78 @@
 <Ind uri='&proof-export;proof3'>proof3</Ind>
 </oid>
 <Literal>
-<RDF_resource uri='&export;max_imprisonment1'/>
+<neg_RDF_resource uri='&export;is_theft_lv21'/>
 </Literal>
 <Defeasible_Proof>
 <supportive_rule>
-<rule_ref rule='&rulebase;pen_lv1_max'/>
+<rule_ref rule='&rulebase;rule21'/>
 </supportive_rule>
 <defeasible_body_grounds>
-<proof_ref proof='&proof-export;proof1'/>
+<proof_ref proof='&proof-export;proof2'/>
 </defeasible_body_grounds>
 <not_strongly_attacked/>
 <defeasible_attackers_blocked>
+<Blocked>
+<Blocked_Defeasible_rule>
+<rule_ref rule='&rulebase;rule3'/>
+<defeasible_body_grounds>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+</defeasible_body_grounds>
+<Attacked_by_Superior>
+<rule_ref rule='&rulebase;rule21'/>
+<defeasible_body_grounds>
+<proof_ref proof='&proof-export;proof2'/>
+</defeasible_body_grounds>
+</Attacked_by_Superior>
+</Blocked_Defeasible_rule>
+</Blocked>
 </defeasible_attackers_blocked>
 </Defeasible_Proof>
 </Defeasibly_Proved>
@@ -103,14 +248,240 @@
 <Ind uri='&proof-export;proof4'>proof4</Ind>
 </oid>
 <Literal>
-<RDF_resource uri='&export;monetary_penalty1'/>
+<neg_RDF_resource uri='&export;is_theft_lv31'/>
 </Literal>
 <Defeasible_Proof>
 <supportive_rule>
-<rule_ref rule='&rulebase;pen_lv1_monetary'/>
+<rule_ref rule='&rulebase;rule20'/>
 </supportive_rule>
 <defeasible_body_grounds>
-<proof_ref proof='&proof-export;proof1'/>
+<proof_ref proof='&proof-export;proof2'/>
+</defeasible_body_grounds>
+<not_strongly_attacked/>
+<defeasible_attackers_blocked>
+<Blocked>
+<Blocked_Defeasible_rule>
+<rule_ref rule='&rulebase;rule5'/>
+<Attacked_by_Superior>
+<rule_ref rule='&rulebase;rule20'/>
+<defeasible_body_grounds>
+<proof_ref proof='&proof-export;proof2'/>
+</defeasible_body_grounds>
+</Attacked_by_Superior>
+</Blocked_Defeasible_rule>
+</Blocked>
+</defeasible_attackers_blocked>
+</Defeasible_Proof>
+</Defeasibly_Proved>
+<Defeasibly_Proved>
+<oid>
+<Ind uri='&proof-export;proof5'>proof5</Ind>
+</oid>
+<Literal>
+<neg_RDF_resource uri='&export;is_theft_lv41'/>
+</Literal>
+<Defeasible_Proof>
+<supportive_rule>
+<rule_ref rule='&rulebase;rule19'/>
+</supportive_rule>
+<defeasible_body_grounds>
+<proof_ref proof='&proof-export;proof2'/>
+</defeasible_body_grounds>
+<not_strongly_attacked/>
+<defeasible_attackers_blocked>
+<Blocked>
+<Blocked_Defeasible_rule>
+<rule_ref rule='&rulebase;rule8'/>
+<defeasible_body_grounds>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+</defeasible_body_grounds>
+<Attacked_by_Superior>
+<rule_ref rule='&rulebase;rule19'/>
+<defeasible_body_grounds>
+<proof_ref proof='&proof-export;proof2'/>
+</defeasible_body_grounds>
+</Attacked_by_Superior>
+</Blocked_Defeasible_rule>
+</Blocked>
+</defeasible_attackers_blocked>
+</Defeasible_Proof>
+</Defeasibly_Proved>
+<Defeasibly_Proved>
+<oid>
+<Ind uri='&proof-export;proof6'>proof6</Ind>
+</oid>
+<Literal>
+<neg_RDF_resource uri='&export;is_theft_lv51'/>
+</Literal>
+<Defeasible_Proof>
+<supportive_rule>
+<rule_ref rule='&rulebase;rule18'/>
+</supportive_rule>
+<defeasible_body_grounds>
+<proof_ref proof='&proof-export;proof2'/>
+</defeasible_body_grounds>
+<not_strongly_attacked/>
+<defeasible_attackers_blocked>
+<Blocked>
+<Blocked_Defeasible_rule>
+<rule_ref rule='&rulebase;rule12'/>
+<defeasible_body_grounds>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+<Definitely_Proved>
+<Literal>
+<RDF_resource uri='&lc;theft_case'/>
+</Literal>
+<Definite_Proof>
+<strict_clause>
+<Fact>
+<RDF_resource uri='&lc;theft_case'/>
+</Fact>
+</strict_clause>
+</Definite_Proof>
+</Definitely_Proved>
+</defeasible_body_grounds>
+<Attacked_by_Superior>
+<rule_ref rule='&rulebase;rule18'/>
+<defeasible_body_grounds>
+<proof_ref proof='&proof-export;proof2'/>
+</defeasible_body_grounds>
+</Attacked_by_Superior>
+</Blocked_Defeasible_rule>
+</Blocked>
+</defeasible_attackers_blocked>
+</Defeasible_Proof>
+</Defeasibly_Proved>
+<Defeasibly_Proved>
+<oid>
+<Ind uri='&proof-export;proof7'>proof7</Ind>
+</oid>
+<Literal>
+<RDF_resource uri='&export;min_imprisonment1'/>
+</Literal>
+<Defeasible_Proof>
+<supportive_rule>
+<rule_ref rule='&rulebase;pen_lv6_min'/>
+</supportive_rule>
+<defeasible_body_grounds>
+<proof_ref proof='&proof-export;proof2'/>
 </defeasible_body_grounds>
 <not_strongly_attacked/>
 <defeasible_attackers_blocked>

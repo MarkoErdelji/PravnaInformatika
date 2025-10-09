@@ -571,7 +571,7 @@ function AddCase() {
                 Optužba (po pravilima): {reasonResult.drDeviceResults.accusation}
               </Typography>
               <FormControl fullWidth sx={{ mb: 3 }}>
-                <InputLabel>Konačna presuda za spremanje</InputLabel>
+                <InputLabel>Konačna presuda</InputLabel>
                 <Select
                   value={selectedVerdict || ''}
                   onChange={(e) => {
@@ -719,15 +719,15 @@ function AddCase() {
               <Typography><b>Žrtva:</b> {selectedCase.victim || 'Nije navedena'}</Typography>
               <Typography><b>Kratak opis:</b> {selectedCase.shortDescription}</Typography>
               <Typography><b>Presuda:</b> {verdictTranslations[selectedCase.judgment || 'NONE']}</Typography>
-              <Typography><b>Primijenjene odredbe:</b> {selectedCase.appliedProvisions || 'Nema'}</Typography>
+              <Typography><b>Primenjene odredbe:</b> {selectedCase.appliedProvisions || 'Nema'}</Typography>
               <Typography><b>Optužbe:</b> {selectedCase.accusations.join(', ')}</Typography>
               <Typography><b>Vrsta stvari (tuđa i pokretna):</b> {selectedCase.isMovableProperty ? 'Da' : 'Ne'}</Typography>
               <Typography><b>Radnja oduzimanja:</b> {selectedCase.isTaken ? 'Da' : 'Ne'}</Typography>
-              <Typography><b>Namjera prisvajanja:</b> {selectedCase.intentToAppropriate ? 'Da' : 'Ne'}</Typography>
-              <Typography><b>Vrijednost ukradenih stvari (€):</b> {selectedCase.valueOfStolenItems}</Typography>
+              <Typography><b>Namera prisvajanja:</b> {selectedCase.intentToAppropriate ? 'Da' : 'Ne'}</Typography>
+              <Typography><b>Vrednost ukradenih stvari (€):</b> {selectedCase.valueOfStolenItems}</Typography>
               <Typography><b>Provala:</b> {selectedCase.breakingAndEntering ? 'Da' : 'Ne'}</Typography>
-              <Typography><b>Upotreba sile ili prijetnje:</b> {selectedCase.useOfForceOrThreat ? 'Da' : 'Ne'}</Typography>
-              <Typography><b>Zatečenost na djelu:</b> {selectedCase.caughtInTheAct ? 'Da' : 'Ne'}</Typography>
+              <Typography><b>Upotreba sile ili prtnje:</b> {selectedCase.useOfForceOrThreat ? 'Da' : 'Ne'}</Typography>
+              <Typography><b>Zatečenost na delu:</b> {selectedCase.caughtInTheAct ? 'Da' : 'Ne'}</Typography>
               <Typography><b>Nanesene teške povrede:</b> {selectedCase.causedSevereInjury ? 'Da' : 'Ne'}</Typography>
               <Typography><b>Smrt lica:</b> {selectedCase.deathCaused ? 'Da' : 'Ne'}</Typography>
               <Typography><b>Novčana kazna (€):</b> {selectedCase.monetaryPenalty || 'Nema'}</Typography>

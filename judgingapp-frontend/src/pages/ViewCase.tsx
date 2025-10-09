@@ -124,15 +124,15 @@ export default function ViewCase() {
             <Typography><b>Žrtva:</b> {caseData.victim}</Typography>
             <Typography><b>Kratak opis:</b> {caseData.shortDescription}</Typography>
             <Typography><b>Presuda:</b> {verdictTranslations[caseData.judgment || 'NONE']}</Typography>
-            <Typography><b>Primijenjene odredbe:</b> {caseData.appliedProvisions}</Typography>
+            <Typography><b>Primenjene odredbe:</b> {caseData.appliedProvisions}</Typography>
             <Typography><b>Optužbe:</b> {caseData.accusations.join(', ')}</Typography>
             <Typography><b>Vrsta stvari (tuđa i pokretna):</b> {caseData.isMovableProperty ? 'Da' : 'Ne'}</Typography>
             <Typography><b>Radnja oduzimanja:</b> {caseData.isTaken ? 'Da' : 'Ne'}</Typography>
-            <Typography><b>Namjera prisvajanja:</b> {caseData.intentToAppropriate ? 'Da' : 'Ne'}</Typography>
-            <Typography><b>Vrijednost ukradenih stvari (€):</b> {caseData.valueOfStolenItems}</Typography>
+            <Typography><b>Namera prisvajanja:</b> {caseData.intentToAppropriate ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Vrednost ukradenih stvari (€):</b> {caseData.valueOfStolenItems}</Typography>
             <Typography><b>Provala:</b> {caseData.breakingAndEntering ? 'Da' : 'Ne'}</Typography>
-            <Typography><b>Upotreba sile ili prijetnje:</b> {caseData.useOfForceOrThreat ? 'Da' : 'Ne'}</Typography>
-            <Typography><b>Zatečenost na djelu:</b> {caseData.caughtInTheAct ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Upotreba sile ili pretnje:</b> {caseData.useOfForceOrThreat ? 'Da' : 'Ne'}</Typography>
+            <Typography><b>Zatečenost na delu:</b> {caseData.caughtInTheAct ? 'Da' : 'Ne'}</Typography>
             <Typography><b>Nanesene teške povrede:</b> {caseData.causedSevereInjury ? 'Da' : 'Ne'}</Typography>
             <Typography><b>Smrt lica:</b> {caseData.deathCaused ? 'Da' : 'Ne'}</Typography>
             <Typography><b>Novčana kazna (€):</b> {caseData.monetaryPenalty || 'Nema'}</Typography>
