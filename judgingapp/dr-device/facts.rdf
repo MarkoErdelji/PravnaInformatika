@@ -5,16 +5,16 @@
          xmlns:lc="http://ftn.uns.ac.rs/legal-case#">
   <rdfs:Class rdf:about="http://ftn.uns.ac.rs/legal-case#Case"/>
   <lc:case rdf:about="http://ftn.uns.ac.rs/legal-case#theft_case">
-    <lc:defendant>Ivan Stanković</lc:defendant>
+    <lc:defendant>Tina Mihajlovic</lc:defendant>
     <lc:is_movable_property>true</lc:is_movable_property>
     <lc:is_taken>true</lc:is_taken>
     <lc:intent_to_appropriate>true</lc:intent_to_appropriate>
-    <lc:breaking_and_entering>true</lc:breaking_and_entering>
-    <lc:use_of_force_or_threat>true</lc:use_of_force_or_threat>
-    <lc:caught_in_the_act>true</lc:caught_in_the_act>
-    <lc:caused_severe_injury>true</lc:caused_severe_injury>
+    <lc:breaking_and_entering>false</lc:breaking_and_entering>
+    <lc:use_of_force_or_threat>false</lc:use_of_force_or_threat>
+    <lc:caught_in_the_act>false</lc:caught_in_the_act>
+    <lc:caused_severe_injury>false</lc:caused_severe_injury>
     <lc:death_caused>false</lc:death_caused>
-    <lc:case>ROBBERY-2025-001</lc:case>
-    <lc:value_of_stolen_items rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1500</lc:value_of_stolen_items>
+    <lc:case>New case Id</lc:case>
+    <lc:value_of_stolen_items rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">22222</lc:value_of_stolen_items>
   </lc:case>
 </rdf:RDF>

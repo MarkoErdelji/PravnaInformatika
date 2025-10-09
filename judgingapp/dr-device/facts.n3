@@ -1,13 +1,13 @@
 <http://ftn.uns.ac.rs/legal-case#Case> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
 <http://ftn.uns.ac.rs/legal-case#theft_case> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ftn.uns.ac.rs/legal-case#case> .
-<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#defendant> "Ivan Stankovi\u0107" .
+<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#defendant> "Tina Mihajlovic" .
 <http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#is_movable_property> "true" .
 <http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#is_taken> "true" .
 <http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#intent_to_appropriate> "true" .
-<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#breaking_and_entering> "true" .
-<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#use_of_force_or_threat> "true" .
-<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#caught_in_the_act> "true" .
-<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#caused_severe_injury> "true" .
+<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#breaking_and_entering> "false" .
+<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#use_of_force_or_threat> "false" .
+<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#caught_in_the_act> "false" .
+<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#caused_severe_injury> "false" .
 <http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#death_caused> "false" .
-<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#case> "ROBBERY-2025-001" .
-<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#value_of_stolen_items> "1500"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#case> "New case Id" .
+<http://ftn.uns.ac.rs/legal-case#theft_case> <http://ftn.uns.ac.rs/legal-case#value_of_stolen_items> "22222"^^<http://www.w3.org/2001/XMLSchema#integer> .

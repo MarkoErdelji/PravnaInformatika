@@ -36,7 +36,10 @@ export default function LawsViewer() {
 
   useEffect(() => {
     if (xmlDoc && location.hash) {
-      const eId = location.hash.replace('#', '');
+      let eId = location.hash.replace('#', '');
+      if (eId.includes('tac_')) {
+        eId = eId.split('_tac_')[0];
+      }
       const element = document.getElementById(eId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'center' });

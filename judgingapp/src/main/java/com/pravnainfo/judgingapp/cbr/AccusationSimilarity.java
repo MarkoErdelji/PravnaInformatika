@@ -23,18 +23,18 @@ public class AccusationSimilarity implements LocalSimilarityFunction {
                 if (a1.equals(a2)) {
                     sim = 1.0;
                 } else if (t1.getArticle().equals(t2.getArticle())) {
-                    sim = 0.9;
+                    sim = 0.7;
                 } else if ((t1.getArticle().equals("239") && t2.getArticle().equals("240")) ||
                         (t1.getArticle().equals("240") && t2.getArticle().equals("239"))) {
-                    sim = 0.7;
+                    sim = 0.6;
                 } else if ((t1.getArticle().equals("240") && t2.getArticle().equals("241")) ||
                         (t1.getArticle().equals("241") && t2.getArticle().equals("240"))) {
-                    sim = 0.6;
+                    sim = 0.5;
                 } else if ((t1.getArticle().equals("239") && t2.getArticle().equals("241")) ||
                         (t1.getArticle().equals("241") && t2.getArticle().equals("239"))) {
-                    sim = 0.5;
+                    sim = 0.4;
                 } else {
-                    sim = 0.2;
+                    sim = 0.1;
                 }
                 tabular.setSimilarity(a1, a2, sim);
             }

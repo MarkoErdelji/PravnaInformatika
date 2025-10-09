@@ -47,17 +47,13 @@ function AddCase() {
   const [selectedCase, setSelectedCase] = useState<Verdict | null>(null);
   const [accusationOptions, setAccusationOptions] = useState<string[]>([]);
   const [selectedVerdict, setSelectedVerdict] = useState<string | null>(null);
-  const [monetaryPenalty, setMonetaryPenalty] = useState<number | null>(null);
-  const [prisonPenalty, setPrisonPenalty] = useState<number | null>(null);
   const [snackbar, setSnackbar] = useState<{ open: boolean, message: string, severity: 'success' | 'error' }>({
     open: false,
     message: '',
     severity: 'success',
   });
-  const accusationsWatch = watch('accusations');
-  const isTakenWatch = watch('isTaken');
-  const caughtInTheActWatch = watch('caughtInTheAct');
   const deathCausedWatch = watch('deathCaused');
+  const judgmentWatch = watch('judgment');
 
   useEffect(() => {
     axios.get<string[]>('/api/cases/accusations')
@@ -68,42 +64,34 @@ function AddCase() {
       });
   }, []);
 
-  // Constraint: SmrtLica implies NaneseneTeškePovrede
   useEffect(() => {
     if (deathCausedWatch) {
       setValue('causedSevereInjury', true);
     }
   }, [deathCausedWatch, setValue]);
 
-  // Constraint: RadnjaOduzimanja implies VrstaStvari
   useEffect(() => {
-    if (isTakenWatch) {
-      setValue('isMovableProperty', true);
+    if (judgmentWatch) {
+      if (!['FINE', 'FINE_AND_PRISON'].includes(judgmentWatch)) {
+        setValue('monetaryPenalty', null);
+      }
+      if (!['PRISON', 'FINE_AND_PRISON'].includes(judgmentWatch)) {
+        setValue('prisonPenalty', null);
+      }
     }
-  }, [isTakenWatch, setValue]);
-
-  // Constraint: NamjeraPrisvajanja for krađa-related accusations
-  useEffect(() => {
-    if (accusationsWatch.some(acc => acc.includes('239') || acc.includes('240') || acc.includes('241'))) {
-      setValue('intentToAppropriate', true);
-    }
-  }, [accusationsWatch, setValue]);
-
-  // Constraint: UpotrebaSileIliPrijetnje for Član 241 when ZatečenostNaDelu
-  useEffect(() => {
-    if (accusationsWatch.includes('čl. 241') && caughtInTheActWatch) {
-      setValue('useOfForceOrThreat', true);
-    }
-  }, [accusationsWatch, caughtInTheActWatch, setValue]);
+  }, [judgmentWatch, setValue]);
 
   const onSubmit = (data: Verdict) => {
     const caseDescription = {
       caseId: data.caseId,
-      defendantNames: data.defendantNames,
-      victim: data.victim,
+      defendantNames: data.defendantNames.length > 0 ? [data.defendantNames[0]] : [],
       accusationTypes: data.accusations.map(acc => {
-        const match = acc.match(/^čl\. (\d+)(?:\s*st\. (\d+))?$/i);
-        return match ? (match[2] ? `ARTICLE_${match[1]}_ST_${match[2]}` : `ARTICLE_${match[1]}_NONE`) : 'OTHER';
+        const match = acc.match(/^čl\. (\d+)(?:\s*st\. (\d+))?(?:\s*tač\. (\d+))?$/i);
+        if (!match) return 'OTHER';
+        const article = match[1];
+        const paragraph = match[2] || 'NONE';
+        const point = match[3] ? `_TAC_${match[3]}` : '';
+        return `ARTICLE_${article}_ST_${paragraph}${point}`;
       }),
       judgment: data.judgment,
       isMovableProperty: data.isMovableProperty,
@@ -115,42 +103,45 @@ function AddCase() {
       caughtInTheAct: data.caughtInTheAct,
       causedSevereInjury: data.causedSevereInjury,
       deathCaused: data.deathCaused,
-      monetaryPenalty: null,
-      prisonPenalty: null,
+      monetaryPenalty: ['FINE', 'FINE_AND_PRISON'].includes(data.judgment || '') ? data.monetaryPenalty : null,
+      prisonPenalty: ['PRISON', 'FINE_AND_PRISON'].includes(data.judgment || '') ? data.prisonPenalty : null,
     };
+    console.log('Payload to /api/cases/reason:', caseDescription);
     axios.post<ReasonResponse>('/api/cases/reason', caseDescription)
       .then(res => {
         setReasonResult({ ...res.data, caseDescription });
-        setSelectedVerdict(data.judgment);
+        setSelectedVerdict(null);
         setOpenModal(true);
       })
       .catch(err => {
         console.error(err);
-        setSnackbar({ open: true, message: 'Greška prilikom obrade slučaja', severity: 'error' });
+        setSnackbar({ open: true, message: `Greška prilikom obrade slučaja: ${err.response?.data?.message || err.message}`, severity: 'error' });
       });
   };
 
   const handleConfirmAdd = () => {
     if (reasonResult && selectedVerdict) {
       const formData = getValues();
+      const verdictValue = selectedVerdict.split('*')[1];
       const caseData: Verdict = {
         ...formData,
-        judgment: selectedVerdict,
-        monetaryPenalty: shouldShowMonetary(selectedVerdict) ? monetaryPenalty : null,
-        prisonPenalty: shouldShowPrison(selectedVerdict) ? prisonPenalty : null,
+        judgment: verdictValue,
+        monetaryPenalty: ['FINE', 'FINE_AND_PRISON'].includes(verdictValue) ? formData.monetaryPenalty : null,
+        prisonPenalty: ['PRISON', 'FINE_AND_PRISON'].includes(verdictValue) ? formData.prisonPenalty : null,
+        defendantNames: formData.defendantNames.length > 0 ? [formData.defendantNames[0]] : [],
+        appliedProvisions: formData.appliedProvisions || '',
       };
+      console.log('Payload to /api/cases/add:', caseData);
       axios.post('/api/cases/add', caseData)
         .then(res => {
           setSnackbar({ open: true, message: 'Slučaj uspješno dodan!', severity: 'success' });
           setOpenModal(false);
           reset();
           setSelectedVerdict(null);
-          setMonetaryPenalty(null);
-          setPrisonPenalty(null);
         })
         .catch(err => {
           console.error(err);
-          setSnackbar({ open: true, message: 'Greška prilikom dodavanja slučaja', severity: 'error' });
+          setSnackbar({ open: true, message: `Greška prilikom dodavanja slučaja: ${err.response?.data?.message || err.message}`, severity: 'error' });
         });
     }
   };
@@ -159,8 +150,6 @@ function AddCase() {
     setOpenModal(false);
     setReasonResult(null);
     setSelectedVerdict(null);
-    setMonetaryPenalty(null);
-    setPrisonPenalty(null);
   };
 
   const handleMetadataOpen = (caseId: string) => {
@@ -171,7 +160,7 @@ function AddCase() {
       })
       .catch(err => {
         console.error(err);
-        setSnackbar({ open: true, message: 'Greška pri dohvatanju metapodataka', severity: 'error' });
+        setSnackbar({ open: true, message: `Greška pri dohvatanju metapodataka: ${err.response?.data?.message || err.message}`, severity: 'error' });
       });
   };
 
@@ -186,15 +175,6 @@ function AddCase() {
 
   const shouldShowMonetary = (verdict: string) => ['FINE', 'FINE_AND_PRISON'].includes(verdict);
   const shouldShowPrison = (verdict: string) => ['PRISON', 'FINE_AND_PRISON'].includes(verdict);
-
-  useEffect(() => {
-    if (selectedVerdict && !shouldShowMonetary(selectedVerdict)) {
-      setMonetaryPenalty(null);
-    }
-    if (selectedVerdict && !shouldShowPrison(selectedVerdict)) {
-      setPrisonPenalty(null);
-    }
-  }, [selectedVerdict]);
 
   return (
     <Box sx={{ maxWidth: 1200, mx: 'auto', my: 4, p: 3, bgcolor: 'background.paper', borderRadius: 2, boxShadow: 3 }}>
@@ -273,28 +253,14 @@ function AddCase() {
             helperText={errors.prosecutor?.message}
             variant="outlined"
           />
-          <Autocomplete
-            multiple
-            freeSolo
-            options={[]}
-            value={watch('defendantNames') || []}
-            onChange={(event, newValue) => setValue('defendantNames', newValue)}
-            renderTags={(value, getTagProps) =>
-              value.map((option, index) => (
-                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-              ))
-            }
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Imena optuženih"
-                helperText={errors.defendantNames?.message || 'Unesite jedno ime po unosu i pritisnite Enter za dodavanje'}
-                fullWidth
-                margin="normal"
-                error={!!errors.defendantNames}
-                variant="outlined"
-              />
-            )}
+          <TextField
+            label="Ime optuženog"
+            {...register('defendantNames.0', { required: 'Ime optuženog je obavezno' })}
+            fullWidth
+            margin="normal"
+            error={!!errors.defendantNames?.[0]}
+            helperText={errors.defendantNames?.[0]?.message || 'Unesite ime optuženog'}
+            variant="outlined"
           />
           <TextField
             label="Žrtva"
@@ -322,7 +288,7 @@ function AddCase() {
               <TextField
                 {...params}
                 label="Optužbe"
-                helperText={errors.accusations?.message || 'Izaberite optužbe (npr. čl. 239 st. 1)'}
+                helperText={errors.accusations?.message || 'Izaberite optužbe (npr. čl. 240 st. 1)'}
                 fullWidth
                 margin="normal"
                 error={!!errors.accusations}
@@ -332,11 +298,11 @@ function AddCase() {
           />
           <TextField
             label="Primijenjene odredbe"
-            {...register('appliedProvisions', { required: 'Primijenjene odredbe su obavezne' })}
+            {...register('appliedProvisions')}
             fullWidth
             margin="normal"
             error={!!errors.appliedProvisions}
-            helperText={errors.appliedProvisions?.message}
+            helperText={errors.appliedProvisions?.message || 'Unesite odredbe (npr. krivični čl. 240 st. 1 tač. 1, ZKP čl. 226)'}
             variant="outlined"
           />
           <TextField
@@ -357,7 +323,15 @@ function AddCase() {
               control={control}
               rules={{ required: 'Tip presude je obavezan' }}
               render={({ field }) => (
-                <Select {...field} label="Tip presude" value={field.value || ''}>
+                <Select
+                  {...field}
+                  label="Tip presude"
+                  value={field.value || ''}
+                  onChange={(e) => {
+                    console.log('Selected judgment:', e.target.value);
+                    field.onChange(e.target.value);
+                  }}
+                >
                   {Object.entries(verdictTranslations).map(([key, value]) => (
                     key !== 'NONE' && <MenuItem key={key} value={key}>{value}</MenuItem>
                   ))}
@@ -366,6 +340,36 @@ function AddCase() {
             />
             {errors.judgment && <Typography color="error">{errors.judgment.message}</Typography>}
           </FormControl>
+          {shouldShowMonetary(judgmentWatch || '') && (
+            <TextField
+              label="Novčana kazna (€)"
+              type="number"
+              {...register('monetaryPenalty', {
+                valueAsNumber: true,
+                min: { value: 0, message: 'Novčana kazna mora biti nenegativna' },
+              })}
+              fullWidth
+              margin="normal"
+              error={!!errors.monetaryPenalty}
+              helperText={errors.monetaryPenalty?.message}
+              variant="outlined"
+            />
+          )}
+          {shouldShowPrison(judgmentWatch || '') && (
+            <TextField
+              label="Godine zatvora"
+              type="number"
+              {...register('prisonPenalty', {
+                valueAsNumber: true,
+                min: { value: 0, message: 'Godine zatvora moraju biti nenegativne' },
+              })}
+              fullWidth
+              margin="normal"
+              error={!!errors.prisonPenalty}
+              helperText={errors.prisonPenalty?.message}
+              variant="outlined"
+            />
+          )}
         </Box>
         <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>Osnovne činjenice</Typography>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
@@ -380,7 +384,6 @@ function AddCase() {
                   label="Vrsta stvari"
                   onChange={(e) => field.onChange(e.target.value === 'true')}
                   value={field.value ? 'true' : 'false'}
-                  disabled={isTakenWatch}
                 >
                   <MenuItem value="true">Tuđa i pokretna</MenuItem>
                   <MenuItem value="false">Nije pokretna</MenuItem>
@@ -417,7 +420,6 @@ function AddCase() {
                   label="Namjera prisvajanja"
                   onChange={(e) => field.onChange(e.target.value === 'true')}
                   value={field.value ? 'true' : 'false'}
-                  disabled={accusationsWatch.some(acc => acc.includes('239') || acc.includes('240') || acc.includes('241'))}
                 >
                   <MenuItem value="true">Da</MenuItem>
                   <MenuItem value="false">Ne</MenuItem>
@@ -470,7 +472,6 @@ function AddCase() {
                   label="Upotreba sile ili prijetnje"
                   onChange={(e) => field.onChange(e.target.value === 'true')}
                   value={field.value ? 'true' : 'false'}
-                  disabled={accusationsWatch.includes('čl. 241') && caughtInTheActWatch}
                 >
                   <MenuItem value="true">Da</MenuItem>
                   <MenuItem value="false">Ne</MenuItem>
@@ -558,10 +559,10 @@ function AddCase() {
                 Moj izbor: <strong>{verdictTranslations[reasonResult.caseDescription.judgment || 'NONE']}</strong>
               </Typography>
               <Typography variant="h6" sx={{ mb: 2, fontWeight: 'medium' }}>
-                Rasudjivanje po slučaju: <strong>{verdictTranslations[reasonResult.predictedVerdict]}</strong>
+                Rasuđivanje po slučaju: <strong>{verdictTranslations[reasonResult.predictedVerdict]}</strong>
               </Typography>
               <Typography variant="h6" sx={{ mb: 2, fontWeight: 'medium' }}>
-                Rasudjivanje po pravilima: <strong>{verdictTranslations[reasonResult.drDeviceResults.judgment]}</strong>
+                Rasuđivanje po pravilima: <strong>{verdictTranslations[reasonResult.drDeviceResults.judgment]}</strong>
               </Typography>
               <Typography variant="body1" sx={{ mb: 2 }}>
                 Kazna (po pravilima): {reasonResult.drDeviceResults.penalty}
@@ -573,39 +574,60 @@ function AddCase() {
                 <InputLabel>Konačna presuda za spremanje</InputLabel>
                 <Select
                   value={selectedVerdict || ''}
-                  onChange={(e) => setSelectedVerdict(e.target.value)}
+                  onChange={(e) => {
+                    setSelectedVerdict(e.target.value);
+                    const verdictValue = e.target.value.split('*')[1];
+                    console.log(verdictValue)
+                    if (!shouldShowMonetary(verdictValue)) {
+                      setValue('monetaryPenalty', null);
+                    }
+                    if (!shouldShowPrison(verdictValue)) {
+                      setValue('prisonPenalty', null);
+                    }
+                  }}
                 >
-                  <MenuItem value={reasonResult.caseDescription.judgment || 'NONE'}>
+                  <MenuItem value="" disabled>Izaberite presudu</MenuItem>
+                  <MenuItem value={`user*${reasonResult.caseDescription.judgment || 'NONE'}`}>
                     Moj izbor ({verdictTranslations[reasonResult.caseDescription.judgment || 'NONE']})
                   </MenuItem>
-                  <MenuItem value={reasonResult.predictedVerdict}>
-                    Rasudjivanje po slučaju ({verdictTranslations[reasonResult.predictedVerdict]})
+                  <MenuItem value={`case*${reasonResult.predictedVerdict}`}>
+                    Rasuđivanje po slučaju ({verdictTranslations[reasonResult.predictedVerdict]})
                   </MenuItem>
-                  <MenuItem value={reasonResult.drDeviceResults.judgment}>
-                    Rasudjivanje po pravilima ({verdictTranslations[reasonResult.drDeviceResults.judgment]})
-                  </MenuItem>
+                  {reasonResult.drDeviceResults.judgment !== 'NONE' && (
+                    <MenuItem value={`rule*${reasonResult.drDeviceResults.judgment}`}>
+                      Rasuđivanje po pravilima ({verdictTranslations[reasonResult.drDeviceResults.judgment]})
+                    </MenuItem>
+                  )}
                 </Select>
               </FormControl>
               {selectedVerdict && (
                 <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2, mb: 3 }}>
-                  {shouldShowMonetary(selectedVerdict) && (
+                  {shouldShowMonetary(selectedVerdict.split('*')[1]) && (
                     <TextField
                       label="Novčana kazna (€)"
                       type="number"
-                      value={monetaryPenalty ?? ''}
-                      onChange={(e) => setMonetaryPenalty(e.target.value ? Number(e.target.value) : null)}
+                      {...register('monetaryPenalty', {
+                        valueAsNumber: true,
+                        min: { value: 0, message: 'Novčana kazna mora biti nenegativna' },
+                      })}
                       fullWidth
                       variant="outlined"
+                      error={!!errors.monetaryPenalty}
+                      helperText={errors.monetaryPenalty?.message}
                     />
                   )}
-                  {shouldShowPrison(selectedVerdict) && (
+                  {shouldShowPrison(selectedVerdict.split('*')[1]) && (
                     <TextField
                       label="Godine zatvora"
                       type="number"
-                      value={prisonPenalty ?? ''}
-                      onChange={(e) => setPrisonPenalty(e.target.value ? Number(e.target.value) : null)}
+                      {...register('prisonPenalty', {
+                        valueAsNumber: true,
+                        min: { value: 0, message: 'Godine zatvora moraju biti nenegativne' },
+                      })}
                       fullWidth
                       variant="outlined"
+                      error={!!errors.prisonPenalty}
+                      helperText={errors.prisonPenalty?.message}
                     />
                   )}
                 </Box>
@@ -693,11 +715,11 @@ function AddCase() {
               <Typography><b>Sudija:</b> {selectedCase.judge}</Typography>
               <Typography><b>Pisar:</b> {selectedCase.clerk}</Typography>
               <Typography><b>Tužilac:</b> {selectedCase.prosecutor}</Typography>
-              <Typography><b>Imena optuženih:</b> {selectedCase.defendantNames.join(', ')}</Typography>
-              <Typography><b>Žrtva:</b> {selectedCase.victim}</Typography>
+              <Typography><b>Ime optuženog:</b> {selectedCase.defendantNames[0] || 'Nije navedeno'}</Typography>
+              <Typography><b>Žrtva:</b> {selectedCase.victim || 'Nije navedena'}</Typography>
               <Typography><b>Kratak opis:</b> {selectedCase.shortDescription}</Typography>
               <Typography><b>Presuda:</b> {verdictTranslations[selectedCase.judgment || 'NONE']}</Typography>
-              <Typography><b>Primijenjene odredbe:</b> {selectedCase.appliedProvisions}</Typography>
+              <Typography><b>Primijenjene odredbe:</b> {selectedCase.appliedProvisions || 'Nema'}</Typography>
               <Typography><b>Optužbe:</b> {selectedCase.accusations.join(', ')}</Typography>
               <Typography><b>Vrsta stvari (tuđa i pokretna):</b> {selectedCase.isMovableProperty ? 'Da' : 'Ne'}</Typography>
               <Typography><b>Radnja oduzimanja:</b> {selectedCase.isTaken ? 'Da' : 'Ne'}</Typography>

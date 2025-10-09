@@ -4,14 +4,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum AccusationType {
-    ARTICLE_239_NONE("239", ""),
     ARTICLE_239_ST_1("239", "1"),
     ARTICLE_239_ST_2("239", "2"),
-    ARTICLE_240_NONE("240", ""),
     ARTICLE_240_ST_1("240", "1"),
     ARTICLE_240_ST_2("240", "2"),
     ARTICLE_240_ST_3("240", "3"),
-    ARTICLE_241_NONE("241", ""),
     ARTICLE_241_ST_1("241", "1"),
     ARTICLE_241_ST_2("241", "2"),
     ARTICLE_241_ST_3("241", "3"),
@@ -70,13 +67,13 @@ public enum AccusationType {
             case "239" -> switch (stav) {
                 case "1" -> ARTICLE_239_ST_1;
                 case "2" -> ARTICLE_239_ST_2;
-                default -> ARTICLE_239_NONE;
+                default -> OTHER;
             };
             case "240" -> switch (stav) {
                 case "1" -> ARTICLE_240_ST_1;
                 case "2" -> ARTICLE_240_ST_2;
                 case "3" -> ARTICLE_240_ST_3;
-                default -> ARTICLE_240_NONE;
+                default -> OTHER;
             };
             case "241" -> switch (stav) {
                 case "1" -> ARTICLE_241_ST_1;
@@ -86,7 +83,7 @@ public enum AccusationType {
                 case "5" -> ARTICLE_241_ST_5;
                 case "6" -> ARTICLE_241_ST_6;
                 case "7" -> ARTICLE_241_ST_7;
-                default -> ARTICLE_241_NONE;
+                default -> OTHER;
             };
             default -> OTHER;
         };

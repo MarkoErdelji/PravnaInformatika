@@ -19,7 +19,6 @@ public class CaseDescription implements CaseComponent {
     private Long dbId;
     private String caseId;
     private List<String> defendantNames;
-    private String victim;
     private List<AccusationType> accusationTypes;
     private String judgment;
     private Boolean isMovableProperty;
@@ -38,7 +37,6 @@ public class CaseDescription implements CaseComponent {
         this.dbId = verdict.getId();
         this.caseId = verdict.getCaseId();
         this.defendantNames = verdict.getDefendantNames() != null ? new ArrayList<>(verdict.getDefendantNames()) : new ArrayList<>();
-        this.victim = verdict.getVictim();
         this.accusationTypes = verdict.getAccusationTypes() != null ? new ArrayList<>(verdict.getAccusationTypes()) : new ArrayList<>();
         this.judgment = verdict.getJudgment();
         this.isMovableProperty = verdict.getIsMovableProperty();
